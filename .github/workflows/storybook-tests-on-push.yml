@@ -1,4 +1,4 @@
-name: "Storybook Tests"
+name: "Tests Storybook"
 on: push
 
 concurrency:
@@ -26,27 +26,40 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Cache Playwright browsers
+      - name: Cache Build
+        id: cache-build
         uses: actions/cache@v4
         with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
+          path: dist
+          key: ${{ runner.os }}-build-${{ hashFiles('**/*.ts', '**/*.tsx', '**/*.mdx', '**/pnpm-lock.yaml') }} # Cache key based on OS and file hashes
           restore-keys: |
-            ${{ runner.os }}-playwright-
+            ${{ runner.os }}-build-
 
-      - name: Install Playwright
-        run: npx playwright install --with-deps
+      - name: Build
+        if: steps.cache-build.outputs.cache-hit != 'true'
+        run: pnpm build
 
       - name: Cache Storybook build
         uses: actions/cache@v4
         with:
           path: storybook-static
-          key: ${{ runner.os }}-storybook-${{ hashFiles('**/pnpm-lock.yaml') }}
+          key: ${{ runner.os }}-storybook-${{ hashFiles('**/*.ts', '**/*.tsx', '**/*.mdx', '**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-storybook-
 
       - name: Build Storybook
         run: pnpm build-storybook --quiet
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/*.ts', '**/*.tsx', '**/*.mdx', '**/pnpm-lock.yaml') }} # Cache key based on OS and file hashes
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright
+        run: npx playwright install --with-deps
 
       - name: Serve Storybook and run tests
         run: |

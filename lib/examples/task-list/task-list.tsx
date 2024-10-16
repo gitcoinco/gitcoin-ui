@@ -34,10 +34,11 @@ export const TaskList = () => {
 
       <div className="ui-flex ui-flex-col ui-rounded-md ui-bg-slate-50 ui-shadow-md dark:ui-bg-slate-800">
         {error ? (
-          <div className="ui-flex ui-items-center ui-gap-2 ui-border-b ui-border-slate-200 ui-px-4 ui-py-2 last:ui-border-b-0 dark:ui-border-slate-800">
-            <p data-testid="error-message" className="ui-text-danger-500">
-              Error loading tasks: {error.message}
-            </p>
+          <div
+            data-testid="error-message"
+            className="ui-flex ui-items-center ui-gap-2 ui-border ui-border-danger-500 ui-px-4 ui-py-2 dark:ui-border-slate-800"
+          >
+            Error loading tasks: {error.message}
           </div>
         ) : (
           tasks.map((task) => (

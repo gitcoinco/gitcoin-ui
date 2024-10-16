@@ -68,6 +68,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
+      axe-playwright:
+        specifier: ^2.0.3
+        version: 2.0.3(playwright@1.48.1)
       chromatic:
         specifier: ^11.12.5
         version: 11.12.5
@@ -1398,6 +1401,9 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/junit-report-builder@3.0.2':
+    resolution: {integrity: sha512-R5M+SYhMbwBeQcNXYWNCZkl09vkVfAtcPIaCGdzIkkbeaTrVbGQ7HVgi4s+EmM/M1K4ZuWQH0jGcvMvNePfxYA==}
+
   '@types/lodash@4.17.10':
     resolution: {integrity: sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==}
 
@@ -1792,6 +1798,17 @@ packages:
   axe-core@4.10.0:
     resolution: {integrity: sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==}
     engines: {node: '>=4'}
+
+  axe-html-reporter@2.2.11:
+    resolution: {integrity: sha512-WlF+xlNVgNVWiM6IdVrsh+N0Cw7qupe5HT9N6Uyi+aN7f6SSi92RDomiP1noW8OWIV85V6x404m5oKMeqRV3tQ==}
+    engines: {node: '>=8.9.0'}
+    peerDependencies:
+      axe-core: '>=3'
+
+  axe-playwright@2.0.3:
+    resolution: {integrity: sha512-s7iI2okyHHsD3XZK4RMJtTy2UASkNWLQtnzLuaHiK3AWkERf+cqZJqkxb7O4b56fnbib9YnZVRByTl92ME3o6g==}
+    peerDependencies:
+      playwright: '>1.0.0'
 
   axios@1.7.7:
     resolution: {integrity: sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==}
@@ -3163,6 +3180,10 @@ packages:
   jsonfile@6.1.0:
     resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
 
+  junit-report-builder@5.1.1:
+    resolution: {integrity: sha512-ZNOIIGMzqCGcHQEA2Q4rIQQ3Df6gSIfne+X9Rly9Bc2y55KxAZu8iGv+n2pP0bLf0XAOctJZgeloC54hWzCahQ==}
+    engines: {node: '>=16'}
+
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
@@ -3385,6 +3406,10 @@ packages:
 
   muggle-string@0.4.1:
     resolution: {integrity: sha512-VNTrAak/KhO2i8dqqnqnAHOa3cYBwXEZe9h+D5h/1ZqFSTEFHdM65lR7RoIqq3tBBYavsOXV84NoHXZ0AkPyqQ==}
+
+  mustache@4.2.0:
+    resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
+    hasBin: true
 
   mute-stream@1.0.0:
     resolution: {integrity: sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==}
@@ -4563,6 +4588,10 @@ packages:
 
   xml@1.0.1:
     resolution: {integrity: sha512-huCv9IH9Tcf95zuYCsQraZtWnJvBtLVE0QHMOs8bWyZAFZNDcYjsPq1nEx8jKA9y+Beo9v+7OBPRisQTjinQMw==}
+
+  xmlbuilder@15.1.1:
+    resolution: {integrity: sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==}
+    engines: {node: '>=8.0'}
 
   y18n@4.0.3:
     resolution: {integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==}
@@ -5990,6 +6019,8 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/junit-report-builder@3.0.2': {}
+
   '@types/lodash@4.17.10': {}
 
   '@types/mdx@2.0.13': {}
@@ -6445,6 +6476,20 @@ snapshots:
       possible-typed-array-names: 1.0.0
 
   axe-core@4.10.0: {}
+
+  axe-html-reporter@2.2.11(axe-core@4.10.0):
+    dependencies:
+      axe-core: 4.10.0
+      mustache: 4.2.0
+
+  axe-playwright@2.0.3(playwright@1.48.1):
+    dependencies:
+      '@types/junit-report-builder': 3.0.2
+      axe-core: 4.10.0
+      axe-html-reporter: 2.2.11(axe-core@4.10.0)
+      junit-report-builder: 5.1.1
+      picocolors: 1.1.0
+      playwright: 1.48.1
 
   axios@1.7.7:
     dependencies:
@@ -8094,6 +8139,12 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
+  junit-report-builder@5.1.1:
+    dependencies:
+      lodash: 4.17.21
+      make-dir: 3.1.0
+      xmlbuilder: 15.1.1
+
   keyv@4.5.4:
     dependencies:
       json-buffer: 3.0.1
@@ -8310,6 +8361,8 @@ snapshots:
       typescript: 5.6.3
 
   muggle-string@0.4.1: {}
+
+  mustache@4.2.0: {}
 
   mute-stream@1.0.0: {}
 
@@ -9463,6 +9516,8 @@ snapshots:
   ws@8.18.0: {}
 
   xml@1.0.1: {}
+
+  xmlbuilder@15.1.1: {}
 
   y18n@4.0.3: {}
 
