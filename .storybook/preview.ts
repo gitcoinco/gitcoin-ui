@@ -1,7 +1,14 @@
 import type { Preview } from "@storybook/react";
 
-import "../lib/index.css";
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
+
+import { initialize, mswLoader } from "msw-storybook-addon";
+import { handlers } from "../lib/mocks/handlers";
+
+initialize();
+
+import "../lib/index.css";
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -11,7 +18,10 @@ const preview: Preview = {
       },
     },
   },
-
+  loaders: [mswLoader],
+  msw: {
+    handlers,
+  },
   decorators: [
     withThemeByDataAttribute({
       themes: {
@@ -23,5 +33,12 @@ const preview: Preview = {
     }),
   ],
 };
+
+// NOTE: Example of global loaders
+// export const loaders = [
+//   async () => ({
+//     userData: await fetch('/api/user').then((res) => res.json()),
+//   }),
+// ];
 
 export default preview;

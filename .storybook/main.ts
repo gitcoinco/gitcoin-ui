@@ -8,10 +8,15 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
     "@storybook/addon-themes",
+    "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/react-vite",
     options: {},
+  },
+  docs: {},
+  core: {
+    disableTelemetry: true, // 👈 Used to ignore update notifications.
   },
 };
 export default config;

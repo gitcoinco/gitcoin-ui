@@ -1,4 +1,4 @@
 import "./index.css";
 
-import { Button, type ButtonProps } from "./examples/Button";
-export { Button, type ButtonProps };
+import { Button } from "./examples/button";
+export { Button };
