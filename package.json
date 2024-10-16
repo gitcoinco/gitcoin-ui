@@ -68,5 +68,8 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "@fontsource/dm-mono": "^5.1.0"
   }
 }

@@ -5,7 +5,11 @@ export default {
   content: ["./lib/**/*.{js,ts,jsx,tsx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mono: ["DM Mono", "monospace"],
+      },
+    },
   },
   plugins: [],
 } satisfies Config;
