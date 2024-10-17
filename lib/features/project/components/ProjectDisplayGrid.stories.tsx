@@ -3,7 +3,6 @@ import ProjectDisplayGrid from "./ProjectDisplayGrid";
 import { activeProjects } from "@/types/QueryFilters/rounds/QueryFilters";
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { undefinedArrayHandler, undefinedHandler } from "@/mocks/handlers";
 
 const meta = {
   title: "Components/ProjectDisplayGrid",
@@ -35,11 +34,3 @@ export default meta;
 type Story = StoryObj<typeof ProjectDisplayGrid>;
 
 export const Default: Story = {};
-
-// export const Loading: Story = {
-//   parameters: {
-//     msw: {
-//       handlers: [undefinedArrayHandler],
-//     },
-//   },
-// };
