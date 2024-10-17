@@ -24,7 +24,7 @@ export const useProjects = (query: string = defaultQuery) => {
     staleTime: minutesToMilliseconds(120),
   });
 
-  console.log(JSON.stringify(result));
+  // console.log(JSON.stringify(result));
   return result;
 };
 
@@ -43,6 +43,6 @@ export const useProject = (projectId: string, chainId: number) => {
     staleTime: minutesToMilliseconds(120),
   });
 
-  console.log("useprojects", JSON.stringify(result));
+  // console.log("useprojects", JSON.stringify(result));
   return result;
 };

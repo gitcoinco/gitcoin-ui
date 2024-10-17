@@ -1,11 +1,10 @@
 import React from "react";
-// import { Button } from "@/primitives/shadcn/ui/button";
+
 import { Card, CardContent } from "@/primitives/shadcn/ui/card";
 import { Project } from "@/types/types";
 import BannerImage from "@/primitives/BannerImage";
 import ProfileImage from "@/primitives/ProfileImage";
 import { Skeleton } from "@/primitives/shadcn/ui/skeleton";
-// import Image from "next/image";
 
 type ProjectCardProps = {
   project?: Project | undefined;
@@ -17,11 +16,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
 function LoadingCard() {
   return (
-    <Card className="h-96 w-[350px] overflow-hidden">
+    <Card className="block max-w-sm overflow-hidden">
       <div className="relative">
-        {/* <Skeleton className="h-[150px] w-full rounded-md" /> */}
         <Skeleton className="h-[150px] w-full rounded-md" />
-
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
           <Skeleton className="size-[60px] rounded-full" />
         </div>
@@ -36,7 +33,7 @@ function LoadingCard() {
 
 export function DataCard({ project }: ProjectCardProps) {
   return (
-    <Card className="h-96 w-[350px] overflow-hidden">
+    <Card className="block max-w-sm overflow-hidden">
       <div className="relative">
         <BannerImage ipfsCID={project?.metadata?.bannerImg} />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
@@ -49,4 +46,12 @@ export function DataCard({ project }: ProjectCardProps) {
       </CardContent>
     </Card>
   );
+}
+
+{
+  /* <a href="#" class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+<p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+</a> */
 }

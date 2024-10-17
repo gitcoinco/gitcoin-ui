@@ -21,9 +21,7 @@ const meta = {
           }
         }
       `;
-
         const project = await GitcoinGraphqlService.getProject(query);
-
         return { project };
       } catch (error) {
         console.error(error);

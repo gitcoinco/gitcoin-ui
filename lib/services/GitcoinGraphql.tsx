@@ -17,7 +17,7 @@ export class GitcoinGraphqlService {
 
   static async getRound(query: string): Promise<Round> {
     const response = await client.request<{ round: Round }>(query);
-    console.log("gitcoinGraphql", JSON.stringify(response));
+    // console.log("gitcoinGraphql", JSON.stringify(response));
     return response.round;
   }
 
@@ -29,7 +29,7 @@ export class GitcoinGraphqlService {
 
   static async getProject(query: string): Promise<Project> {
     const response = await client.request<{ project: Project }>(query);
-    console.log("gitcoingraphql", response);
+    // console.log("gitcoingraphql", response);
     return response.project;
   }
 }

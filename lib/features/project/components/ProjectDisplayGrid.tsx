@@ -13,12 +13,19 @@ type Props = {
 
 export default function ProjectDisplayGrid(props: Props) {
   // const rounds = useRounds(props.query);
-  const projects = useProjects(props.query);
+  const { data: projects, isPending, isError, isSuccess } = useProjects(props.query);
+
+  function getProjects() {
+    if (isSuccess) {
+      return projects;
+    }
+
+    return new Array(6).fill(undefined);
+  }
 
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {/* <div>{JSON.stringify(projects)}</div> */}
-      {projects?.data?.map((object: Project, i: number) => {
+      {getProjects().map((object: Project | undefined, i: number) => {
         return (
           // <Link key={i} href={`/project/${object.chainId}/${object.id}`}>
           <ProjectCard project={object} key={i} />
