@@ -22,8 +22,13 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@/*": ["./lib/*"]
+      // Swap this line with the above if you need to import more ShadCN components
+      // "@/*": ["./src/*"]
     },
-    "outDir": "./dist"
+    "outDir": "./dist",
+
+    /* ShadCN */
+    "baseUrl": "."
   },
   "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]

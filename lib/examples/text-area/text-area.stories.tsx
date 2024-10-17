@@ -4,7 +4,7 @@ import { TextArea } from "./text-area";
 import { userEvent, within, expect } from "@storybook/test";
 
 const meta = {
-  title: "Components/TextArea",
+  title: "Primitives/TextArea",
   component: TextArea,
   args: {
     label: "Text Area Label",
@@ -101,8 +101,8 @@ export const LengthTooLong: Story = {
     await userEvent.type(textArea, inputValue);
     expect(count).toHaveTextContent(inputValue.length.toString());
     expect(textArea).toHaveAttribute("aria-invalid", "true");
-    expect(textArea).toHaveClass("ui-ring-danger-500");
-    expect(count).toHaveStyle({ color: "rgb(217, 37, 62)" });
+    expect(textArea).toHaveClass("ring-danger-500");
+    expect(count).toHaveStyle({ color: "rgb(220, 38, 38)" });
     expect(textArea).toHaveStyle({ boxShadow: "rgb(237, 70, 86)" });
   },
 };

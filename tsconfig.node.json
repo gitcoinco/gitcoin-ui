@@ -5,7 +5,15 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "strict": true
+    "strict": true,
+
+    /* ShadCN */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./lib/*"]
+      // Swap this line with the above if you need to import more ShadCN components
+      // "@/*": ["./src/*"]
+    }
   },
   "include": ["vite.config.ts"]
 }

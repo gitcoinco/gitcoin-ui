@@ -15,3 +15,7 @@ export const taskListHandlerWithError = http.get(
 );
 
 export const handlers = [taskListHandler];
+
+export const undefinedHandler = () => {
+  return undefined;
+};

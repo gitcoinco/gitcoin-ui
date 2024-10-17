@@ -20,12 +20,12 @@ export const Input = ({
   ...props
 }: InputProps) => {
   return (
-    <label className="ui-flex ui-flex-col ui-gap-1.5">
+    <label className="flex flex-col gap-1.5">
       <span
         className={clsx(
-          "ui-inline-flex ui-items-center ui-gap-1 ui-text-sm ui-font-medium",
-          required && "after:ui-h-1.5 after:ui-w-1.5 after:ui-rounded-full after:ui-bg-accent-500",
-          unlabeled && "ui-sr-only",
+          "inline-flex items-center gap-1 text-sm font-medium",
+          required && "after:bg-accent-500 after:h-1.5 after:w-1.5 after:rounded-full",
+          unlabeled && "sr-only",
         )}
       >
         {label}
@@ -33,13 +33,13 @@ export const Input = ({
 
       <input
         value={value}
-        className="ui-block ui-w-full ui-gap-2 ui-rounded-md ui-bg-white ui-px-3 ui-py-1 ui-text-sm ui-placeholder-slate-400 ui-shadow-sm ui-ring-1 ui-ring-inset ui-ring-slate-500 focus:ui-bg-primary-50 focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-primary-600 disabled:ui-cursor-not-allowed disabled:ui-bg-slate-50 dark:ui-bg-slate-800 dark:ui-placeholder-slate-300"
+        className="focus:bg-primary-50 focus:ring-primary-600 block w-full gap-2 rounded-md bg-white px-3 py-1 text-sm placeholder-slate-400 shadow-sm ring-1 ring-inset ring-slate-500 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:bg-slate-50 dark:bg-slate-800 dark:placeholder-slate-300"
         placeholder={unlabeled ? label : placeholder}
         disabled={disabled}
         required={required}
         {...props}
       />
-      {details && <span className="ui-text-xs ui-text-slate-500">{details}</span>}
+      {details && <span className="text-xs text-slate-500">{details}</span>}
     </label>
   );
 };

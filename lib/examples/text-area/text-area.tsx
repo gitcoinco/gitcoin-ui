@@ -11,11 +11,11 @@ export const TextArea = ({ label, required, maxLength, ...props }: TextAreaProps
   const length = useMemo(() => getLength(value), [value]);
 
   return (
-    <label className="ui-flex ui-flex-col ui-gap-1.5">
+    <label className="flex flex-col gap-1.5">
       <span
         className={clsx(
-          "ui-inline-flex ui-items-center ui-gap-1 ui-text-sm ui-font-medium",
-          required && "after:ui-h-1.5 after:ui-w-1.5 after:ui-rounded-full after:ui-bg-accent-500",
+          "inline-flex items-center gap-1 text-sm font-medium",
+          required && "after:bg-accent-500 after:h-1.5 after:w-1.5 after:rounded-full",
         )}
       >
         {label}
@@ -23,9 +23,8 @@ export const TextArea = ({ label, required, maxLength, ...props }: TextAreaProps
 
       <textarea
         className={merge(
-          "ui-w-full ui-rounded-md ui-bg-transparent ui-bg-white ui-p-4 ui-text-sm ui-placeholder-slate-400 ui-shadow-sm ui-ring-1 ui-ring-inset ui-ring-slate-500 invalid:ui-bg-danger-50 focus:ui-bg-primary-50 focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-primary-600 disabled:ui-cursor-not-allowed disabled:ui-bg-slate-50 dark:ui-bg-slate-800 dark:ui-placeholder-slate-300",
-          tooLong &&
-            "ui-ring-2 ui-ring-danger-500 focus:ui-ring-danger-500 dark:ui-ring-danger-500",
+          "invalid:bg-danger-50 focus:bg-primary-50 focus:ring-primary-600 w-full rounded-md bg-transparent bg-white p-4 text-sm placeholder-slate-400 shadow-sm ring-1 ring-inset ring-slate-500 focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:bg-slate-50 dark:bg-slate-800 dark:placeholder-slate-300",
+          tooLong && "ring-danger-500 focus:ring-danger-500 dark:ring-danger-500 ring-2",
         )}
         {...props}
         onChange={(e) => {
@@ -38,12 +37,12 @@ export const TextArea = ({ label, required, maxLength, ...props }: TextAreaProps
       />
 
       {maxLength && (
-        <div className="ui-flex ui-justify-end ui-text-xs">
+        <div className="flex justify-end text-xs">
           <p
             className={clsx(
               tooLong
-                ? "ui-text-danger-600 dark:ui-text-danger-400"
-                : "ui-text-slate-600 dark:ui-text-slate-400",
+                ? "text-danger-600 dark:text-danger-400"
+                : "text-slate-600 dark:text-slate-400",
             )}
           >
             <span data-testid="length">{length}</span>/{maxLength}

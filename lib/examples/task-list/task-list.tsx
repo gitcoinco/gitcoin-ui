@@ -10,9 +10,9 @@ export const TaskList = () => {
   const { tasks, error, addTask, toggleTask, removeTask, total, incomplete } = useTaskListContext();
 
   return (
-    <main className="ui-space-y-8">
+    <main className="space-y-8">
       <form
-        className="ui-space-y-4"
+        className="space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
           addTask(newTask);
@@ -24,7 +24,7 @@ export const TaskList = () => {
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
         />
-        <div className="ui-flex ui-justify-end ui-gap-2">
+        <div className="flex justify-end gap-2">
           <Button disabled={!newTask}>Add Task</Button>
           <Button variant="secondary" onClick={() => setNewTask("")}>
             Clear
@@ -32,23 +32,23 @@ export const TaskList = () => {
         </div>
       </form>
 
-      <div className="ui-flex ui-flex-col ui-rounded-md ui-bg-slate-50 ui-shadow-md dark:ui-bg-slate-800">
+      <div className="flex flex-col rounded-md bg-slate-50 shadow-md dark:bg-slate-800">
         {error ? (
           <div
             data-testid="error-message"
-            className="ui-flex ui-items-center ui-gap-2 ui-border ui-border-danger-500 ui-px-4 ui-py-2 dark:ui-border-slate-800"
+            className="border-danger-500 flex items-center gap-2 border px-4 py-2 dark:border-slate-800"
           >
             Error loading tasks: {error.message}
           </div>
         ) : (
           tasks.map((task) => (
-            <div className="ui-flex ui-items-center ui-gap-2 ui-border-b ui-border-slate-200 ui-px-4 ui-py-2 last:ui-border-b-0 dark:ui-border-slate-800">
+            <div className="flex items-center gap-2 border-b border-slate-200 px-4 py-2 last:border-b-0 dark:border-slate-800">
               <Checkbox
                 key={task.id}
                 label={task.title}
                 checked={task.completed}
                 onChange={() => toggleTask(task.id)}
-                className="ui-w-full ui-rounded-md ui-p-2 hover:ui-bg-slate-100 dark:hover:ui-bg-slate-700"
+                className="w-full rounded-md p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
               />
               <Button
                 title="Remove task"
@@ -63,7 +63,7 @@ export const TaskList = () => {
         )}
       </div>
 
-      <p className="ui-text-right ui-font-semibold after:ui-font-normal after:ui-content-['_tasks_remaning']">
+      <p className="text-right font-semibold after:font-normal after:content-['_tasks_remaning']">
         <span data-testid="incomplete">{incomplete}</span>/<span data-testid="total">{total}</span>
       </p>
     </main>
