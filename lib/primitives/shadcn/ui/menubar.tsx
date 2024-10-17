@@ -2,11 +2,16 @@ import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { Check, ChevronRight, Circle } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/primitives/shadcn/lib/utils";
 
-const MenubarMenu = MenubarPrimitive.Menu;
+//TODO I Don't understand why the compiler requires this explicit typedef here but not on the other primitives
+const MenubarMenu = MenubarPrimitive.Menu as React.FC<
+  React.ComponentProps<typeof MenubarPrimitive.Menu>
+>;
 
-const MenubarGroup = MenubarPrimitive.Group;
+const MenubarGroup = MenubarPrimitive.Group as React.FC<
+  React.ComponentProps<typeof MenubarPrimitive.Group>
+>;
 
 const MenubarPortal = MenubarPrimitive.Portal;
 

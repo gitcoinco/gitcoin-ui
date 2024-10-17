@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import { Button } from "@/primitives/shadcn/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/primitives/shadcn/card";
-import { Badge } from "@/primitives/shadcn/badge";
+import { Button } from "@/primitives/shadcn/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/primitives/shadcn/ui/card";
+import { Badge } from "@/primitives/shadcn/ui/badge";
 import { CalendarDays, MapPin, Users } from "lucide-react";
 import { useProject } from "../hooks/useProjects";
 

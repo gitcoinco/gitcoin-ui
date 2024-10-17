@@ -1,6 +1,5 @@
-import { GraphQLResponse, Project, Round } from "@/types/types";
-import { bigIntReplacer } from "@/utils/utils";
-import { GraphQLClient, gql } from "graphql-request";
+import { Project, Round } from "@/types/types";
+import { GraphQLClient } from "graphql-request";
 
 // TODO don't hardcode this lol
 const client = new GraphQLClient("https://grants-stack-indexer-v2.gitcoin.co/graphql");
@@ -22,9 +21,9 @@ export class GitcoinGraphqlService {
     return response.round;
   }
 
-  static async getProjects(query: string): Promise<Project> {
+  static async getProjects(query: string): Promise<Project[]> {
     // console.log(query)
-    const response = await client.request<{ projects: Project }>(query);
+    const response = await client.request<{ projects: Project[] }>(query);
     return response.projects;
   }
 

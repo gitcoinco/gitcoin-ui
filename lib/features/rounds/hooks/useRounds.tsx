@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import { minutesToMilliseconds } from "date-fns";
 
 import { GitcoinGraphqlService } from "@/services/GitcoinGraphql";
-import { Round } from "@/kit/domains/types";
 
 export const getRoundKey = (query?: string) => {
   return ["rounds", query];

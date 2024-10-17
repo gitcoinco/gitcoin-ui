@@ -1,8 +1,7 @@
 import React from "react";
-import { Card, CardContent } from "@/primitives/shadcn/card";
-import { Badge } from "@/primitives/shadcn/badge";
-import { Button } from "@/primitives/shadcn/button";
-import { ChevronRight } from "lucide-react";
+import { Card, CardContent } from "@/primitives/shadcn/ui/card";
+import { Badge } from "@/primitives/shadcn/ui/badge";
+import { Button } from "@/primitives/shadcn/ui/button";
 import { Round } from "@/types/types";
 
 type RoundCardProps = {

@@ -1,11 +1,9 @@
 "use client";
 
 import React from "react";
-import { RoundsQuery } from "@allo-team/kit";
-import Link from "next/link";
+// import Link from "next/link";
 import RoundCard from "./RoundCard";
 import { useRounds } from "@/features/rounds/hooks/useRounds";
-import { activeRounds } from "@/types/rounds/QueryFilters";
 
 type Props = {
   query: string;
@@ -26,10 +24,9 @@ export default function RoundDisplayGrid(props: Props) {
       {/* <div>{JSON.stringify(rounds)}</div> */}
       {rounds?.map((object, i) => {
         return (
-          <Link key={i} href={`/round/${object.chainId}/${object.id}`}>
-            {/* <div>{JSON.stringify(object)}</div> */}
-            <RoundCard round={object} />
-          </Link>
+          // <Link key={i} href={`/round/${object.chainId}/${object.id}`}>
+          <RoundCard round={object} />
+          // </Link>
         );
       })}
     </div>
