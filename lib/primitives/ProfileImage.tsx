@@ -30,7 +30,7 @@ export default function ProfileImage({ ipfsCID, url, size }: ProfileImageProps) 
         // className="h-[150px] r"
         className={clsx(
           "rounded-full border-4 border-white",
-          size && `size-[${height}]`,
+          size && `size-[${size}]`,
           !size && "size-[60px]",
         )}
       />
