@@ -8,55 +8,52 @@ export type CalloutVariants = VariantProps<typeof calloutVariants>;
 
 const variant = {
   primary: [
-    "ui-bg-primary-200",
-    "ui-border-primary-500",
-    "ui-text-primary-900",
-    "dark:ui-bg-primary-800",
-    "dark:ui-border-primary-900",
-    "dark:ui-text-primary-50",
+    "bg-primary-200",
+    "border-primary-500",
+    "text-primary-900",
+    "dark:bg-primary-800",
+    "dark:border-primary-900",
+    "dark:text-primary-50",
   ],
   information: [
-    "ui-bg-information-200",
-    "ui-border-information-500",
-    "ui-text-information-900",
-    "dark:ui-bg-information-800",
-    "dark:ui-border-information-900",
-    "dark:ui-text-information-50",
+    "bg-information-200",
+    "border-information-500",
+    "text-information-900",
+    "dark:bg-information-800",
+    "dark:border-information-900",
+    "dark:text-information-50",
   ],
   success: [
-    "ui-bg-success-200",
-    "ui-border-success-500",
-    "ui-text-success-900",
-    "dark:ui-bg-success-800",
-    "dark:ui-border-success-900",
-    "dark:ui-text-success-50",
+    "bg-success-200",
+    "border-success-500",
+    "text-success-900",
+    "dark:bg-success-800",
+    "dark:border-success-900",
+    "dark:text-success-50",
   ],
   warning: [
-    "ui-bg-warning-200",
-    "ui-border-warning-500",
-    "ui-text-warning-900",
-    "dark:ui-bg-warning-800",
-    "dark:ui-border-warning-900",
-    "dark:ui-text-warning-50",
+    "bg-warning-200",
+    "border-warning-500",
+    "text-warning-900",
+    "dark:bg-warning-800",
+    "dark:border-warning-900",
+    "dark:text-warning-50",
   ],
   danger: [
-    "ui-bg-danger-200",
-    "ui-border-danger-500",
-    "ui-text-danger-900",
-    "dark:ui-bg-danger-800",
-    "dark:ui-border-danger-900",
-    "dark:ui-text-danger-50",
+    "bg-danger-200",
+    "border-danger-500",
+    "text-danger-900",
+    "dark:bg-danger-800",
+    "dark:border-danger-900",
+    "dark:text-danger-50",
   ],
 };
 
-export const calloutVariants = cva(
-  ["ui-p-4", "ui-rounded-lg", "ui-border", "ui-shadow-md", "ui-space-y-8"],
-  {
-    variants: {
-      variant,
-    },
-    defaultVariants: {
-      variant: "primary",
-    },
+export const calloutVariants = cva(["p-4", "rounded-lg", "border", "shadow-md", "space-y-8"], {
+  variants: {
+    variant,
   },
-);
+  defaultVariants: {
+    variant: "primary",
+  },
+});

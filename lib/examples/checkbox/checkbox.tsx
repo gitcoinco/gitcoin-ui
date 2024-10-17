@@ -9,14 +9,14 @@ export const Checkbox = ({ label, className, ...props }: CheckboxProps) => {
   return (
     <label
       className={clsx(
-        "ui-inline-flex ui-cursor-pointer ui-select-none ui-items-center ui-gap-1.5",
-        props.disabled && "ui-cursor-not-allowed ui-opacity-50",
+        "inline-flex cursor-pointer select-none items-center gap-1.5",
+        props.disabled && "cursor-not-allowed opacity-50",
         className,
       )}
     >
-      <input type="checkbox" className="ui-peer ui-sr-only" {...props} />
-      <div className="ui-relative ui-size-4 ui-min-w-4 ui-rounded ui-border ui-border-slate-500 ui-bg-slate-50 ui-shadow-sm after:ui-absolute after:ui-left-0.5 after:ui-top-0 after:ui-text-xs after:ui-text-white after:ui-drop-shadow-sm peer-checked:ui-border-primary-800 peer-checked:ui-bg-primary-600 peer-checked:after:ui-content-['✔'] peer-focus:ui-ring-1 peer-focus:ui-ring-primary-500 peer-focus:ui-ring-offset-2 dark:ui-bg-slate-700 dark:ui-ring-offset-slate-800 dark:peer-checked:ui-bg-primary-600" />
-      <span className="ui-text-sm ui-font-medium">{label}</span>
+      <input type="checkbox" className="peer sr-only" {...props} />
+      <div className="peer-checked:border-primary-800 peer-checked:bg-primary-600 peer-focus:ring-primary-500 dark:peer-checked:bg-primary-600 relative size-4 min-w-4 rounded border border-slate-500 bg-slate-50 shadow-sm after:absolute after:left-0.5 after:top-0 after:text-xs after:text-white after:drop-shadow-sm peer-checked:after:content-['✔'] peer-focus:ring-1 peer-focus:ring-offset-2 dark:bg-slate-700 dark:ring-offset-slate-800" />
+      <span className="text-sm font-medium">{label}</span>
     </label>
   );
 };
