@@ -28,7 +28,7 @@ export default {
         },
         //TODO revisit this structure based on figma
         background: "#ffffff",
-        muted: { foreground: "#c4c4c4" },
+        muted: { foreground: "#747474" },
       },
       keyframes: {
         "accordion-down": {

@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { TaskList } from "../../../examples/task-list/task-list";
 import RoundDisplayGrid from "./RoundDisplayGrid";
-import { activeProjects, activeRounds } from "@/types/QueryFilters/rounds/QueryFilters";
+import { activeRounds } from "@/types/QueryFilters/rounds/QueryFilters";
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
 

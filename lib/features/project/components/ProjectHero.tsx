@@ -20,14 +20,14 @@ export default function ProjectHero(props: ProjectHeroProps) {
   const project = useProject(props.projectId, Number(props.chainId));
 
   return (
-    <section className="bg-background w-full py-12 md:py-24 lg:py-32 xl:py-48">
+    <section className="w-full bg-background py-12 md:py-24 lg:py-32 xl:py-48">
       <div className="container px-4 md:px-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
           <div className="col-span-3 flex flex-col justify-center space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+              <div className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 {project.data?.metadata?.title}
-              </h1>
+              </div>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               {/* <Button>Learn More</Button> */}
@@ -48,30 +48,30 @@ export default function ProjectHero(props: ProjectHeroProps) {
               {/* <PassportWidget round={round} alignment="right" /> */}
 
               <div className="flex items-center space-x-4">
-                <CalendarDays className="text-muted-foreground h-5 w-5" />
+                <CalendarDays className="h-5 w-5 text-muted-foreground" />
                 <div>
                   <p className="text-sm font-medium leading-none">Release Date</p>
-                  <p className="text-muted-foreground text-sm">January 15, 2024</p>
+                  <p className="text-sm text-muted-foreground">January 15, 2024</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <MapPin className="text-muted-foreground h-5 w-5" />
+                <MapPin className="h-5 w-5 text-muted-foreground" />
                 <div>
                   <p className="text-sm font-medium leading-none">Availability</p>
-                  <p className="text-muted-foreground text-sm">Worldwide</p>
+                  <p className="text-sm text-muted-foreground">Worldwide</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <Users className="text-muted-foreground h-5 w-5" />
+                <Users className="h-5 w-5 text-muted-foreground" />
                 <div>
                   <p className="text-sm font-medium leading-none">Target Audience</p>
-                  <p className="text-muted-foreground text-sm">Enterprise & SMBs</p>
+                  <p className="text-sm text-muted-foreground">Enterprise & SMBs</p>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
-        <div className="text-muted-foreground py-12 md:text-xl">
+        <div className="py-12 text-muted-foreground md:text-xl">
           {project.data?.metadata?.description}
         </div>
       </div>
