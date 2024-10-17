@@ -8,10 +8,8 @@ const client = new GraphQLClient("https://grants-stack-indexer-v2.gitcoin.co/gra
 
 export class GitcoinGraphqlService {
   static async getRounds(query: string) {
-    // console.log(query)
-    // const response = await client.request<GraphQLResponse<{ rounds: Round[] }>>(query)
     const response = await client.request<{ rounds: Round[] }>(query);
-    // console.log(JSON.stringify(response));
+    // console.log("gitcoinGraphql", JSON.stringify(response));
     return response.rounds;
   }
 
@@ -22,14 +20,13 @@ export class GitcoinGraphqlService {
   }
 
   static async getProjects(query: string): Promise<Project[]> {
-    // console.log(query)
     const response = await client.request<{ projects: Project[] }>(query);
     return response.projects;
   }
 
   static async getProject(query: string): Promise<Project> {
     const response = await client.request<{ project: Project }>(query);
-    // console.log("gitcoingraphql", response);
+    // console.log("gitcoinGraphql", JSON.stringify(response));
     return response.project;
   }
 }
