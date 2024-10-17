@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import ProjectDisplayGrid from "./ProjectDisplayGrid";
-import { activeProjects } from "@/types/QueryFilters/rounds/QueryFilters";
+import { TaskList } from "../../../examples/task-list/task-list";
+import RoundDisplayGrid from "./RoundDisplayGrid";
+import { activeProjects, activeRounds } from "@/types/QueryFilters/rounds/QueryFilters";
 import { QueryClient } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
 
 const meta = {
-  title: "Components/ProjectDisplayGrid",
-  component: ProjectDisplayGrid,
+  title: "Components/RoundDisplayGrid",
+  component: RoundDisplayGrid,
   loaders: [
     async () => {
       try {
@@ -23,14 +24,14 @@ const meta = {
 
       return (
         <QueryClientProvider client={queryClient}>
-          <ProjectDisplayGrid query={activeProjects()} />
+          <RoundDisplayGrid query={activeRounds()} />
         </QueryClientProvider>
       );
     },
   ],
-} as Meta<typeof ProjectDisplayGrid>;
+} as Meta<typeof RoundDisplayGrid>;
 
 export default meta;
-type Story = StoryObj<typeof ProjectDisplayGrid>;
+type Story = StoryObj<typeof RoundDisplayGrid>;
 
 export const Default: Story = {};

@@ -3,7 +3,7 @@ import { Button } from "./button";
 import { expect, within } from "@storybook/test";
 
 const meta = {
-  title: "Components/Button",
+  title: "Primitives/Button",
   component: Button,
   args: {
     children: "Button",

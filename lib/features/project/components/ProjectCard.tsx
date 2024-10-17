@@ -2,45 +2,50 @@ import React from "react";
 // import { Button } from "@/primitives/shadcn/ui/button";
 import { Card, CardContent } from "@/primitives/shadcn/ui/card";
 import { Project } from "@/types/types";
+import BannerImage from "@/primitives/BannerImage";
+import ProfileImage from "@/primitives/ProfileImage";
+import { Skeleton } from "@/primitives/shadcn/ui/skeleton";
 // import Image from "next/image";
 
 type ProjectCardProps = {
-  project: Project;
+  project?: Project | undefined;
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  return project === undefined ? <LoadingCard /> : <DataCard project={project} />;
+}
+
+function LoadingCard() {
   return (
-    <Card className="w-[350px] overflow-hidden">
+    <Card className="h-96 w-[350px] overflow-hidden">
       <div className="relative">
-        <img
-          // src="/placeholder.svg?height=150&width=350"
-          src={
-            project?.metadata?.bannerImg
-              ? "https://ipfs.io/ipfs/" + project.metadata.bannerImg
-              : "https://placehold.co/300x100"
-          }
-          // width={350}
-          // height={50}
-          alt="Banner"
-          className="h-[150px] w-full object-cover"
-        />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 transform">
-          <img
-            src={
-              project?.metadata?.logoImg
-                ? "https://ipfs.io/ipfs/" + project.metadata.logoImg
-                : "https://placehold.co/300x100"
-            }
-            // width={60}
-            // height={60}
-            alt="Profile"
-            className="h-[60px] w-[60px] rounded-full border-4 border-white"
-          />
+        {/* <Skeleton className="h-[150px] w-full rounded-md" /> */}
+        <Skeleton className="h-[150px] w-full rounded-md" />
+
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+          <Skeleton className="size-[60px] rounded-full" />
+        </div>
+      </div>
+      <CardContent className="pt-16 text-center">
+        <Skeleton className="mb-2 h-10 w-full rounded-md" />
+        <Skeleton className="h-24 w-full rounded-md" />
+      </CardContent>
+    </Card>
+  );
+}
+
+export function DataCard({ project }: ProjectCardProps) {
+  return (
+    <Card className="h-96 w-[350px] overflow-hidden">
+      <div className="relative">
+        <BannerImage ipfsCID={project?.metadata?.bannerImg} />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
+          <ProfileImage ipfsCID={project?.metadata?.logoImg} />
         </div>
       </div>
       <CardContent className="pt-16 text-center">
         <h2 className="mb-2 text-2xl font-bold">{project?.metadata?.title}</h2>
-        <p className="text-muted-foreground line-clamp-2">{project?.metadata?.description}</p>
+        <p className="line-clamp-4 text-muted-foreground">{project?.metadata?.description}</p>
       </CardContent>
     </Card>
   );

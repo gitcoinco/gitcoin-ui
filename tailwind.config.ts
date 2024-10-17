@@ -26,6 +26,9 @@ export default {
           800: "#991B1B",
           900: "#7F1D1D",
         },
+        //TODO revisit this structure based on figma
+        background: "#ffffff",
+        muted: { foreground: "#c4c4c4" },
       },
       keyframes: {
         "accordion-down": {
