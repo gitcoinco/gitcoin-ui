@@ -16,7 +16,7 @@ export default function RoundCard({ round }: RoundCardProps) {
           <div className="space-y-4">
             <div>
               <h2 className="text-2xl font-bold">{round.roundMetadata.name}</h2>
-              <p className="text-muted-foreground line-clamp-3">
+              <p className="line-clamp-3 text-muted-foreground">
                 {round.roundMetadata.eligibility.description}
               </p>
             </div>
@@ -30,7 +30,7 @@ export default function RoundCard({ round }: RoundCardProps) {
             <div className="flex flex-col gap-2">
               <Button className="py-4">View</Button>
             </div>
-            <p className="text-muted-foreground text-sm">Last updated: 2 days ago</p>
+            <p className="text-sm text-muted-foreground">Last updated: 2 days ago</p>
           </div>
         </div>
       </CardContent>
