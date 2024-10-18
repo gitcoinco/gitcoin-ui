@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "type": "module",
   "types": "./dist/index.d.ts",
-  "main": "./dist/index.umd.ts",
-  "module": "./dist/index.es.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.ts",
-      "require": "./dist/index.umd.ts"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
   "scripts": {

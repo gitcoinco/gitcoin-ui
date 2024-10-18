@@ -11,7 +11,11 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "./lib/index.ts"),
       name: "gitcoin-ui",
-      fileName: (format) => `index.${format}.js`,
+      fileName: (format, filename) => {
+        const extension = format === "es" ? "mjs" : format;
+        return `${filename}.${extension}`;
+      },
+      formats: ["cjs", "es"],
     },
     rollupOptions: {
       external: ["react", "react-dom", "tailwindcss"],
@@ -21,6 +25,7 @@ export default defineConfig({
           "react-dom": "ReactDOM",
           tailwindcss: "tailwindcss",
         },
+        preserveModules: true,
       },
     },
     sourcemap: true,
