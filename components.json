@@ -8,12 +8,12 @@
     "css": "src/index.css",
     "baseColor": "neutral",
     "cssVariables": false,
-    "prefix": ""
+    "prefix": "ui-"
   },
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
-    "ui": "@/components/ui",
+    "ui": "@/ui-shadcn",
     "lib": "@/lib",
     "hooks": "@/hooks"
   }

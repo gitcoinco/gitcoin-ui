@@ -9,7 +9,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended, // .strict is a super set of recommended
   // ...tseslint.configs.strict,
   ...tseslint.configs.stylistic,
-  { ignores: ["dist", "node_modules", "storybook-static"] },
+  { ignores: ["dist", "node_modules", "storybook-static", "ui-shadcn"] },
   {
     extends: [
       eslint.configs.recommended,
