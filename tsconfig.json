@@ -20,11 +20,12 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./lib/*"]
+      "@/*": ["./src/*"]
     },
     "outDir": "./dist"
   },
-  "include": ["lib"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
