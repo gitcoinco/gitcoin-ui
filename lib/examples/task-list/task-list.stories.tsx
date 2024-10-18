@@ -5,7 +5,7 @@ import { taskListHandler, taskListHandlerWithError } from "../../mocks/handlers"
 import { expect, within } from "@storybook/test";
 
 const meta = {
-  title: "Components/TaskList",
+  title: "Examples/Components/TaskList",
   component: TaskList,
   loaders: [
     async () => {

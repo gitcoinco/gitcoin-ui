@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Callout } from "./callout";
 
 const meta = {
-  title: "Components/Callout",
+  title: "Examples/Components/Callout",
   component: Callout,
   args: {
     children: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",

@@ -4,7 +4,7 @@ import { TextArea } from "./text-area";
 import { userEvent, within, expect } from "@storybook/test";
 
 const meta = {
-  title: "Components/TextArea",
+  title: "Examples/Components/TextArea",
   component: TextArea,
   args: {
     label: "Text Area Label",
