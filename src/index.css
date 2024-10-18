@@ -11,3 +11,9 @@
 body {
   @apply dark:ui-bg-black dark:ui-text-white;
 }
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
