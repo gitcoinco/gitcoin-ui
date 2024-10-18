@@ -1,3 +1,3 @@
 import "./index.css";
 
-export * from "./examples";
+export * from "./features/checker/pages/OverviewPage/components/OverviewPageTitle/OverviewPageTitle";
