@@ -9,7 +9,7 @@ import path, { resolve } from "path";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "./lib/index.ts"),
+      entry: resolve(__dirname, "./src/index.ts"),
       name: "gitcoin-ui",
       fileName: (format, filename) => {
         const extension = format === "es" ? "mjs" : format;
@@ -35,7 +35,7 @@ export default defineConfig({
   plugins: [react(), dts({ rollupTypes: true }), cssInjectedByJsPlugin()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "lib"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   css: {

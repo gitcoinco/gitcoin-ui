@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
-import { colors } from "./lib/tokens/colors";
+import { colors } from "./src/tokens/colors";
 
 export default {
   prefix: "ui-",
-  content: ["./lib/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
     extend: {
