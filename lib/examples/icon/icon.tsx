@@ -22,7 +22,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { ComponentProps } from "react";
+import React, { ComponentProps } from "react";
 
 export type IconProps = ComponentProps<LucideIcon> & {
   type:

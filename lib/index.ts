@@ -1,4 +1,3 @@
 import "./index.css";
 
-import { Button } from "./examples/button";
-export { Button };
+export * from "./features/checker/pages/OverviewPage/components/OverviewPageTitle/OverviewPageTitle";
