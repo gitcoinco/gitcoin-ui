@@ -14,7 +14,7 @@ const gitcoinProfileCID = "QmVSEo7Q1NFok7AT3vqD55EoThBgujoF1KXhiph9T9MNTr";
 
 const gitcoinProfileURL = "https://ipfs.io/ipfs/QmVSEo7Q1NFok7AT3vqD55EoThBgujoF1KXhiph9T9MNTr";
 
-export const IPFS: Story = {
+export const sourceFromIPFS: Story = {
   args: {
     ipfsCID: gitcoinProfileCID,
   },
@@ -27,7 +27,7 @@ export const IPFS: Story = {
   },
 };
 
-export const URL: Story = {
+export const sourceFromURL: Story = {
   args: {
     url: gitcoinProfileURL,
   },
