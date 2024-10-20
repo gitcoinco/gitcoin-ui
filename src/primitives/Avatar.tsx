@@ -4,18 +4,25 @@ import { match, P } from "ts-pattern";
 import { Avatar as ShadCNAvatar, AvatarFallback, AvatarImage } from "@/ui-shadcn/avatar";
 
 interface ProfileImageProps {
-  projectName?: string;
+  fallbackName?: string;
   ipfsCID?: string;
   url?: string;
   size?: number;
+  ipfsBaseURL?: string;
+  defaultImage?: string;
 }
 
-export default function Avatar({ projectName, ipfsCID, url, size = 40 }: ProfileImageProps) {
-  const ipfsBaseURL = "https://ipfs.io/ipfs/"; // process.env.NEXT_PUBLIC_IPFS_URL || "https://ipfs.io/ipfs/";
-
+export const Avatar = ({
+  fallbackName,
+  ipfsCID,
+  url,
+  size = 40,
+  ipfsBaseURL = "https://ipfs.io/ipfs/",
+  defaultImage = DefaultLogo,
+}: ProfileImageProps) => {
   const imageURL = useMemo(() => {
-    return match({ ipfsCID, url, projectName })
-      .with({ ipfsCID: P.nullish, url: P.nullish, projectName: P.nullish }, () => DefaultLogo)
+    return match({ ipfsCID, url, fallbackName })
+      .with({ ipfsCID: P.nullish, url: P.nullish, fallbackName: P.nullish }, () => DefaultLogo)
       .with({ ipfsCID, url: P.string.length(0) }, ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`)
       .with({ ipfsCID, url: P.nullish }, ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`)
       .with({ ipfsCID: P.string.length(0), url }, ({ url }) => url)
@@ -29,7 +36,7 @@ export default function Avatar({ projectName, ipfsCID, url, size = 40 }: Profile
   }, [ipfsCID, url, ipfsBaseURL]);
 
   const fallback = useMemo(() => {
-    return match(projectName)
+    return match(fallbackName)
       .with(undefined, () => "")
       .otherwise((name) => {
         const words = name.trim().split(/\s+/);
@@ -39,7 +46,7 @@ export default function Avatar({ projectName, ipfsCID, url, size = 40 }: Profile
           )
           .otherwise(([first, second]) => (first[0] + (second?.[0] || "")).toUpperCase());
       });
-  }, [projectName]);
+  }, [fallbackName]);
 
   return (
     <ShadCNAvatar
@@ -51,4 +58,4 @@ export default function Avatar({ projectName, ipfsCID, url, size = 40 }: Profile
       <AvatarFallback>{fallback}</AvatarFallback>
     </ShadCNAvatar>
   );
-}
+};

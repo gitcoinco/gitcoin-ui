@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 
-import Avatar from "./Avatar";
+import { Avatar } from "./Avatar";
 
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
@@ -41,7 +41,7 @@ export const sourceFromURL: Story = {
 
 export const FallbackName: Story = {
   args: {
-    projectName: "Gitcoin Labs",
+    fallbackName: "Gitcoin Labs",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -65,7 +65,7 @@ export const AllProvided: Story = {
   args: {
     url: gitcoinProfileURL,
     ipfsCID: gitcoinProfileCID,
-    projectName: "Gitcoin Labs",
+    fallbackName: "Gitcoin Labs",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

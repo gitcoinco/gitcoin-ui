@@ -1,0 +1,28 @@
+import { Meta, Title, Primary, Stories, Controls } from "@storybook/blocks";
+import AvatarStories from "./Avatar.stories";
+import { Avatar } from "./Avatar";
+
+# Avatar
+
+<Meta of={AvatarStories} />
+
+The Avatar component displays a rounded image representing an avatar. The component supports multiple sources, with fallbacks in place if a source fails during runtime.
+
+# Sources (in order)
+
+- No IPFS CID, No URL, and No Fallback Name -> Default Logo
+- IPFS CID and an empty or null URL -> ipfsBaseURL + ipfsCid
+- URL and an empty or null IPFS CID -> URL
+- both an IPFS CID and a URL -> ipfsBaseURL + ipfsCID
+
+# Example
+
+<Primary />
+
+# Controls
+
+<Controls />
+
+# Other variations
+
+<Stories />
