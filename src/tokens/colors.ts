@@ -8,5 +8,5 @@ export const colors: Colors = {
   },
   white: "#ffffff",
   black: "#000000",
+  muted: { foreground: "#959C9C" },
 };
-
