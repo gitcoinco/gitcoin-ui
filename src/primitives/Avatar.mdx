@@ -1,23 +1,37 @@
-import { Meta, Title, Primary, Stories, Controls } from "@storybook/blocks";
-import AvatarStories from "./Avatar.stories";
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as AvatarStories from "./Avatar.stories";
 import { Avatar } from "./Avatar";
 
 # Avatar
 
 <Meta of={AvatarStories} />
 
-The Avatar component displays a rounded image representing an avatar. The component supports multiple sources, with fallbacks in place if a source fails during runtime.
+The Avatar component displays a rounded image which can be used to render Logos and Avatars.
 
-# Sources (in order)
+This component supports multiple data sources, with an explicit priority ordering if multiple are used
 
-- No IPFS CID, No URL, and No Fallback Name -> Default Logo
+First, the component will attempt to load an IPFS CID, if that doesn't exist it will attempt to load an image URL.
+
+If both of these sources fail, it will attempt to stylize the `fallbackName` down to 2 characters.  
+If the name is multiple words, it will use the first letter of each word. If it is one word, it will use the first two letters of that word.
+
+If everything fails, it will render the default Logo.
+
+# Priority of Sources (in order)
+
+- Nothing is passed in -> Default Logo
 - IPFS CID and an empty or null URL -> ipfsBaseURL + ipfsCid
 - URL and an empty or null IPFS CID -> URL
 - both an IPFS CID and a URL -> ipfsBaseURL + ipfsCID
+- both images fail -> fallback name
 
 # Example
 
-<Primary />
+## With Image
+
+<Story of={AvatarStories.sourceFromIPFS} />
+## With Fallback Name
+<Story of={AvatarStories.FallbackName} />
 
 # Controls
 
