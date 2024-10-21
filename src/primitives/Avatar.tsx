@@ -3,7 +3,7 @@ import DefaultLogo from "@/assets/default_logo.png";
 import { match, P } from "ts-pattern";
 import { Avatar as ShadCNAvatar, AvatarFallback, AvatarImage } from "@/ui-shadcn/avatar";
 
-interface ProfileImageProps {
+interface AvatarProps {
   fallbackName?: string;
   ipfsCID?: string;
   url?: string;
@@ -19,10 +19,10 @@ export const Avatar = ({
   size = 40,
   ipfsBaseURL = "https://ipfs.io/ipfs/",
   defaultImage = DefaultLogo,
-}: ProfileImageProps) => {
+}: AvatarProps) => {
   const imageURL = useMemo(() => {
     return match({ ipfsCID, url, fallbackName })
-      .with({ ipfsCID: P.nullish, url: P.nullish, fallbackName: P.nullish }, () => DefaultLogo)
+      .with({ ipfsCID: P.nullish, url: P.nullish, fallbackName: P.nullish }, () => defaultImage)
       .with({ ipfsCID, url: P.string.length(0) }, ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`)
       .with({ ipfsCID, url: P.nullish }, ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`)
       .with({ ipfsCID: P.string.length(0), url }, ({ url }) => url)
@@ -32,7 +32,7 @@ export const Avatar = ({
         ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`,
       )
 
-      .otherwise(() => DefaultLogo);
+      .otherwise(() => defaultImage);
   }, [ipfsCID, url, ipfsBaseURL]);
 
   const fallback = useMemo(() => {
