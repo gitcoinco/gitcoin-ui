@@ -51,7 +51,7 @@ export const Avatar = ({
   return (
     <ShadCNAvatar
       role="presentation"
-      className="ui-h-full ui-w-full ui-shadow-md ui-shadow-slate-600"
+      className="ui-aspect-square ui-h-full ui-w-full ui-shadow-md ui-shadow-slate-600"
       style={{ width: `${size}px`, height: `${size}px` }}
     >
       <AvatarImage src={imageURL} alt="avatar" />
