@@ -38,26 +38,6 @@ export function ProjectCard({ project, queryResult }: ProjectCardProps) {
   );
 }
 
-// export function ProjectCard({ project, queryResult }: ProjectCardProps) {
-//     return match({ project, queryResult })
-//         // everything is nullish
-//         .with({ project: P.nullish, queryResult: P.nullish }, () => <LoadingCard />)
-//         // Project is explicitly passed in
-//         .with({ project: P.any, queryResult: P.nullish }, () => <DataCard project={project} />)
-//         // TanStack Query result is passed in
-//         .with({ project: P.nullish, queryResult: P.any }, () => {
-//             match(queryResult)
-//                 //Tanstack Query result is error
-//                 .with({ status: "error" }, (queryResult) => <ErrorCard error={queryResult.error}/>)
-//                 //Tanstack Query result is pending
-//                 .with({ status: "pending" }, () => <LoadingCard />)
-//                 //Tanstack Query result is success
-//                 .with({ status: "success" }, (queryResult) => <DataCard project={queryResult.data} />)
-//         })
-//         .otherwise(() => <ErrorCard />);
-
-// }
-
 function LoadingCard() {
   return (
     <Card className="ui-block ui-max-w-sm ui-overflow-hidden" role="presentation">
@@ -93,6 +73,7 @@ export function DataCard({ project }: ProjectCardProps) {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function ErrorCard({ error }: ErrorCardProps) {
   return <></>;
 }

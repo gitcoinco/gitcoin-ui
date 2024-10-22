@@ -3,7 +3,6 @@ import { expect, within } from "@storybook/test";
 
 import { ProjectCard } from "./ProjectCard";
 import { QueryError, QueryPending, QuerySuccess, singleProject } from "../mocks/objects";
-import { QueryObserverResult, UseQueryResult } from "@tanstack/react-query";
 
 const meta: Meta<typeof ProjectCard> = {
   title: "Components/Project/ProjectCard",
