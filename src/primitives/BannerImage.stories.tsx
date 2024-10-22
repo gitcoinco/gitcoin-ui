@@ -69,14 +69,15 @@ export const AllProvided: Story = {
   },
 };
 
-export const FullScreen: Story = {
+export const Big: Story = {
   args: {
     ipfsCID: gitcoinBannerCID,
+    size: 1000,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const image = await canvas.findByAltText("banner");
-    expect(image).toHaveStyle("width: 1248px");
+    expect(image).toHaveStyle("width: 1000px");
   },
 };
 
