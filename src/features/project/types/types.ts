@@ -1,11 +1,11 @@
 export interface Project {
   id: string;
-  name: string;
+  name?: string;
   description?: string;
   avatarUrl?: string;
   bannerUrl?: string;
-  anchorAddress: string;
-  chainId: number;
+  anchorAddress?: string;
+  chainId?: number;
   metadata: ProjectMetadata;
 }
 
