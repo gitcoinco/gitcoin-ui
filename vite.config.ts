@@ -4,6 +4,7 @@ import dts from "vite-plugin-dts";
 import tailwindcss from "tailwindcss";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import path, { resolve } from "path";
+import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,7 +33,7 @@ export default defineConfig({
     emptyOutDir: true,
     minify: false,
   },
-  plugins: [react(), dts({ rollupTypes: true }), cssInjectedByJsPlugin()],
+  plugins: [react(), svgr(), dts({ rollupTypes: true }), cssInjectedByJsPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
