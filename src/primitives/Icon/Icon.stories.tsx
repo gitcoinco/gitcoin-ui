@@ -6,18 +6,11 @@ const meta = {
   component: Icon,
   args: {
     type: "check",
-    color: "black",
   },
   argTypes: {
     type: {
       control: "select",
       options: Object.values(IconType),
-    },
-    color: {
-      control: "color",
-    },
-    size: {
-      control: "text",
     },
   },
 } satisfies Meta;
@@ -30,23 +23,18 @@ export const Default: Story = {};
 
 export const WithThemeColor: Story = {
   args: {
-    color: "grey-400",
+    className: "ui-fill-grey-400",
   },
 };
 
 export const WithCustomColor: Story = {
   args: {
-    color: "#ff00ff",
-  },
-  argTypes: {
-    color: {
-      control: "color",
-    },
+    className: "ui-fill-[#ff00ff]",
   },
 };
 
 export const WithCustomSize: Story = {
   args: {
-    size: "40px",
+    className: "ui-size-[40px]",
   },
 };
