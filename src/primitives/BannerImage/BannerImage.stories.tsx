@@ -4,6 +4,7 @@ import { expect, within } from "@storybook/test";
 import { BannerImage } from "./BannerImage";
 
 const meta: Meta<typeof BannerImage> = {
+  title: "Primitives/BannerImage",
   component: BannerImage,
 };
 

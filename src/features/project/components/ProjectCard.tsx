@@ -4,8 +4,8 @@ import { match, P } from "ts-pattern";
 import { UseQueryResult } from "@tanstack/react-query";
 
 import { Project } from "@/features/project/types/types";
-import { BannerImage } from "@/primitives/BannerImage";
-import { Avatar } from "@/primitives/Avatar";
+import { BannerImage } from "@/primitives/BannerImage/BannerImage";
+import { Avatar } from "@/primitives/Avatar/Avatar";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
 interface ProjectCardProps {
