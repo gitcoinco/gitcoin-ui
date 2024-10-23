@@ -25,8 +25,8 @@ const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGEl
 
 export const Icon: React.FC<IconProps & React.SVGProps<SVGSVGElement>> = ({
   type,
-  color,
-  size,
+  color = "black",
+  size = "20px",
   className,
   ...props
 }) => {
