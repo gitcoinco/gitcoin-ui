@@ -1,0 +1,39 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as BannerImageStories from "./BannerImage.stories";
+import { BannerImage } from "./BannerImage";
+
+# BannerImage
+
+<Meta of={BannerImageStories} />
+
+The BannerImage component displays a 3:1 image which can be used to render Banner Images.  
+The Width of the image can be explicitly set in `px`, or it will auto-scale to fit the width of it's parent.
+
+## Image Source
+
+This component supports multiple data sources, with an explicit priority ordering if multiple are used
+
+First, the component will attempt to load an IPFS CID, if that doesn't exist it will attempt to load an image URL.
+
+If both of those don't exist, it will render the default Logo.
+
+# Priority of Sources (in order)
+
+- Nothing is passed in -> Default Logo
+- IPFS CID and an empty or null URL -> ipfsBaseURL + ipfsCid
+- URL and an empty or null IPFS CID -> URL
+- both an IPFS CID and a URL -> ipfsBaseURL + ipfsCID
+
+# Example
+
+## With Image
+
+<Story of={BannerImageStories.sourceFromIPFS} />
+
+# Controls
+
+<Controls />
+
+# Other variations
+
+<Stories />
