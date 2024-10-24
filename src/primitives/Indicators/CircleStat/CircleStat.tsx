@@ -4,7 +4,7 @@ import { colors as col } from "../../../tokens/colors";
 import { ColorSet } from "@/tokens/types";
 
 interface CircleStatProps {
-  text: number;
+  text: number | string;
   size?: number;
   color?: string;
   showPercentageSymbol?: boolean;
@@ -40,8 +40,11 @@ export const CircleStat: React.FC<CircleStatProps> = ({
 
   const usedFont = { ...defaultFont, ...font };
 
-  const getColor = (text: number) => {
+  const getColor = (text: number | string) => {
     if (color) return color;
+    if (typeof text === "string") {
+      return defaultColors.low;
+    }
     if (text <= 30) {
       return defaultColors.low;
     } else if (text < 60) {
