@@ -30,19 +30,19 @@ type Story = StoryObj<typeof CircleStat>;
 
 export const Default: Story = {};
 
-export const Lowtext: Story = {
+export const LowPercentage: Story = {
   args: {
     text: 23,
   },
 };
 
-export const Midtext: Story = {
+export const MidPercentage: Story = {
   args: {
     text: 54,
   },
 };
 
-export const Hightext: Story = {
+export const HighPercentage: Story = {
   args: {
     text: 60,
   },
