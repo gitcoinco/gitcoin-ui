@@ -17,6 +17,11 @@ const meta: Meta<typeof CircleStat> = {
     },
     text: {
       control: "number",
+      table: {
+        type: {
+          summary: "number | string",
+        },
+      },
     },
     showPercentageSymbol: {
       control: "boolean",

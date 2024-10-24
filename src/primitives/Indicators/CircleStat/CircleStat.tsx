@@ -42,12 +42,14 @@ export const CircleStat: React.FC<CircleStatProps> = ({
 
   const getColor = (text: number | string) => {
     if (color) return color;
-    if (typeof text === "string") {
+    const value = typeof text === "string" ? parseFloat(text) : text;
+
+    if (isNaN(value)) {
       return defaultColors.low;
     }
-    if (text <= 30) {
+    if (value <= 30) {
       return defaultColors.low;
-    } else if (text < 60) {
+    } else if (value < 60) {
       return defaultColors.mid;
     } else {
       return defaultColors.high;
