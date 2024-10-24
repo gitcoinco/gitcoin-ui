@@ -1,5 +1,7 @@
 name: "Chromatic Deployment"
 on:
+  push:
+    branches: [main]
   pull_request:
     types: [opened, synchronize, ready_for_review]
     branches: [main]
