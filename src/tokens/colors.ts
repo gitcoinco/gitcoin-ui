@@ -11,8 +11,13 @@ export const colors: Colors = {
   black: "#000000",
   orange: {
     "200": "#F68561",
+    "300": "#ff9776",
   },
   green: {
+    "300": "#c4f092",
     "600": "#558A17",
+  },
+  yellow: {
+    "300": "#ffea7d",
   },
 };
