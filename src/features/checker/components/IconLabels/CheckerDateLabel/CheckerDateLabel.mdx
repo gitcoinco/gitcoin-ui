@@ -1,0 +1,34 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as CheckerDateLabelStories from "./CheckerDateLabel.stories";
+import { CheckerDateLabel } from "./CheckerDateLabel";
+
+# CheckerDateLabel
+
+<Meta of={CheckerDateLabelStories} />
+
+The `CheckerDateLabel` component is designed to display a formatted date alongside a clock icon.
+
+## Props
+
+- **`date`**: A `Date` object representing the date to be displayed. The date is formatted using a default date format.
+- **`className`**: An optional string to apply additional CSS classes for styling.
+
+## Example
+
+### Default Usage
+
+<Story of={CheckerDateLabelStories.Default} />
+
+This example demonstrates the default usage of the `CheckerDateLabel` component, showing how it formats and displays a date.
+
+## Controls
+
+<Controls />
+
+Use the controls to dynamically adjust the `date` prop and observe how the component's output changes.
+
+## Other Variations
+
+<Stories />
+
+Explore other variations and use cases of the `CheckerDateLabel` component to see how it can be integrated into different scenarios.
