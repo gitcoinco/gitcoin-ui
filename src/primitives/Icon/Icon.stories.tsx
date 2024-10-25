@@ -23,18 +23,18 @@ export const Default: Story = {};
 
 export const WithThemeColor: Story = {
   args: {
-    className: "ui-fill-grey-400",
+    className: "fill-grey-400",
   },
 };
 
 export const WithCustomColor: Story = {
   args: {
-    className: "ui-fill-[#ff00ff]",
+    className: "fill-[#ff00ff]",
   },
 };
 
 export const WithCustomSize: Story = {
   args: {
-    className: "ui-size-[40px]",
+    className: "size-[40px]",
   },
 };

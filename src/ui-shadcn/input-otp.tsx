@@ -14,7 +14,7 @@ const InputOTP = React.forwardRef<
       "flex items-center gap-2 has-[:disabled]:opacity-50",
       containerClassName
     )}
-    className={cn("disabled:ui-cursor-not-allowed", className)}
+    className={cn("disabled:cursor-not-allowed", className)}
     {...props}
   />
 ))
@@ -24,7 +24,7 @@ const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("ui-flex ui-items-center", className)} {...props} />
+  <div ref={ref} className={cn("flex items-center", className)} {...props} />
 ))
 InputOTPGroup.displayName = "InputOTPGroup"
 
@@ -39,16 +39,16 @@ const InputOTPSlot = React.forwardRef<
     <div
       ref={ref}
       className={cn(
-        "ui-relative ui-flex ui-h-10 ui-w-10 ui-items-center ui-justify-center ui-border-y ui-border-r ui-border-neutral-200 ui-text-sm ui-transition-all first:ui-rounded-l-md first:ui-border-l last:ui-rounded-r-md dark:ui-border-neutral-800",
-        isActive && "ui-z-10 ui-ring-2 ui-ring-neutral-950 ui-ring-offset-white dark:ui-ring-neutral-300 dark:ui-ring-offset-neutral-950",
+        "relative flex h-10 w-10 items-center justify-center border-y border-r border-neutral-200 text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md dark:border-neutral-800",
+        isActive && "z-10 ring-2 ring-neutral-950 ring-offset-white dark:ring-neutral-300 dark:ring-offset-neutral-950",
         className
       )}
       {...props}
     >
       {char}
       {hasFakeCaret && (
-        <div className="ui-pointer-events-none ui-absolute ui-inset-0 ui-flex ui-items-center ui-justify-center">
-          <div className="ui-h-4 ui-w-px ui-animate-caret-blink ui-bg-neutral-950 ui-duration-1000 dark:ui-bg-neutral-50" />
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <div className="h-4 w-px animate-caret-blink bg-neutral-950 duration-1000 dark:bg-neutral-50" />
         </div>
       )}
     </div>

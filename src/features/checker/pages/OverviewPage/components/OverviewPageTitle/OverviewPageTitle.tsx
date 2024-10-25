@@ -1,9 +1,9 @@
 export const OverviewPageTitle = () => (
-  <div className="ui-flex ui-flex-col ui-gap-[12px]">
-    <div className="ui-font-mono ui-text-2xl ui-font-medium ui-leading-loose ui-text-black">
+  <div className="flex flex-col gap-[12px]">
+    <div className="font-mono text-2xl font-medium leading-loose text-black">
       Review applications
     </div>
-    <div className="ui-font-mono ui-text-base ui-font-normal ui-leading-7 ui-text-[#555555]">
+    <div className="font-mono text-base font-normal leading-7 text-[#555555]">
       Evaluate projects here.
     </div>
   </div>

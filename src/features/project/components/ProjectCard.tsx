@@ -40,13 +40,13 @@ export function ProjectCard({ project, queryResult }: ProjectCardProps) {
 
 function LoadingCard() {
   return (
-    <Card className="ui-block ui-max-w-sm ui-overflow-hidden" role="presentation">
-      <div className="ui-relative">
-        <Skeleton className="ui-h-[120px] ui-w-full ui-rounded-md ui-bg-neutral-300" />
+    <Card className="block max-w-sm overflow-hidden" role="presentation">
+      <div className="relative">
+        <Skeleton className="h-[120px] w-full rounded-md bg-neutral-300" />
       </div>
-      <CardContent className="ui-pt-12 ui-text-center">
-        <Skeleton className="ui-mb-2 ui-h-10 ui-w-full ui-rounded-md" />
-        <Skeleton className="ui-h-24 ui-w-full ui-rounded-md" />
+      <CardContent className="pt-12 text-center">
+        <Skeleton className="mb-2 h-10 w-full rounded-md" />
+        <Skeleton className="h-24 w-full rounded-md" />
       </CardContent>
     </Card>
   );
@@ -54,20 +54,16 @@ function LoadingCard() {
 
 export function DataCard({ project }: ProjectCardProps) {
   return (
-    <Card className="ui-block ui-max-w-sm ui-overflow-hidden">
-      <div className="ui-relative">
+    <Card className="block max-w-sm overflow-hidden">
+      <div className="relative">
         <BannerImage ipfsCID={project?.metadata?.bannerImg} />
-        <div className="ui-absolute ui-bottom-0 ui-left-1/2 ui--translate-x-1/2 ui-translate-y-1/2">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
           <Avatar ipfsCID={project?.metadata?.logoImg} size={60} />
         </div>
       </div>
-      <CardContent className="ui-pt-12">
-        <h2 className="ui-mb-2 ui-font-sans ui-text-2xl ui-font-bold">
-          {project?.metadata?.title}
-        </h2>
-        <p className="ui-line-clamp-4 ui-font-sans ui-text-grey-400">
-          {project?.metadata?.description}
-        </p>
+      <CardContent className="pt-12">
+        <h2 className="mb-2 font-sans text-2xl font-bold">{project?.metadata?.title}</h2>
+        <p className="line-clamp-4 font-sans text-grey-400">{project?.metadata?.description}</p>
       </CardContent>
     </Card>
   );

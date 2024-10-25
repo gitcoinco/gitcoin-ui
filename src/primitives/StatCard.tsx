@@ -7,14 +7,10 @@ export type StatCardProps = {
 
 export const StatCard = ({ label, value }: StatCardProps) => {
   return (
-    <Card className="ui-flex ui-h-[132px] ui-w-[220.5px] ui-flex-col ui-justify-between ui-rounded-[24px] ui-border-0 ui-bg-grey-50 ui-p-6">
-      <div className="ui-font-mono ui-text-[32px]/[41.66px] ui-font-normal ui-text-grey-500">
-        {value}
-      </div>
+    <Card className="flex h-[132px] w-[220.5px] flex-col justify-between rounded-[24px] border-0 bg-grey-50 p-6">
+      <div className="font-mono text-[32px]/[41.66px] font-normal text-grey-500">{value}</div>
       {/* install modern era for label */}
-      <div className="ui-font-mono ui-text-[14px]/[20px] ui-font-bold ui-text-grey-400">
-        {label}
-      </div>
+      <div className="font-mono text-[14px]/[20px] font-bold text-grey-400">{label}</div>
     </Card>
   );
 };

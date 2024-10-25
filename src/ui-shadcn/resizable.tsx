@@ -9,7 +9,7 @@ const ResizablePanelGroup = ({
 }: React.ComponentProps<typeof ResizablePrimitive.PanelGroup>) => (
   <ResizablePrimitive.PanelGroup
     className={cn(
-      "ui-flex ui-h-full ui-w-full data-[panel-group-direction=vertical]:ui-flex-col",
+      "flex h-full w-full data-[panel-group-direction=vertical]:flex-col",
       className
     )}
     {...props}
@@ -27,14 +27,14 @@ const ResizableHandle = ({
 }) => (
   <ResizablePrimitive.PanelResizeHandle
     className={cn(
-      "ui-relative ui-flex ui-w-px ui-items-center ui-justify-center ui-bg-neutral-200 after:ui-absolute after:ui-inset-y-0 after:ui-left-1/2 after:ui-w-1 after:ui--translate-x-1/2 focus-visible:ui-outline-none focus-visible:ui-ring-1 focus-visible:ui-ring-neutral-950 focus-visible:ui-ring-offset-1 data-[panel-group-direction=vertical]:ui-h-px data-[panel-group-direction=vertical]:ui-w-full data-[panel-group-direction=vertical]:after:ui-left-0 data-[panel-group-direction=vertical]:after:ui-h-1 data-[panel-group-direction=vertical]:after:ui-w-full data-[panel-group-direction=vertical]:after:ui--translate-y-1/2 data-[panel-group-direction=vertical]:after:ui-translate-x-0 [&[data-panel-group-direction=vertical]>div]:ui-rotate-90 dark:ui-bg-neutral-800 dark:focus-visible:ui-ring-neutral-300",
+      "relative flex w-px items-center justify-center bg-neutral-200 after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90 dark:bg-neutral-800 dark:focus-visible:ring-neutral-300",
       className
     )}
     {...props}
   >
     {withHandle && (
-      <div className="ui-z-10 ui-flex ui-h-4 ui-w-3 ui-items-center ui-justify-center ui-rounded-sm ui-border ui-border-neutral-200 ui-bg-neutral-200 dark:ui-border-neutral-800 dark:ui-bg-neutral-800">
-        <GripVertical className="ui-h-2.5 ui-w-2.5" />
+      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border border-neutral-200 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-800">
+        <GripVertical className="h-2.5 w-2.5" />
       </div>
     )}
   </ResizablePrimitive.PanelResizeHandle>

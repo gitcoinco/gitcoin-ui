@@ -51,10 +51,10 @@ export const Avatar = ({
   return (
     <ShadCNAvatar
       role="presentation"
-      className="ui-aspect-square ui-h-full ui-w-full ui-bg-white ui-shadow-md ui-shadow-slate-600"
+      className="aspect-square h-full w-full bg-white shadow-md shadow-slate-600"
       style={{ width: `${size}px`, height: `${size}px` }}
     >
-      <AvatarImage src={imageURL} alt="avatar" className="ui-p-1" />
+      <AvatarImage src={imageURL} alt="avatar" className="p-1" />
       <AvatarFallback>{fallback}</AvatarFallback>
     </ShadCNAvatar>
   );

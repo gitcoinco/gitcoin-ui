@@ -5,18 +5,18 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const toggleVariants = cva(
-  "ui-inline-flex ui-items-center ui-justify-center ui-rounded-md ui-text-sm ui-font-medium ui-ring-offset-white ui-transition-colors hover:ui-bg-neutral-100 hover:ui-text-neutral-500 focus-visible:ui-outline-none focus-visible:ui-ring-2 focus-visible:ui-ring-neutral-950 focus-visible:ui-ring-offset-2 disabled:ui-pointer-events-none disabled:ui-opacity-50 data-[state=on]:ui-bg-neutral-100 data-[state=on]:ui-text-neutral-900 dark:ui-ring-offset-neutral-950 dark:hover:ui-bg-neutral-800 dark:hover:ui-text-neutral-400 dark:focus-visible:ui-ring-neutral-300 dark:data-[state=on]:ui-bg-neutral-800 dark:data-[state=on]:ui-text-neutral-50",
+  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-white transition-colors hover:bg-neutral-100 hover:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-neutral-100 data-[state=on]:text-neutral-900 dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-400 dark:focus-visible:ring-neutral-300 dark:data-[state=on]:bg-neutral-800 dark:data-[state=on]:text-neutral-50",
   {
     variants: {
       variant: {
-        default: "ui-bg-transparent",
+        default: "bg-transparent",
         outline:
-          "ui-border ui-border-neutral-200 ui-bg-transparent hover:ui-bg-neutral-100 hover:ui-text-neutral-900 dark:ui-border-neutral-800 dark:hover:ui-bg-neutral-800 dark:hover:ui-text-neutral-50",
+          "border border-neutral-200 bg-transparent hover:bg-neutral-100 hover:text-neutral-900 dark:border-neutral-800 dark:hover:bg-neutral-800 dark:hover:text-neutral-50",
       },
       size: {
-        default: "ui-h-10 ui-px-3",
-        sm: "ui-h-9 ui-px-2.5",
-        lg: "ui-h-11 ui-px-5",
+        default: "h-10 px-3",
+        sm: "h-9 px-2.5",
+        lg: "h-11 px-5",
       },
     },
     defaultVariants: {

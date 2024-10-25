@@ -3,7 +3,7 @@ import { OverviewPageTitle, PendingReviewList, ReadyToSubmitList } from "./compo
 export const OverviewPage = () => {
   // we will have some logic to fetch
   return (
-    <div className="ui-flex ui-flex-col ui-gap-8">
+    <div className="flex flex-col gap-8">
       <OverviewPageTitle />
       <ReadyToSubmitList />
       <PendingReviewList />

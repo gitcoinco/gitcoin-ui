@@ -4,13 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const alertVariants = cva(
-  "ui-relative ui-w-full ui-rounded-lg ui-border ui-border-neutral-200 ui-p-4 [&>svg~*]:ui-pl-7 [&>svg+div]:ui-translate-y-[-3px] [&>svg]:ui-absolute [&>svg]:ui-left-4 [&>svg]:ui-top-4 [&>svg]:ui-text-neutral-950 dark:ui-border-neutral-800 dark:[&>svg]:ui-text-neutral-50",
+  "relative w-full rounded-lg border border-neutral-200 p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-neutral-950 dark:border-neutral-800 dark:[&>svg]:text-neutral-50",
   {
     variants: {
       variant: {
-        default: "ui-bg-white ui-text-neutral-950 dark:ui-bg-neutral-950 dark:ui-text-neutral-50",
+        default: "bg-white text-neutral-950 dark:bg-neutral-950 dark:text-neutral-50",
         destructive:
-          "ui-border-red-500/50 ui-text-red-500 dark:ui-border-red-500 [&>svg]:ui-text-red-500 dark:ui-border-red-900/50 dark:ui-text-red-900 dark:dark:ui-border-red-900 dark:[&>svg]:ui-text-red-900",
+          "border-red-500/50 text-red-500 dark:border-red-500 [&>svg]:text-red-500 dark:border-red-900/50 dark:text-red-900 dark:dark:border-red-900 dark:[&>svg]:text-red-900",
       },
     },
     defaultVariants: {
@@ -38,7 +38,7 @@ const AlertTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h5
     ref={ref}
-    className={cn("ui-mb-1 ui-font-medium ui-leading-none ui-tracking-tight", className)}
+    className={cn("mb-1 font-medium leading-none tracking-tight", className)}
     {...props}
   />
 ))
@@ -50,7 +50,7 @@ const AlertDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("ui-text-sm [&_p]:ui-leading-relaxed", className)}
+    className={cn("text-sm [&_p]:leading-relaxed", className)}
     {...props}
   />
 ))
