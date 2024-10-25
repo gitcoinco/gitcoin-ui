@@ -1,13 +1,11 @@
-import type { Preview } from "@storybook/react";
-
 import { withThemeByDataAttribute } from "@storybook/addon-themes";
-
+import type { Preview } from "@storybook/react";
 import { initialize, mswLoader } from "msw-storybook-addon";
+
+import "../src/index.css";
 import { handlers } from "../src/mocks/handlers";
 
 initialize();
-
-import "../src/index.css";
 
 const preview: Preview = {
   parameters: {

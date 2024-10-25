@@ -1,11 +1,12 @@
 import React from "react";
-import { Card, CardContent } from "@/ui-shadcn/card";
-import { match, P } from "ts-pattern";
+
 import { UseQueryResult } from "@tanstack/react-query";
+import { match, P } from "ts-pattern";
 
 import { Project } from "@/features/project/types/types";
-import { BannerImage } from "@/primitives/BannerImage";
 import { Avatar } from "@/primitives/Avatar";
+import { BannerImage } from "@/primitives/BannerImage";
+import { Card, CardContent } from "@/ui-shadcn/card";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
 interface ProjectCardProps {

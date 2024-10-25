@@ -1,5 +1,6 @@
-import { Project } from "../types/types";
 import { UseQueryResult } from "@tanstack/react-query";
+
+import { Project } from "../types/types";
 
 export const singleProject: Project = {
   id: "0x00065ad5b4ac5b42ac82c60ac9e939505f7996e95b6181919a5353fc50e6b664",

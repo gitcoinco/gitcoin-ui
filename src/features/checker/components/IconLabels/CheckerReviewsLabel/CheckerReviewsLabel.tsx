@@ -1,5 +1,5 @@
-import { Icon, IconType } from "@/primitives/Icon";
 import { cn } from "@/lib/utils";
+import { Icon, IconType } from "@/primitives/Icon";
 
 export type CheckerReviewsLabelProps = React.SVGProps<SVGSVGElement> & {
   posReviews: number;
