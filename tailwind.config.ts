@@ -1,8 +1,10 @@
+import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
+
 import { colors } from "./src/tokens/colors";
 
-export default {
+export default withTV({
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
@@ -44,4 +46,4 @@ export default {
     },
   },
   plugins: [tailwindcssAnimate],
-} satisfies Config;
+}) satisfies Config;
