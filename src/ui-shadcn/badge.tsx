@@ -4,17 +4,17 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
-  "ui-inline-flex ui-items-center ui-rounded-full ui-border ui-border-neutral-200 ui-px-2.5 ui-py-0.5 ui-text-xs ui-font-semibold ui-transition-colors focus:ui-outline-none focus:ui-ring-2 focus:ui-ring-neutral-950 focus:ui-ring-offset-2 dark:ui-border-neutral-800 dark:focus:ui-ring-neutral-300",
+  "inline-flex items-center rounded-full border border-neutral-200 px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-neutral-950 focus:ring-offset-2 dark:border-neutral-800 dark:focus:ring-neutral-300",
   {
     variants: {
       variant: {
         default:
-          "ui-border-transparent ui-bg-neutral-900 ui-text-neutral-50 hover:ui-bg-neutral-900/80 dark:ui-bg-neutral-50 dark:ui-text-neutral-900 dark:hover:ui-bg-neutral-50/80",
+          "border-transparent bg-neutral-900 text-neutral-50 hover:bg-neutral-900/80 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50/80",
         secondary:
-          "ui-border-transparent ui-bg-neutral-100 ui-text-neutral-900 hover:ui-bg-neutral-100/80 dark:ui-bg-neutral-800 dark:ui-text-neutral-50 dark:hover:ui-bg-neutral-800/80",
+          "border-transparent bg-neutral-100 text-neutral-900 hover:bg-neutral-100/80 dark:bg-neutral-800 dark:text-neutral-50 dark:hover:bg-neutral-800/80",
         destructive:
-          "ui-border-transparent ui-bg-red-500 ui-text-neutral-50 hover:ui-bg-red-500/80 dark:ui-bg-red-900 dark:ui-text-neutral-50 dark:hover:ui-bg-red-900/80",
-        outline: "ui-text-neutral-950 dark:ui-text-neutral-50",
+          "border-transparent bg-red-500 text-neutral-50 hover:bg-red-500/80 dark:bg-red-900 dark:text-neutral-50 dark:hover:bg-red-900/80",
+        outline: "text-neutral-950 dark:text-neutral-50",
       },
     },
     defaultVariants: {

@@ -40,7 +40,5 @@ export const BannerImage = ({
     return { width: `${size}px` };
   }, [size]);
 
-  return (
-    <img src={imageURL} alt="banner" className="ui-aspect-3/1 ui-object-cover" style={sizeStyle} />
-  );
+  return <img src={imageURL} alt="banner" className="aspect-3/1 object-cover" style={sizeStyle} />;
 };

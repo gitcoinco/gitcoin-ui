@@ -11,15 +11,15 @@ const Checkbox = React.forwardRef<
   <CheckboxPrimitive.Root
     ref={ref}
     className={cn(
-      "ui-peer ui-h-4 ui-w-4 ui-shrink-0 ui-rounded-sm ui-border ui-border-neutral-200 ui-border-neutral-900 ui-ring-offset-white focus-visible:ui-outline-none focus-visible:ui-ring-2 focus-visible:ui-ring-neutral-950 focus-visible:ui-ring-offset-2 disabled:ui-cursor-not-allowed disabled:ui-opacity-50 data-[state=checked]:ui-bg-neutral-900 data-[state=checked]:ui-text-neutral-50 dark:ui-border-neutral-800 dark:ui-border-neutral-50 dark:ui-ring-offset-neutral-950 dark:focus-visible:ui-ring-neutral-300 dark:data-[state=checked]:ui-bg-neutral-50 dark:data-[state=checked]:ui-text-neutral-900",
+      "peer h-4 w-4 shrink-0 rounded-sm border border-neutral-200 border-neutral-900 ring-offset-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-neutral-900 data-[state=checked]:text-neutral-50 dark:border-neutral-800 dark:border-neutral-50 dark:ring-offset-neutral-950 dark:focus-visible:ring-neutral-300 dark:data-[state=checked]:bg-neutral-50 dark:data-[state=checked]:text-neutral-900",
       className
     )}
     {...props}
   >
     <CheckboxPrimitive.Indicator
-      className={cn("ui-flex ui-items-center ui-justify-center ui-text-current")}
+      className={cn("flex items-center justify-center text-current")}
     >
-      <Check className="ui-h-4 ui-w-4" />
+      <Check className="h-4 w-4" />
     </CheckboxPrimitive.Indicator>
   </CheckboxPrimitive.Root>
 ))

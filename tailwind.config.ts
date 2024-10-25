@@ -3,7 +3,6 @@ import tailwindcssAnimate from "tailwindcss-animate";
 import { colors } from "./src/tokens/colors";
 
 export default {
-  prefix: "ui-",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {

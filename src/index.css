@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 * {
-  @apply ui-box-border ui-font-mono;
+  @apply box-border font-mono;
 }
 
 body {
-  @apply dark:ui-bg-black dark:ui-text-white;
+  @apply dark:bg-black dark:text-white;
 }
 
 @layer base {
