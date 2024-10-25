@@ -1,4 +1,7 @@
 import React from "react";
+
+
+
 import { tv } from "tailwind-variants";
 
 interface CircleStatProps {
@@ -11,23 +14,23 @@ interface CircleStatProps {
 }
 
 const circleStat = tv({
-  base: "flex items-center justify-center rounded-full text-center font-sans font-400",
+  base: "flex items-center justify-center rounded-full text-center font-sans font-normal",
   variants: {
     size: {
-      small: "w-8 h-8 text-xs",
-      medium: "w-12 h-12 text-base",
-      large: "w-16 h-16 text-lg"
+      small: "size-8 text-xs",
+      medium: "size-12 text-base",
+      large: "size-16 text-lg",
     },
     color: {
       low: "bg-orange-300",
       mid: "bg-yellow-300",
-      high: "bg-green-300"
-    }
+      high: "bg-green-300",
+    },
   },
   defaultVariants: {
     size: "medium",
-    color: "low"
-  }
+    color: "low",
+  },
 });
 
 export const CircleStat: React.FC<CircleStatProps> = ({
@@ -36,7 +39,7 @@ export const CircleStat: React.FC<CircleStatProps> = ({
   showPercentageSymbol = true,
   thresholds = { low: 30, mid: 60 },
   colors,
-  className
+  className,
 }) => {
   const getColorVariant = () => {
     const _value = typeof value === "string" ? parseFloat(value) : value;
