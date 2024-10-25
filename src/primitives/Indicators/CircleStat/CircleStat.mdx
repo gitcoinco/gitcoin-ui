@@ -1,0 +1,23 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as CircleStatStories from "./CircleStat.stories";
+import { CircleStat } from "./CircleStat";
+
+# CircleStat
+
+<Meta of={CircleStatStories} />
+
+The `CircleStat` component displays a circular statistic that visually represents a value as a percentage. It supports customizable sizes, colors, the option to show or hide the percentage symbol, and allows for custom color thresholds based on the value.
+
+## Example
+
+### Default CircleStat
+
+<Story of={CircleStatStories.Default} />
+
+## Controls
+
+<Controls />
+
+## Other Variations
+
+<Stories />
