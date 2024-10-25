@@ -1,7 +1,9 @@
 import React, { useMemo } from "react";
-import DefaultBanner from "@/assets/default_banner.jpg";
-import { match, P } from "ts-pattern";
+
 import clsx from "clsx";
+import { match, P } from "ts-pattern";
+
+import DefaultBanner from "@/assets/default_banner.jpg";
 
 interface BannerImageProps {
   ipfsCID?: string;

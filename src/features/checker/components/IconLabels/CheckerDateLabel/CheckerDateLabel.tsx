@@ -1,6 +1,6 @@
-import { Icon, IconType } from "@/primitives/Icon";
-import { cn } from "@/lib/utils";
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
+import { cn } from "@/lib/utils";
+import { Icon, IconType } from "@/primitives/Icon";
 
 export type CheckerDateLabelProps = React.HTMLAttributes<HTMLDivElement> & {
   date: Date;

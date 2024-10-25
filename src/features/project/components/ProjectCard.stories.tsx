@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 
-import { ProjectCard } from "./ProjectCard";
 import { QueryError, QueryPending, QuerySuccess, singleProject } from "../mocks/objects";
+import { ProjectCard } from "./ProjectCard";
 
 const meta: Meta<typeof ProjectCard> = {
   title: "Components/Project/ProjectCard",

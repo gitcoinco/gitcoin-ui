@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { CheckerAILabel } from "./CheckerAILabel";
 
 const meta = {

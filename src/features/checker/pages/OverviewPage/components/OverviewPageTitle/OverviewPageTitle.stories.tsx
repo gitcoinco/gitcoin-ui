@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
+
 import { OverviewPageTitle } from "@/features/checker/pages/OverviewPage/components";
 
 const meta = {
