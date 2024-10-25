@@ -1,0 +1,40 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as CheckerReviewsLabelStories from "./CheckerReviewsLabel.stories";
+import { CheckerReviewsLabel } from "./CheckerReviewsLabel";
+
+# CheckerReviewsLabel
+
+<Meta of={CheckerReviewsLabelStories} />
+
+The `CheckerReviewsLabel` component is designed to visually represent the number of positive and negative reviews using icons. It provides a quick visual summary of reviews.
+
+## Props
+
+- **`posReviews`**: A number representing the count of positive reviews. If the value is negative, it will be treated as zero.
+- **`negReviews`**: A number representing the count of negative reviews. If the value is negative, it will be treated as zero.
+- **`className`**: An optional string to apply additional CSS classes for styling.
+
+## Icon Representation
+
+- **Positive Reviews**: Represented by check icons with a green fill.
+- **Negative Reviews**: Represented by cross icons with an orange fill.
+
+## Example
+
+### Default Usage
+
+<Story of={CheckerReviewsLabelStories.Default} />
+
+This example demonstrates the default usage of the `CheckerReviewsLabel` component, showing how it displays the total number of reviews and the breakdown of positive and negative reviews.
+
+## Controls
+
+<Controls />
+
+Use the controls to dynamically adjust the `posReviews` and `negReviews` props and observe how the component's output changes.
+
+## Other Variations
+
+<Stories />
+
+Explore other variations and use cases of the `CheckerReviewsLabel` component to see how it can be integrated into different scenarios.
