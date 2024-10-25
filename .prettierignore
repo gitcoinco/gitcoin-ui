@@ -3,4 +3,3 @@ dist
 pnpm-lock.yaml
 mockServiceWorker.js
 storybook-static
-ui-shadcn
