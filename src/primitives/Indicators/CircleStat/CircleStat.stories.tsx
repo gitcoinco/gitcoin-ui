@@ -1,21 +1,25 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { CircleStat } from "./CircleStat";
-import { colors } from "@/tokens/colors";
 
 const meta: Meta<typeof CircleStat> = {
   title: "Primitives/CircleStat",
   component: CircleStat,
   args: {
-    text: 50,
+    value: 50,
   },
   argTypes: {
-    color: {
-      control: "color",
-    },
     size: {
-      control: "number",
+      control: {
+        type: "select",
+        options: ["small", "medium", "large"]
+      },
+      table: {
+        type: {
+          summary: "string",
+        },
+      }
     },
-    text: {
+    value: {
       control: "number",
       table: {
         type: {
@@ -25,6 +29,12 @@ const meta: Meta<typeof CircleStat> = {
     },
     showPercentageSymbol: {
       control: "boolean",
+    },
+    colors: {
+      control: "object",
+    },
+    className: {
+      control: "text",
     },
   },
 } satisfies Meta<typeof CircleStat>;
@@ -37,49 +47,58 @@ export const Default: Story = {};
 
 export const LowPercentage: Story = {
   args: {
-    text: 23,
+    value: 23,
   },
 };
 
 export const MidPercentage: Story = {
   args: {
-    text: 54,
+    value: 54,
   },
 };
 
 export const HighPercentage: Story = {
   args: {
-    text: 60,
+    value: 60,
   },
 };
 
 export const CustomColor: Story = {
-  args: {
-    color: "#ff00ff",
+  render: () => {
+    const stats = [
+      { value: 23 },
+      { value: 54 },
+      { value: 85 },
+    ];
+
+    return (
+      <div className="flex space-x-4">
+        {stats.map((stat) => (
+          <CircleStat
+            key={stat.value}
+            value={stat.value}
+            className="text-white"
+            colors={{
+              low: '#666666',
+              mid: '#444444',
+              high: '#000000',
+            }}
+          />
+        ))}
+      </div>
+    );
   },
 };
 
-export const CustomSize: Story = {
+export const WithCustomClassName: Story = {
   args: {
-    size: 60,
+    className: "border-4 border-blue-500",
   },
 };
 
 export const WithoutPercentageSymbol: Story = {
   args: {
-    text: 42,
+    value: 42,
     showPercentageSymbol: false,
-  },
-};
-
-export const CustomFont: Story = {
-  args: {
-    font: {
-      family: "Arial",
-      weight: "700",
-      size: "18px",
-      lineHeight: "28px",
-      color: "#8c7373",
-    },
   },
 };

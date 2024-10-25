@@ -11,6 +11,7 @@ export default withTV({
     extend: {
       fontFamily: {
         mono: ["DM Mono", "monospace"],
+        sans: ["DM Sans", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
