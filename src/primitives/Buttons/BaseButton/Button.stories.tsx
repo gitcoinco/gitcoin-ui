@@ -1,8 +1,13 @@
 import { Meta, StoryObj } from "@storybook/react";
 
+
+
 import { Icon, IconType } from "@/primitives/Icon";
 
+
+
 import { Button, ButtonVariants } from ".";
+
 
 const meta: Meta<typeof Button> = {
   title: "Primitives/Button",
@@ -173,6 +178,6 @@ export const WithIcon: Story = {
 
 export const CustomClassName: Story = {
   args: {
-    className: "bg-blue-500 border border-blue-700 text-white",
+    className: "bg-blue-900 border border-blue-700 text-white",
   },
 };
