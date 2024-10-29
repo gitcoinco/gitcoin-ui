@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 import { tv } from "tailwind-variants";
 
 interface CircleStatProps {
