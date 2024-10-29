@@ -5,10 +5,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { tv } from "tailwind-variants";
 
-
-
 import { cn } from "@/lib/utils";
-
 
 export type ButtonVariants =
   | "primary"
@@ -23,17 +20,17 @@ export type ButtonVariants =
   | "disabled"
   | undefined;
 
-export type ButtonSizes = "default" | undefined;
-
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariants;
-  size?: ButtonSizes;
+  variant?: string;
+  size?: string;
   disabled?: boolean;
   asChild?: boolean;
   value?: string;
   icon?: React.ReactNode;
   iconPosition?: "left" | "right";
 }
+
+type ButtonSizes = "default" | "sm" | "md" | "lg" | "icon" | undefined;
 
 const buttonVariants = tv({
   base: "inline-flex h-[32px] items-center justify-center gap-2 whitespace-nowrap rounded-[8px] px-[12px] py-[8px] font-mono text-[14px] font-medium leading-[16px] ring-offset-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-neutral-950",
@@ -69,7 +66,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       variant,
-      size,
+      size = "default",
       disabled,
       asChild = false,
       value,
@@ -88,7 +85,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        className={cn(buttonVariants({ variant: appliedVariant, size, className }))}
+        className={cn(
+          buttonVariants({
+            variant: appliedVariant as ButtonVariants,
+            size: size as ButtonSizes,
+            className,
+          }),
+        )}
         ref={ref}
         disabled={disabled}
         {...props}
