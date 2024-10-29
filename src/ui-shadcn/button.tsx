@@ -51,6 +51,9 @@ const buttonVariants = tv({
       "outlined-disabled": "border-2 border-neutral-600 bg-white text-neutral-600",
     },
     size: {
+      sm: "h-[24px] px-[8px] py-[6px]",
+      md: "h-[32px] px-[12px] py-[8px]",
+      lg: "h-[40px] px-[16px] py-[10px]",
       default: "h-[32px] px-[12px] py-[8px]",
     },
   },
