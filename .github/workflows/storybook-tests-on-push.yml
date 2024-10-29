@@ -2,7 +2,7 @@ name: "Tests Storybook"
 on: push
 
 concurrency:
-  group: ${{ github.ref }} # This ensures that only one workflow runs per branch
+  group: storybook-tests-${{ github.ref }} # This ensures that only one workflow runs per branch
   cancel-in-progress: true # This cancels any previous runs in the same group
 
 jobs:

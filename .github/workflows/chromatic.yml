@@ -5,23 +5,49 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
     branches: [main]
-    paths:
-      - "**/*.mdx"
-      - "**/*.tsx"
-      - "**/*.ts"
 
 concurrency:
-  group: ${{ github.ref }} # This ensures that only one workflow runs per branch
-  cancel-in-progress: true # This cancels any previous runs in the same group
+  group: chromatic-deployment-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  chromatic:
-    name: "Run Chromatic"
+  check_conditions:
+    name: "Check Conditions"
     runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.set_output.outputs.should_run }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Determine if deployment should proceed
+        id: set_output
+        run: |
+          should_run=false
+
+          if [[ "${{ github.event_name }}" == "push" || "${{ github.event.pull_request.draft }}" == "false" ]]; then
+            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.(mdx|tsx|ts|css|svg|png|jpg|jpeg)$'; then
+              echo "Deploying. Relevant file changes detected."
+              should_run=true
+            else
+              echo "Not deploying. No relevant file changes detected."
+            fi
+          else
+            echo "Not deploying. Not a push or non-draft PR."
+          fi
+          echo "should_run=${should_run}" >> $GITHUB_OUTPUT
+
+  deploy_chromatic:
+    name: "Run Chromatic"
+    runs-on: ubuntu-latest
+    needs: check_conditions
+    if: needs.check_conditions.outputs.should_run == 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
