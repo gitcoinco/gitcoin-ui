@@ -54,6 +54,7 @@ const buttonVariants = tv({
       sm: "h-[24px] px-[8px] py-[6px]",
       md: "h-[32px] px-[12px] py-[8px]",
       lg: "h-[40px] px-[16px] py-[10px]",
+      icon: "h-[32px] w-[32px] p-0",
       default: "h-[32px] px-[12px] py-[8px]",
     },
   },
