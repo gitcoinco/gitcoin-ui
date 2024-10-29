@@ -4,10 +4,6 @@ export const colors: Colors = {
   brand: "#307168",
   black: "#000000",
   white: "#ffffff",
-  green: {
-    "300": "#c4f092",
-    "600": "#558A17",
-  },
   grey: {
     "50": "#f7f7f7",
     "100": "#EBEBEB",
