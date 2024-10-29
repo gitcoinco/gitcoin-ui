@@ -26,7 +26,7 @@ export const colors: Colors = {
   green: {
     "300": "#c4f092",
     brand: "#185B52",
-    "600": "#A2401F",
+    "600": "#558A17",
   },
   yellow: {
     "300": "#ffea7d",
