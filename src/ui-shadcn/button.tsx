@@ -5,6 +5,8 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { tv } from "tailwind-variants";
 
+
+
 import { cn } from "@/lib/utils";
 
 export type ButtonVariants =
@@ -20,7 +22,7 @@ export type ButtonVariants =
   | "disabled"
   | undefined;
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: string;
   size?: string;
   disabled?: boolean;
@@ -30,7 +32,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   iconPosition?: "left" | "right";
 }
 
-type ButtonSizes = "default" | "sm" | "md" | "lg" | "icon" | undefined;
+export type ButtonSizes = "default" | "sm" | "md" | "lg" | "icon" | undefined;
 
 const buttonVariants = tv({
   base: "inline-flex h-[32px] items-center justify-center gap-2 whitespace-nowrap rounded-[8px] px-[12px] py-[8px] font-mono text-[14px] font-medium leading-[16px] ring-offset-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-neutral-950",

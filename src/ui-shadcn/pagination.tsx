@@ -1,10 +1,11 @@
 import * as React from "react";
 
+
+
 import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { ButtonProps, buttonVariants } from "@/ui-shadcn/button";
-
+import { ButtonProps, ButtonSizes, buttonVariants } from "@/ui-shadcn/button";
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
     role="navigation"
@@ -38,7 +39,7 @@ const PaginationLink = ({ className, isActive, size = "icon", ...props }: Pagina
     className={cn(
       buttonVariants({
         variant: isActive ? "outlined-primary" : "outlined-secondary",
-        size,
+        size: size as ButtonSizes,
       }),
       className,
     )}
