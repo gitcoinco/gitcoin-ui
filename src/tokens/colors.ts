@@ -4,6 +4,12 @@ export const colors: Colors = {
   brand: "#307168",
   black: "#000000",
   white: "#ffffff",
+  green: {
+    "100": "#EAFDD4",
+    "300": "#c4f092",
+    brand: "#185B52",
+    "600": "#558A17",
+  },
   grey: {
     "50": "#f7f7f7",
     "100": "#EBEBEB",
@@ -24,12 +30,8 @@ export const colors: Colors = {
     "300": "#ff9776",
     "600": "#A2401F",
   },
-  green: {
-    "300": "#c4f092",
-    brand: "#185B52",
-    "600": "#558A17",
-  },
   yellow: {
+    "100": "#FFF6CA",
     "300": "#ffea7d",
   },
 };
