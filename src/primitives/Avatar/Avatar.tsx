@@ -53,11 +53,12 @@ export const Avatar = ({
   return (
     <ShadCNAvatar
       role="presentation"
-      className="aspect-square h-full w-full bg-white shadow-md shadow-slate-600"
+      className="aspect-square size-full bg-white p-1 shadow-md shadow-slate-600"
+      shape="square"
       style={{ width: `${size}px`, height: `${size}px` }}
     >
-      <AvatarImage src={imageURL} alt="avatar" className="p-1" />
-      <AvatarFallback>{fallback}</AvatarFallback>
+      <AvatarImage src={imageURL} alt="avatar" />
+      <AvatarFallback shape="square">{fallback}</AvatarFallback>
     </ShadCNAvatar>
   );
 };
