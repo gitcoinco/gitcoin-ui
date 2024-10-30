@@ -19,7 +19,7 @@ export const variants = tv({
       date: {
         container: "gap-2",
       },
-      dateWithPrefix: { text: "text-gray-500" },
+      dateWithPrefix: { text: "text-gray-900" },
       social: {
         text: "text-green-brand hover:underline",
       },
