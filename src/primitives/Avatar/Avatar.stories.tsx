@@ -88,3 +88,12 @@ export const Big: Story = {
     expect(avatar).toHaveStyle("height: 200px");
   },
 };
+
+export const SquareShape: Story = {
+  args: {
+    url: gitcoinProfileURL,
+    ipfsCID: gitcoinProfileCID,
+    fallbackName: "Gitcoin Labs",
+    shape: "square",
+  },
+};

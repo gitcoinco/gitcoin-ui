@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { match, P } from "ts-pattern";
 
 import DefaultLogo from "@/assets/default_logo.png";
-import { Avatar as ShadCNAvatar, AvatarFallback, AvatarImage } from "@/ui-shadcn/avatar";
+import { Avatar as ShadCNAvatar, AvatarFallback, AvatarImage, Shape } from "@/ui-shadcn/avatar";
 
 interface AvatarProps {
   fallbackName?: string;
@@ -12,6 +12,7 @@ interface AvatarProps {
   size?: number;
   ipfsBaseURL?: string;
   defaultImage?: string;
+  shape?: Shape;
 }
 
 export const Avatar = ({
@@ -21,6 +22,7 @@ export const Avatar = ({
   size = 40,
   ipfsBaseURL = "https://ipfs.io/ipfs/",
   defaultImage = DefaultLogo,
+  shape = "round",
 }: AvatarProps) => {
   const imageURL = useMemo(() => {
     return match({ ipfsCID, url, fallbackName })
@@ -53,8 +55,8 @@ export const Avatar = ({
   return (
     <ShadCNAvatar
       role="presentation"
-      className="aspect-square size-full bg-white p-1 shadow-md shadow-slate-600"
-      shape="square"
+      className=" size-full bg-white p-1 shadow-md shadow-slate-600"
+      shape={shape}
       style={{ width: `${size}px`, height: `${size}px` }}
     >
       <AvatarImage src={imageURL} alt="avatar" />
