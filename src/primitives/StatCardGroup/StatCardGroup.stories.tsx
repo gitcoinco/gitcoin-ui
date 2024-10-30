@@ -19,33 +19,70 @@ type Story = StoryObj<typeof StatCardGroup>;
 
 export const Default: Story = {};
 
-export const withThreeCard: Story = {
+const stats = [
+  { label: "Application approved", value: "10" },
+  { label: "Application rejected", value: "10" },
+  { label: "Applications rejected", value: "30" },
+];
+
+export const withJustifyNormal: Story = {
   args: {
-    stats: [
-      { label: "Application approved", value: "10" },
-      { label: "Application rejected", value: "10" },
-      { label: "Applications rejected", value: "30" },
-    ],
+    stats,
+  },
+};
+
+export const withJustifyStart: Story = {
+  args: {
+    stats: stats,
+    justify: "start",
+  },
+};
+
+export const withJustifyEnd: Story = {
+  args: {
+    stats: stats,
+    justify: "end",
+  },
+};
+
+export const withJustifyCenter: Story = {
+  args: {
+    stats: stats,
+    justify: "center",
+  },
+};
+
+export const withJustifyBetween: Story = {
+  args: {
+    stats: stats,
+    justify: "between",
+  },
+};
+
+export const withJustifyAround: Story = {
+  args: {
+    stats: stats,
+    justify: "around",
+  },
+};
+
+export const withJustifyEvenly: Story = {
+  args: {
+    stats: stats,
+    justify: "evenly",
   },
 };
 
 export const withFourCard: Story = {
   args: {
-    stats: [
-      { label: "Applications pending", value: "10" },
-      { label: "Applications approved", value: "60" },
-      { label: "Applications rejected", value: "30" },
-      { label: "Total applications", value: "100" },
-    ],
+    stats: [...stats, { label: "Total applications", value: "100" }],
   },
 };
 
 export const withFiveCard: Story = {
   args: {
     stats: [
-      { label: "Applications pending", value: "10" },
-      { label: "Applications approved", value: "60" },
-      { label: "Applications rejected", value: "30" },
+      ...stats,
       { label: "Total applications", value: "100" },
       { label: "Review Pending", value: "40" },
     ],
