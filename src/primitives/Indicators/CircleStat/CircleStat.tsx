@@ -20,7 +20,7 @@ const circleStat = tv({
       large: "size-16 text-lg",
     },
     color: {
-      low: "bg-orange-300",
+      low: "bg-red-300",
       mid: "bg-yellow-300",
       high: "bg-green-300",
     },
