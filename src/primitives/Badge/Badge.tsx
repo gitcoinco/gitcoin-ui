@@ -1,8 +1,13 @@
 import * as React from "react";
 
+
+
 import { tv, type VariantProps } from "tailwind-variants";
 
+
+
 import { cn } from "@/lib/utils";
+
 
 export type BadgeVariants =
   | "info"
@@ -38,47 +43,27 @@ const badgeVariants = tv({
       "outlined-warning-strong": "border-2 border-orange-300 bg-white",
       "outlined-info-strong": "border-2 border-yellow-300 bg-white",
     },
+    size: {
+      xs: "min-w-[68px]",
+      sm: "min-w-[82px]",
+      md: "min-w-[112px]",
+      lg: "min-w-[142px]",
+    },
   },
   defaultVariants: {
     variant: "info",
   },
 });
 
-export enum BadgeSizes {
-  XS = "xs",
-  SM = "sm",
-  MD = "md",
-  LG = "lg",
-}
-
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {
-  size?: BadgeSizes | string; // Custom size can be a string (like '300px')
+  size?: keyof typeof badgeVariants.variants.size;
 }
 
 const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant = "info", size = "sm", ...props }, ref) => {
-    const getSize = (size: string) => {
-      switch (size) {
-        case "xs":
-          return "min-w-[68px]";
-        case "sm":
-          return "min-w-[82px]";
-        case "md":
-          return "min-w-[112px]";
-        case "lg":
-          return "min-w-[142px]";
-        default:
-          return `min-w-[${size}]`;
-      }
-    };
-
-    const sizeClass = getSize(size);
-
-    return (
-      <div className={cn(badgeVariants({ variant }), sizeClass, className)} ref={ref} {...props} />
-    );
+    return <div className={cn(badgeVariants({ variant, size }), className)} ref={ref} {...props} />;
   },
 );
 

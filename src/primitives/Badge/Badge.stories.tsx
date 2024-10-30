@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
+
+
 import { Badge, BadgeVariants } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
@@ -161,7 +163,7 @@ export const OutlinedBadges: Story = {
 
 export const SizeVariants: Story = {
   render: () => {
-    const args = [
+    const args: { size?: "xs" | "sm" | "md" | "lg"; children: string; className?: string }[] = [
       {
         size: "xs",
         children: "XS",
@@ -179,15 +181,17 @@ export const SizeVariants: Story = {
         children: "LG",
       },
       {
-        size: "300px",
         children: "Custom (300px)",
+        className: "min-w-[300px]",
       },
     ];
 
     return (
       <div className="flex space-x-4">
         {args.map((arg) => (
-          <Badge size={arg.size}>{arg.children}</Badge>
+          <Badge className={arg.className} size={arg.size}>
+            {arg.children}
+          </Badge>
         ))}
       </div>
     );
