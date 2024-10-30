@@ -103,14 +103,14 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
         </IconLabelContainer>
       );
     })
-    .with({ type: "default" }, ({ iconType, label, className }) => (
+    .with({ type: "default" }, ({ iconType, label, className, iconVariant, textVariant }) => (
       <IconLabelContainer
         type="default"
         className={className}
         iconType={iconType}
-        iconVariant={icon({ type: "default" })}
+        iconVariant={iconVariant ?? icon({ type: "default" })}
       >
-        <span className={text()}>{label}</span>
+        <span className={textVariant ?? text({ type: "default" })}>{label}</span>
       </IconLabelContainer>
     ))
     .otherwise(() => (
