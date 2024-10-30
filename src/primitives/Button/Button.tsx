@@ -1,6 +1,8 @@
 import * as React from "react";
+
 import { Slot } from "@radix-ui/react-slot";
 import { tv } from "tailwind-variants";
+
 import { cn } from "@/lib/utils";
 
 export type ButtonVariants =
@@ -34,14 +36,16 @@ const buttonVariants = tv({
     variant: {
       primary: "border-brand bg-brand text-white",
       secondary: "border-neutral-100 bg-neutral-100 text-black",
-      error: "border-orange-50 bg-orange-50 text-orange-600",
-      success: "border-moss-50 bg-moss-50 text-moss-300",
-      "outlined-error": "border-2 border-orange-600 bg-orange-50 text-orange-600",
-      "outlined-success": "border-2 border-moss-300 bg-moss-50 text-moss-300",
+      error: "border-red-50 bg-red-50 text-red-700",
+      success: "text-moss-700 border-moss-50 bg-moss-50",
+      "outlined-error": "border-2 border-red-700 text-red-900",
+      "outlined-success": "border-moss-500 text-moss-700 border-2",
       "outlined-primary": "border-2 border-brand bg-white text-brand",
       "outlined-secondary": "border-2 border-neutral-600 bg-white text-black",
       disabled: "border-neutral-100 bg-neutral-100 text-neutral-600",
       "outlined-disabled": "border-2 border-neutral-600 bg-white text-neutral-600",
+      "outlined-error-filled": "border-2 border-red-700 bg-red-50 text-red-900",
+      "outlined-success-filled": "border-moss-500 text-moss-700 border-2 bg-moss-50",
     },
     size: {
       sm: "h-[24px] px-[8px] py-[6px]",

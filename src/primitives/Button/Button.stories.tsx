@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
+
 import { Icon, IconType } from "@/primitives/Icon";
+
 import { Button, ButtonVariants } from ".";
 
 const meta: Meta<typeof Button> = {
@@ -134,6 +136,29 @@ export const Outlined: Story = {
             value={arg.value}
             disabled={arg.disabled}
           />
+        ))}
+      </div>
+    );
+  },
+};
+
+export const OutlinedFilled: Story = {
+  render: () => {
+    const args = [
+      {
+        variant: "outlined-error-filled",
+        value: "Outlined Error Filled",
+      },
+      {
+        variant: "outlined-success-filled",
+        value: "Outlined Success Filled",
+      },
+    ];
+
+    return (
+      <div className="flex space-x-4">
+        {args.map((arg) => (
+          <Button variant={arg.variant as ButtonVariants} value={arg.value} />
         ))}
       </div>
     );
