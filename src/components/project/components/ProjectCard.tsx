@@ -3,7 +3,7 @@ import React from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { Project } from "@/features/project/types/types";
+import { Project } from "@/components/project/types/types";
 import { Avatar } from "@/primitives/Avatar";
 import { BannerImage } from "@/primitives/BannerImage";
 import { Card, CardContent } from "@/ui-shadcn/card";
