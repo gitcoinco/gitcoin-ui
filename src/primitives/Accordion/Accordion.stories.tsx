@@ -15,7 +15,7 @@ type Story = StoryObj<typeof Accordion>;
 export const Default: Story = {
   argTypes: {
     variant: {
-      options: ["default", "blue"],
+      options: ["default"],
       control: "select",
     },
   },

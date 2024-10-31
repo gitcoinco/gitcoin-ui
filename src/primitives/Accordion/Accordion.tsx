@@ -10,7 +10,7 @@ const accordionVariants = tv({
   slots: {
     item: "gap-4",
     trigger:
-      "flex flex-1 items-center justify-between rounded-lg bg-[#F7F7F7] px-2 py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+      "flex flex-1 items-center justify-between rounded-lg bg-gray-50 px-2 py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
     content:
       "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
     contentInner: "pb-4 pt-0",
@@ -18,12 +18,7 @@ const accordionVariants = tv({
   variants: {
     variant: {
       default: {},
-      // Dummy variant for demonstration purposes
-      // You can add more variants like this as needed
-      blue: {
-        trigger: "bg-blue-500",
-        contentInner: "text-blue-500",
-      },
+      //👇 add more variants
     },
   },
   defaultVariants: {
