@@ -19,6 +19,7 @@ interface RadioGroupListProps {
   groups: {
     id: string;
     heading: React.ReactNode;
+    buttonsPerRow?: number;
     options: { value: string; label: string; disabled?: boolean }[];
   }[];
   onSelectionChange?: (selections: Record<string, string>) => void;
@@ -47,7 +48,7 @@ const RadioGroupList: React.FC<RadioGroupListProps> = ({
       {groups.map((group) => (
         <div key={group.id} className={radioGroupWrapper()}>
           <RadioGroup
-            buttonsPerRow={2}
+            buttonsPerRow={group.buttonsPerRow || 3}
             heading={group.heading}
             value={selections[group.id]}
             onValueChange={(value) => handleSelectionChange(group.id, value)}
