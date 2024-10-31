@@ -10,7 +10,7 @@ export default withTV({
   theme: {
     extend: {
       fontFamily: {
-        mono: ["DM Mono", "monospace"],
+        mono: ["DM Mono", "serif"],
         sans: ["DM Sans", "sans-serif"],
       },
       borderRadius: {
