@@ -7,7 +7,7 @@ const listGridVariants = tv({
     root: "mx-auto flex flex-col gap-4 overflow-x-auto",
     header: "grid gap-4 px-4 py-2",
     headerElement: "flex items-center",
-    row: "grid h-[72px] items-center gap-4 px-4 py-2",
+    row: "grid items-center gap-4 px-4 py-2",
   },
   variants: {
     variant: {
@@ -41,9 +41,16 @@ export interface ListGridProps<T> {
   columns: ListGridColumn<T>[];
   getRowKey: (item: T) => string | number;
   className?: string;
+  rowClassName?: string;
 }
 
-export const ListGrid = <T,>({ data, columns, getRowKey, className }: ListGridProps<T>) => {
+export const ListGrid = <T,>({
+  data,
+  columns,
+  getRowKey,
+  className,
+  rowClassName,
+}: ListGridProps<T>) => {
   const { root, header, headerElement, row } = listGridVariants();
 
   // Generate grid-template-columns style based on column widths
@@ -63,7 +70,7 @@ export const ListGrid = <T,>({ data, columns, getRowKey, className }: ListGridPr
       {data.map((item, index) => (
         <div
           key={getRowKey ? getRowKey(item) : index}
-          className={row()}
+          className={row({ className: rowClassName })}
           style={{ gridTemplateColumns }}
         >
           {columns.map((column) => (
