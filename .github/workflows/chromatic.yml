@@ -11,42 +11,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  #### Disable this for now until our chromatic snapshots reach a critical number
-  # check_conditions:
-  #   name: "Check Conditions"
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     should_run: ${{ steps.set_output.outputs.should_run }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
+  check_conditions:
+    name: "Check Conditions"
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.set_output.outputs.should_run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-  #     - name: Determine if deployment should proceed
-  #       id: set_output
-  #       run: |
-  #         should_run=false
+      - name: Determine if deployment should proceed
+        id: set_output
+        run: |
+          should_run=true
 
-  #         if [[ "${{ github.event_name }}" == "push" || "${{ github.event.pull_request.draft }}" == "false" ]]; then
-  #           diff_output=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.(mdx|tsx|ts|css|svg|png|jpg|jpeg)$')
-  #           echo "Changed files:"
-  #           echo "$diff_output"
-  #           if [[ -n "$diff_output" ]]; then
-  #             echo "Deploying. Relevant file changes detected."
-  #             should_run=true
-  #           else
-  #             echo "Not deploying. No relevant file changes detected."
-  #           fi
-  #         else
-  #           echo "Not deploying. Not a push or non-draft PR."
-  #         fi
-  #         echo "should_run=${should_run}" >> $GITHUB_OUTPUT
+          if [[ "${{ github.event_name }}" == "pull_request" && "${{ github.event.pull_request.draft }}" == "true" ]]; then
+            echo "Not deploying. It is a draft pull request."
+            should_run=false
+          else
+            echo "Deploying. It is a non-draft pull request."
+          fi
+
+          echo "should_run=${should_run}" >> $GITHUB_OUTPUT
 
   deploy_chromatic:
     name: "Run Chromatic"
     runs-on: ubuntu-latest
-    # needs: check_conditions
-    # if: needs.check_conditions.outputs.should_run == 'true'
+    needs: check_conditions
+    if: needs.check_conditions.outputs.should_run == 'true'
     steps:
       - uses: actions/checkout@v4
         with:
