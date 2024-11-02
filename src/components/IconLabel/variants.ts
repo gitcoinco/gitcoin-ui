@@ -1,6 +1,5 @@
 import { tv } from "tailwind-variants";
 
-
 export const variants = tv({
   slots: {
     container: "flex flex-wrap  items-center",
@@ -23,7 +22,9 @@ export const variants = tv({
       social: {
         text: "text-green-brand hover:underline",
       },
-
+      period: {
+        container: "gap-2",
+      },
       reviews: {
         container: "gap-2",
         icon: "size-7 rounded-full border border-gray-100 bg-white",

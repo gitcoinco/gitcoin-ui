@@ -12,6 +12,13 @@ interface DateProps {
   className?: string;
 }
 
+interface PeriodProps {
+  type: "period";
+  startDate?: Date;
+  endDate?: Date;
+  className?: string;
+}
+
 interface DateWithPrefixProps {
   type: "dateWithPrefix";
   date?: Date;
@@ -52,6 +59,7 @@ interface DefaultProps {
 export type IconLabelProps =
   | AIEvaluationProps
   | DateProps
+  | PeriodProps
   | ReviewsProps
   | AddressProps
   | SocialProps
