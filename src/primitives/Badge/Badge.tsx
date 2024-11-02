@@ -38,7 +38,7 @@ const badgeVariants = tv({
       "outlined-warning-strong": "border-2 border-red-300 bg-white",
       "outlined-info-strong": "border-2 border-yellow-300 bg-white",
       "green/100": "border-transparent bg-green-100",
-      "green/200": "border-transparent bg-green-200 text-white",
+      "green/200": "border-transparent bg-green-200 text-black",
       "green/400": "border border-green-400 bg-white text-green-400",
       "blue/100": "border-transparent bg-blue-100",
       "orange/400": "border border-orange-400 bg-white text-orange-400",
