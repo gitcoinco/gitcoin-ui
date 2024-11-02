@@ -31,7 +31,9 @@ export const colors: Colors = {
     brand: "#185B52",
     "50": "#F4FAEB",
     "100": "#E5F4D3",
+    "200": "#47A095",
     "300": "#ADDB7B",
+    "400": "#00433B",
     "500": "#7ABF39",
     "700": "#426A21",
     "900": "#30491E",
@@ -43,6 +45,9 @@ export const colors: Colors = {
     "500": "#F56A3E",
     "700": "#BE3F17",
     "900": "#82331A",
+  },
+  orange: {
+    "400": "#DE3714",
   },
   yellow: {
     "50": "#FDFCED",

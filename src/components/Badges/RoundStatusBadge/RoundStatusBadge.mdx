@@ -1,0 +1,27 @@
+import { Meta, Title, Story } from "@storybook/blocks";
+
+import * as RoundStatusBadgeStories from "./RoundStatusBadge.stories";
+
+# RoundStatusBadge
+
+<Meta of={RoundStatusBadgeStories} />
+
+The `RoundStatusBadge` component is a versatile UI element that indicates the status of a round. It supports various states, each represented by a distinct badge.
+
+## Badge States
+
+### Pre Round
+
+<Story of={RoundStatusBadgeStories.PreRound} />
+
+### Round In Progress
+
+<Story of={RoundStatusBadgeStories.RoundInProgress} />
+
+### Applications In Progress
+
+<Story of={RoundStatusBadgeStories.ApplicationsInProgress} />
+
+### Funding Pending
+
+<Story of={RoundStatusBadgeStories.FundingPending} />
