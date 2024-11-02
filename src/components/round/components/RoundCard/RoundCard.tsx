@@ -8,19 +8,17 @@ import { modularRedirect } from "@/lib/utils";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
 export function RoundCard(props: RoundCardProps) {
-  if (!props) return <ErrorCard />;
-
-  return "queryResult" in props ? (
-    match(props.queryResult)
-      .with({ status: "error", error: P.select() }, (error) => <ErrorCard error={error} />)
-      .with({ status: "pending" }, () => <LoadingCard />)
-      .with({ status: "success", data: P.select() }, (data) =>
-        data ? <DataCard data={data} redirectProps={props} /> : <ErrorCard />,
-      )
-      .otherwise(() => <ErrorCard />)
-  ) : (
-    <DataCard data={props as RoundCardDataProps} redirectProps={props} />
-  );
+  return match(props)
+    .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
+      match(queryResult)
+        .with({ status: "error", error: P.select() }, (error) => <ErrorCard error={error} />)
+        .with({ status: "pending" }, () => <LoadingCard />)
+        .with({ status: "success", data: P.select() }, (data) => (
+          <DataCard data={data} redirectProps={props} />
+        ))
+        .otherwise(() => <ErrorCard />),
+    )
+    .otherwise(() => <DataCard data={props as RoundCardDataProps} redirectProps={props} />);
 }
 
 function LoadingCard() {
@@ -61,12 +59,12 @@ export function DataCard({
     >
       <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
         <span>{data.roundName}</span>
-        {data.roundType && <RoundTypeBadge roundType={data.roundType} />}
+        <RoundTypeBadge roundType={data.roundType} />
         <IconLabel type="period" startDate={data.startDate} endDate={data.endDate} />
         <IconLabel type="default" label={name} iconType={icon} />
       </div>
       <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        {data.roundStatus && <RoundStatusBadge roundStatus={data.roundStatus} />}
+        <RoundStatusBadge roundStatus={data.roundStatus} />
       </div>
     </div>
   );
