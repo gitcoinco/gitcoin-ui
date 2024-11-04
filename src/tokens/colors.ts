@@ -42,12 +42,10 @@ export const colors: Colors = {
     "50": "#FEF5F2",
     "100": "#FFE8E1",
     "300": "#FFB7A0",
+    "400": "#DE3714",
     "500": "#F56A3E",
     "700": "#BE3F17",
     "900": "#82331A",
-  },
-  orange: {
-    "400": "#DE3714",
   },
   yellow: {
     "50": "#FDFCED",
