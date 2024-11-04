@@ -7,18 +7,17 @@ import { RadioGroup, RadioGroupItem } from "@/primitives/RadioGroup";
 
 const radioGroupList = tv({
   slots: {
-    root: "flex flex-col",
-    header: "mb-4 font-sans text-[16px] font-bold leading-[24px]",
-    radioGroupWrapper: "mb-10",
+    root: "flex flex-col gap-11",
   },
 });
 
-const { root, radioGroupWrapper } = radioGroupList();
+const { root } = radioGroupList();
 
 interface RadioGroupListProps {
   groups: {
     id: string;
     heading: React.ReactNode;
+    buttonsPerRow?: number;
     options: { value: string; label: string; disabled?: boolean }[];
   }[];
   onSelectionChange?: (selections: Record<string, string>) => void;
@@ -45,9 +44,9 @@ const RadioGroupList: React.FC<RadioGroupListProps> = ({
   return (
     <div className={cn(root(), className)}>
       {groups.map((group) => (
-        <div key={group.id} className={radioGroupWrapper()}>
+        <div key={group.id}>
           <RadioGroup
-            buttonsPerRow={2}
+            buttonsPerRow={group.buttonsPerRow || 3}
             heading={group.heading}
             value={selections[group.id]}
             onValueChange={(value) => handleSelectionChange(group.id, value)}

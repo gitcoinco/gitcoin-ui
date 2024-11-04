@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils";
 const radioGroup = tv({
   slots: {
     root: "grid gap-5 gap-y-1",
-    item: "flex items-center space-x-2",
+    item: "flex items-center gap-2",
     itemDisabled: "cursor-not-allowed opacity-50",
     indicatorWrapper: "relative size-4 rounded-full border border-solid border-grey-300",
     indicatorWrapperDisabled: "bg-grey-300",
     indicator: "absolute left-1/2 top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full",
     text: "font-sans text-[16px] leading-[24px]",
     circle: "size-2 fill-current text-black",
-    header: "mb-4 font-sans text-[16px] font-bold leading-[24px]",
+    header: "font-sans text-[16px] font-bold leading-[24px]",
   },
   variants: {
     indicatorBg: {
@@ -45,7 +45,7 @@ const RadioGroup = React.forwardRef<
   const gridTemplateColumns = `repeat(${buttonsPerRow}, max-content)`;
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {heading && (
         <div className={typeof heading === "string" ? cn(header()) : undefined}>
           {typeof heading === "string" ? heading : heading}

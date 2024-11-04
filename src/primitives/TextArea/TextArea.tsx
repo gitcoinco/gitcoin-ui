@@ -29,10 +29,8 @@ export interface TextAreaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ className, size, heading, ...props }, ref) => {
     return (
-      <div>
-        {heading && (
-          <div className="mb-2 font-sans text-[16px] font-bold leading-[24px]">{heading}</div>
-        )}
+      <div className="flex flex-col gap-2">
+        {heading && <div className="font-sans text-[16px] font-bold leading-[24px]">{heading}</div>}
         <textarea className={cn(textareaVariants({ size }), className)} ref={ref} {...props} />
       </div>
     );
