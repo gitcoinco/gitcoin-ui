@@ -61,3 +61,5 @@ export const colors: Colors = {
     "900": "#40268C",
   },
 };
+
+colors.grey = colors.gray;
