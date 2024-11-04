@@ -1,29 +1,47 @@
+// Status Icons
 import {
   CheckIcon,
   ClockIcon,
   ExclamationCircleIcon,
   SparklesIcon,
   XIcon,
-  ETHIcon,
-  GithubIcon,
   CalendarIcon,
   VerifiedBadgeIcon,
-  TwitterIcon,
-  GlobeIcon,
+} from "@/assets/icons";
+// Social Media Icons
+import { GithubIcon, TwitterIcon, GlobeIcon } from "@/assets/icons";
+// Blockchain Icons
+import {
+  ETHIcon,
+  OptimismIcon,
+  PolygonIcon,
+  ArbitrumIcon,
+  AvaxIcon,
+  BaseIcon,
 } from "@/assets/icons";
 
 export enum IconType {
+  // Status Icons
   CHECK = "check",
   CLOCK = "clock",
-  CALENDAR = "calendar",
   EXCLAMATION_CIRCLE = "exclamation-circle",
   SPARKLES = "sparkles",
   X = "x",
+  CALENDAR = "calendar",
+  VERIFIEDBADGE = "verifiedBadge",
+
+  // Social Media Icons
   GITHUB = "github",
   TWITTER = "twitter",
-  ETH = "eth",
-  VERIFIEDBADGE = "verifiedBadge",
   GLOBE = "globe",
+
+  // Blockchain Icons
+  ETH = "eth",
+  OPTIMISM = "optimism",
+  POLYGON = "polygon",
+  ARBITRUM = "arbitrum",
+  AVAX = "avax",
+  BASE = "base",
 }
 
 export type IconProps = React.SVGProps<SVGSVGElement> & {
@@ -42,6 +60,11 @@ const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGEl
   calendar: CalendarIcon,
   verifiedBadge: VerifiedBadgeIcon,
   globe: GlobeIcon,
+  optimism: OptimismIcon,
+  polygon: PolygonIcon,
+  arbitrum: ArbitrumIcon,
+  avax: AvaxIcon,
+  base: BaseIcon,
 };
 
 export const Icon: React.FC<IconProps> = ({ type, className, ...props }) => {
