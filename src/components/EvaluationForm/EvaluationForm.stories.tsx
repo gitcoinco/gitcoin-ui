@@ -30,6 +30,10 @@ const defaultGroups = [
     id: "group2",
     heading: "Question 2",
   },
+  {
+    id: "group3",
+    heading: "Question 3",
+  },
 ];
 
 export const Default: Story = {
