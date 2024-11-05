@@ -1,6 +1,7 @@
 export enum DateFormat {
   FullDate12Hour = "FullDate12Hour",
   FullDate24Hour = "FullDate24Hour",
+  ShortMonthDayYear = "ShortMonthDayYear",
 }
 
 export const formatDate = (date: Date, format?: DateFormat): string => {
@@ -31,6 +32,12 @@ export const formatDate = (date: Date, format?: DateFormat): string => {
         .replace(/ at /, " ")
         .trim()
         .replace(/am|pm/, isAM ? "AM" : "PM");
+    case DateFormat.ShortMonthDayYear:
+      return date.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      });
     default:
       return date.toLocaleDateString("en-GB");
   }

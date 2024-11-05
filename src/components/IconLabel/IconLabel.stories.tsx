@@ -46,6 +46,18 @@ const meta: Meta<typeof IconLabel> = {
       control: "text",
       if: { arg: "type", eq: "dateWithPrefix" },
     },
+    startDate: {
+      control: {
+        type: "date",
+      },
+      if: { arg: "type", eq: "period" },
+    },
+    endDate: {
+      control: {
+        type: "date",
+      },
+      if: { arg: "type", eq: "period" },
+    },
     posReviews: {
       control: {
         type: "number",
@@ -107,6 +119,8 @@ export const Playground: Story = {
     address: "0xE307051C410e970b861CC55CBFD5Acc7BB477750", // Default for address
     link: "https://github.com/user", // Default for social
     isVerified: false, // Default for social
+    startDate: new Date(), // Default for period
+    endDate: new Date(), // Default for period
   },
 };
 
@@ -148,6 +162,21 @@ export const DateLabel: Story = {
     const canvas = within(canvasElement);
     const formattedDate = formatDate(new Date(), DateFormat.FullDate24Hour);
     const dateText = await canvas.findByText(formattedDate);
+    expect(dateText).toBeInTheDocument();
+  },
+};
+
+export const Period: Story = {
+  args: {
+    type: "period",
+    startDate: new Date(),
+    endDate: new Date(),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const formattedStartDate = formatDate(new Date(), DateFormat.ShortMonthDayYear);
+    const formattedEndDate = formatDate(new Date(), DateFormat.ShortMonthDayYear);
+    const dateText = await canvas.findByText(`${formattedStartDate} - ${formattedEndDate}`);
     expect(dateText).toBeInTheDocument();
   },
 };

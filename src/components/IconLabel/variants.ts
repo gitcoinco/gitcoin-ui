@@ -18,11 +18,13 @@ export const variants = tv({
       date: {
         container: "gap-2",
       },
-      dateWithPrefix: { text: "text-gray-500" },
+      dateWithPrefix: { text: "text-gray-900" },
       social: {
         text: "text-green-brand hover:underline",
       },
-
+      period: {
+        container: "gap-2",
+      },
       reviews: {
         container: "gap-2",
         icon: "size-7 rounded-full border border-gray-100 bg-white",
@@ -34,7 +36,7 @@ export const variants = tv({
     reviewType: {
       posFirst: { icon: "fill-green-600" },
       posNotFirst: { icon: "-ml-2 fill-green-600" },
-      neg: { icon: "-ml-2 fill-orange-200" },
+      neg: { icon: "-ml-2 fill-red-200" },
     },
   },
 });

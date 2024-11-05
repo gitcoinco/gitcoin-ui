@@ -17,4 +17,9 @@ export { default as GithubIcon } from "./github.svg?react";
 export { default as TwitterIcon } from "./twitter.svg?react";
 
 // Cryptocurrency Icons
-export { default as ETHIcon } from "./eth.svg?react";
+export { default as ETHIcon } from "./networks/eth.svg?react";
+export { default as PolygonIcon } from "./networks/polygon.svg?react";
+export { default as ArbitrumIcon } from "./networks/arbitrum.svg?react";
+export { default as AvaxIcon } from "./networks/avax.svg?react";
+export { default as BaseIcon } from "./networks/base.svg?react";
+export { default as OptimismIcon } from "./networks/optimism.svg?react";

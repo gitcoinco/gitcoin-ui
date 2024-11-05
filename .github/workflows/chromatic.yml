@@ -24,18 +24,15 @@ jobs:
       - name: Determine if deployment should proceed
         id: set_output
         run: |
-          should_run=false
+          should_run=true
 
-          if [[ "${{ github.event_name }}" == "push" || "${{ github.event.pull_request.draft }}" == "false" ]]; then
-            if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '\.(mdx|tsx|ts|css|svg|png|jpg|jpeg)$'; then
-              echo "Deploying. Relevant file changes detected."
-              should_run=true
-            else
-              echo "Not deploying. No relevant file changes detected."
-            fi
+          if [[ "${{ github.event_name }}" == "pull_request" && "${{ github.event.pull_request.draft }}" == "true" ]]; then
+            echo "Not deploying. It is a draft pull request."
+            should_run=false
           else
-            echo "Not deploying. Not a push or non-draft PR."
+            echo "Deploying. It is a non-draft pull request."
           fi
+
           echo "should_run=${should_run}" >> $GITHUB_OUTPUT
 
   deploy_chromatic:

@@ -40,6 +40,19 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
         <span className={text()}>{formatDate(date, DateFormat.FullDate24Hour)}</span>
       </IconLabelContainer>
     ))
+    .with({ type: "period" }, ({ startDate = new Date(), endDate = new Date(), className }) => (
+      <IconLabelContainer
+        type="period"
+        className={className}
+        iconType={IconType.CALENDAR}
+        iconVariant={icon({ type: "dateWithPrefix" })}
+      >
+        <span className={text({ type: "dateWithPrefix" })}>{`${formatDate(
+          startDate,
+          DateFormat.ShortMonthDayYear,
+        )} - ${formatDate(endDate, DateFormat.ShortMonthDayYear)}`}</span>
+      </IconLabelContainer>
+    ))
     .with({ type: "dateWithPrefix" }, ({ date = new Date(), prefix, className }) => (
       <IconLabelContainer
         type="date"
@@ -103,14 +116,14 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
         </IconLabelContainer>
       );
     })
-    .with({ type: "default" }, ({ iconType, label, className }) => (
+    .with({ type: "default" }, ({ iconType, label, className, iconVariant, textVariant }) => (
       <IconLabelContainer
         type="default"
         className={className}
         iconType={iconType}
-        iconVariant={icon({ type: "default" })}
+        iconVariant={iconVariant ?? icon({ type: "default" })}
       >
-        <span className={text()}>{label}</span>
+        <span className={textVariant ?? text({ type: "default" })}>{label}</span>
       </IconLabelContainer>
     ))
     .otherwise(() => (

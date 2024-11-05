@@ -1,19 +1,17 @@
-export interface Project {
-  id: string;
-  name?: string;
-  description?: string;
-  avatarUrl?: string;
-  bannerUrl?: string;
-  anchorAddress?: string;
-  chainId?: number;
-  metadata: ProjectMetadata;
-}
+import { UseQueryResult } from "@tanstack/react-query";
 
-export interface ProjectMetadata {
-  title: string | undefined;
-  logoImg: string | undefined;
-  bannerImg: string | undefined;
-  description: string | undefined;
-  projectGithub: string | undefined;
-  projectTwitter: string | undefined;
-}
+export type ProjectCardDataProps = {
+  id: string;
+  title: string;
+  logoImg?: string;
+  bannerImg?: string;
+  description?: string;
+  projectGithub?: string;
+  projectTwitter?: string;
+};
+
+type QueryProps = {
+  queryResult: UseQueryResult<ProjectCardDataProps, Error>;
+};
+
+export type ProjectCardProps = ProjectCardDataProps | QueryProps;

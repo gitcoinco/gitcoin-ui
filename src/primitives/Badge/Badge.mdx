@@ -1,0 +1,31 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as BadgeStories from "./Badge.stories";
+import { Badge } from "./Badge";
+
+# Badge
+
+<Meta of={BadgeStories} />
+
+The `Badge` component is a flexible UI element that displays status or category information. It offers various styles and sizes, making it adaptable for different contexts.
+
+### Badge Sizes
+
+- **xs**: 68px minimum width
+- **sm**: 82px minimum width
+- **md**: 112px minimum width
+- **lg**: 142px minimum width
+- **custom**: Dynamic width based on specified value
+
+## Example
+
+### Default Badge
+
+<Story of={BadgeStories.Default} />
+
+## Controls
+
+<Controls />
+
+## Other Variations
+
+<Stories />

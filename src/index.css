@@ -1,11 +1,11 @@
-@import "@fontsource/dm-mono";
+@import "./assets/fonts/stylesheet.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  @apply box-border font-mono;
+  @apply box-border font-sans;
 }
 
 body {
