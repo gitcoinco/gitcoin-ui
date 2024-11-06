@@ -1,0 +1,25 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+
+import { Accordion } from "./Accordion";
+import * as AccordionStories from "./Accordion.stories";
+
+# Accordion
+
+<Meta of={AccordionStories} />
+
+The `Accordion` component is a flexible and customizable UI element that allows you to display content in a collapsible format. It supports customizable variants for styling.
+
+## Props
+
+- **header**: `React.ReactNode` - The content to be displayed as the header of the accordion.
+- **content**: `React.ReactNode` - The content to be displayed when the accordion is expanded.
+- **variant**: `AccordionVariants["variant"]` (optional) - The styling variant to apply. Defaults to `"default"`.
+
+# Example
+
+<Story of={AccordionStories.Default} />
+
+# Controls
+
+<Controls />
+<Stories />
