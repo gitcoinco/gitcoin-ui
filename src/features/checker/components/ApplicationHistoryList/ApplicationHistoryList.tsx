@@ -2,7 +2,6 @@ import { ApplicationBadge } from "@/components/Badges/ApplicationBadge/Applicati
 import { IconLabel } from "@/components/IconLabel";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
-import { getReviewsCount } from "../../utils/getReviewsCount";
 import { Application } from "./types";
 
 export interface ApplicationHistoryListProps {
@@ -18,7 +17,6 @@ export const ApplicationHistoryList = ({ applications }: ApplicationHistoryListP
       render: (item) => {
         return (
           <div>
-            {" "}
             <ApplicationBadge status={item.status} />
           </div>
         );

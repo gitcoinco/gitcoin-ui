@@ -1,6 +1,8 @@
+import { ApplicationStatus } from "@/components/Badges/ApplicationBadge/ApplicationBadge";
+
 export interface Application {
   id: number;
-  status: string;
+  status: ApplicationStatus;
   name: string;
   date: Date;
   round: string;
