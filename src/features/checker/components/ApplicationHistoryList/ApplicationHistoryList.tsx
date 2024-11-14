@@ -39,7 +39,6 @@ export const ApplicationHistoryList = ({ applications }: ApplicationHistoryListP
     <ListGrid
       data={applications}
       columns={columns}
-      rowClassName="h-[72px]"
       getRowKey={(item: Application) => item.id.toString()}
     />
   );
