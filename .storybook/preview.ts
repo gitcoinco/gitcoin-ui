@@ -15,6 +15,11 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ["Welcome", "Features", "Components", "Primitives", "Shadcn", "Styles", "*"],
+      },
+    },
   },
   loaders: [mswLoader],
   msw: {
