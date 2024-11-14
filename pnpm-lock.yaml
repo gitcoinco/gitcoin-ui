@@ -174,6 +174,9 @@ importers:
       '@storybook/builder-vite':
         specifier: 8.3.5
         version: 8.3.5(storybook@8.3.5)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9))
+      '@storybook/manager-api':
+        specifier: ^8.4.3
+        version: 8.4.3(storybook@8.3.5)
       '@storybook/react':
         specifier: 8.3.5
         version: 8.3.5(@storybook/test@8.3.5(storybook@8.3.5))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.5)(typescript@5.6.3)
@@ -186,6 +189,9 @@ importers:
       '@storybook/test-runner':
         specifier: ^0.19.1
         version: 0.19.1(@types/node@22.7.9)(storybook@8.3.5)
+      '@storybook/theming':
+        specifier: ^8.4.3
+        version: 8.4.3(storybook@8.3.5)
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
         version: 4.3.0(prettier@3.1.0)
@@ -2140,10 +2146,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/manager-api@8.3.6':
-    resolution: {integrity: sha512-Xt5VFZcL+G/9uzaHjzWFhxRNrP+4rPhSRKEvCZorAbC9+Hv+ZDs1JSZS5wMb4WKpXBZ0rwDVOLwngqbVtfRHuQ==}
+  '@storybook/manager-api@8.4.3':
+    resolution: {integrity: sha512-b09FHQLHrc3VGdodgV+EkA6V8VhpgadygDn9aVIXUULHXMQCfzzsSK9kiunFGVjH5r4BtdanucBXoBRFAi9D/g==}
     peerDependencies:
-      storybook: ^8.3.6
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
   '@storybook/preview-api@8.3.6':
     resolution: {integrity: sha512-/Wxvb7wbI2O2iH63arRQQyyojA630vibdshkFjuC/u1nYdptEV1jkxa0OYmbZbKCn4/ze6uH4hfsKOpDPV9SWg==}
@@ -2191,10 +2197,10 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@storybook/theming@8.3.6':
-    resolution: {integrity: sha512-LQjUk6GXRW9ELkoBKuqzQKFUW+ajfGPfVELcfs3/VQX61VhthJ4olov4bGPc04wsmmFMgN/qODxT485IwOHfPQ==}
+  '@storybook/theming@8.4.3':
+    resolution: {integrity: sha512-ORQY2/C488ur5NkQYes6x+fO5rcyRMyh4uX3DlkNhCsA2CJ/Ik3WVGjprrDuLn+9S4+mtXfVUNfvN7xszlT1oA==}
     peerDependencies:
-      storybook: ^8.3.6
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0':
     resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
@@ -7929,7 +7935,7 @@ snapshots:
       storybook: 8.3.5
       util: 0.12.5
 
-  '@storybook/manager-api@8.3.6(storybook@8.3.5)':
+  '@storybook/manager-api@8.4.3(storybook@8.3.5)':
     dependencies:
       storybook: 8.3.5
 
@@ -7971,10 +7977,10 @@ snapshots:
     dependencies:
       '@storybook/components': 8.3.6(storybook@8.3.5)
       '@storybook/global': 5.0.0
-      '@storybook/manager-api': 8.3.6(storybook@8.3.5)
+      '@storybook/manager-api': 8.4.3(storybook@8.3.5)
       '@storybook/preview-api': 8.3.6(storybook@8.3.5)
       '@storybook/react-dom-shim': 8.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.3.5)
-      '@storybook/theming': 8.3.6(storybook@8.3.5)
+      '@storybook/theming': 8.4.3(storybook@8.3.5)
       '@types/escodegen': 0.0.6
       '@types/estree': 0.0.51
       '@types/node': 22.7.9
@@ -8043,7 +8049,7 @@ snapshots:
       storybook: 8.3.5
       util: 0.12.5
 
-  '@storybook/theming@8.3.6(storybook@8.3.5)':
+  '@storybook/theming@8.4.3(storybook@8.3.5)':
     dependencies:
       storybook: 8.3.5
 
