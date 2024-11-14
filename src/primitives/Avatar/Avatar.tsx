@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 
+import { tv } from "tailwind-variants";
 import { match, P } from "ts-pattern";
 
 import DefaultLogo from "@/assets/default_logo.png";
@@ -12,7 +13,14 @@ interface AvatarProps {
   size?: number;
   ipfsBaseURL?: string;
   defaultImage?: string;
+  avatarClassName?: string;
 }
+
+export const AvatarVariants = tv({
+  slots: {
+    avatar: "aspect-square size-full bg-white",
+  },
+});
 
 export const Avatar = ({
   fallbackName,
@@ -21,6 +29,7 @@ export const Avatar = ({
   size = 40,
   ipfsBaseURL = "https://ipfs.io/ipfs/",
   defaultImage = DefaultLogo,
+  avatarClassName,
 }: AvatarProps) => {
   const imageURL = useMemo(() => {
     return match({ ipfsCID, url, fallbackName })
@@ -50,10 +59,12 @@ export const Avatar = ({
       });
   }, [fallbackName]);
 
+  const { avatar } = AvatarVariants();
+
   return (
     <ShadCNAvatar
       role="presentation"
-      className="aspect-square h-full w-full bg-white shadow-md shadow-slate-600"
+      className={avatar({ className: avatarClassName })}
       style={{ width: `${size}px`, height: `${size}px` }}
     >
       <AvatarImage src={imageURL} alt="avatar" className="p-1" />

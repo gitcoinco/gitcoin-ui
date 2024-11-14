@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import clsx from "clsx";
+import { tv } from "tailwind-variants";
 import { match, P } from "ts-pattern";
 
 import DefaultBanner from "@/assets/default_banner.jpg";
@@ -11,7 +11,14 @@ interface BannerImageProps {
   size?: number;
   ipfsBaseURL?: string;
   defaultImage?: string;
+  bannerClassName?: string;
 }
+
+export const BannerVariants = tv({
+  slots: {
+    banner: "aspect-3/1 object-cover",
+  },
+});
 
 export const BannerImage = ({
   ipfsCID,
@@ -19,6 +26,7 @@ export const BannerImage = ({
   size = 0,
   ipfsBaseURL = "https://ipfs.io/ipfs/",
   defaultImage = DefaultBanner,
+  bannerClassName,
 }: BannerImageProps) => {
   const imageURL = useMemo(() => {
     return match({ ipfsCID, url })
@@ -31,7 +39,6 @@ export const BannerImage = ({
         { ipfsCID: P.string.minLength(1), url: P.string.minLength(1) },
         ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`,
       )
-
       .otherwise(() => defaultImage);
   }, [ipfsCID, url, ipfsBaseURL]);
 
@@ -42,5 +49,14 @@ export const BannerImage = ({
     return { width: `${size}px` };
   }, [size]);
 
-  return <img src={imageURL} alt="banner" className="aspect-3/1 object-cover" style={sizeStyle} />;
+  const { banner } = BannerVariants();
+
+  return (
+    <img
+      src={imageURL}
+      alt="banner"
+      className={banner({ className: bannerClassName })}
+      style={sizeStyle}
+    />
+  );
 };

@@ -34,7 +34,7 @@ type RoundBadgeProps =
   | { type: "roundStatus"; badge: RoundStatus }
   | { type: "roundType"; badge: RoundType };
 
-export const RoundBadge: React.FC<RoundBadgeProps> = (props) => {
+export const RoundBadge: React.FC<RoundBadgeProps> = (props: RoundBadgeProps) => {
   const { variant, text } = match(props)
     .with({ type: "roundStatus", badge: RoundStatus.PreRound }, () => ({
       variant: RoundBadgeVariants({ variant: "pre-round" }),
