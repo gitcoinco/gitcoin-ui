@@ -13,4 +13,4 @@ export default meta;
 
 type Story = StoryObj<typeof ProjectHeader>;
 
-export const Default: Story = { args: { projects: mockProject } };
+export const Default: Story = { args: { project: mockProject } };

@@ -1,4 +1,5 @@
 import { IconLabel } from "@/components/IconLabel";
+import { Avatar } from "@/primitives/Avatar";
 import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
@@ -18,15 +19,12 @@ export const ProjectReviewList = ({ reviewer, projects }: ProjectReviewListProps
       key: "project",
       width: "2fr",
       render: (item) => (
+        // <div>
+
+        // <Avatar avatarClassName="rounded-sm w-24" url={item.avatarUrl} />
+        // </div>
         <div className="flex items-center gap-4">
-          <img
-            src={item.avatarUrl}
-            alt={item.name}
-            className="aspect-square size-12 rounded-sm"
-            onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-              event.currentTarget.src = "/images/grey-image.png";
-            }}
-          />
+          <Avatar avatarClassName="rounded-sm w-14 " url={item.avatarUrl} />
           <span>{item.name}</span>
         </div>
       ),

@@ -25,7 +25,7 @@ export function DataCard({ data }: { data: ProjectCardDataProps }) {
       <div className="relative">
         <BannerImage ipfsCID={data.bannerImg} />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
-          <Avatar ipfsCID={data.logoImg} size={60} />
+          <Avatar ipfsCID={data.logoImg} avatarClassName="w-16" />
         </div>
       </div>
       <CardContent className="pt-12">

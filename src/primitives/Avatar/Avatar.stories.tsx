@@ -79,12 +79,12 @@ export const AllProvided: Story = {
 export const Big: Story = {
   args: {
     ipfsCID: gitcoinProfileCID,
-    size: 200,
+    avatarClassName: "w-64",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const avatar = canvas.getByRole("presentation");
-    expect(avatar).toHaveStyle("width: 200px");
-    expect(avatar).toHaveStyle("height: 200px");
+    expect(avatar).toHaveStyle("width: 256px");
+    expect(avatar).toHaveStyle("height: 256px");
   },
 };

@@ -1,5 +1,5 @@
 export interface Project {
   id: number;
-  avatarURL: string;
-  bannerURL: string;
+  avatarUrl: string;
+  bannerUrl: string;
 }

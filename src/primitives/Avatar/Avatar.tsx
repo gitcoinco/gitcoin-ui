@@ -10,7 +10,6 @@ interface AvatarProps {
   fallbackName?: string;
   ipfsCID?: string;
   url?: string;
-  size?: number;
   ipfsBaseURL?: string;
   defaultImage?: string;
   avatarClassName?: string;
@@ -18,7 +17,7 @@ interface AvatarProps {
 
 export const AvatarVariants = tv({
   slots: {
-    avatar: "aspect-square size-full bg-white",
+    avatar: "aspect-square size-full w-12 bg-white",
   },
 });
 
@@ -26,7 +25,6 @@ export const Avatar = ({
   fallbackName,
   ipfsCID,
   url,
-  size = 40,
   ipfsBaseURL = "https://ipfs.io/ipfs/",
   defaultImage = DefaultLogo,
   avatarClassName,
@@ -62,11 +60,7 @@ export const Avatar = ({
   const { avatar } = AvatarVariants();
 
   return (
-    <ShadCNAvatar
-      role="presentation"
-      className={avatar({ className: avatarClassName })}
-      style={{ width: `${size}px`, height: `${size}px` }}
-    >
+    <ShadCNAvatar role="presentation" className={avatar({ className: avatarClassName })}>
       <AvatarImage src={imageURL} alt="avatar" className="p-1" />
       <AvatarFallback>{fallback}</AvatarFallback>
     </ShadCNAvatar>
