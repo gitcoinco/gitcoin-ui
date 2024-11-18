@@ -16,4 +16,12 @@ body {
   :root {
     --radius: 0.5rem;
   }
+  ul {
+    @apply list-disc;
+    @apply my-4 pl-10;
+  }
+  ol {
+    @apply list-decimal;
+    @apply my-4 pl-10;
+  }
 }
