@@ -75,18 +75,18 @@ export const ProjectEvaluationAction = ({
   return (
     <div className="flex gap-2">
       <Button
-        onClick={() => onEvaluate(projectId, "approve")}
-        value="Approve"
-        disabled={approveProps.disabled}
-        className={cn(baseButtonStyles, approveProps.className)}
-        icon={<Icon type={IconType.CHECK} className={cn("size-5", approveProps.iconFillClass)} />}
-      />
-      <Button
         onClick={() => onEvaluate(projectId, "reject")}
         value="Reject"
         disabled={rejectProps.disabled}
         className={cn(baseButtonStyles, rejectProps.className)}
         icon={<Icon type={IconType.X} className={cn("size-5", rejectProps.iconFillClass)} />}
+      />
+      <Button
+        onClick={() => onEvaluate(projectId, "approve")}
+        value="Approve"
+        disabled={approveProps.disabled}
+        className={cn(baseButtonStyles, approveProps.className)}
+        icon={<Icon type={IconType.CHECK} className={cn("size-5", approveProps.iconFillClass)} />}
       />
     </div>
   );
