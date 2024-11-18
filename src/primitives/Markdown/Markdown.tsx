@@ -7,7 +7,6 @@ export const Markdown = ({ children }: { children: string }) => {
   return (
     <MarkdownPreview
       source={children}
-      style={{ padding: "1rem" }}
       wrapperElement={{
         "data-color-mode": "light",
       }}
