@@ -1,0 +1,22 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+
+import { ProjectEvaluationAction } from "./ProjectEvaluationAction";
+import * as ProjectEvaluationActionStories from "./ProjectEvaluationAction.stories";
+
+<Meta of={ProjectEvaluationActionStories} />
+
+# Project Evaluation Action
+
+This component allows users to evaluate projects by approving or rejecting them. The buttons are rendered based on the project status.
+
+## Examples
+
+### Pending Status
+
+<Story of={ProjectEvaluationActionStories.Default} />
+
+<Controls />
+
+## Other Variations
+
+<Stories of={ProjectEvaluationActionStories} />
