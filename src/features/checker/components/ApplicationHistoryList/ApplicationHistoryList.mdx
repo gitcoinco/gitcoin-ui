@@ -1,0 +1,22 @@
+import { Meta, Canvas, Story, Description, Controls, Stories } from "@storybook/blocks";
+
+import { ApplicationHistoryList } from "./ApplicationHistoryList";
+import * as ApplicationHistoryListStories from "./ApplicationHistoryList.stories";
+
+<Meta
+  title="Features/Checker/ApplicationHistoryList"
+  component={ApplicationHistoryList}
+  of={ApplicationHistoryListStories}
+/>
+
+# ApplicationHistoryList
+
+The `ApplicationHistoryList` component is a UI element that renders a list of historical applications and their status.
+
+# Example
+
+<Story of={ApplicationHistoryListStories.OneOfEach} />
+
+# Controls
+
+<Controls of={ApplicationHistoryListStories.OneOfEach} />
