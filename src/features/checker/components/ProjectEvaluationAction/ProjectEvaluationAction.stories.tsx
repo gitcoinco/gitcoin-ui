@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ProjectEvaluationAction } from "./ProjectEvaluationAction";
@@ -18,11 +19,14 @@ export default meta;
 
 type Story = StoryObj<typeof ProjectEvaluationAction>;
 
+const onEvaluateAction = action("onEvaluate");
+
 export const Default: Story = {
   args: {
     status: "pending",
+    projectId: "0x123",
     onEvaluate: (projectId, action) => {
-      console.log(`Evaluating project ${projectId} with action ${action}`);
+      onEvaluateAction("onEvaluate", projectId, action);
     },
   },
 } satisfies Story;
@@ -30,8 +34,9 @@ export const Default: Story = {
 export const Approved: Story = {
   args: {
     status: "approved",
+    projectId: "0x123",
     onEvaluate: (projectId, action) => {
-      console.log(`Evaluating project ${projectId} with action ${action}`);
+      onEvaluateAction("onEvaluate", projectId, action);
     },
   },
 } satisfies Story;
@@ -39,8 +44,9 @@ export const Approved: Story = {
 export const Rejected: Story = {
   args: {
     status: "rejected",
+    projectId: "0x123",
     onEvaluate: (projectId, action) => {
-      console.log(`Evaluating project ${projectId} with action ${action}`);
+      onEvaluateAction("onEvaluate", projectId, action);
     },
   },
 } satisfies Story;
