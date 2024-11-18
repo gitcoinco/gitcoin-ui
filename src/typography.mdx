@@ -2,20 +2,85 @@ import { Meta, Typeset } from "@storybook/blocks";
 
 <Meta title="Styles/Typography" />
 
-MONO
+export const typography = {
+  type: {
+    primary: "DM Sans, sans-serif",
+    secondary: "DM Mono, monospace",
+  },
+  weight: {
+    thin: 100,
+    extraLight: 200,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+    extraBold: 800,
+    black: 900,
+  },
+  size: {
+    s1: 12,
+    s2: 14,
+    s3: 16,
+    s4: 18,
+    m1: 20,
+    m2: 24,
+    m3: 30,
+    l1: 36,
+    l2: 48,
+    l3: 60,
+    l4: 72,
+    l5: 96,
+    l6: 128,
+  },
+};
+
+export const sampleText = "The quick brown fox jumps over the lazy dog.";
+
+# Typography
+
+**Font:** DM Sans
+
+**Weights:** 100(thin), 200(extra-light), 300(light), 400(regular), 500(medium), 600(semi-bold), 700(bold), 800(extra-bold), 900(black)
+
+**Example:** 400(regular)
 
 <Typeset
-  fontSizes={[12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72, 96, 128]}
-  fontWeight={400}
-  sampleText={"The quick brown fox jumps over the lazy dog."}
-  fontFamily={"DM Mono, monospace"}
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+    Number(typography.size.m3),
+    Number(typography.size.l1),
+    Number(typography.size.l2),
+    Number(typography.size.l3),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={sampleText}
+  fontFamily={typography.type.primary}
 />
 
-SANS
+**Font:** DM Mono
+
+**Weights:** 300(light), 400(regular), 500(medium)
+
+**Example:** 400(regular)
 
 <Typeset
-  fontSizes={[12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72, 96, 128]}
-  fontWeight={400}
-  sampleText={"The quick brown fox jumps over the lazy dog."}
-  fontFamily={"system-ui, sans-serif"}
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+    Number(typography.size.m3),
+    Number(typography.size.l1),
+    Number(typography.size.l2),
+    Number(typography.size.l3),
+  ]}
+  fontWeight={typography.weight.regular}
+  sampleText={sampleText}
+  fontFamily={typography.type.secondary}
 />
