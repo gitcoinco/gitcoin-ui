@@ -1,0 +1,26 @@
+import { Meta, Canvas, Story, Description, Controls, Stories } from "@storybook/blocks";
+
+import { ApplicationBadge } from "./ApplicationBadge";
+import * as ApplicationBadgeStories from "./ApplicationBadge.stories";
+
+<Meta
+  title="Components/ApplicationBadge"
+  component={ApplicationBadge}
+  of={ApplicationBadgeStories}
+/>
+
+# ApplicationBadge
+
+The `ApplicationBadge` component is a UI element that indicates either the status of an Application. It supports various states, each represented by a distinct badge.
+
+# Example
+
+<Story of={ApplicationBadgeStories.PendingBadge} />
+
+# Controls
+
+<Controls of={ApplicationBadgeStories.PendingBadge} />
+
+# Other variations
+
+<Stories />
