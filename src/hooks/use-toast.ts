@@ -1,16 +1,32 @@
 import * as React from "react";
 
-import type { ToastActionElement, ToastProps } from "@/ui-shadcn/toast";
+import type { ToastActionElement } from "@/primitives/Toast/Toast";
+import {
+  viewportVariants,
+  toastDescriptionVariants,
+  toastVariants,
+  toastCloseVariants,
+} from "@/primitives/Toast/Toast";
+import { ToastStatus } from "@/primitives/Toast/types";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
 
-type ToasterToast = ToastProps & {
+export interface ToasterToast {
   id: string;
+  status: ToastStatus;
+  description: string;
+  icon?: JSX.Element;
+  timeout?: number;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   title?: React.ReactNode;
-  description?: React.ReactNode;
   action?: ToastActionElement;
-};
+  toastPosition?: keyof typeof viewportVariants.variants.position;
+  descriptionSize?: keyof typeof toastDescriptionVariants.variants.size;
+  toastSize?: keyof typeof toastVariants.variants.size;
+  toastCloseVariant?: keyof typeof toastCloseVariants.variants.variant;
+}
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
@@ -121,7 +137,7 @@ export const reducer = (state: State, action: Action): State => {
   }
 };
 
-const listeners: Array<(state: State) => void> = [];
+const listeners: ((state: State) => void)[] = [];
 
 let memoryState: State = { toasts: [] };
 
@@ -134,7 +150,16 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">;
 
-function toast({ ...props }: Toast) {
+function toast({
+  status,
+  description,
+  timeout = 5000,
+  toastPosition = "bottom-right",
+  descriptionSize = "medium",
+  toastSize = "medium",
+  toastCloseVariant = "alwaysVisible",
+  ...props
+}: Toast) {
   const id = genId();
 
   const update = (props: ToasterToast) =>
@@ -149,6 +174,13 @@ function toast({ ...props }: Toast) {
     toast: {
       ...props,
       id,
+      status,
+      description,
+      timeout,
+      toastPosition,
+      descriptionSize,
+      toastSize,
+      toastCloseVariant,
       open: true,
       onOpenChange: (open) => {
         if (!open) dismiss();

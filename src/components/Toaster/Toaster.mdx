@@ -1,0 +1,87 @@
+import { Meta } from "@storybook/blocks";
+
+import * as ToasterStories from "./Toaster.stories";
+
+<Meta of={ToasterStories} />
+
+# Toaster Component
+
+The `Toaster` component works with the `useToast` hook to display toast notifications in your app.
+
+## Usage
+
+1. **Add the Toaster**: Place the `Toaster` at the root of your app.
+
+```tsx
+import { Toaster } from "./Toaster";
+
+function App() {
+  return (
+    <>
+      <Toaster />
+    </>
+  );
+}
+```
+
+2. **Trigger a Toast**: Use the `useToast` hook in your components.
+
+```tsx
+import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/primitives/Button";
+
+function TriggerButton() {
+  const { toast } = useToast();
+
+  const triggerToast = () => {
+    toast({
+      status: "error", // Variant of the toast (success, error, warning, info)
+      description: "Something went wrong! Please try again.", // Message content
+      timeout: 5000, // Duration before auto-dismissal
+      toastPosition: "bottom-right", // Where the toast appears on screen
+      toastSize: "large", // Size of the toast (small, medium, large)
+      descriptionSize: "large", // Size of the description text
+      toastCloseVariant: "alwaysVisible", // Style for the close action
+    });
+  };
+}
+```
+
+# ToasterStories Component
+
+The `ToasterStories` component is a flexible UI element used to display brief messages to users. It can be customized in various ways to suit different needs.
+
+## Toast Component Variations
+
+### Status Variations
+
+- **Success**: Indicates a successful operation.
+- **Error**: Represents an error or failure.
+- **Info**: Provides informational messages. `(WIP)`
+- **Warning**: Alerts the user to a potential issue. `(WIP)`
+
+### Description
+
+- A string that provides additional context or information about the toast message.
+
+### Timeout
+
+- An optional number specifying how long the toast should be visible before automatically dismissing.
+
+### Position Variations (`toastPosition`)
+
+- Determines where on the viewport the toast will appear. The position is defined by the keys of the `viewportVariants.variants.position` object.
+
+### Description Size Variations (`descriptionSize`)
+
+- Specifies the size of the description text, based on the keys of the `toastDescriptionVariants.variants.size` object.
+
+### Toast Size Variations (`toastSize`)
+
+- Defines the overall size of the toast, based on the keys of the `toastVariants.variants.size` object.
+
+### Toast Close Variant (`toastCloseVariant`)
+
+- Specifies the style of the close button, based on the keys of the `toastCloseVariants.variants.variant` object.
+
+These variations allow the `Toast` component to be highly customizable, providing flexibility in both appearance and behavior to suit different use cases.
