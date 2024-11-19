@@ -8,6 +8,10 @@ import { colors } from "./colors";
 
 <ColorPalette>
   {Object.entries(colors).map(([name, value]) => (
-    <ColorItem key={name} title={name} colors={value} />
+    <ColorItem
+      key={name}
+      title={name}
+      colors={typeof value === "object" ? value : { [name]: value }}
+    />
   ))}
 </ColorPalette>
