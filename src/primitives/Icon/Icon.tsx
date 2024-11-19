@@ -1,10 +1,12 @@
 // Status Icons
 import {
   CheckIcon,
+  CheckSolidIcon,
   ClockIcon,
   ExclamationCircleIcon,
   SparklesIcon,
   XIcon,
+  XSolidIcon,
   CalendarIcon,
   VerifiedBadgeIcon,
 } from "@/assets/icons";
@@ -23,10 +25,12 @@ import {
 export enum IconType {
   // Status Icons
   CHECK = "check",
+  SOLID_CHECK = "solid-check",
   CLOCK = "clock",
   EXCLAMATION_CIRCLE = "exclamation-circle",
   SPARKLES = "sparkles",
   X = "x",
+  SOLID_X = "solid-x",
   CALENDAR = "calendar",
   VERIFIEDBADGE = "verifiedBadge",
 
@@ -50,10 +54,12 @@ export type IconProps = React.SVGProps<SVGSVGElement> & {
 
 const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGElement>>> = {
   check: CheckIcon,
+  "solid-check": CheckSolidIcon,
   clock: ClockIcon,
   "exclamation-circle": ExclamationCircleIcon,
   sparkles: SparklesIcon,
   x: XIcon,
+  "solid-x": XSolidIcon,
   twitter: TwitterIcon,
   github: GithubIcon,
   eth: ETHIcon,

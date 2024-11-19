@@ -1,7 +1,11 @@
 // Status Icons
 export { default as CheckIcon } from "./check.svg?react";
+// Solid Check Icon
+export { default as CheckSolidIcon } from "./solid/check.svg?react";
 export { default as ExclamationCircleIcon } from "./exclamationCircle.svg?react";
 export { default as XIcon } from "./x.svg?react";
+// Solid X Icon
+export { default as XSolidIcon } from "./solid/x.svg?react";
 
 // Time Icons
 export { default as ClockIcon } from "./clock.svg?react";
