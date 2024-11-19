@@ -146,6 +146,7 @@
     "tailwind-variants": "^0.2.1",
     "ts-pattern": "^5.5.0",
     "vaul": "^1.1.0",
+    "viem": "^2.21.48",
     "vite-plugin-svgr": "^4.2.0",
     "zod": "^3.23.8"
   }
