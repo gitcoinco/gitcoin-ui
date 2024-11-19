@@ -1,9 +1,10 @@
 import { createContext } from "react";
 
-import { CheckerAction, CheckerContextType } from "../types";
+import { CheckerAction, CheckerContextType, CheckerRoute } from "../types";
 
 export const initialState: CheckerContextType = {
   applications: [],
+  route: { id: CheckerRoute.ReviewApplications },
 };
 
 export const CheckerContext = createContext<CheckerContextType>(initialState);
