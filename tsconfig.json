@@ -22,7 +22,8 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "~checker/*": ["./src/features/checker/*"]
     },
     "outDir": "./dist"
   },

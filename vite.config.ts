@@ -39,6 +39,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "~checker": path.resolve(__dirname, "./src/features/checker"),
     },
   },
   css: {
