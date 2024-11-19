@@ -63,7 +63,9 @@ const Toast = ({ props }: { props: ToastProps }) => {
           <ToastTitle>{ToastTitleIcon}</ToastTitle>
           <div className="flex gap-6">
             <ToastDescription size={descriptionSize}>{props.description}</ToastDescription>
-            <ToastClose onClick={handleClose} variant={toastCloseVariant} />
+            <ToastClose onClick={handleClose} variant={toastCloseVariant}>
+              <Icon type={IconType.X} className="size-5" />
+            </ToastClose>
           </div>
         </ShadcnToast>
       )}

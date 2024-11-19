@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 // Define variant styles for the Toast viewport
 export const viewportVariants = tv({
-  base: "fixed z-[100] flex flex-col space-y-2 p-4 sm:max-w-[420px] md:max-w-md",
+  base: "fixed z-100 flex flex-col space-y-2 p-4 sm:max-w-105 md:max-w-md",
   variants: {
     position: {
       "top-left": "left-0 top-0",
@@ -49,12 +49,12 @@ export const toastVariants = tv({
   variants: {
     variant: {
       default:
-        "border-neutral-200 bg-white text-neutral-950 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
+        "border-neutral-200 bg-white text-neutral-950 shadow-toast dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-50",
       destructive: "border-red-500 bg-red-500 text-neutral-50 dark:border-red-900 dark:bg-red-900",
     },
     size: {
       small: "h-18 w-96 gap-6 p-2 text-sm",
-      medium: "min-h-[72px] w-[408px] gap-2 p-6 ",
+      medium: "min-h-18 w-102 gap-2 p-6 ",
       large: "h-24 w-96 gap-6 p-6 text-lg",
     },
     align: {
@@ -126,13 +126,13 @@ interface ToastCloseProps
 const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   ToastCloseProps
->(({ className, variant, ...props }, ref) => (
+>(({ className, children, variant, ...props }, ref) => (
   <ToastPrimitives.Close
     ref={ref}
     className={cn(toastCloseVariants({ variant }), className)}
     {...props}
   >
-    <X className="size-5" />
+    {children ? children : <X className="size-5" />}
   </ToastPrimitives.Close>
 ));
 ToastClose.displayName = ToastPrimitives.Close.displayName;
