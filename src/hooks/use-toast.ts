@@ -1,31 +1,18 @@
 import * as React from "react";
 
 import type { ToastActionElement } from "@/primitives/Toast/Toast";
-import {
-  viewportVariants,
-  toastDescriptionVariants,
-  toastVariants,
-  toastCloseVariants,
-} from "@/primitives/Toast/Toast";
-import { ToastStatus } from "@/primitives/Toast/types";
+import { ToastProps } from "@/primitives/Toast/types";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
 
-export interface ToasterToast {
+export interface ToasterToast extends ToastProps {
   id: string;
-  status: ToastStatus;
-  description: string;
   icon?: JSX.Element;
-  timeout?: number;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
   title?: React.ReactNode;
   action?: ToastActionElement;
-  toastPosition?: keyof typeof viewportVariants.variants.position;
-  descriptionSize?: keyof typeof toastDescriptionVariants.variants.size;
-  toastSize?: keyof typeof toastVariants.variants.size;
-  toastCloseVariant?: keyof typeof toastCloseVariants.variants.variant;
 }
 
 const actionTypes = {
