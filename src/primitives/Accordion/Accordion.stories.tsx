@@ -1,14 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-
 import { IconLabel } from "@/components/IconLabel";
-
-
 
 import { IconType } from "../Icon";
 import { Accordion } from "./Accordion";
-
 
 const meta: Meta<typeof Accordion> = {
   component: Accordion,
@@ -22,6 +17,11 @@ const meta: Meta<typeof Accordion> = {
       options: ["none", "sm", "md"],
       control: "select",
       description: "Border style of the accordion",
+    },
+    padding: {
+      options: ["none", "sm", "md", "lg"],
+      control: "select",
+      description: "Padding style of the accordion",
     },
   },
 };
@@ -43,6 +43,7 @@ export const Light: Story = {
     content: "Simple Content",
     variant: "light",
     border: "md",
+    padding: "lg",
   },
 };
 
@@ -52,6 +53,7 @@ export const Blue: Story = {
     content: "Simple Content",
     variant: "blue",
     border: "md",
+    padding: "lg",
   },
 };
 
@@ -96,5 +98,6 @@ export const coolProject: Story = {
     ),
     variant: "default",
     border: "sm",
+    padding: "none",
   },
 };

@@ -1,10 +1,6 @@
 import * as React from "react";
 
-
-
 import { tv, type VariantProps } from "tailwind-variants";
-
-
 
 import { cn, formatLocalDate } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
@@ -15,7 +11,7 @@ import { EvaluationSummaryProps } from "./types";
 
 const reviewSummaryVariants = tv({
   slots: {
-    header: "flex w-full items-center justify-between gap-4 p-8",
+    header: "flex w-full items-center justify-between gap-4 py-8 pr-2",
     headerLeft: "flex flex-1 items-center gap-4",
     headerRight: "flex items-center justify-end gap-2",
     content: "flex w-full flex-col gap-6 p-8",
@@ -40,6 +36,7 @@ const ReviewSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
   return (
     <Accordion
       border="md"
+      padding="md"
       variant={accordionVariant}
       header={<ReviewSummaryHeader evaluation={evaluation} />}
       content={<ReviewSummaryContent evaluation={evaluation} />}

@@ -1,21 +1,16 @@
 import * as React from "react";
 
-
-
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-
-
 import { cn } from "@/lib/utils";
-
 
 const accordionVariants = tv({
   slots: {
     item: "",
     trigger:
-      "flex flex-1 items-center justify-between rounded-lg px-2 py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+      "flex flex-1 items-center justify-between rounded-lg py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
     content:
       "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
     contentInner: "py-4",
@@ -48,10 +43,25 @@ const accordionVariants = tv({
         content: "border-t-2 border-neutral-200",
       },
     },
+    padding: {
+      none: {
+        trigger: "px-2",
+      },
+      sm: {
+        trigger: "px-4",
+      },
+      md: {
+        trigger: "px-8",
+      },
+      lg: {
+        trigger: "px-12",
+      },
+    },
   },
   defaultVariants: {
     variant: "default",
     border: "none",
+    padding: "none",
   },
 });
 
@@ -81,13 +91,13 @@ type AccordionTriggerProps = React.ComponentPropsWithoutRef<typeof AccordionPrim
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   AccordionTriggerProps
->(({ className, children, variant, border, ...props }, ref) => {
-  const { trigger } = accordionVariants({ variant, border });
+>(({ className, children, variant, border, padding, ...props }, ref) => {
+  const { trigger } = accordionVariants({ variant, border, padding });
   return (
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger ref={ref} className={cn(trigger(), className)} {...props}>
         {children}
-        <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
+        <ChevronDown className="size-4 shrink-0 transition-transform duration-200" />
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
@@ -117,6 +127,7 @@ export interface AccordionProps {
   content: React.ReactNode;
   variant?: AccordionVariants["variant"];
   border?: AccordionVariants["border"];
+  padding?: AccordionVariants["padding"];
 }
 
 export const Accordion: React.FC<AccordionProps> = ({
@@ -124,11 +135,12 @@ export const Accordion: React.FC<AccordionProps> = ({
   content,
   variant,
   border,
+  padding,
 }: AccordionProps) => {
   return (
     <AccordionRoot type="multiple">
       <AccordionItem variant={variant} border={border} value="item-1" className="flex flex-col">
-        <AccordionTrigger variant={variant} border={border}>
+        <AccordionTrigger variant={variant} border={border} padding={padding}>
           {header}
         </AccordionTrigger>
         <AccordionContent variant={variant} border={border}>
