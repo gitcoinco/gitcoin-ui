@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+
+
 import { IconLabel } from "@/components/IconLabel";
 
 import { IconType } from "../Icon";
@@ -23,6 +25,10 @@ const meta: Meta<typeof Accordion> = {
       control: "select",
       description: "Padding style of the accordion",
     },
+    isOpen: {
+      control: "boolean",
+      description: "Controls whether the accordion is open or closed",
+    },
   },
 };
 
@@ -44,6 +50,7 @@ export const Light: Story = {
     variant: "light",
     border: "md",
     padding: "lg",
+    isOpen: false,
   },
 };
 
@@ -54,6 +61,7 @@ export const Blue: Story = {
     variant: "blue",
     border: "md",
     padding: "lg",
+    isOpen: true,
   },
 };
 
@@ -99,5 +107,6 @@ export const coolProject: Story = {
     variant: "default",
     border: "sm",
     padding: "none",
+    isOpen: false,
   },
 };

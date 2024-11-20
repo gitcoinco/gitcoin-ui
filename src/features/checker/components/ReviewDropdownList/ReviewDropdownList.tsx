@@ -1,9 +1,14 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
+
+
 import { cn } from "@/lib/utils";
+
+
 
 import ReviewDropdown from "../ReviewDropdown/ReviewDropdown";
 import { EvaluationSummaryProps } from "../ReviewDropdown/types";
+
 
 const reviewDropdownVariants = tv({
   slots: {
@@ -21,12 +26,17 @@ interface ReviewDropdownListProps {
 }
 
 const ReviewDropdownList: React.FC<ReviewDropdownListProps> = ({ evaluations }) => {
-  const { container } = reviewDropdownVariants(); // Using the variant here for styling
+  const { container } = reviewDropdownVariants();
 
   return (
     <div className={cn(container())}>
       {evaluations.map((evaluation, index) => (
-        <ReviewDropdown key={index} evaluation={evaluation} index={index + 1} />
+        <ReviewDropdown
+          key={index}
+          evaluation={evaluation}
+          index={index + 1}
+          isOpen={index === 0}
+        />
       ))}
     </div>
   );

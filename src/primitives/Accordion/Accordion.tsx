@@ -1,10 +1,15 @@
 import * as React from "react";
 
+
+
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
 
+
+
 import { cn } from "@/lib/utils";
+
 
 const accordionVariants = tv({
   slots: {
@@ -128,6 +133,7 @@ export interface AccordionProps {
   variant?: AccordionVariants["variant"];
   border?: AccordionVariants["border"];
   padding?: AccordionVariants["padding"];
+  isOpen?: boolean;
 }
 
 export const Accordion: React.FC<AccordionProps> = ({
@@ -136,9 +142,10 @@ export const Accordion: React.FC<AccordionProps> = ({
   variant,
   border,
   padding,
+  isOpen = true,
 }: AccordionProps) => {
   return (
-    <AccordionRoot type="multiple">
+    <AccordionRoot type="multiple" defaultValue={isOpen ? ["item-1"] : undefined}>
       <AccordionItem variant={variant} border={border} value="item-1" className="flex flex-col">
         <AccordionTrigger variant={variant} border={border} padding={padding}>
           {header}

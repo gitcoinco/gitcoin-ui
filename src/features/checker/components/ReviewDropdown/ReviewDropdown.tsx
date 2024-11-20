@@ -1,5 +1,7 @@
 import * as React from "react";
 
+
+
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate } from "@/lib/utils";
@@ -43,10 +45,15 @@ export type EvaluationSummaryVariants = VariantProps<typeof evaluationSummaryVar
 interface ReviewDropdownContentProps {
   evaluation: EvaluationSummaryProps;
   index?: number;
+  isOpen?: boolean;
 }
 
 // Main Component
-const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({ evaluation, index }) => {
+const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
+  evaluation,
+  index,
+  isOpen = true,
+}) => {
   const accordionVariant = evaluation.evaluatorType === "human" ? "light" : "blue";
   return (
     <Accordion
@@ -55,6 +62,7 @@ const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({ evaluation, inde
       variant={accordionVariant}
       header={<ReviewDropdownHeader evaluation={evaluation} index={index} />}
       content={<ReviewDropdownContent evaluation={evaluation} />}
+      isOpen={isOpen}
     />
   );
 };
@@ -157,15 +165,16 @@ const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation })
       {evaluation.evaluation.map((evaluation, index) => (
         <div
           key={index}
-          className="flex items-center gap-1 font-sans text-base font-normal leading-7 text-black"
+          className="flex items-start gap-2 font-sans text-base font-normal leading-7 text-black"
         >
-          <span>{getIcon(evaluation.answer)}</span>
-          <p>{evaluation.question}</p>
+          <span className="mt-1 shrink-0">{getIcon(evaluation.answer)}</span>
+          <p className="grow">{evaluation.question}</p>
         </div>
       ))}
     </div>
   );
 };
+
 export default ReviewDropdown;
 
 const getIcon = (value: string) => {
