@@ -1,5 +1,7 @@
 import * as React from "react";
 
+
+
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate } from "@/lib/utils";
@@ -8,7 +10,6 @@ import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { EvaluationSummaryProps } from "./types";
-
 const reviewSummaryVariants = tv({
   slots: {
     header: "flex w-full items-center justify-between gap-4 py-8 pr-2",
@@ -18,6 +19,9 @@ const reviewSummaryVariants = tv({
     textRow: "text-left",
     status: "text-sm text-gray-600",
     summary: "flex items-center gap-2 self-stretch rounded-lg bg-gray-50 p-4",
+    reviewTitle: "font-sans text-xl text-black",
+    evaluatorTitle: "font-sans text-sm font-normal text-gray-900",
+    reviewDate: "text-base font-normal text-black",
   },
   defaultVariants: {
     // variant: "default",
@@ -69,7 +73,16 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
         ? "error-strong"
         : "info-strong";
 
-  const { header, headerLeft, headerRight, textRow, status } = reviewSummaryVariants({
+  const {
+    header,
+    headerLeft,
+    headerRight,
+    textRow,
+    status,
+    reviewTitle: reviewTitleClass,
+    evaluatorTitle: evaluatorTitleClass,
+    reviewDate,
+  } = reviewSummaryVariants({
     variant: "default",
   });
 
@@ -79,10 +92,10 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
         <Icon type={evaluatorIconType} />
         <div>
           <p className={cn(textRow())}>
-            <span className="font-sans text-xl text-black">{reviewTitle}</span>
-            <span className="font-sans text-sm font-normal text-gray-900"> {evaluatorTitle}</span>
+            <span className={cn(reviewTitleClass())}>{reviewTitle}</span>
+            <span className={cn(evaluatorTitleClass())}> {evaluatorTitle}</span>
           </p>
-          <p className={cn(textRow(), "text-md font-normal text-black")}>
+          <p className={cn(textRow(), reviewDate())}>
             Reviewed on {formatLocalDate(evaluation.lastUpdatedAt)}
           </p>
         </div>
