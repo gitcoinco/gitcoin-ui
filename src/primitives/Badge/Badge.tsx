@@ -10,6 +10,7 @@ export type BadgeVariants =
   | "warning"
   | "success-strong"
   | "warning-strong"
+  | "error-strong"
   | "info-strong"
   | "outlined-info"
   | "outlined-success"
@@ -29,6 +30,7 @@ const badgeVariants = tv({
       // error: "border-transparent bg-red-300",
       "success-strong": "border-transparent bg-green-300",
       "warning-strong": "border-transparent bg-red-300",
+      "error-strong": "border-transparent bg-orange-300",
       "info-strong": "border-transparent bg-yellow-300",
       "outlined-info": "border-2 border-yellow-100 bg-white",
       "outlined-success": "border-2 border-green-100 bg-white",

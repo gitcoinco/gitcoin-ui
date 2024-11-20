@@ -1,6 +1,5 @@
 import { Colors } from "./types";
 
-
 export const colors: Colors = {
   brand: "#307168",
   black: "#000000",
@@ -66,6 +65,9 @@ export const colors: Colors = {
     "500": "#7D67EB",
     "700": "#5C35CC",
     "900": "#40268C",
+  },
+  orange: {
+    "300": "#FF9776",
   },
 };
 

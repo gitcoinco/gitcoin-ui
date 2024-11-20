@@ -4,6 +4,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
+import { Badge, BadgeVariants } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { EvaluationSummaryProps } from "./types";
@@ -44,7 +45,20 @@ const ReviewSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
 
 // Header Component
 const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
-  const evaluatorIconType = evaluation.evaluatorType === "human" ? IconType.USER : IconType.SHINE;
+  let reviewTitle = "";
+  let evaluatorTitle = "";
+  let evaluatorIconType;
+
+  if (evaluation.evaluatorType === "human") {
+    reviewTitle = "Reviewed by";
+    evaluatorIconType = IconType.USER;
+    evaluatorTitle = `${evaluation.evaluator.slice(0, 4)}...${evaluation.evaluator.slice(-4)}`;
+  } else {
+    reviewTitle = "AI Powered";
+    evaluatorIconType = IconType.SHINE;
+    evaluatorTitle = "BETA";
+  }
+
   const rating = evaluation.evaluation.filter((answer) => answer.answer === "YES").length;
   const icon =
     evaluation.evaluationStatus === "approved" ? (
@@ -52,6 +66,13 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
     ) : (
       <Icon type={IconType.SOLID_X} />
     );
+
+  const reviewStatusBadgeVariant =
+    evaluation.evaluationStatus === "approved"
+      ? "success-strong"
+      : evaluation.evaluationStatus === "rejected"
+        ? "error-strong"
+        : "warning-strong";
 
   const { header, headerLeft, headerRight, textRow, status } = reviewSummaryVariants({
     variant: "default",
@@ -63,11 +84,8 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
         <Icon type={evaluatorIconType} />
         <div>
           <p className={cn(textRow())}>
-            <span className="font-sans text-xl text-black">Review by</span>
-            <span className="font-sans text-sm  font-normal text-gray-900">
-              {" "}
-              {evaluation.evaluator.slice(0, 4)}...{evaluation.evaluator.slice(-4)}
-            </span>
+            <span className="font-sans text-xl text-black">{reviewTitle}</span>
+            <span className="font-sans text-sm font-normal text-gray-900"> {evaluatorTitle}</span>
           </p>
           <p className={cn(textRow(), "text-md font-normal text-black")}>
             Reviewed on {formatLocalDate(evaluation.lastUpdatedAt)}
@@ -76,8 +94,10 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
       </div>
       <div className={cn(headerRight())}>
         {icon}
-        <p className={cn(status())}>{rating}/5</p>
-        <p className={cn(status())}>{evaluation.evaluationStatus}</p>
+        <p className={cn(status())}>
+          {rating}/{evaluation.evaluation.length}
+        </p>
+        <Badge variant={reviewStatusBadgeVariant}>{evaluation.evaluationStatus}</Badge>
       </div>
     </div>
   );

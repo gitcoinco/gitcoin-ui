@@ -5,7 +5,7 @@ export interface EvaluationQuestionProps {
 
 export interface EvaluationSummaryProps {
   evaluator: string;
-  evaluationStatus: "approved" | "rejected";
+  evaluationStatus: "approved" | "rejected" | "pending";
   evaluatorType: "human" | "llm_gpt3";
   evaluation: EvaluationQuestionProps[];
   summary: string;
