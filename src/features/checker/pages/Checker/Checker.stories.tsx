@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { handlers } from "@/mocks/handlers";
+
 import { Checker } from "./Checker";
 
 const meta = {
@@ -16,4 +18,10 @@ export default meta;
 
 type Story = StoryObj<typeof Checker>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  parameters: {
+    msw: {
+      handlers,
+    },
+  },
+};
