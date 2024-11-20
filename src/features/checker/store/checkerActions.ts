@@ -2,6 +2,7 @@ import {
   GoToApplicationEvaluationAction,
   GoToApplicationEvaluationOverviewAction,
   GoToReviewApplicationsAction,
+  GoToSubmitFinalEvaluationAction,
   SetApplicationsAction,
   SetInitialStateAction,
 } from "../types";
@@ -29,6 +30,10 @@ export const goToApplicationEvaluationAction = (
 ): GoToApplicationEvaluationAction => ({
   type: "GO_TO_APPLICATION_EVALUATION",
   payload,
+});
+
+export const goToSubmitFinalEvaluationAction = (): GoToSubmitFinalEvaluationAction => ({
+  type: "GO_TO_SUBMIT_FINAL_EVALUATION",
 });
 
 export const setApplicationsAction = (

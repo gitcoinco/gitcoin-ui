@@ -1,9 +1,11 @@
+import { Hex } from "viem";
+
 import { ProjectApplicationForManager } from ".";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
   payload: {
-    address: string;
+    address: Hex;
     roundId: string;
     chainId: number;
   };
@@ -27,6 +29,10 @@ export interface GoToApplicationEvaluationAction {
   };
 }
 
+export interface GoToSubmitFinalEvaluationAction {
+  type: "GO_TO_SUBMIT_FINAL_EVALUATION";
+}
+
 export interface SetApplicationsAction {
   type: "SET_APPLICATIONS";
   payload: ProjectApplicationForManager[];
@@ -37,4 +43,5 @@ export type CheckerAction =
   | SetApplicationsAction
   | GoToReviewApplicationsAction
   | GoToApplicationEvaluationOverviewAction
-  | GoToApplicationEvaluationAction;
+  | GoToApplicationEvaluationAction
+  | GoToSubmitFinalEvaluationAction;

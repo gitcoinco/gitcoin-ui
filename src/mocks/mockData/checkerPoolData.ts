@@ -64,7 +64,7 @@ export const checkerPoolData = {
         {
           evaluatorScore: 80,
           evaluatorType: "HUMAN",
-          evaluator: "0x0000000000000000000000000000000000000101",
+          evaluator: "0x1234567890123456789012345678901234567890",
           lastUpdatedAt: "2024-11-20T13:04:36.042449",
           evaluationAnswers: [
             {

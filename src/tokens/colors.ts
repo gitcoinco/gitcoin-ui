@@ -63,6 +63,10 @@ export const colors: Colors = {
     "700": "#5C35CC",
     "900": "#40268C",
   },
+  neutral: {
+    "50": "#F7F7F7",
+    "600": "#979998",
+  },
 };
 
 colors.grey = colors.gray;

@@ -2,7 +2,7 @@ import { ProjectReview } from "./types";
 
 export const mockPendingReview0: ProjectReview[] = [
   {
-    id: 1,
+    id: "1",
     name: "project title",
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",
@@ -11,7 +11,7 @@ export const mockPendingReview0: ProjectReview[] = [
     scoreAverage: 60,
   },
   {
-    id: 2,
+    id: "3",
     name: "project title",
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",
@@ -20,7 +20,7 @@ export const mockPendingReview0: ProjectReview[] = [
     scoreAverage: 23,
   },
   {
-    id: 3,
+    id: "3",
     name: "project title",
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",
@@ -32,7 +32,7 @@ export const mockPendingReview0: ProjectReview[] = [
 
 export const mockReadyToSubmit0: ProjectReview[] = [
   {
-    id: 1,
+    id: "1",
     name: "cool project",
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",
@@ -45,7 +45,7 @@ export const mockReadyToSubmit0: ProjectReview[] = [
     scoreAverage: 88,
   },
   {
-    id: 2,
+    id: "3",
     name: "project title",
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",
@@ -57,7 +57,7 @@ export const mockReadyToSubmit0: ProjectReview[] = [
     scoreAverage: 92,
   },
   {
-    id: 3,
+    id: "3",
     name: "project title",
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",

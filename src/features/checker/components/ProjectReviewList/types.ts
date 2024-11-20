@@ -4,7 +4,7 @@ export interface Review {
 }
 
 export interface ProjectReview {
-  id: number;
+  id: string;
   name: string;
   date: Date;
   avatarUrl: string;
