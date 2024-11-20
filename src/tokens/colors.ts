@@ -1,9 +1,13 @@
 import { Colors } from "./types";
 
+
 export const colors: Colors = {
   brand: "#307168",
   black: "#000000",
   white: "#ffffff",
+  neutral: {
+    "100": "#EBEBEBE",
+  },
   moss: {
     "50": "#F2FBF8",
     "100": "#D5F2EA",
