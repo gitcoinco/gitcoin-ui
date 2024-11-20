@@ -13,6 +13,8 @@ export { default as CalendarIcon } from "./calendar.svg?react";
 
 // Miscellaneous Icons
 export { default as SparklesIcon } from "./sparkles.svg?react";
+export { default as ShineIcon } from "./shine.svg?react";
+export { default as UserIcon } from "./user.svg?react";
 export { default as VerifiedBadgeIcon } from "./verifiedBadge.svg?react";
 export { default as GlobeIcon } from "./globe.svg?react";
 

@@ -1,45 +1,66 @@
 import { Accordion } from "@/primitives/Accordion";
+import { Icon, IconType } from "@/primitives/Icon";
+
+import { EvaluationSummaryProps } from "./types";
+
+interface ReviewSummaryContentProps {
+  evaluation: EvaluationSummaryProps;
+}
+
+// Main Component
+const ReviewSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+  return (
+    <Accordion
+      border="md"
+      variant="light"
+      header={<ReviewSummaryHeader evaluation={evaluation} />}
+      content={<ReviewSummaryContent evaluation={evaluation} />}
+    />
+  );
+};
 
 // Header Component
-const ReviewSummaryHeader: React.FC = () => {
+const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+  const evaluatorIconType = evaluation.evaluatorType === "human" ? IconType.USER : IconType.SHINE;
+
   return (
     <div style={headerStyles}>
       <div style={headerLeftStyles}>
-        Icon
-        {/* <IconComponent /> Replace with the actual Icon component */}
+        <Icon type={evaluatorIconType} />
         <div>
-          <div style={textRowStyle}>Row 1 Text</div>
-          <div style={textRowStyle}>Row 2 Text</div>
+          <p>
+            Review by
+            <span>{evaluation.evaluator}</span>
+          </p>
+          <p>Reviewed on {evaluation.lastUpdatedAt}</p>
         </div>
       </div>
       <div style={headerRightStyles}>
+        <Icon type={IconType.SOLID_CHECK} />
+        <p>3/5</p>
         Status
+        <p>{evaluation.status}</p>
         {/* <StatusComponent /> Replace with the actual Status component */}
       </div>
     </div>
   );
 };
 
-// Content Component
-const ReviewSummaryContent: React.FC = () => {
-  return (
-    <div style={contentStyles}>
-      <p>Content row 1</p>
-      <p>Content row 2</p>
-      {/* Add more content rows as needed */}
-    </div>
-  );
+const EvaluationSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+  return <div></div>;
 };
 
-// Main Component
-const ReviewSummary: React.FC<null> = () => {
+const EvaluationAnswers: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+  return <div></div>;
+};
+
+// Content Component
+const ReviewSummaryContent: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
   return (
-    <Accordion
-      border="md"
-      variant="light"
-      header={<ReviewSummaryHeader />}
-      content={<ReviewSummaryContent />}
-    />
+    <div style={contentStyles}>
+      <EvaluationSummary evaluation={evaluation} />
+      <EvaluationAnswers evaluation={evaluation} />
+    </div>
   );
 };
 

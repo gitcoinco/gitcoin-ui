@@ -9,6 +9,8 @@ import {
   XSolidIcon,
   CalendarIcon,
   VerifiedBadgeIcon,
+  ShineIcon,
+  UserIcon,
 } from "@/assets/icons";
 // Social Media Icons
 import { GithubIcon, TwitterIcon, GlobeIcon } from "@/assets/icons";
@@ -29,9 +31,11 @@ export enum IconType {
   CLOCK = "clock",
   EXCLAMATION_CIRCLE = "exclamation-circle",
   SPARKLES = "sparkles",
+  SHINE = "shine",
   X = "x",
   SOLID_X = "solid-x",
   CALENDAR = "calendar",
+  USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
 
   // Social Media Icons
@@ -58,12 +62,14 @@ const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGEl
   clock: ClockIcon,
   "exclamation-circle": ExclamationCircleIcon,
   sparkles: SparklesIcon,
+  shine: ShineIcon,
   x: XIcon,
   "solid-x": XSolidIcon,
   twitter: TwitterIcon,
   github: GithubIcon,
   eth: ETHIcon,
   calendar: CalendarIcon,
+  user: UserIcon,
   verifiedBadge: VerifiedBadgeIcon,
   globe: GlobeIcon,
   optimism: OptimismIcon,
