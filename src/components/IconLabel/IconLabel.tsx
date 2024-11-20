@@ -7,7 +7,7 @@ import { IconType } from "@/primitives/Icon";
 
 import { IconLabelProps } from "./types";
 import {
-  getEvaluationMessage,
+  getEvaluation,
   renderReviewIcons,
   IconLabelContainer,
   getFormattedLink,
@@ -20,16 +20,21 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
   const { text, icon } = variants();
 
   return match(props)
-    .with({ type: "ai-evaluation" }, ({ percent = 0, className }) => (
-      <IconLabelContainer
-        type="ai-evaluation"
-        className={className}
-        iconType={IconType.SPARKLES}
-        iconVariant={icon({ type: "ai-evaluation" })}
-      >
-        <span className={text()}>{getEvaluationMessage(percent)}</span>
-      </IconLabelContainer>
-    ))
+    .with({ type: "ai-evaluation" }, ({ percent = 0, className }) => {
+      const { message, variant } = getEvaluation(percent) as keyof typeof icon;
+
+      return (
+        <IconLabelContainer
+          type="ai-evaluation-a"
+          className={className}
+          iconType={IconType.SPARKLES}
+          iconVariant={icon({ type: variant })}
+        >
+          <span className={text()}>{message}</span>
+        </IconLabelContainer>
+      );
+    })
+
     .with({ type: "date" }, ({ date = new Date(), className }) => (
       <IconLabelContainer
         type="date"

@@ -11,9 +11,17 @@ export const variants = tv({
       default: {
         container: "gap-2",
       },
-      "ai-evaluation": {
+      "ai-evaluation-a": {
         container: "gap-1",
         icon: "fill-green-600",
+      },
+      "ai-evaluation-u": {
+        container: "gap-1",
+        icon: "fill-yellow-300",
+      },
+      "ai-evaluation-r": {
+        container: "gap-1",
+        icon: "fill-red-700",
       },
       date: {
         container: "gap-2",
