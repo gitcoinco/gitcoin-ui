@@ -11,7 +11,7 @@ export const ApplicationEvaluationOverview = ({
         <div className="font-mono text-2xl font-medium leading-loose text-black">
           Application Evaluation Overview
         </div>
-        <div className="font-mono text-base font-normal leading-7 text-[#555555]">
+        <div className="font-mono text-base font-normal leading-7 text-gray-900">
           {`Previous evaluations for ${projectId} here.`}
         </div>
       </div>

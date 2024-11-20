@@ -59,7 +59,7 @@ export const ProjectReviewList = ({ reviewer, projects }: ProjectReviewListProps
       position: "center",
       render: (item) => (
         <div className="flex items-center justify-center">
-          <CircleStat value={item.scoreAverage} />
+          <CircleStat value={item.scoreAverage.toFixed(1)} />
         </div>
       ),
     },
