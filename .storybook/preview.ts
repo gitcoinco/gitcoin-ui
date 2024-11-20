@@ -24,6 +24,7 @@ const preview: Preview = {
       handlers,
     },
   },
+
   loaders: [mswLoader],
   decorators: [
     withThemeByDataAttribute({
@@ -35,6 +36,8 @@ const preview: Preview = {
       attributeName: "data-mode",
     }),
   ],
+
+  tags: ["autodocs"],
 };
 
 // NOTE: Example of global loaders
