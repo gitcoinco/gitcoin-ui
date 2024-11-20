@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-
-import ReviewSummary from "./ReviewSummary";
+import ReviewDropdown from "./ReviewDropdown";
 import { EvaluationSummaryProps } from "./types";
-
 
 const mockData: EvaluationSummaryProps[] = [
   {
@@ -75,23 +72,23 @@ const mockData: EvaluationSummaryProps[] = [
   },
 ];
 
-const meta: Meta<typeof ReviewSummary> = {
-  component: ReviewSummary,
-  title: "Features/Checker/Components/ReviewSummary", // Adjust the path as per your Storybook organization
-} satisfies Meta<typeof ReviewSummary>;
+const meta: Meta<typeof ReviewDropdown> = {
+  component: ReviewDropdown,
+  title: "Features/Checker/Components/ReviewDropdown", // Adjust the path as per your Storybook organization
+} satisfies Meta<typeof ReviewDropdown>;
 
 export default meta;
 
-type Story = StoryObj<typeof ReviewSummary>;
+type Story = StoryObj<typeof ReviewDropdown>;
 
 export const Default: Story = {
-  args: { evaluation: { ...mockData[0] } },
+  args: { evaluation: { ...mockData[0] }, index: 1 },
 };
 
 export const Rejected: Story = {
-  args: { evaluation: { ...mockData[1] } },
+  args: { evaluation: { ...mockData[1] }, index: 2 },
 };
 
 export const LlmGpt3: Story = {
-  args: { evaluation: { ...mockData[2] } },
+  args: { evaluation: { ...mockData[2] }, index: 3 },
 };

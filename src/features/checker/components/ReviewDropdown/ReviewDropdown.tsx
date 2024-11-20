@@ -1,7 +1,5 @@
 import * as React from "react";
 
-
-
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate } from "@/lib/utils";
@@ -10,54 +8,67 @@ import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { EvaluationSummaryProps } from "./types";
-const reviewSummaryVariants = tv({
+
+const ReviewDropdownVariants = tv({
   slots: {
     header: "flex w-full items-center justify-between gap-4 py-8 pr-2",
     headerLeft: "flex flex-1 items-center gap-4",
     headerRight: "flex items-center justify-end gap-2",
     content: "flex w-full flex-col gap-6 p-8",
-    textRow: "text-left",
+    textRow: "space-x-1 text-left",
     status: "text-sm text-gray-600",
-    summary: "flex items-center gap-2 self-stretch rounded-lg bg-gray-50 p-4",
     reviewTitle: "font-sans text-xl text-black",
     evaluatorTitle: "font-sans text-sm font-normal text-gray-900",
     reviewDate: "text-base font-normal text-black",
   },
+  defaultVariants: {},
+});
+
+const evaluationSummaryVariants = tv({
+  base: "flex items-center gap-2 self-stretch rounded-lg p-4",
+  variants: {
+    background: {
+      default: "bg-gray-50",
+      light: "bg-white",
+    },
+  },
   defaultVariants: {
-    // variant: "default",
+    background: "default",
   },
 });
 
-export type ReviewSummaryVariants = VariantProps<typeof reviewSummaryVariants>;
+export type ReviewDropdownVariants = VariantProps<typeof ReviewDropdownVariants>;
+export type EvaluationSummaryVariants = VariantProps<typeof evaluationSummaryVariants>;
 
-interface ReviewSummaryContentProps {
+interface ReviewDropdownContentProps {
   evaluation: EvaluationSummaryProps;
+  index?: number;
 }
 
 // Main Component
-const ReviewSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({ evaluation, index }) => {
   const accordionVariant = evaluation.evaluatorType === "human" ? "light" : "blue";
   return (
     <Accordion
       border="md"
       padding="md"
       variant={accordionVariant}
-      header={<ReviewSummaryHeader evaluation={evaluation} />}
-      content={<ReviewSummaryContent evaluation={evaluation} />}
+      header={<ReviewDropdownHeader evaluation={evaluation} index={index} />}
+      content={<ReviewDropdownContent evaluation={evaluation} />}
     />
   );
 };
 
 // Header Component
-const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation, index }) => {
   let reviewTitle = "";
   let evaluatorTitle = "";
   let evaluatorIconType;
 
   if (evaluation.evaluatorType === "human") {
-    reviewTitle = "Reviewed by";
+    reviewTitle = `Review ${index ?? ""}`;
     evaluatorIconType = IconType.USER;
-    evaluatorTitle = `${evaluation.evaluator.slice(0, 4)}...${evaluation.evaluator.slice(-4)}`;
+    evaluatorTitle = `by ${evaluation.evaluator.slice(0, 4)}...${evaluation.evaluator.slice(-4)}`;
   } else {
     reviewTitle = "AI Powered";
     evaluatorIconType = IconType.SHINE;
@@ -82,7 +93,7 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
     reviewTitle: reviewTitleClass,
     evaluatorTitle: evaluatorTitleClass,
     reviewDate,
-  } = reviewSummaryVariants({
+  } = ReviewDropdownVariants({
     variant: "default",
   });
 
@@ -101,7 +112,7 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
         </div>
       </div>
       <div className={cn(headerRight())}>
-        {getIcon(evaluation)}
+        {getIcon(evaluation.evaluationStatus)}
         <p className={cn(status())}>
           {rating}/{evaluation.evaluation.length}
         </p>
@@ -115,8 +126,8 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
 };
 
 // Content Component
-const ReviewSummaryContent: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
-  const { content } = reviewSummaryVariants({ variant: "default" });
+const ReviewDropdownContent: React.FC<ReviewDropdownContentProps> = ({ evaluation }) => {
+  const { content } = ReviewDropdownVariants({ variant: "default" });
 
   return (
     <div className={cn(content())}>
@@ -126,38 +137,50 @@ const ReviewSummaryContent: React.FC<ReviewSummaryContentProps> = ({ evaluation 
   );
 };
 
-const EvaluationSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
-  const { summary } = reviewSummaryVariants({ variant: "default" });
+// Evaluation Summary Component
+const EvaluationSummary: React.FC<ReviewDropdownContentProps> = ({ evaluation }) => {
+  const backgroundClass = evaluationSummaryVariants({
+    background: evaluation.evaluatorType === "human" ? "default" : "light",
+  });
+
   return (
-    <div className={cn(summary())}>
+    <div className={cn(backgroundClass)}>
       <p>{evaluation.summary}</p>
     </div>
   );
 };
 
-const EvaluationAnswers: React.FC<ReviewSummaryContentProps> = ({ evaluation }) => {
+// Evaluation Answers Component
+const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       {evaluation.evaluation.map((evaluation, index) => (
-        <p key={index}>
-          {evaluation.question}: {evaluation.answer}
-        </p>
+        <div
+          key={index}
+          className="flex items-center gap-1 font-sans text-base font-normal leading-7 text-black"
+        >
+          <span>{getIcon(evaluation.answer)}</span>
+          <p>{evaluation.question}</p>
+        </div>
       ))}
     </div>
   );
 };
+export default ReviewDropdown;
 
-export default ReviewSummary;
+const getIcon = (value: string) => {
+  const iconMap = {
+    approved: IconType.SOLID_CHECK,
+    rejected: IconType.SOLID_X,
+    uncertain: IconType.SOLID_QUESTION_MARK_CIRCLE,
+    YES: IconType.SOLID_CHECK,
+    NO: IconType.SOLID_X,
+    UNCERTAIN: IconType.SOLID_QUESTION_MARK_CIRCLE,
+  };
 
-const getIcon = (evaluation: EvaluationSummaryProps) => {
-  switch (evaluation.evaluationStatus) {
-    case "approved":
-      return <Icon type={IconType.SOLID_CHECK} />;
-    case "rejected":
-      return <Icon type={IconType.SOLID_X} />;
-    case "uncertain":
-      return <Icon type={IconType.SOLID_QUESTION_MARK_CIRCLE} />;
-    default:
-      return <Icon type={IconType.SOLID_QUESTION_MARK_CIRCLE} />;
-  }
+  const iconType = Object.keys(iconMap).includes(value)
+    ? iconMap[value as keyof typeof iconMap]
+    : IconType.SOLID_QUESTION_MARK_CIRCLE;
+
+  return <Icon type={iconType} />;
 };
