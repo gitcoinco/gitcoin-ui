@@ -1,4 +1,4 @@
-import { ProjectApplicationForManager } from "./projectApplication";
+import { ProjectApplicationForManager } from ".";
 
 export enum CheckerRoute {
   ReviewApplications = "review-applications",

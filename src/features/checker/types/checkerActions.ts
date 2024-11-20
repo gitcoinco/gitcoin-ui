@@ -1,4 +1,4 @@
-import { ProjectApplicationForManager } from "./projectApplication";
+import { ProjectApplicationForManager } from ".";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";

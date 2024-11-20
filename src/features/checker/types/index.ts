@@ -1,3 +1,3 @@
 export * from "./checkerActions";
 export * from "./checkerContext";
-export * from "./projectApplication";
+export * from "../services/allo/types";
