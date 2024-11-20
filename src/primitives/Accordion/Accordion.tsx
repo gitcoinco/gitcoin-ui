@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils";
 
 const accordionVariants = tv({
   slots: {
-    item: "gap-4",
+    item: "",
     trigger:
       "flex flex-1 items-center justify-between rounded-lg px-2 py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
     content:
       "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
-    contentInner: "pb-4 pt-0",
+    contentInner: "py-4",
   },
   variants: {
     variant: {
@@ -127,12 +127,7 @@ export const Accordion: React.FC<AccordionProps> = ({
 }: AccordionProps) => {
   return (
     <AccordionRoot type="multiple">
-      <AccordionItem
-        variant={variant}
-        border={border}
-        value="item-1"
-        className="flex flex-col gap-4"
-      >
+      <AccordionItem variant={variant} border={border} value="item-1" className="flex flex-col">
         <AccordionTrigger variant={variant} border={border}>
           {header}
         </AccordionTrigger>

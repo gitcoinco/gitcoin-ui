@@ -1,12 +1,12 @@
 export interface EvaluationQuestionProps {
   question: string;
-  answer: string;
+  answer: "YES" | "NO" | "UNCERTAIN";
 }
 
 export interface EvaluationSummaryProps {
   evaluator: string;
-  status: string;
-  evaluatorType: string;
+  evaluationStatus: "approved" | "rejected";
+  evaluatorType: "human" | "llm_gpt3";
   evaluation: EvaluationQuestionProps[];
   summary: string;
   lastUpdatedAt: string;
