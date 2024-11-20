@@ -6,6 +6,7 @@ export { default as ExclamationCircleIcon } from "./exclamationCircle.svg?react"
 export { default as XIcon } from "./x.svg?react";
 // Solid X Icon
 export { default as XSolidIcon } from "./solid/x.svg?react";
+export { default as SolidQuestionMarkCircleIcon } from "./solid/questionMarkCircle.svg?react";
 
 // Time Icons
 export { default as ClockIcon } from "./clock.svg?react";

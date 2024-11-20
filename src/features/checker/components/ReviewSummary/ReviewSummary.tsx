@@ -1,10 +1,14 @@
 import * as React from "react";
 
+
+
 import { tv, type VariantProps } from "tailwind-variants";
+
+
 
 import { cn, formatLocalDate } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
-import { Badge, BadgeVariants } from "@/primitives/Badge/Badge";
+import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { EvaluationSummaryProps } from "./types";
@@ -60,19 +64,13 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
   }
 
   const rating = evaluation.evaluation.filter((answer) => answer.answer === "YES").length;
-  const icon =
-    evaluation.evaluationStatus === "approved" ? (
-      <Icon type={IconType.SOLID_CHECK} />
-    ) : (
-      <Icon type={IconType.SOLID_X} />
-    );
 
   const reviewStatusBadgeVariant =
     evaluation.evaluationStatus === "approved"
       ? "success-strong"
       : evaluation.evaluationStatus === "rejected"
         ? "error-strong"
-        : "warning-strong";
+        : "info-strong";
 
   const { header, headerLeft, headerRight, textRow, status } = reviewSummaryVariants({
     variant: "default",
@@ -93,11 +91,14 @@ const ReviewSummaryHeader: React.FC<ReviewSummaryContentProps> = ({ evaluation }
         </div>
       </div>
       <div className={cn(headerRight())}>
-        {icon}
+        {getIcon(evaluation)}
         <p className={cn(status())}>
           {rating}/{evaluation.evaluation.length}
         </p>
-        <Badge variant={reviewStatusBadgeVariant}>{evaluation.evaluationStatus}</Badge>
+        <Badge variant={reviewStatusBadgeVariant}>
+          {evaluation.evaluationStatus.charAt(0).toUpperCase() +
+            evaluation.evaluationStatus.slice(1)}
+        </Badge>
       </div>
     </div>
   );
@@ -119,7 +120,7 @@ const EvaluationSummary: React.FC<ReviewSummaryContentProps> = ({ evaluation }) 
   const { summary } = reviewSummaryVariants({ variant: "default" });
   return (
     <div className={cn(summary())}>
-      <p>Summary: {evaluation.summary}</p>
+      <p>{evaluation.summary}</p>
     </div>
   );
 };
@@ -137,3 +138,16 @@ const EvaluationAnswers: React.FC<ReviewSummaryContentProps> = ({ evaluation }) 
 };
 
 export default ReviewSummary;
+
+const getIcon = (evaluation: EvaluationSummaryProps) => {
+  switch (evaluation.evaluationStatus) {
+    case "approved":
+      return <Icon type={IconType.SOLID_CHECK} />;
+    case "rejected":
+      return <Icon type={IconType.SOLID_X} />;
+    case "uncertain":
+      return <Icon type={IconType.SOLID_QUESTION_MARK_CIRCLE} />;
+    default:
+      return <Icon type={IconType.SOLID_QUESTION_MARK_CIRCLE} />;
+  }
+};

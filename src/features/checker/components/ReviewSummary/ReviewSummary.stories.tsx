@@ -5,6 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import ReviewSummary from "./ReviewSummary";
 import { EvaluationSummaryProps } from "./types";
 
+
 const mockData: EvaluationSummaryProps[] = [
   {
     evaluator: "0x1234567890123456789012345678901234567890",
@@ -52,7 +53,7 @@ const mockData: EvaluationSummaryProps[] = [
   },
   {
     evaluator: "0x1234567890123456789012345678901234567890",
-    evaluationStatus: "approved",
+    evaluationStatus: "uncertain",
     evaluatorType: "llm_gpt3",
     evaluation: [
       {

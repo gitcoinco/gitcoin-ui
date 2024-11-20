@@ -11,6 +11,7 @@ import {
   VerifiedBadgeIcon,
   ShineIcon,
   UserIcon,
+  SolidQuestionMarkCircleIcon,
 } from "@/assets/icons";
 // Social Media Icons
 import { GithubIcon, TwitterIcon, GlobeIcon } from "@/assets/icons";
@@ -37,6 +38,7 @@ export enum IconType {
   CALENDAR = "calendar",
   USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
+  SOLID_QUESTION_MARK_CIRCLE = "questionMarkCircle",
 
   // Social Media Icons
   GITHUB = "github",
@@ -65,6 +67,7 @@ const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGEl
   shine: ShineIcon,
   x: XIcon,
   "solid-x": XSolidIcon,
+  questionMarkCircle: SolidQuestionMarkCircleIcon,
   twitter: TwitterIcon,
   github: GithubIcon,
   eth: ETHIcon,
