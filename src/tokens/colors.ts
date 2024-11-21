@@ -5,7 +5,9 @@ export const colors: Colors = {
   black: "#000000",
   white: "#ffffff",
   neutral: {
+    "50": "#F7F7F7",
     "100": "#EBEBEBE",
+    "600": "#979998",
   },
   moss: {
     "50": "#F2FBF8",
@@ -15,7 +17,7 @@ export const colors: Colors = {
     "700": "#22635A",
     "900": "#1E443F",
   },
-  gray: {
+  grey: {
     "50": "#F7F7F7",
     "100": "#ECEDED",
     "300": "#C8CCCC",
@@ -66,12 +68,7 @@ export const colors: Colors = {
     "700": "#5C35CC",
     "900": "#40268C",
   },
-  neutral: {
-    "50": "#F7F7F7",
-    "600": "#979998",
   orange: {
     "300": "#FF9776",
   },
 };
-
-colors.grey = colors.gray;

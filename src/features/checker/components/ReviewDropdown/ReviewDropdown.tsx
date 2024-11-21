@@ -16,9 +16,9 @@ const ReviewDropdownVariants = tv({
     headerRight: "flex items-center justify-end gap-4",
     content: "flex w-full flex-col gap-6 p-8",
     textRow: "space-x-1 text-left",
-    status: "text-gray-600",
+    status: "text-grey-600",
     reviewTitle: "font-sans text-xl text-black",
-    evaluatorTitle: "absolute my-1 font-sans text-sm font-normal text-gray-900",
+    evaluatorTitle: "absolute my-1 font-sans text-sm font-normal text-grey-900",
     reviewDate: "text-base font-normal text-black",
   },
   defaultVariants: {},
@@ -28,7 +28,7 @@ const evaluationSummaryVariants = tv({
   base: "flex items-center gap-2 self-stretch rounded-lg p-4",
   variants: {
     background: {
-      default: "bg-gray-50",
+      default: "bg-grey-50",
       light: "bg-white",
     },
   },

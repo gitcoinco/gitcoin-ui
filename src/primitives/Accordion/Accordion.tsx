@@ -1,15 +1,10 @@
 import * as React from "react";
 
-
-
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-
-
 import { cn } from "@/lib/utils";
-
 
 const accordionVariants = tv({
   slots: {
@@ -23,7 +18,7 @@ const accordionVariants = tv({
   variants: {
     variant: {
       default: {
-        trigger: "bg-gray-50",
+        trigger: "bg-grey-50",
       },
       light: {
         trigger: "bg-white",

@@ -26,7 +26,7 @@ export const variants = tv({
       date: {
         container: "gap-2",
       },
-      dateWithPrefix: { text: "text-gray-900" },
+      dateWithPrefix: { text: "text-grey-900" },
       social: {
         text: "text-green-brand hover:underline",
       },
@@ -35,7 +35,7 @@ export const variants = tv({
       },
       reviews: {
         container: "gap-2",
-        icon: "size-7 rounded-full border border-gray-100 bg-white",
+        icon: "size-7 rounded-full border border-grey-100 bg-white",
       },
       verifiedBadge: {
         icon: "h-5 w-[28px]",

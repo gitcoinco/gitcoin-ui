@@ -40,7 +40,7 @@ export const ReviewApplicationsPage = () => {
           <div className="font-mono text-2xl font-medium leading-loose text-black">
             Review applications
           </div>
-          <div className="font-mono text-base font-normal leading-7 text-gray-900">
+          <div className="font-mono text-base font-normal leading-7 text-grey-900">
             Evaluate projects here.
           </div>
         </div>
@@ -56,12 +56,12 @@ export const ReviewApplicationsPage = () => {
                 onClick={goToSubmitFinalEvaluation}
               />
             </div>
-            <div className="h-px bg-gray-300" />
+            <div className="h-px bg-grey-300" />
           </div>
 
           <div>
             {ReadyApplicationsToSubmit.length === 0 ? (
-              <div className="font-mono text-base font-normal leading-7 text-gray-900">
+              <div className="font-mono text-base font-normal leading-7 text-grey-900">
                 Evaluations that are ready to be submitted onchain will appear here once reviewed.
                 Manager supports multiple reviewers.
               </div>
@@ -86,7 +86,7 @@ export const ReviewApplicationsPage = () => {
 
           <div>
             {PendingApplications.length === 0 ? (
-              <div className="font-mono text-base font-normal leading-7 text-gray-900">
+              <div className="font-mono text-base font-normal leading-7 text-grey-900">
                 No applications are currently in review.
               </div>
             ) : (

@@ -9,7 +9,7 @@ export const ApplicationEvaluation = ({ projectId }: ApplicationEvaluationProps)
         <div className="font-mono text-2xl font-medium leading-loose text-black">
           Application Evaluation
         </div>
-        <div className="font-mono text-base font-normal leading-7 text-gray-900">
+        <div className="font-mono text-base font-normal leading-7 text-grey-900">
           {`Evaluate ${projectId} here.`}
         </div>
       </div>
