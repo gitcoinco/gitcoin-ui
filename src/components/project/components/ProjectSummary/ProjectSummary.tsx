@@ -13,7 +13,9 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata 
     projectMetadata;
 
   const appliedOnLabel = `Applied on: ${new Date(createdAt).toLocaleString()}`;
-  const lastEditedLabel = `Last edited: ${new Date(createdAt).toLocaleString()}`;
+  const lastEditedLabel = `Last edited: ${new Date(
+    lastUpdated.toString() == "0" ? lastUpdated : createdAt,
+  ).toLocaleString()}`;
 
   return (
     <div className="flex gap-16">
@@ -33,7 +35,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata 
             label={appliedOnLabel}
           />
         )}
-        {lastUpdated && (
+        {(createdAt || lastUpdated) && (
           <IconLabel
             className="text-gray-700"
             type="default"

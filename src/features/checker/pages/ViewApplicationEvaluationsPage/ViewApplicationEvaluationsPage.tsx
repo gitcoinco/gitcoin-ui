@@ -4,6 +4,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import { IconLabel } from "@/components/IconLabel";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
+import { ProjectSummary } from "@/components/project/components/ProjectSummary/ProjectSummary";
+import { capitalizeWord } from "@/lib/utils";
+import { Badge } from "@/primitives/Badge/Badge";
+import { Button } from "@/primitives/Button";
 
 import ReviewDropdownList from "../../components/ReviewDropdownList/ReviewDropdownList";
 import { useApplicationEvaluations } from "../../hooks/useApplication";
@@ -30,39 +34,49 @@ const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProp
         results!
       </div>
     );
+
+  const project = data?.application.metadata.application.project;
+  project.recipient = data?.application.metadata.application.recipient;
+
+  const reviewStatusBadgeVariant =
+    data?.application.status === "APPROVED"
+      ? "success-strong"
+      : data?.application.status === "REJECTED"
+        ? "error-strong"
+        : "info-strong";
+
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       <ProjectBanner
-        bannerImg={data?.application.metadata.application.project.bannerImg ?? ""}
-        logoImg={data?.application.metadata.application.project.logoImg ?? ""}
+        bannerImg={project.bannerImg ?? ""}
+        logoImg={project.logoImg ?? ""}
         avatarPosition="left"
       />
-      <div className="flex flex-col gap-4">
-        <span className="font-sans text-[16px]/[24px] font-normal">
-          An onchain project that is very cool. Did I mention that it was cool?
-        </span>
-        <div className="flex flex-wrap items-start gap-10">
-          <div className="flex flex-col gap-4">
-            <IconLabel ens="coolproject.eth" type="address" />
-            <IconLabel link="https://twitter.com/user" platform="website" type="social" />
-            <IconLabel
-              isVerified
-              link="https://twitter.com/useruser"
-              platform="twitter"
-              type="social"
-            />
-            <IconLabel isVerified link="https://twitter.com/user" platform="github" type="social" />
-          </div>
-          <div className="flex flex-col gap-4">
-            <IconLabel
-              date={new Date("2024-11-21T12:14:34.603Z")}
-              prefix="Applied on:"
-              type="dateWithPrefix"
-            />
-            <IconLabel link="https://twitter.com/user" platform="github" type="social" />
-          </div>
+      <div className="flex justify-around">
+        <h1 className="text-3xl font-medium leading-9">{project.title}</h1>
+        <div>
+          <Button variant="secondary" size="sm">
+            Share
+          </Button>{" "}
+          // TODO
+          <Button variant="secondary" size="sm">
+            View Public Page
+          </Button>{" "}
+          // TODO
         </div>
       </div>
+
+      <div className="h-0.5 bg-[#EAEAEA]" />
+
+      <div className="flex gap-2">
+        <Badge className="font-semibold" variant={reviewStatusBadgeVariant}>
+          {capitalizeWord(data?.application.status)}
+        </Badge>
+      </div>
+
+      <ProjectSummary projectMetadata={project} />
+
+      <div className="h-0.5 bg-[#EAEAEA]" />
 
       <ReviewDropdownList evaluations={data?.applicationEvaluations} />
       <pre>{JSON.stringify(data, null, 2)}</pre>
