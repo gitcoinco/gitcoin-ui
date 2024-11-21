@@ -52,17 +52,12 @@ const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProp
         logoImg={project.logoImg ?? ""}
         avatarPosition="left"
       />
-      <div className="flex justify-around">
+      <div className="flex justify-between">
         <h1 className="text-3xl font-medium leading-9">{project.title}</h1>
-        <div>
-          <Button variant="secondary" size="sm">
-            Share
-          </Button>{" "}
-          // TODO
-          <Button variant="secondary" size="sm">
-            View Public Page
-          </Button>{" "}
-          // TODO
+        <div className="flex gap-4">
+          <Button variant="outlined-secondary" value="Share" /> // TODO
+          <Button variant="outlined-secondary" value="View Public Page" />
+          {/* `www.explorer.gitcoin.co/#/round/${chainId}/${roundId}/${applicationId} */}
         </div>
       </div>
 
