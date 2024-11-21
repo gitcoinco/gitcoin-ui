@@ -1,5 +1,6 @@
 import { IconType } from "@/primitives/Icon";
 
+
 interface AIEvaluationProps {
   type: "ai-evaluation";
   percent?: number;
@@ -39,7 +40,7 @@ interface AddressProps {
   className?: string;
 }
 
-interface SocialProps {
+export interface SocialProps {
   type: "social";
   platform?: "github" | "twitter" | "website";
   link?: string;

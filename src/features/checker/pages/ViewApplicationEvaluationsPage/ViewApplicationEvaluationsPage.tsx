@@ -1,8 +1,15 @@
 import React from "react";
 
+
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+
+
+import { IconLabel } from "@/components/IconLabel";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
+
+
 
 import ReviewDropdownList from "../../components/ReviewDropdownList/ReviewDropdownList";
 import { useApplicationEvaluations } from "../../hooks/useApplication";
@@ -30,6 +37,32 @@ const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProp
         logoImg={data?.application.metadata.application.project.logoImg ?? ""}
         avatarPosition="left"
       />
+      <div className="flex flex-col gap-4">
+        <span className="font-sans text-[16px]/[24px] font-normal">
+          An onchain project that is very cool. Did I mention that it was cool?
+        </span>
+        <div className="flex flex-wrap items-start gap-10">
+          <div className="flex flex-col gap-4">
+            <IconLabel ens="coolproject.eth" type="address" />
+            <IconLabel link="https://twitter.com/user" platform="website" type="social" />
+            <IconLabel
+              isVerified
+              link="https://twitter.com/useruser"
+              platform="twitter"
+              type="social"
+            />
+            <IconLabel isVerified link="https://twitter.com/user" platform="github" type="social" />
+          </div>
+          <div className="flex flex-col gap-4">
+            <IconLabel
+              date={new Date("2024-11-21T12:14:34.603Z")}
+              prefix="Applied on:"
+              type="dateWithPrefix"
+            />
+            <IconLabel link="https://twitter.com/user" platform="github" type="social" />
+          </div>
+        </div>
+      </div>
 
       <ReviewDropdownList evaluations={data?.applicationEvaluations} />
       <pre>{JSON.stringify(data, null, 2)}</pre>
