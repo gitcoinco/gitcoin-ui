@@ -1,4 +1,4 @@
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 
 import { cn } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
@@ -78,11 +78,4 @@ export const getFormattedLink = (platform?: string, link?: string) => {
     .with("github", () => link?.split(".com/")[1])
     .with("twitter", () => `@${link?.split(".com/")[1]}`)
     .otherwise(() => link);
-};
-
-export const getAddressLabel = (ens?: string, address?: string) => {
-  return match({ ens, address })
-    .with({ ens: P.string }, ({ ens }) => ens)
-    .with({ address: P.string }, ({ address }) => address.slice(0, 4) + "..." + address.slice(-4))
-    .otherwise(() => "");
 };

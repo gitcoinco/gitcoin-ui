@@ -1,15 +1,9 @@
 import React from "react";
 
-
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-
 
 import { IconLabel } from "@/components/IconLabel";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
-
-
 
 import ReviewDropdownList from "../../components/ReviewDropdownList/ReviewDropdownList";
 import { useApplicationEvaluations } from "../../hooks/useApplication";
@@ -29,7 +23,13 @@ const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProp
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading evaluations</div>;
-  if (!data) return <div>No data</div>;
+  if (!data)
+    return (
+      <div className="leading-7">
+        This application is still pending evaluation submission. Check back here soon for your
+        results!
+      </div>
+    );
   return (
     <div>
       <ProjectBanner

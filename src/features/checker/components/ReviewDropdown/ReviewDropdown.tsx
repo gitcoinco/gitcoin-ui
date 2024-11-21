@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { cn, formatLocalDate, shortAddress } from "@/lib/utils";
+import { cn, formatLocalDate, getAddressLabel, capitalizeWord } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
@@ -74,7 +74,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
   if (evaluation.evaluatorType === "HUMAN") {
     reviewTitle = `Review ${index ?? ""}`;
     evaluatorIconType = IconType.USER;
-    evaluatorTitle = `by ${shortAddress(evaluation.evaluator)}`;
+    evaluatorTitle = `by ${getAddressLabel(undefined, evaluation.evaluator)}`;
   } else {
     reviewTitle = "AI Powered";
     evaluatorIconType = IconType.SHINE;
@@ -125,8 +125,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
           </p>
         </div>
         <Badge variant={reviewStatusBadgeVariant}>
-          {evaluation.evaluationStatus.charAt(0).toUpperCase() +
-            evaluation.evaluationStatus.slice(1)}
+          {capitalizeWord(evaluation.evaluationStatus)}
         </Badge>
       </div>
     </div>

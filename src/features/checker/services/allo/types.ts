@@ -40,6 +40,7 @@ export interface ProjectMetadata {
   projectGithub?: string;
   credentials: ProjectCredentials;
   owners: ProjectOwner[];
+  recipient?: string;
   createdAt: number;
   lastUpdated: number;
 }

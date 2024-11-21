@@ -3,6 +3,7 @@ import React from "react";
 import { match, P } from "ts-pattern";
 
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
+import { getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 
 import { IconLabelProps } from "./types";
@@ -11,7 +12,6 @@ import {
   renderReviewIcons,
   IconLabelContainer,
   getFormattedLink,
-  getAddressLabel,
   RenderIcon,
 } from "./utils";
 import { variants } from "./variants";

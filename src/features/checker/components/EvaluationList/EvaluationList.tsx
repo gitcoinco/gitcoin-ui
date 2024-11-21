@@ -1,5 +1,5 @@
 import { IconLabel } from "@/components/IconLabel";
-import { capitalizeWord, shortAddress } from "@/lib/utils";
+import { capitalizeWord, getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
@@ -21,29 +21,22 @@ export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
       header: "Reviewer",
       key: "reviewer",
       width: "1fr",
-      position: "center",
       render: (item) => (
-        <div className="flex items-center justify-center">
-          <p>{item.evaluator === "HUMAN" ? shortAddress(item.evaluator) : "ChatGPT"}</p>
-        </div>
+        <p>
+          {item.evaluatorType === "HUMAN" ? getAddressLabel(undefined, item.evaluator) : "ChatGPT"}
+        </p>
       ),
     },
     {
       header: "Score",
       key: "evaluatorScore",
       width: "1fr",
-      position: "center",
-      render: (item) => (
-        <div className="flex items-center justify-center">
-          <p>{item.evaluatorScore}%</p>
-        </div>
-      ),
+      render: (item) => <p>{item.evaluatorScore}%</p>,
     },
     {
       header: "Status",
       key: "evaluatorStatus",
       width: "1fr",
-      position: "center",
       render: (item) => {
         const icon =
           item.evaluationStatus === "APPROVED"
@@ -60,15 +53,13 @@ export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
               : "text-red-700";
 
         return (
-          <div className="flex items-center justify-center">
-            <IconLabel
-              className={className}
-              type="default"
-              iconVariant="success"
-              iconType={icon}
-              label={capitalizeWord(item.evaluationStatus)}
-            />
-          </div>
+          <IconLabel
+            className={className}
+            type="default"
+            iconVariant="default"
+            iconType={icon}
+            label={capitalizeWord(item.evaluationStatus)}
+          />
         );
       },
     },

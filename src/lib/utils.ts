@@ -1,5 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { match, P } from "ts-pattern";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -42,12 +43,12 @@ export function formatLocalDate(isoDate: string) {
   });
 }
 
-export function shortAddress(address: string) {
-  if (typeof address !== "string" || address.length < 8) {
-    throw new Error("Address must be a string with at least 8 characters.");
-  }
-  return `${address.slice(0, 4)}...${address.slice(-4)}`;
-}
+export const getAddressLabel = (ens?: string, address?: string) => {
+  return match({ ens, address })
+    .with({ ens: P.string }, ({ ens }) => ens)
+    .with({ address: P.string }, ({ address }) => address.slice(0, 4) + "..." + address.slice(-4))
+    .otherwise(() => "");
+};
 
 export function capitalizeWord(word: string): string {
   if (!word) return word;
