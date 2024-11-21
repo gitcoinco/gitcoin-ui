@@ -7,13 +7,13 @@ export interface EvaluationAnswer {
 
 export interface Evaluation {
   evaluator: string;
-  evaluationStatus: "approved" | "rejected" | "pending" | "uncertain";
-  evaluatorType: "human" | "llm_gpt3";
+  evaluationStatus: "APPROVED" | "REJECTED" | "PENDING" | "UNCERTAIN";
+  evaluatorType: "HUMAN" | "LLM_GPT3";
   evaluatorScore: number;
   summary: string;
   lastUpdatedAt: string;
   evaluationAnswers: EvaluationAnswer[];
-  metadataCid: string;
+  metadataCid?: string;
 }
 
 export interface Application {

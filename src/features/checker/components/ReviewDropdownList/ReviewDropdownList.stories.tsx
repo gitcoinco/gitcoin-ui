@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { mockData } from "../ReviewDropdown/mockData";
+
+
+import { checkerApplicationEvaluations } from "@/mocks/mockData/checkerApplicationEvaluations";
+
 import ReviewDropdownList from "./ReviewDropdownList";
 
 const meta: Meta<typeof ReviewDropdownList> = {
@@ -13,5 +16,5 @@ export default meta;
 type Story = StoryObj<typeof ReviewDropdownList>;
 
 export const Default: Story = {
-  args: { evaluations: mockData },
+  args: { evaluations: checkerApplicationEvaluations },
 };

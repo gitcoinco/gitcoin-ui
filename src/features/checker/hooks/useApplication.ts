@@ -26,5 +26,11 @@ export const useApplicationEvaluations = (
       return data;
     },
   });
-  return query;
+
+  return {
+    data: query.data,
+    isLoading: query.isLoading,
+    isError: query.isError,
+    error: query.error,
+  };
 };
