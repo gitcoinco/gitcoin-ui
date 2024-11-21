@@ -1,11 +1,18 @@
 import { useApplicationEvaluations } from "../../hooks/useApplication";
 
-export const ViewApplicationEvaluationsPage = (
-  chainId: number,
-  roundId: string,
-  applicationId: string,
-) => {
-  const { data } = useApplicationEvaluations(chainId, roundId, applicationId);
+
+export interface ViewApplicationEvaluationsPageProps {
+  chainId: number;
+  roundId: string;
+  applicationId: string;
+}
+
+export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluationsPageProps> = ({
+  chainId,
+  roundId,
+  applicationId,
+}) => {
+  // const { data } = useApplicationEvaluations(chainId, roundId, applicationId);
 
   return <div>Wire Page in</div>;
 };
