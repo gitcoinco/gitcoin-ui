@@ -4,7 +4,7 @@ import { ProjectLabelList } from "./ProjectLabelList";
 
 const meta: Meta<typeof ProjectLabelList> = {
   component: ProjectLabelList,
-  title: "Components/ProjectLabelList",
+  title: "Components/project/ProjectLabelList",
 };
 
 export default meta;
@@ -16,11 +16,11 @@ export const Default: Story = {
     socialLinks: [
       {
         link: "https://twitter.com/user",
-        platform: "Twitter",
+        platform: "twitter",
       },
       {
         link: "https://github.com/user",
-        platform: "GitHub",
+        platform: "github",
         isVerified: true,
       },
     ],
