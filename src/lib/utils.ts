@@ -1,7 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -41,4 +40,16 @@ export function formatLocalDate(isoDate: string) {
     minute: "2-digit",
     hour12: true,
   });
+}
+
+export function shortAddress(address: string) {
+  if (typeof address !== "string" || address.length < 8) {
+    throw new Error("Address must be a string with at least 8 characters.");
+  }
+  return `${address.slice(0, 4)}...${address.slice(-4)}`;
+}
+
+export function capitalizeWord(word: string): string {
+  if (!word) return word;
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }

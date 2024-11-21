@@ -1,12 +1,8 @@
 import * as React from "react";
 
-
-
 import { tv, type VariantProps } from "tailwind-variants";
 
-
-
-import { cn, formatLocalDate } from "@/lib/utils";
+import { cn, formatLocalDate, shortAddress } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
@@ -78,7 +74,7 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
   if (evaluation.evaluatorType === "HUMAN") {
     reviewTitle = `Review ${index ?? ""}`;
     evaluatorIconType = IconType.USER;
-    evaluatorTitle = `by ${evaluation.evaluator.slice(0, 4)}...${evaluation.evaluator.slice(-4)}`;
+    evaluatorTitle = `by ${shortAddress(evaluation.evaluator)}`;
   } else {
     reviewTitle = "AI Powered";
     evaluatorIconType = IconType.SHINE;

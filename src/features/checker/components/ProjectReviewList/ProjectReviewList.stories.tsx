@@ -4,7 +4,7 @@ import { ProjectReviewList } from "./ProjectReviewList";
 import { mockPendingReview0, mockReadyToSubmit0 } from "./mocks";
 
 const meta = {
-  title: "Features/Checker/ProjectReviewList",
+  title: "Features/Checker/Components/ProjectReviewList",
   component: ProjectReviewList,
   args: {
     reviewer: "0x1234567890123456789012345678901234567890",
