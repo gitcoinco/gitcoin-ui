@@ -1,0 +1,28 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+
+import { ProjectBanner } from "./ProjectBanner";
+import * as ProjectBannerStories from "./ProjectBanner.stories";
+
+<Meta of={ProjectBannerStories} />
+
+# ProjectBanner
+
+The ProjectBanner component displays a banner image with an avatar, with options for positioning the avatar.
+
+## Props
+
+- **bannerImg**: string - CID for the banner image.
+- **logoImg**: string - CID for the avatar image.
+- **avatarPosition**: "center" | "left" | "right" (optional) - The position of the avatar on the banner. Defaults to "center".
+
+## Examples
+
+### Left Avatar
+
+<Story of={ProjectBannerStories.LeftAvatar} />
+
+
+## Controls
+
+<Controls />
+<Stories />
