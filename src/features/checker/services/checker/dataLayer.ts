@@ -1,6 +1,6 @@
 import { executeQuery } from "./checkerClient";
-import { checkerPoolDataQuery } from "./queries";
-import { PoolData } from "./types";
+import { checkerApplicationEvaluationsQuery, checkerPoolDataQuery } from "./queries";
+import { Application, PoolData } from "./types";
 
 export async function getCheckerPoolData(chainId?: number, alloPoolId?: string): Promise<PoolData> {
   try {
@@ -13,5 +13,26 @@ export async function getCheckerPoolData(chainId?: number, alloPoolId?: string):
     return response.pools[0];
   } catch (e) {
     throw new Error(`Failed to fetch pools data from checker api with error: ${e}.`);
+  }
+}
+
+export async function getCheckerApplicationEvaluations(
+  chainId: number,
+  alloPoolId: string,
+  alloApplicationId: string,
+) {
+  try {
+    const response = (await executeQuery(checkerApplicationEvaluationsQuery, {
+      chainId,
+      alloPoolId,
+      alloApplicationId,
+    })) as unknown as {
+      applications: Application[];
+    };
+    return response.applications[0].evaluations;
+  } catch (e) {
+    throw new Error(
+      `Failed to fetch application evaluations data from checker api with error: ${e}.`,
+    );
   }
 }
