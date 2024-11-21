@@ -1,7 +1,5 @@
 import * as React from "react";
 
-
-
 import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate } from "@/lib/utils";
@@ -15,12 +13,12 @@ const ReviewDropdownVariants = tv({
   slots: {
     header: "flex w-full items-center justify-between gap-4 py-8 pr-2",
     headerLeft: "flex flex-1 items-center gap-4",
-    headerRight: "flex items-center justify-end gap-2",
+    headerRight: "flex items-center justify-end gap-4",
     content: "flex w-full flex-col gap-6 p-8",
     textRow: "space-x-1 text-left",
-    status: "text-sm text-gray-600",
+    status: "text-gray-600",
     reviewTitle: "font-sans text-xl text-black",
-    evaluatorTitle: "font-sans text-sm font-normal text-gray-900",
+    evaluatorTitle: "absolute my-1 font-sans text-sm font-normal text-gray-900",
     reviewDate: "text-base font-normal text-black",
   },
   defaultVariants: {},
@@ -120,10 +118,12 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
         </div>
       </div>
       <div className={cn(headerRight())}>
-        {getIcon(evaluation.evaluationStatus)}
-        <p className={cn(status())}>
-          {rating}/{evaluation.evaluation.length}
-        </p>
+        <div className="flex gap-2">
+          {getIcon(evaluation.evaluationStatus)}
+          <p className={cn(status())}>
+            {rating}/{evaluation.evaluation.length}
+          </p>
+        </div>
         <Badge variant={reviewStatusBadgeVariant}>
           {evaluation.evaluationStatus.charAt(0).toUpperCase() +
             evaluation.evaluationStatus.slice(1)}
@@ -191,5 +191,5 @@ const getIcon = (value: string) => {
     ? iconMap[value as keyof typeof iconMap]
     : IconType.SOLID_QUESTION_MARK_CIRCLE;
 
-  return <Icon type={iconType} />;
+  return <Icon className="my-0.5" type={iconType} />;
 };
