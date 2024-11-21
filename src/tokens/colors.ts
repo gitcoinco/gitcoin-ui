@@ -4,6 +4,9 @@ export const colors: Colors = {
   brand: "#307168",
   black: "#000000",
   white: "#ffffff",
+  neutral: {
+    "100": "#EBEBEBE",
+  },
   moss: {
     "50": "#F2FBF8",
     "100": "#D5F2EA",
@@ -66,6 +69,8 @@ export const colors: Colors = {
   neutral: {
     "50": "#F7F7F7",
     "600": "#979998",
+  orange: {
+    "300": "#FF9776",
   },
 };
 

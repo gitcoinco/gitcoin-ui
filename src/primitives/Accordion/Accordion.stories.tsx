@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+
+
 import { IconLabel } from "@/components/IconLabel";
 
 import { IconType } from "../Icon";
@@ -7,21 +9,59 @@ import { Accordion } from "./Accordion";
 
 const meta: Meta<typeof Accordion> = {
   component: Accordion,
+  argTypes: {
+    variant: {
+      options: ["default", "light", "blue"],
+      control: "select",
+      description: "Style variant of the accordion",
+    },
+    border: {
+      options: ["none", "sm", "md"],
+      control: "select",
+      description: "Border style of the accordion",
+    },
+    padding: {
+      options: ["none", "sm", "md", "lg"],
+      control: "select",
+      description: "Padding style of the accordion",
+    },
+    isOpen: {
+      control: "boolean",
+      description: "Controls whether the accordion is open or closed",
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Accordion>;
 
 export const Default: Story = {
-  argTypes: {
-    variant: {
-      options: ["default"],
-      control: "select",
-    },
-  },
   args: {
     header: "Simple Header",
     content: "Simple Content",
+    variant: "default",
+  },
+};
+
+export const Light: Story = {
+  args: {
+    header: "Simple Header",
+    content: "Simple Content",
+    variant: "light",
+    border: "md",
+    padding: "lg",
+    isOpen: false,
+  },
+};
+
+export const Blue: Story = {
+  args: {
+    header: "Simple Header",
+    content: "Simple Content",
+    variant: "blue",
+    border: "md",
+    padding: "lg",
+    isOpen: true,
   },
 };
 
@@ -36,12 +76,12 @@ export const coolProject: Story = {
       />
     ),
     content: (
-      <div className="flex flex-col gap-4 ">
-        <span className="font-sans text-[16px]/[24px] font-normal  ">
+      <div className="flex flex-col gap-4">
+        <span className="font-sans text-[16px]/[24px] font-normal">
           An onchain project that is very cool. Did I mention that it was cool?
         </span>
         <div className="flex flex-wrap items-start gap-10">
-          <div className="flex flex-col  gap-4">
+          <div className="flex flex-col gap-4">
             <IconLabel type="address" ens="coolproject.eth" />
             <IconLabel type="social" platform="website" link={"https://twitter.com/user"} />
             <IconLabel
@@ -57,7 +97,7 @@ export const coolProject: Story = {
               isVerified={true}
             />
           </div>
-          <div className="flex flex-col  gap-4">
+          <div className="flex flex-col gap-4">
             <IconLabel type="dateWithPrefix" prefix="Applied on:" date={new Date()} />
             <IconLabel type="social" platform="github" link={"https://twitter.com/user"} />
           </div>
@@ -65,5 +105,8 @@ export const coolProject: Story = {
       </div>
     ),
     variant: "default",
+    border: "sm",
+    padding: "none",
+    isOpen: false,
   },
 };
