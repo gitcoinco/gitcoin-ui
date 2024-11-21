@@ -9,9 +9,10 @@ import { ProjectReview } from "./types";
 export interface ProjectReviewListProps {
   reviewer: `0x${string}`;
   projects: ProjectReview[];
+  action?: (projectId: string) => void;
 }
 
-export const ProjectReviewList = ({ reviewer, projects }: ProjectReviewListProps) => {
+export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewListProps) => {
   const columns: ListGridColumn<ProjectReview>[] = [
     {
       header: "Project",
@@ -59,7 +60,7 @@ export const ProjectReviewList = ({ reviewer, projects }: ProjectReviewListProps
       position: "center",
       render: (item) => (
         <div className="flex items-center justify-center">
-          <CircleStat value={item.scoreAverage} />
+          <CircleStat value={item.scoreAverage.toFixed(1)} />
         </div>
       ),
     },
@@ -72,7 +73,16 @@ export const ProjectReviewList = ({ reviewer, projects }: ProjectReviewListProps
         const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
         return (
           <div className="flex items-center justify-center">
-            <Button variant="secondary" value="Evaluate project" disabled={isReviewed} />
+            <Button
+              variant="secondary"
+              value="Evaluate project"
+              disabled={isReviewed}
+              onClick={() => {
+                if (action) {
+                  action(item.id);
+                }
+              }}
+            />
           </div>
         );
       },

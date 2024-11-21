@@ -5,16 +5,16 @@ import { Icon, IconType } from "@/primitives/Icon";
 
 import { variants } from "./variants";
 
-const { container, icon, text } = variants();
+const { container, icon } = variants();
 
-export function getEvaluationMessage(percent: number): string {
+export function getEvaluation(percent: number) {
   percent = Math.min(Math.max(percent, 0), 100);
-  if (percent > 60) {
-    return `Approve (${percent}%)`;
-  } else if (percent > 40) {
-    return `Uncertain (${percent}%)`;
+  if (percent >= 60) {
+    return { message: `Approve (${percent}%)`, variant: "ai-evaluation-a" };
+  } else if (percent >= 40) {
+    return { message: `Uncertain (${percent}%)`, variant: "ai-evaluation-u" };
   } else {
-    return `Reject (${percent}%)`;
+    return { message: `Reject (${percent}%)`, variant: "ai-evaluation-r" };
   }
 }
 

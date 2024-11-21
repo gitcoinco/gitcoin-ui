@@ -14,7 +14,7 @@ const projectEvaluationActionVariants = tv({
   slots: {
     approve: `${commonButtonStyles} border border-moss-500 bg-white text-black`,
     reject: `${commonButtonStyles} border border-red-700 bg-white text-black`,
-    disabled: `${commonButtonStyles} cursor-not-allowed bg-gray-100 text-gray-500`,
+    disabled: `${commonButtonStyles} cursor-not-allowed bg-grey-100 text-grey-500`,
     approvedReject: `${commonButtonStyles} border border-red-700 bg-red-50 text-red-700`,
     rejectedApprove: `${commonButtonStyles} border border-moss-500 bg-moss-50 text-moss-500`,
   },
@@ -46,7 +46,7 @@ export const ProjectEvaluationAction = ({
       .with({ status: "approved", action: "approve" }, () => ({
         className: projectEvaluationActionVariants.slots.disabled,
         disabled: true,
-        iconFillClass: "fill-gray-500",
+        iconFillClass: "fill-grey-500",
       }))
       .with({ status: "approved", action: "reject" }, () => ({
         className: projectEvaluationActionVariants.slots.approvedReject,
@@ -61,12 +61,12 @@ export const ProjectEvaluationAction = ({
       .with({ status: "rejected", action: "reject" }, () => ({
         className: projectEvaluationActionVariants.slots.disabled,
         disabled: true,
-        iconFillClass: "fill-gray-500",
+        iconFillClass: "fill-grey-500",
       }))
       .otherwise(() => ({
         className: projectEvaluationActionVariants.slots.disabled,
         disabled: true,
-        iconFillClass: "fill-gray-500",
+        iconFillClass: "fill-grey-500",
       }));
 
   const approveProps = getButtonProps("approve");

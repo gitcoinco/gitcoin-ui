@@ -1,4 +1,8 @@
 import { http, HttpResponse } from "msw";
+import { graphql } from "msw";
+
+import { applicationsForManagers } from "./mockData/applicationsForManager";
+import { checkerPoolData } from "./mockData/checkerPoolData";
 
 export const taskListHandler = http.get("https://jsonplaceholder.typicode.com/todos", () => {
   return HttpResponse.json([
@@ -14,4 +18,18 @@ export const taskListHandlerWithError = http.get(
   },
 );
 
-export const handlers = [taskListHandler];
+export const applicationForManagerHandler = graphql.query("getApplicationsForManager", () => {
+  return HttpResponse.json({
+    data: {
+      applications: applicationsForManagers,
+    },
+  });
+});
+
+export const checkerPoolDataHandler = graphql.query("getCheckerPoolData", () => {
+  return HttpResponse.json({
+    data: { pools: [checkerPoolData] },
+  });
+});
+
+export const handlers = [taskListHandler, applicationForManagerHandler, checkerPoolDataHandler];

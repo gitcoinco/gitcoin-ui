@@ -52,7 +52,7 @@ This is displayed in a smaller container to showcase content in compact spaces.
 `,
   },
   render: (args) => (
-    <div className="flex w-[250px] list-disc flex-col items-center justify-center rounded-lg border border-gray-300 p-6 shadow-sm">
+    <div className="flex w-[250px] list-disc flex-col items-center justify-center rounded-lg border border-grey-300 p-6 shadow-sm">
       <Markdown {...args} />
     </div>
   ),
@@ -87,7 +87,7 @@ greet();
     `,
   },
   render: (args) => (
-    <div className="flex w-full items-center justify-center rounded-lg border border-gray-300 p-10 shadow-lg">
+    <div className="flex w-full items-center justify-center rounded-lg border border-grey-300 p-10 shadow-lg">
       <Markdown {...args} />
     </div>
   ),
@@ -122,7 +122,7 @@ hello()
 `,
   },
   render: (args) => (
-    <div className="flex w-full items-center justify-center rounded-lg border border-gray-300 p-10 shadow-lg">
+    <div className="flex w-full items-center justify-center rounded-lg border border-grey-300 p-10 shadow-lg">
       <Markdown {...args} />
     </div>
   ),
