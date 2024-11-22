@@ -5,7 +5,7 @@ import { StatCardGroup } from "@/primitives/StatCardGroup";
 import { ProjectReviewList } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
 import {
-  goToApplicationEvaluationAction,
+  goToApplicationEvaluationOverviewAction,
   goToSubmitFinalEvaluationAction,
   useCheckerContext,
   useCheckerDispatchContext,
@@ -18,8 +18,8 @@ export const ReviewApplicationsPage = () => {
   const dispatch = useCheckerDispatchContext();
   const { address } = useCheckerContext();
 
-  const goToApplicationEvaluation = (projectId: string) => {
-    dispatch(goToApplicationEvaluationAction({ projectId }));
+  const goToApplicationEvaluationOverview = (projectId: string) => {
+    dispatch(goToApplicationEvaluationOverviewAction({ projectId }));
   };
 
   const goToSubmitFinalEvaluation = () => {
@@ -74,7 +74,7 @@ export const ReviewApplicationsPage = () => {
               <ProjectReviewList
                 reviewer={address || "0x"}
                 projects={ReadyApplicationsToSubmit}
-                action={goToApplicationEvaluation}
+                action={goToApplicationEvaluationOverview}
               />
             )}
           </div>
@@ -98,7 +98,7 @@ export const ReviewApplicationsPage = () => {
               <ProjectReviewList
                 reviewer={address || "0x"}
                 projects={PendingApplications}
-                action={goToApplicationEvaluation}
+                action={goToApplicationEvaluationOverview}
               />
             )}
           </div>

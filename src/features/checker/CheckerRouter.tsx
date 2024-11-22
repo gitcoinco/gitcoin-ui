@@ -5,7 +5,7 @@ import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerCont
 
 import {
   ApplicationEvaluation,
-  ApplicationEvaluationOverview,
+  ApplicationEvaluationOverviewPage,
   ReviewApplicationsPage,
   SubmitFinalEvaluation,
 } from "~checker/pages";
@@ -29,7 +29,7 @@ export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) 
     .with(
       { id: CheckerRoute.ApplicationEvaluationOverview, projectId: P.string.minLength(1) },
       ({ projectId }) => (
-        <ApplicationEvaluationOverview
+        <ApplicationEvaluationOverviewPage
           chainId={chainId}
           poolId={poolId}
           applicationId={projectId}

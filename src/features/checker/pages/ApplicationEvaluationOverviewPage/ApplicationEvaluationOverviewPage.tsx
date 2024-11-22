@@ -4,17 +4,17 @@ import { Button } from "@/primitives/Button";
 import { EvaluationList } from "../../components/EvaluationList/EvaluationList";
 import { useApplicationEvaluations } from "../../hooks/useApplication";
 
-export interface ApplicationEvaluationOverviewProps {
+export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;
   poolId: string;
   applicationId: string;
 }
 
-export const ApplicationEvaluationOverview = ({
+export const ApplicationEvaluationOverviewPage = ({
   chainId,
   poolId,
   applicationId,
-}: ApplicationEvaluationOverviewProps) => {
+}: ApplicationEvaluationOverviewPageProps) => {
   const { data, isLoading, error } = useApplicationEvaluations(chainId, poolId, applicationId);
   if (isLoading) return <div>Loading...</div>;
   if (error || !data) return <div>Error loading evaluations</div>;
