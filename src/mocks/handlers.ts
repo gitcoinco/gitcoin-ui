@@ -1,8 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { graphql } from "msw";
 
-
-
 import { applicationsForManagers } from "./mockData/applicationsForManager";
 import { checkerApplicationEvaluations } from "./mockData/checkerApplicationEvaluations";
 import { checkerPoolData } from "./mockData/checkerPoolData";
@@ -49,4 +47,10 @@ export const checkerApplicationEvaluationsHandler = graphql.query(
   },
 );
 
-export const handlers = [taskListHandler, applicationForManagerHandler, checkerPoolDataHandler];
+export const handlers = [
+  taskListHandler,
+  applicationForManagerHandler,
+  checkerPoolDataHandler,
+  indexerGetApplicationByIdHandler,
+  checkerApplicationEvaluationsHandler,
+];
