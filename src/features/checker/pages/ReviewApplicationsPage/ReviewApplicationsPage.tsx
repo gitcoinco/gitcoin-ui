@@ -1,11 +1,10 @@
-import { ProjectReviewList } from "@/features/checker/components/ProjectReviewList/ProjectReviewList";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
 
-import { useGetApplicationsReviewPage } from "~checker/hooks/useApplications";
-import { useCheckerContext } from "~checker/hooks/useCheckerContext";
-import { useCheckerDispatchContext } from "~checker/hooks/useCheckerDispatchContext";
+import { ProjectReviewList } from "~checker/components";
+import { useGetApplicationsReviewPage } from "~checker/hooks";
+import { useCheckerContext, useCheckerDispatchContext } from "~checker/store";
 
 const canSubmitFinalEvaluation = true;
 

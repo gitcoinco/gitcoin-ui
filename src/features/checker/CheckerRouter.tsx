@@ -3,15 +3,16 @@ import { useEffect } from "react";
 import { match, P } from "ts-pattern";
 import { Hex } from "viem";
 
-import { useCheckerContext } from "~checker/hooks/useCheckerContext";
-import { useCheckerDispatchContext } from "~checker/hooks/useCheckerDispatchContext";
-import { setInitialStateAction } from "~checker/store/checkerActions";
-import { CheckerRoute } from "~checker/types";
+import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
+import { useCheckerDispatchContext } from "@/features/checker/store/hooks/useCheckerDispatchContext";
 
-import { ApplicationEvaluation } from "../ApplicationEvaluation";
-import { ApplicationEvaluationOverview } from "../ApplicationEvaluationOverview";
-import { ReviewApplicationsPage } from "../ReviewApplicationsPage";
-import { SubmitFinalEvaluation } from "../SubmitFinalEvaluationPage";
+import {
+  ApplicationEvaluation,
+  ApplicationEvaluationOverview,
+  ReviewApplicationsPage,
+  SubmitFinalEvaluation,
+} from "~checker/pages";
+import { setInitialStateAction, CheckerRoute } from "~checker/store";
 
 export interface CheckerRouterProps {
   address: Hex;

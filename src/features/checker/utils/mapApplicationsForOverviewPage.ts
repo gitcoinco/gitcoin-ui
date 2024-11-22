@@ -1,8 +1,8 @@
 import { StatCardProps } from "@/primitives/StatCard";
 
 import { ProjectReview, Review } from "../components/ProjectReviewList/types";
-import { Application } from "../services/checker";
-import { ProjectApplicationForManager } from "../types";
+import { ProjectApplicationForManager } from "../services/allo";
+import { CheckerApiApplication } from "../services/checker";
 
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {
@@ -15,7 +15,7 @@ const AI_EVALUATOR_ADDRESS = "0x0000000000000000000000000000000000000001" as con
 
 // Utility function to categorize project reviews and calculate application counts
 export function categorizeProjectReviews(
-  checkerApplicationsEvaluations: Application[],
+  checkerApplicationsEvaluations: CheckerApiApplication[],
   indexerApplications: ProjectApplicationForManager[],
 ): ProjectReviewsResultByCategory {
   // Create a map for efficient lookup of applications by ID

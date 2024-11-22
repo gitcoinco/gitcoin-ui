@@ -1,6 +1,6 @@
 import { Hex } from "viem";
 
-import { ProjectApplicationForManager } from ".";
+import { CheckerApiPoolData } from "~checker/services/checker";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
@@ -33,14 +33,17 @@ export interface GoToSubmitFinalEvaluationAction {
   type: "GO_TO_SUBMIT_FINAL_EVALUATION";
 }
 
-export interface SetApplicationsAction {
-  type: "SET_APPLICATIONS";
-  payload: ProjectApplicationForManager[];
+export interface SetPoolDataAction {
+  type: "SET_POOL_DATA";
+  payload: {
+    poolId: string;
+    poolData: CheckerApiPoolData;
+  };
 }
 
 export type CheckerAction =
   | SetInitialStateAction
-  | SetApplicationsAction
+  | SetPoolDataAction
   | GoToReviewApplicationsAction
   | GoToApplicationEvaluationOverviewAction
   | GoToApplicationEvaluationAction

@@ -3,7 +3,8 @@ import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
-import { getReviewsCount } from "../../utils/getReviewsCount";
+import { getReviewsCount } from "~checker/utils/getReviewsCount";
+
 import { ProjectReview } from "./types";
 
 export interface ProjectReviewListProps {

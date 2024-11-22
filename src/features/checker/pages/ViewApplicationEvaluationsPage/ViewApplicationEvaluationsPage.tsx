@@ -2,15 +2,14 @@ import React from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { IconLabel } from "@/components/IconLabel";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { ProjectSummary } from "@/components/project/components/ProjectSummary/ProjectSummary";
 import { capitalizeWord } from "@/lib/utils";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Button } from "@/primitives/Button";
 
-import ReviewDropdownList from "../../components/ReviewDropdownList/ReviewDropdownList";
-import { useApplicationEvaluations } from "../../hooks/useApplication";
+import { ReviewDropdownList } from "~checker/components";
+import { useApplicationEvaluations } from "~checker/hooks";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;

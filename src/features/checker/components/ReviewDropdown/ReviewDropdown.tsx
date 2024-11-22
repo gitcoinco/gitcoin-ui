@@ -7,7 +7,7 @@ import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
-import { Evaluation } from "../../services/checker";
+import { Evaluation } from "~checker/services/checker";
 
 const ReviewDropdownVariants = tv({
   slots: {
@@ -47,7 +47,7 @@ interface ReviewDropdownContentProps {
 }
 
 // Main Component
-const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
+export const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
   evaluation,
   index,
   isOpen = true,
@@ -173,8 +173,6 @@ const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation })
     </div>
   );
 };
-
-export default ReviewDropdown;
 
 const getIcon = (value: string) => {
   const iconMap = {

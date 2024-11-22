@@ -1,14 +1,17 @@
 import { executeQuery } from "./checkerClient";
 import { checkerApplicationEvaluationsQuery, checkerPoolDataQuery } from "./queries";
-import { Application, PoolData } from "./types";
+import { CheckerApiApplication, CheckerApiPoolData } from "./types";
 
-export async function getCheckerPoolData(chainId?: number, alloPoolId?: string): Promise<PoolData> {
+export async function getCheckerPoolData(
+  chainId?: number,
+  alloPoolId?: string,
+): Promise<CheckerApiPoolData> {
   try {
     const response = (await executeQuery(checkerPoolDataQuery, {
       chainId,
       alloPoolId,
     })) as unknown as {
-      pools: PoolData[];
+      pools: CheckerApiPoolData[];
     };
     return response.pools[0];
   } catch (e) {
@@ -27,7 +30,7 @@ export async function getCheckerApplicationEvaluations(
       alloPoolId,
       alloApplicationId,
     })) as unknown as {
-      applications: Application[];
+      applications: CheckerApiApplication[];
     };
     return response.applications[0].evaluations;
   } catch (e) {

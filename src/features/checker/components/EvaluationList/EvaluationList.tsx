@@ -3,7 +3,7 @@ import { capitalizeWord, getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
-import { Evaluation } from "../../services/checker";
+import { Evaluation } from "~checker/services/checker";
 
 export interface EvaluationListProps {
   evaluations: Evaluation[];

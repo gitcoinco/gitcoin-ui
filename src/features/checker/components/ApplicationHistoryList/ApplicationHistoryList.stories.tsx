@@ -4,7 +4,7 @@ import { ApplicationHistoryList } from "./ApplicationHistoryList";
 import { mockApplications } from "./mocks";
 
 const meta = {
-  title: "Features/Checker/ApplicationHistoryList",
+  title: "Features/Checker/Components/ApplicationHistoryList",
   component: ApplicationHistoryList,
   args: {},
 } satisfies Meta;

@@ -1,1 +1,1 @@
-export * from "./pages/Checker";
+export * from "./Checker";

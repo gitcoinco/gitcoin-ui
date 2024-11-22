@@ -1,13 +1,12 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-
-
 import { cn } from "@/lib/utils";
 
-import { Evaluation } from "../../services/checker";
-import ReviewDropdown from "../ReviewDropdown/ReviewDropdown";
+import { Evaluation } from "~checker/services/checker";
 
-const reviewDropdownVariants = tv({
+import { ReviewDropdown } from "../ReviewDropdown";
+
+const reviewDropdownListVariants = tv({
   slots: {
     container: "flex flex-col gap-6",
   },
@@ -16,14 +15,14 @@ const reviewDropdownVariants = tv({
   },
 });
 
-export type ReviewDropdownVariants = VariantProps<typeof reviewDropdownVariants>;
+export type ReviewDropdownListVariants = VariantProps<typeof reviewDropdownListVariants>;
 
 interface ReviewDropdownListProps {
   evaluations: Evaluation[];
 }
 
-const ReviewDropdownList: React.FC<ReviewDropdownListProps> = ({ evaluations }) => {
-  const { container } = reviewDropdownVariants();
+export const ReviewDropdownList: React.FC<ReviewDropdownListProps> = ({ evaluations }) => {
+  const { container } = reviewDropdownListVariants();
 
   return (
     <div className={cn(container())}>
@@ -44,5 +43,3 @@ const ReviewDropdownList: React.FC<ReviewDropdownListProps> = ({ evaluations }) 
     </div>
   );
 };
-
-export default ReviewDropdownList;

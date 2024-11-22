@@ -19,7 +19,6 @@ export const checkerPoolDataQuery = gql`
           evaluationAnswers {
             answer
           }
-          metadataCid
         }
       }
     }

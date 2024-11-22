@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { useCheckerContext } from "~checker/hooks/useCheckerContext";
+import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
+
 import { getApplicationsFromIndexer } from "~checker/services/allo";
 import { getCheckerPoolData } from "~checker/services/checker";
 import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";

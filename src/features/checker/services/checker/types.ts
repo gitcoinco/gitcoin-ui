@@ -13,14 +13,13 @@ export interface Evaluation {
   summary: string;
   lastUpdatedAt: string;
   evaluationAnswers: EvaluationAnswer[];
-  metadataCid?: string;
 }
 
-export interface Application {
+export interface CheckerApiApplication {
   alloApplicationId: string;
   evaluations: Evaluation[];
 }
-export interface PoolData {
+export interface CheckerApiPoolData {
   evaluationQuestions: { questionIndex: number; question: string }[];
-  applications: Application[];
+  applications: CheckerApiApplication[];
 }

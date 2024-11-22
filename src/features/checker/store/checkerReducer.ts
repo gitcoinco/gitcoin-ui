@@ -1,4 +1,5 @@
-import { CheckerAction, CheckerContextType, CheckerRoute } from "../types";
+import { CheckerAction } from "./actions";
+import { CheckerContextType, CheckerRoute } from "./types";
 
 export const checkerReducer = (
   state: CheckerContextType,
@@ -24,8 +25,11 @@ export const checkerReducer = (
       };
     case "GO_TO_SUBMIT_FINAL_EVALUATION":
       return { ...state, route: { id: CheckerRoute.SubmitFinalEvaluation } };
-    case "SET_APPLICATIONS":
-      return { ...state, applications: action.payload };
+    case "SET_POOL_DATA":
+      return {
+        ...state,
+        poolData: { ...state.poolData, [action.payload.poolId]: action.payload.poolData },
+      };
     default:
       return state;
   }

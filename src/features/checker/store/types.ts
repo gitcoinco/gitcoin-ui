@@ -1,6 +1,17 @@
 import { Hex } from "viem";
 
-import { ProjectApplicationForManager } from ".";
+import { ProjectApplicationForManager } from "../services/allo";
+import { CheckerApiApplication, CheckerApiEvaluationQuestion } from "../services/checker";
+
+interface CheckerApplication extends ProjectApplicationForManager, CheckerApiApplication {
+  lastFetchedAt?: Date;
+}
+
+interface CheckerPoolData {
+  applications: CheckerApplication[];
+  evaluationQuestions: CheckerApiEvaluationQuestion[];
+  lastFetchedAt: Date;
+}
 
 export enum CheckerRoute {
   ReviewApplications = "review-applications",
@@ -10,8 +21,8 @@ export enum CheckerRoute {
 }
 
 export interface CheckerContextType {
-  applications: ProjectApplicationForManager[];
-  roundId?: string;
+  poolData: Record<string, CheckerPoolData>;
+  poolId?: string;
   chainId?: number;
   address?: Hex;
   route:
