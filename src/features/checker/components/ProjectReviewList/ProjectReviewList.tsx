@@ -75,7 +75,7 @@ export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewL
         return (
           <div className="flex items-center justify-center">
             <Button
-              variant="secondary"
+              variant="outlined-secondary"
               value="Evaluate project"
               disabled={isReviewed}
               onClick={() => {

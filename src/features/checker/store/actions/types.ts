@@ -24,8 +24,8 @@ export interface GoToApplicationEvaluationOverviewAction {
   };
 }
 
-export interface GoToApplicationEvaluationAction {
-  type: "GO_TO_APPLICATION_EVALUATION";
+export interface GoToSubmitApplicationEvaluationAction {
+  type: "GO_TO_SUBMIT_APPLICATION_EVALUATION";
   payload: {
     projectId: string;
   };
@@ -55,5 +55,5 @@ export type CheckerAction =
   | SetPoolDataAction
   | GoToReviewApplicationsAction
   | GoToApplicationEvaluationOverviewAction
-  | GoToApplicationEvaluationAction
+  | GoToSubmitApplicationEvaluationAction
   | GoToSubmitFinalEvaluationAction;

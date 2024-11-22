@@ -21,7 +21,7 @@ export interface CheckerPoolData {
 export enum CheckerRoute {
   ReviewApplications = "review-applications",
   ApplicationEvaluationOverview = "application-evaluation-overview",
-  ApplicationEvaluation = "application-evaluation",
+  SubmitApplicationEvaluation = "submit-application-evaluation",
   SubmitFinalEvaluation = "submit-final-evaluation",
 }
 
@@ -34,7 +34,7 @@ export interface CheckerContextType {
     | { id: CheckerRoute.SubmitFinalEvaluation }
     | { id: CheckerRoute.ReviewApplications }
     | {
-        id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.ApplicationEvaluation;
+        id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.SubmitApplicationEvaluation;
         projectId: string;
       };
 }

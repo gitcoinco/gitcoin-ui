@@ -36,6 +36,7 @@ const buttonVariants = tv({
     variant: {
       primary: "border-brand bg-brand text-white",
       secondary: "border-neutral-100 bg-neutral-100 text-black",
+      grey: "border-neutral-300 bg-neutral-300 text-black",
       error: "border-red-50 bg-red-50 text-red-700",
       success: "border-moss-50 bg-moss-50 text-moss-700",
       "outlined-error": "border-2 border-red-700 text-red-900",

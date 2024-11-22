@@ -6,7 +6,7 @@ import { Button } from "@/primitives/Button";
 import { EvaluationList } from "~checker/components/EvaluationList/EvaluationList";
 import { useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
-import { goToApplicationEvaluationAction, useCheckerDispatchContext } from "~checker/store";
+import { goToSubmitApplicationEvaluationAction, useCheckerDispatchContext } from "~checker/store";
 
 export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;
@@ -30,8 +30,8 @@ export const ApplicationEvaluationOverviewPage = ({
 
   const dispatch = useCheckerDispatchContext();
 
-  const goToApplicationEvaluation = () => {
-    dispatch(goToApplicationEvaluationAction({ projectId: applicationId }));
+  const goToSubmitApplicationEvaluation = () => {
+    dispatch(goToSubmitApplicationEvaluationAction({ projectId: applicationId }));
   };
 
   const project = application.metadata.application.project;
@@ -57,7 +57,7 @@ export const ApplicationEvaluationOverviewPage = ({
             variant="primary"
             value="Perform evaluation"
             className="w-44"
-            onClick={goToApplicationEvaluation}
+            onClick={goToSubmitApplicationEvaluation}
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import {
-  GoToApplicationEvaluationAction,
+  GoToSubmitApplicationEvaluationAction,
   GoToApplicationEvaluationOverviewAction,
   GoToReviewApplicationsAction,
   GoToSubmitFinalEvaluationAction,
@@ -25,10 +25,10 @@ export const goToApplicationEvaluationOverviewAction = (
   payload,
 });
 
-export const goToApplicationEvaluationAction = (
-  payload: GoToApplicationEvaluationAction["payload"],
-): GoToApplicationEvaluationAction => ({
-  type: "GO_TO_APPLICATION_EVALUATION",
+export const goToSubmitApplicationEvaluationAction = (
+  payload: GoToSubmitApplicationEvaluationAction["payload"],
+): GoToSubmitApplicationEvaluationAction => ({
+  type: "GO_TO_SUBMIT_APPLICATION_EVALUATION",
   payload,
 });
 
