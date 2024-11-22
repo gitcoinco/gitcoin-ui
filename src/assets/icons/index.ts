@@ -4,6 +4,7 @@ export { default as CheckIcon } from "./check.svg?react";
 export { default as CheckSolidIcon } from "./solid/check.svg?react";
 export { default as ExclamationCircleIcon } from "./exclamationCircle.svg?react";
 export { default as XIcon } from "./x.svg?react";
+export { default as LinkIcon } from "./link.svg?react";
 // Solid X Icon
 export { default as XSolidIcon } from "./solid/x.svg?react";
 export { default as SolidQuestionMarkCircleIcon } from "./solid/questionMarkCircle.svg?react";
