@@ -39,10 +39,10 @@ export const indexerGetApplicationByIdHandler = graphql.query("getApplicationByI
 });
 
 export const checkerApplicationEvaluationsHandler = graphql.query(
-  "checkerApplicationEvaluationsQuery",
+  "getCheckerApplicationEvaluations",
   () => {
     return HttpResponse.json({
-      data: { applicationEvaluations: checkerApplicationEvaluations },
+      data: { applications: [{ evaluations: checkerApplicationEvaluations }] },
     });
   },
 );
