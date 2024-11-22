@@ -14,7 +14,7 @@ export const ReviewApplicationsPage = () => {
   const dispatch = useCheckerDispatchContext();
   const { address } = useCheckerContext();
 
-  const goToApplicatoinEvaluation = (projectId: string) => {
+  const goToApplicationEvaluation = (projectId: string) => {
     dispatch({ type: "GO_TO_APPLICATION_EVALUATION", payload: { projectId: projectId } });
   };
 
@@ -69,7 +69,7 @@ export const ReviewApplicationsPage = () => {
               <ProjectReviewList
                 reviewer={address || "0x"}
                 projects={ReadyApplicationsToSubmit}
-                action={goToApplicatoinEvaluation}
+                action={goToApplicationEvaluation}
               />
             )}
           </div>
@@ -93,7 +93,7 @@ export const ReviewApplicationsPage = () => {
               <ProjectReviewList
                 reviewer={address || "0x"}
                 projects={PendingApplications}
-                action={goToApplicatoinEvaluation}
+                action={goToApplicationEvaluation}
               />
             )}
           </div>
