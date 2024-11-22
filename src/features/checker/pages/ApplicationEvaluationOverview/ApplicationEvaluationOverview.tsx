@@ -6,16 +6,16 @@ import { useApplicationEvaluations } from "../../hooks/useApplication";
 
 export interface ApplicationEvaluationOverviewProps {
   chainId: number;
-  roundId: string;
+  poolId: string;
   applicationId: string;
 }
 
 export const ApplicationEvaluationOverview = ({
   chainId,
-  roundId,
+  poolId,
   applicationId,
 }: ApplicationEvaluationOverviewProps) => {
-  const { data, isLoading, error } = useApplicationEvaluations(chainId, roundId, applicationId);
+  const { data, isLoading, error } = useApplicationEvaluations(chainId, poolId, applicationId);
   if (isLoading) return <div>Loading...</div>;
   if (error || !data) return <div>Error loading evaluations</div>;
 

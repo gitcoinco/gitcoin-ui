@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-
 import { checkerApplicationEvaluations } from "@/mocks/mockData/checkerApplicationEvaluations";
 
-import ReviewDropdown from "./ReviewDropdown";
+import { ReviewDropdown } from "./ReviewDropdown";
 
 const mockData = checkerApplicationEvaluations;
 

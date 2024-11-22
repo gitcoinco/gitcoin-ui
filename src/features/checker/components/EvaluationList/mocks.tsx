@@ -18,7 +18,6 @@ export const mockEvaluations: Evaluation[] = [
         evaluationQuestion: { question: "Are the timeline and budget feasible?" },
       },
     ],
-    metadataCid: "bafybeibwzifv4eoqgy3noez2g7sd5ykj3xrrqsmf3z6ov24m7gxv4i7rpy",
   },
   {
     evaluator: "0x0000000000000000000000000000000000000001",
@@ -37,6 +36,5 @@ export const mockEvaluations: Evaluation[] = [
         evaluationQuestion: { question: "Is the execution plan detailed enough?" },
       },
     ],
-    metadataCid: "bafybeihsyrwihmjsj6am6wp7zpypuggsivw6i6g3fjifc5alrqxe73tdqa",
   },
 ];

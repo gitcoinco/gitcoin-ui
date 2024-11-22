@@ -1,12 +1,14 @@
 import { Hex } from "viem";
 
-import { CheckerApiPoolData } from "~checker/services/checker";
+import { CheckerApiEvaluationQuestion, CheckerApiPoolData } from "~checker/services/checker";
+
+import { CheckerApplication } from "../types";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
   payload: {
     address: Hex;
-    roundId: string;
+    poolId: string;
     chainId: number;
   };
 }
@@ -37,7 +39,14 @@ export interface SetPoolDataAction {
   type: "SET_POOL_DATA";
   payload: {
     poolId: string;
-    poolData: CheckerApiPoolData;
+    chainId: number;
+    applications: Record<string, CheckerApplication>;
+    evaluationQuestions: CheckerApiEvaluationQuestion[];
+    lastFetchedAt: Date;
+    isLoading?: boolean;
+    isFetching?: boolean;
+    isError?: boolean;
+    error: Error | null;
   };
 }
 

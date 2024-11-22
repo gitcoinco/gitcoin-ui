@@ -4,7 +4,7 @@ import { CheckerAction } from "./actions";
 import { CheckerContextType, CheckerRoute } from "./types";
 
 export const initialState: CheckerContextType = {
-  poolData: {},
+  poolsData: {},
   route: { id: CheckerRoute.ReviewApplications },
 };
 

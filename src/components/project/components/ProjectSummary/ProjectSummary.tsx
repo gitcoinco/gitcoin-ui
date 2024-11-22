@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { IconLabel } from "@/components/IconLabel";
-import { ProjectMetadata } from "@/features/checker/types";
+import { ProjectMetadata } from "@/features/checker/services/allo";
 import { IconType } from "@/primitives/Icon";
 
 export interface ProjectSummaryProps {

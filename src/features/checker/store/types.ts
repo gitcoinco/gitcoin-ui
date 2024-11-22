@@ -3,14 +3,19 @@ import { Hex } from "viem";
 import { ProjectApplicationForManager } from "../services/allo";
 import { CheckerApiApplication, CheckerApiEvaluationQuestion } from "../services/checker";
 
-interface CheckerApplication extends ProjectApplicationForManager, CheckerApiApplication {
+export interface CheckerApplication extends ProjectApplicationForManager, CheckerApiApplication {
   lastFetchedAt?: Date;
 }
 
-interface CheckerPoolData {
-  applications: CheckerApplication[];
+export interface CheckerPoolData {
+  chainId: number;
+  poolId: string;
+  applications: Record<string, CheckerApplication>;
   evaluationQuestions: CheckerApiEvaluationQuestion[];
   lastFetchedAt: Date;
+  isLoading?: boolean;
+  isError?: boolean;
+  error: Error | null;
 }
 
 export enum CheckerRoute {
@@ -21,7 +26,7 @@ export enum CheckerRoute {
 }
 
 export interface CheckerContextType {
-  poolData: Record<string, CheckerPoolData>;
+  poolsData: Record<string, CheckerPoolData>;
   poolId?: string;
   chainId?: number;
   address?: Hex;

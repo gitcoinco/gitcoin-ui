@@ -6,7 +6,7 @@ import { CheckerRouter } from "./CheckerRouter";
 
 export interface CheckerProps {
   address: Hex;
-  roundId: string;
+  poolId: string;
   chainId: number;
 }
 

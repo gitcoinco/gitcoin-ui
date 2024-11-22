@@ -1,3 +1,4 @@
+import { generatePoolUUID } from "../utils/generatePoolUUID";
 import { CheckerAction } from "./actions";
 import { CheckerContextType, CheckerRoute } from "./types";
 
@@ -25,11 +26,16 @@ export const checkerReducer = (
       };
     case "GO_TO_SUBMIT_FINAL_EVALUATION":
       return { ...state, route: { id: CheckerRoute.SubmitFinalEvaluation } };
-    case "SET_POOL_DATA":
+    case "SET_POOL_DATA": {
+      const { poolId, chainId } = action.payload;
+      const poolUUID = generatePoolUUID(poolId, chainId);
+      if (!poolUUID) return state;
+
       return {
         ...state,
-        poolData: { ...state.poolData, [action.payload.poolId]: action.payload.poolData },
+        poolsData: { ...state.poolsData, [poolUUID]: { ...action.payload } },
       };
+    }
     default:
       return state;
   }

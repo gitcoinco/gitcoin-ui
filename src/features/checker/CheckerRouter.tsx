@@ -1,10 +1,7 @@
-import { useEffect } from "react";
-
 import { match, P } from "ts-pattern";
 import { Hex } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
-import { useCheckerDispatchContext } from "@/features/checker/store/hooks/useCheckerDispatchContext";
 
 import {
   ApplicationEvaluation,
@@ -12,20 +9,18 @@ import {
   ReviewApplicationsPage,
   SubmitFinalEvaluation,
 } from "~checker/pages";
-import { setInitialStateAction, CheckerRoute } from "~checker/store";
+import { CheckerRoute } from "~checker/store";
+
+import { useInitialize } from "./hooks";
 
 export interface CheckerRouterProps {
   address: Hex;
-  roundId: string;
+  poolId: string;
   chainId: number;
 }
 
-export const CheckerRouter = ({ address, roundId, chainId }: CheckerRouterProps) => {
-  const dispatch = useCheckerDispatchContext();
-
-  useEffect(() => {
-    dispatch(setInitialStateAction({ address, roundId, chainId }));
-  }, [address, roundId, chainId]);
+export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) => {
+  useInitialize({ address, poolId, chainId });
 
   const { route } = useCheckerContext();
 
@@ -33,7 +28,13 @@ export const CheckerRouter = ({ address, roundId, chainId }: CheckerRouterProps)
     .with({ id: CheckerRoute.ReviewApplications }, () => <ReviewApplicationsPage />)
     .with(
       { id: CheckerRoute.ApplicationEvaluationOverview, projectId: P.string.minLength(1) },
-      ({ projectId }) => <ApplicationEvaluationOverview projectId={projectId} />,
+      ({ projectId }) => (
+        <ApplicationEvaluationOverview
+          chainId={chainId}
+          poolId={poolId}
+          applicationId={projectId}
+        />
+      ),
     )
     .with(
       { id: CheckerRoute.ApplicationEvaluation, projectId: P.string.minLength(1) },

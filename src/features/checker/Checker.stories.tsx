@@ -9,7 +9,7 @@ const meta = {
   component: Checker,
   args: {
     address: "0x1234567890123456789012345678901234567890",
-    roundId: "609",
+    poolId: "609",
     chainId: 42161,
   },
 } satisfies Meta;
@@ -20,8 +20,8 @@ type Story = StoryObj<typeof Checker>;
 
 export const Default: Story = {
   parameters: {
-    msw: {
-      handlers,
-    },
+    // msw: {
+    //   handlers,
+    // },
   },
 };
