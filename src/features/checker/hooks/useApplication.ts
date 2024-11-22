@@ -18,7 +18,6 @@ export const useApplicationEvaluations = (
         roundId,
         applicationId,
       );
-      // TODO: might need a custom transformation
       const data = {
         application,
         applicationEvaluations,
