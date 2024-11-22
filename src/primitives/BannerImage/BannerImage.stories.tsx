@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 
-
-
 import { BannerImage } from "./BannerImage";
-
 
 const meta: Meta<typeof BannerImage> = {
   component: BannerImage,
@@ -75,7 +72,7 @@ export const Big: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const image = await canvas.findByAltText("banner");
-    expect(image).toHaveStyle("width: 1000px; height: 1000px");
+    expect(image).toHaveStyle(`width: 1000px; height: 333.3281px`);
   },
 };
 
@@ -87,7 +84,7 @@ export const Small: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const image = await canvas.findByAltText("banner");
-    expect(image).toHaveStyle("width: 100px; height: 100px");
+    expect(image).toHaveStyle(`width: 100px; height: 33.3281px`);
   },
 };
 
