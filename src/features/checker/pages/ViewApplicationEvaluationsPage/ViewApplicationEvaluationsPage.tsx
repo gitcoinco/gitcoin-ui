@@ -1,12 +1,11 @@
 import React from "react";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { ProjectSummary } from "@/components/project/components/ProjectSummary/ProjectSummary";
 import { capitalizeWord } from "@/lib/utils";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations } from "~checker/hooks";
@@ -17,22 +16,16 @@ export interface ViewApplicationEvaluationsPageProps {
   applicationId: string;
 }
 
-const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProps> = ({
+export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluationsPageProps> = ({
   chainId,
   roundId,
   applicationId,
 }) => {
   const { data, isLoading, error } = useApplicationEvaluations(chainId, roundId, applicationId);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return;
   if (error) return <div>Error loading evaluations</div>;
-  if (!data)
-    return (
-      <div className="leading-7">
-        This application is still pending evaluation submission. Check back here soon for your
-        results!
-      </div>
-    );
+  if (!data) return;
 
   const project = data?.application.metadata.application.project;
   project.recipient = data?.application.metadata.application.recipient;
@@ -45,7 +38,7 @@ const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProp
         : "info-strong";
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="mx-auto flex  max-w-[1440px] flex-col  gap-4 px-20">
       <ProjectBanner
         bannerImg={project.bannerImg ?? ""}
         logoImg={project.logoImg ?? ""}
@@ -54,42 +47,43 @@ const ApplicationEvaluationsContent: React.FC<ViewApplicationEvaluationsPageProp
       <div className="flex justify-between">
         <h1 className="text-3xl font-medium leading-9">{project.title}</h1>
         <div className="flex gap-4">
-          <Button variant="outlined-secondary" value="Share" /> // TODO
-          <Button variant="outlined-secondary" value="View Public Page" />
-          {/* `www.explorer.gitcoin.co/#/round/${chainId}/${roundId}/${applicationId} */}
+          <Button
+            variant="outlined-secondary"
+            className="h-10 w-24 border-grey-100"
+            icon={<Icon type={IconType.LINK} className="fill-black" />}
+            value="Share"
+          />
+          <div className="rainbow-button flex items-center">
+            <Button
+              value="View public page"
+              variant="none"
+              className=" h-[38px] w-40 rounded-lg border-none bg-white font-mono text-black"
+              onClick={() => {
+                window.open(
+                  `https://explorer.gitcoin.co/#/round/${chainId}/${roundId}/${applicationId}`,
+                  "_blank",
+                );
+              }}
+            />
+          </div>
         </div>
       </div>
-
       <div className="h-0.5 bg-[#EAEAEA]" />
-
       <div className="flex gap-2">
         <Badge className="font-semibold" variant={reviewStatusBadgeVariant}>
           {capitalizeWord(data?.application.status)}
         </Badge>
       </div>
-
       <ProjectSummary projectMetadata={project} />
-
       <div className="h-0.5 bg-[#EAEAEA]" />
-
-      <ReviewDropdownList evaluations={data?.applicationEvaluations} />
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {data?.applicationEvaluations.length > 0 ? (
+        <ReviewDropdownList evaluations={data?.applicationEvaluations} />
+      ) : (
+        <div className="leading-7">
+          This application is still pending evaluation submission. Check back here soon for your
+          results!
+        </div>
+      )}
     </div>
-  );
-};
-
-export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluationsPageProps> = ({
-  chainId,
-  roundId,
-  applicationId,
-}) => {
-  return (
-    <QueryClientProvider client={new QueryClient()}>
-      <ApplicationEvaluationsContent
-        chainId={chainId}
-        roundId={roundId}
-        applicationId={applicationId}
-      />
-    </QueryClientProvider>
   );
 };

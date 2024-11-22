@@ -1,6 +1,6 @@
 import { Hex } from "viem";
 
-import { CheckerApiEvaluationQuestion, CheckerApiPoolData } from "~checker/services/checker";
+import { CheckerApiEvaluationQuestion } from "~checker/services/checker";
 
 import { CheckerApplication } from "../types";
 

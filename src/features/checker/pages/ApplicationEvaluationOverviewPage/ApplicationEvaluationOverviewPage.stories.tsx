@@ -2,6 +2,8 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { handlers } from "@/mocks/handlers";
 
+import { CheckerProvider } from "~checker/store";
+
 import { ApplicationEvaluationOverviewPage } from "./ApplicationEvaluationOverviewPage";
 
 const meta: Meta<typeof ApplicationEvaluationOverviewPage> = {
@@ -11,13 +13,20 @@ const meta: Meta<typeof ApplicationEvaluationOverviewPage> = {
     chainId: {
       control: "number",
     },
-    roundId: {
+    poolId: {
       control: "text",
     },
     applicationId: {
       control: "text",
     },
   },
+  decorators: [
+    (Story) => (
+      <CheckerProvider>
+        <Story />
+      </CheckerProvider>
+    ),
+  ],
 };
 
 export default meta;
@@ -32,7 +41,7 @@ export const Default: Story = {
   },
   args: {
     chainId: 42161,
-    roundId: "609",
-    applicationId: "0",
+    poolId: "609",
+    applicationId: "17",
   },
 };

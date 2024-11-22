@@ -2,6 +2,8 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { handlers } from "@/mocks/handlers";
 
+import { CheckerProvider } from "~checker/store";
+
 import { ViewApplicationEvaluationsPage } from "./ViewApplicationEvaluationsPage";
 
 const meta: Meta<typeof ViewApplicationEvaluationsPage> = {
@@ -18,6 +20,13 @@ const meta: Meta<typeof ViewApplicationEvaluationsPage> = {
       control: "text",
     },
   },
+  decorators: [
+    (Story) => (
+      <CheckerProvider>
+        <Story />
+      </CheckerProvider>
+    ),
+  ],
 };
 
 export default meta;

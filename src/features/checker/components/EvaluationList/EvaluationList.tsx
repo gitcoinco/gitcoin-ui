@@ -12,7 +12,7 @@ export interface EvaluationListProps {
 export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
   const columns: ListGridColumn<Evaluation>[] = [
     {
-      header: "Date",
+      header: "Date Reviewed",
       key: "lastUpdatedAt",
       width: "1fr",
       render: (item) => <IconLabel type="date" date={new Date(item.lastUpdatedAt)} />,

@@ -20,8 +20,8 @@ type Story = StoryObj<typeof Checker>;
 
 export const Default: Story = {
   parameters: {
-    // msw: {
-    //   handlers,
-    // },
+    msw: {
+      handlers,
+    },
   },
 };
