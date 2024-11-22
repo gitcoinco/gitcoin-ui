@@ -3,9 +3,9 @@ import {
   GoToApplicationEvaluationOverviewAction,
   GoToReviewApplicationsAction,
   GoToSubmitFinalEvaluationAction,
-  SetApplicationsAction,
   SetInitialStateAction,
-} from "../types";
+  SetPoolDataAction,
+} from "./types";
 
 export const setInitialStateAction = (
   payload: SetInitialStateAction["payload"],
@@ -36,9 +36,7 @@ export const goToSubmitFinalEvaluationAction = (): GoToSubmitFinalEvaluationActi
   type: "GO_TO_SUBMIT_FINAL_EVALUATION",
 });
 
-export const setApplicationsAction = (
-  payload: SetApplicationsAction["payload"],
-): SetApplicationsAction => ({
-  type: "SET_APPLICATIONS",
+export const setPoolDataAction = (payload: SetPoolDataAction["payload"]): SetPoolDataAction => ({
+  type: "SET_POOL_DATA",
   payload,
 });

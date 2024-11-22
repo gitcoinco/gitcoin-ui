@@ -1,9 +1,15 @@
 import React, { useMemo } from "react";
 
+
+
+import { tv, type VariantProps } from "tailwind-variants";
 import { match, P } from "ts-pattern";
+
+
 
 import DefaultLogo from "@/assets/default_logo.png";
 import { Avatar as ShadCNAvatar, AvatarFallback, AvatarImage } from "@/ui-shadcn/avatar";
+
 
 interface AvatarProps {
   fallbackName?: string;
@@ -12,7 +18,21 @@ interface AvatarProps {
   size?: number;
   ipfsBaseURL?: string;
   defaultImage?: string;
+  noPadding?: boolean; // New prop to optionally remove padding
+  variant?: "default" | "bordered"; // New variant prop
 }
+
+const avatarVariants = tv({
+  variants: {
+    variant: {
+      default: "bg-white shadow-md shadow-slate-600",
+      bordered: "border-4 border-white bg-white",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
 export const Avatar = ({
   fallbackName,
@@ -21,6 +41,8 @@ export const Avatar = ({
   size = 40,
   ipfsBaseURL = "https://ipfs.io/ipfs/",
   defaultImage = DefaultLogo,
+  noPadding = false, // Default to false
+  variant = "default", // Default to default variant
 }: AvatarProps) => {
   const imageURL = useMemo(() => {
     return match({ ipfsCID, url, fallbackName })
@@ -33,7 +55,6 @@ export const Avatar = ({
         { ipfsCID: P.string.minLength(1), url: P.string.minLength(1) },
         ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`,
       )
-
       .otherwise(() => defaultImage);
   }, [ipfsCID, url, ipfsBaseURL]);
 
@@ -50,13 +71,15 @@ export const Avatar = ({
       });
   }, [fallbackName]);
 
+  const avatarClassNames = avatarVariants({ variant });
+
   return (
     <ShadCNAvatar
       role="presentation"
-      className="aspect-square h-full w-full bg-white shadow-md shadow-slate-600"
+      className={`aspect-square h-full w-full ${avatarClassNames}`}
       style={{ width: `${size}px`, height: `${size}px` }}
     >
-      <AvatarImage src={imageURL} alt="avatar" className="p-1" />
+      <AvatarImage src={imageURL} alt="avatar" className={noPadding ? "" : "p-1"} />
       <AvatarFallback>{fallback}</AvatarFallback>
     </ShadCNAvatar>
   );

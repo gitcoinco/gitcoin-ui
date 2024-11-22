@@ -1,30 +1,35 @@
-import { ProjectReviewList } from "@/features/checker/components/ProjectReviewList/ProjectReviewList";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
 
-import { useGetApplicationsReviewPage } from "~checker/hooks/useApplications";
-import { useCheckerContext } from "~checker/hooks/useCheckerContext";
-import { useCheckerDispatchContext } from "~checker/hooks/useCheckerDispatchContext";
+import { ProjectReviewList } from "~checker/components";
+import { useGetApplicationsReviewPage } from "~checker/hooks";
+import {
+  goToApplicationEvaluationAction,
+  goToSubmitFinalEvaluationAction,
+  useCheckerContext,
+  useCheckerDispatchContext,
+} from "~checker/store";
 
 const canSubmitFinalEvaluation = true;
 
 export const ReviewApplicationsPage = () => {
-  const { data } = useGetApplicationsReviewPage();
+  const { categorizedReviews, statCardsProps } = useGetApplicationsReviewPage() || {};
   const dispatch = useCheckerDispatchContext();
   const { address } = useCheckerContext();
 
-  const goToApplicatoinEvaluation = (projectId: string) => {
-    dispatch({ type: "GO_TO_APPLICATION_EVALUATION", payload: { projectId: projectId } });
+  const goToApplicationEvaluation = (projectId: string) => {
+    dispatch(goToApplicationEvaluationAction({ projectId }));
   };
 
   const goToSubmitFinalEvaluation = () => {
-    dispatch({ type: "GO_TO_SUBMIT_FINAL_EVALUATION" });
+    dispatch(goToSubmitFinalEvaluationAction());
   };
 
-  const ReadyApplicationsToSubmit = data?.categorizedReviews.READY_TO_REVIEW || [];
+  const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
 
-  const PendingApplications = data?.categorizedReviews.INREVIEW || [];
+  const PendingApplications = categorizedReviews?.INREVIEW || [];
+
   return (
     <div className="flex flex-col gap-6 px-20 pt-6">
       <div className="flex flex-col gap-8">
@@ -33,7 +38,7 @@ export const ReviewApplicationsPage = () => {
           icon={<Icon type={IconType.X} className="fill-red-700" />}
           className="flex h-8 w-fit justify-start gap-2 bg-red-50 p-4 text-red-700"
         />
-        <StatCardGroup stats={data?.statCardsProps || []} justify="center" />
+        <StatCardGroup stats={statCardsProps || []} justify="center" />
       </div>
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
@@ -69,7 +74,7 @@ export const ReviewApplicationsPage = () => {
               <ProjectReviewList
                 reviewer={address || "0x"}
                 projects={ReadyApplicationsToSubmit}
-                action={goToApplicatoinEvaluation}
+                action={goToApplicationEvaluation}
               />
             )}
           </div>
@@ -93,7 +98,7 @@ export const ReviewApplicationsPage = () => {
               <ProjectReviewList
                 reviewer={address || "0x"}
                 projects={PendingApplications}
-                action={goToApplicatoinEvaluation}
+                action={goToApplicationEvaluation}
               />
             )}
           </div>

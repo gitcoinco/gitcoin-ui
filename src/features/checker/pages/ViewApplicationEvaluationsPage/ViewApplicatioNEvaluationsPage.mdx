@@ -1,0 +1,21 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+import * as ViewApplicationEvaluationsPageStories from './ViewApplicationEvaluationsPage.stories';
+
+<Meta of={ViewApplicationEvaluationsPageStories} />
+
+# View Application Evaluations Page
+
+This page displays the evaluations of a specific application. It utilizes the `useApplicationEvaluations` hook to fetch data from an external API and shows the information about evaluations, including the application details.
+
+## Example Story
+
+### Default
+
+This is the default state of the page when the application evaluations are successfully loaded.
+
+<Story of={ViewApplicationEvaluationsPageStories.Default} />
+
+## Controls
+
+<Controls />
+<Stories />

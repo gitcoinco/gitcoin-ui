@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-
+import { match, P } from "ts-pattern";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -41,4 +41,16 @@ export function formatLocalDate(isoDate: string) {
     minute: "2-digit",
     hour12: true,
   });
+}
+
+export const getAddressLabel = (ens?: string, address?: string) => {
+  return match({ ens, address })
+    .with({ ens: P.string }, ({ ens }) => ens)
+    .with({ address: P.string }, ({ address }) => address.slice(0, 4) + "..." + address.slice(-4))
+    .otherwise(() => "");
+};
+
+export function capitalizeWord(word: string): string {
+  if (!word) return word;
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }

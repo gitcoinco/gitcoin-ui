@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import ReviewDropdown from "./ReviewDropdown";
-import { mockData } from "./mockData";
+import { checkerApplicationEvaluations } from "@/mocks/mockData/checkerApplicationEvaluations";
+
+import { ReviewDropdown } from "./ReviewDropdown";
+
+const mockData = checkerApplicationEvaluations;
 
 const meta: Meta<typeof ReviewDropdown> = {
   component: ReviewDropdown,

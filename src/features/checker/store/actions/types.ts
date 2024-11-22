@@ -1,12 +1,14 @@
 import { Hex } from "viem";
 
-import { ProjectApplicationForManager } from ".";
+import { CheckerApiEvaluationQuestion, CheckerApiPoolData } from "~checker/services/checker";
+
+import { CheckerApplication } from "../types";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
   payload: {
     address: Hex;
-    roundId: string;
+    poolId: string;
     chainId: number;
   };
 }
@@ -33,14 +35,24 @@ export interface GoToSubmitFinalEvaluationAction {
   type: "GO_TO_SUBMIT_FINAL_EVALUATION";
 }
 
-export interface SetApplicationsAction {
-  type: "SET_APPLICATIONS";
-  payload: ProjectApplicationForManager[];
+export interface SetPoolDataAction {
+  type: "SET_POOL_DATA";
+  payload: {
+    poolId: string;
+    chainId: number;
+    applications: Record<string, CheckerApplication>;
+    evaluationQuestions: CheckerApiEvaluationQuestion[];
+    lastFetchedAt: Date;
+    isLoading?: boolean;
+    isFetching?: boolean;
+    isError?: boolean;
+    error: Error | null;
+  };
 }
 
 export type CheckerAction =
   | SetInitialStateAction
-  | SetApplicationsAction
+  | SetPoolDataAction
   | GoToReviewApplicationsAction
   | GoToApplicationEvaluationOverviewAction
   | GoToApplicationEvaluationAction

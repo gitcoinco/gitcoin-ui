@@ -2,12 +2,12 @@ import * as React from "react";
 
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { cn, formatLocalDate } from "@/lib/utils";
+import { cn, formatLocalDate, getAddressLabel, capitalizeWord } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
-import { EvaluationSummaryProps } from "./types";
+import { Evaluation } from "~checker/services/checker";
 
 const ReviewDropdownVariants = tv({
   slots: {
@@ -16,7 +16,7 @@ const ReviewDropdownVariants = tv({
     headerRight: "flex items-center justify-end gap-4",
     content: "flex w-full flex-col gap-6 p-8",
     textRow: "space-x-1 text-left",
-    status: "text-grey-600",
+    status: "text-grey-500",
     reviewTitle: "font-sans text-xl text-black",
     evaluatorTitle: "absolute my-1 font-sans text-sm font-normal text-grey-900",
     reviewDate: "text-base font-normal text-black",
@@ -41,18 +41,18 @@ export type ReviewDropdownVariants = VariantProps<typeof ReviewDropdownVariants>
 export type EvaluationSummaryVariants = VariantProps<typeof evaluationSummaryVariants>;
 
 interface ReviewDropdownContentProps {
-  evaluation: EvaluationSummaryProps;
+  evaluation: Evaluation;
   index?: number;
   isOpen?: boolean;
 }
 
 // Main Component
-const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
+export const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
   evaluation,
   index,
   isOpen = true,
 }) => {
-  const accordionVariant = evaluation.evaluatorType === "human" ? "light" : "blue";
+  const accordionVariant = evaluation.evaluatorType === "HUMAN" ? "light" : "blue";
   return (
     <Accordion
       border="md"
@@ -71,22 +71,22 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
   let evaluatorTitle = "";
   let evaluatorIconType;
 
-  if (evaluation.evaluatorType === "human") {
+  if (evaluation.evaluatorType === "HUMAN") {
     reviewTitle = `Review ${index ?? ""}`;
     evaluatorIconType = IconType.USER;
-    evaluatorTitle = `by ${evaluation.evaluator.slice(0, 4)}...${evaluation.evaluator.slice(-4)}`;
+    evaluatorTitle = `by ${getAddressLabel(undefined, evaluation.evaluator)}`;
   } else {
     reviewTitle = "AI Powered";
     evaluatorIconType = IconType.SHINE;
     evaluatorTitle = "BETA";
   }
 
-  const rating = evaluation.evaluation.filter((answer) => answer.answer === "YES").length;
+  const rating = evaluation.evaluationAnswers.filter((answer) => answer.answer === "YES").length;
 
   const reviewStatusBadgeVariant =
-    evaluation.evaluationStatus === "approved"
+    evaluation.evaluationStatus === "APPROVED"
       ? "success-strong"
-      : evaluation.evaluationStatus === "rejected"
+      : evaluation.evaluationStatus === "REJECTED"
         ? "error-strong"
         : "info-strong";
 
@@ -121,12 +121,11 @@ const ReviewDropdownHeader: React.FC<ReviewDropdownContentProps> = ({ evaluation
         <div className="flex gap-2">
           {getIcon(evaluation.evaluationStatus)}
           <p className={cn(status())}>
-            {rating}/{evaluation.evaluation.length}
+            {rating}/{evaluation.evaluationAnswers.length}
           </p>
         </div>
         <Badge variant={reviewStatusBadgeVariant}>
-          {evaluation.evaluationStatus.charAt(0).toUpperCase() +
-            evaluation.evaluationStatus.slice(1)}
+          {capitalizeWord(evaluation.evaluationStatus)}
         </Badge>
       </div>
     </div>
@@ -148,7 +147,7 @@ const ReviewDropdownContent: React.FC<ReviewDropdownContentProps> = ({ evaluatio
 // Evaluation Summary Component
 const EvaluationSummary: React.FC<ReviewDropdownContentProps> = ({ evaluation }) => {
   const backgroundClass = evaluationSummaryVariants({
-    background: evaluation.evaluatorType === "human" ? "default" : "light",
+    background: evaluation.evaluatorType === "HUMAN" ? "default" : "light",
   });
 
   return (
@@ -162,26 +161,23 @@ const EvaluationSummary: React.FC<ReviewDropdownContentProps> = ({ evaluation })
 const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation }) => {
   return (
     <div className="flex flex-col gap-6">
-      {evaluation.evaluation.map((evaluation, index) => (
+      {evaluation.evaluationAnswers.map((evaluation, index) => (
         <div
           key={index}
           className="flex items-start gap-2 font-sans text-base font-normal leading-7 text-black"
         >
           <span className="mt-1 shrink-0">{getIcon(evaluation.answer)}</span>
-          <p className="grow">{evaluation.question}</p>
+          <p className="grow">{evaluation.evaluationQuestion?.question}</p>
         </div>
       ))}
     </div>
   );
 };
 
-export default ReviewDropdown;
-
 const getIcon = (value: string) => {
   const iconMap = {
-    approved: IconType.SOLID_CHECK,
-    rejected: IconType.SOLID_X,
-    uncertain: IconType.SOLID_QUESTION_MARK_CIRCLE,
+    APPROVED: IconType.SOLID_CHECK,
+    REJECTED: IconType.SOLID_X,
     YES: IconType.SOLID_CHECK,
     NO: IconType.SOLID_X,
     UNCERTAIN: IconType.SOLID_QUESTION_MARK_CIRCLE,

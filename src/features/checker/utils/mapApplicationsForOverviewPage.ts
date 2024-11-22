@@ -1,8 +1,7 @@
 import { StatCardProps } from "@/primitives/StatCard";
 
 import { ProjectReview, Review } from "../components/ProjectReviewList/types";
-import { Application } from "../services/checker";
-import { ProjectApplicationForManager } from "../types";
+import { CheckerApplication } from "../store";
 
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {
@@ -15,15 +14,9 @@ const AI_EVALUATOR_ADDRESS = "0x0000000000000000000000000000000000000001" as con
 
 // Utility function to categorize project reviews and calculate application counts
 export function categorizeProjectReviews(
-  checkerApplicationsEvaluations: Application[],
-  indexerApplications: ProjectApplicationForManager[],
+  applications: Record<string, CheckerApplication>,
 ): ProjectReviewsResultByCategory {
-  // Create a map for efficient lookup of applications by ID
-  const applicationManagerMap = new Map<string, ProjectApplicationForManager>();
-
-  for (const appManager of indexerApplications) {
-    applicationManagerMap.set(appManager.id, appManager);
-  }
+  const applicationsArray = Object.values(applications);
 
   // Initialize the categorized reviews record
   const categorizedReviews: Record<"INREVIEW" | "READY_TO_REVIEW", ProjectReview[]> = {
@@ -39,17 +32,11 @@ export function categorizeProjectReviews(
     total: 0,
   };
 
-  for (const application of checkerApplicationsEvaluations) {
-    const appManager = applicationManagerMap.get(application.alloApplicationId);
-    if (!appManager) {
-      // If the application manager is not found, skip this application
-      continue;
-    }
-
+  for (const application of applicationsArray) {
     // Only consider applications that are PENDING
-    if (appManager.status !== "PENDING") {
+    if (application.status !== "PENDING") {
       // Update application counts based on status
-      switch (appManager.status) {
+      switch (application.status) {
         case "APPROVED":
           applicationCounts.approved += 1;
           break;
@@ -109,11 +96,11 @@ export function categorizeProjectReviews(
     );
     const aiSuggestion = aiEvaluations.length > 0 ? aiTotalScore / aiEvaluations.length : 0;
 
-    const projectData = appManager.metadata.application.project;
+    const projectData = application.metadata.application.project;
 
     // Create the ProjectReview object
     const projectReview: ProjectReview = {
-      id: appManager.id,
+      id: application.id,
       name: projectData.title,
       date: new Date(projectData.createdAt),
       avatarUrl: `https://d16c97c2np8a2o.cloudfront.net/ipfs/${

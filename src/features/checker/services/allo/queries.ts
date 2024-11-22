@@ -28,3 +28,29 @@ export const applicationsForManagerQuery = gql`
     }
   }
 `;
+
+export const getApplicationByIdQuery = gql`
+  query getApplicationById($chainId: Int!, $roundId: String!, $applicationId: String!) {
+    application(chainId: $chainId, roundId: $roundId, id: $applicationId) {
+      id
+      projectId
+      chainId
+      roundId
+      status
+      metadataCid
+      metadata
+      distributionTransaction
+      statusSnapshots
+      anchorAddress
+      round {
+        strategyName
+        strategyAddress
+      }
+      canonicalProject {
+        roles {
+          address
+        }
+      }
+    }
+  }
+`;

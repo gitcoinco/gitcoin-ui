@@ -11,7 +11,6 @@ export default meta;
 type Story = StoryObj<typeof BannerImage>;
 
 const gitcoinBannerCID = "QmXE6wP4Zsqp6VdNtXjv2EwqJpCTcBZfZNdSKSbjzEKKtn";
-
 const gitcoinBannerURL = "https://ipfs.io/ipfs/QmXE6wP4Zsqp6VdNtXjv2EwqJpCTcBZfZNdSKSbjzEKKtn";
 
 export const sourceFromIPFS: Story = {
@@ -21,7 +20,6 @@ export const sourceFromIPFS: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const image = await canvas.findByAltText("banner");
     const src = image.getAttribute("src");
     expect(src).toContain(gitcoinBannerCID);
@@ -35,7 +33,6 @@ export const sourceFromURL: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const image = await canvas.findByAltText("banner");
     expect(image).toHaveAttribute("src", gitcoinBannerURL);
   },
@@ -47,7 +44,6 @@ export const MissingEverything: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const image = await canvas.findByAltText("banner");
     const src = image.getAttribute("src");
     expect(src).toContain("default");
@@ -62,7 +58,6 @@ export const AllProvided: Story = {
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
     const image = await canvas.findByAltText("banner");
     const src = image.getAttribute("src");
     expect(src).toContain(gitcoinBannerCID);
@@ -77,7 +72,7 @@ export const Big: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const image = await canvas.findByAltText("banner");
-    expect(image).toHaveStyle("width: 1000px");
+    expect(image).toHaveStyle(`width: 1000px; height: 333.3281px`);
   },
 };
 
@@ -89,6 +84,32 @@ export const Small: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const image = await canvas.findByAltText("banner");
-    expect(image).toHaveStyle("width: 100px");
+    expect(image).toHaveStyle(`width: 100px; height: 33.3281px`);
+  },
+};
+
+export const RoundedVariant: Story = {
+  args: {
+    ipfsCID: gitcoinBannerCID,
+    size: 350,
+    rounding: "3xl",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const image = await canvas.findByAltText("banner");
+    expect(image).toHaveClass("rounded-3xl");
+  },
+};
+
+export const DefaultVariant: Story = {
+  args: {
+    ipfsCID: gitcoinBannerCID,
+    size: 350,
+    rounding: "none",
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const image = await canvas.findByAltText("banner");
+    expect(image).toHaveClass("rounded-none");
   },
 };

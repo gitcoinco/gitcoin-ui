@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { CheckerContext } from "~checker/store/CheckerContext";
+import { CheckerContext } from "../CheckerContext";
 
 export const useCheckerContext = () => {
   const checkerContext = useContext(CheckerContext);

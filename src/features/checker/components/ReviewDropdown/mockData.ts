@@ -1,6 +1,4 @@
-import { EvaluationSummaryProps } from "./types";
-
-export const mockData: EvaluationSummaryProps[] = [
+export const mockData = [
   {
     evaluator: "0x1234567890123456789012345678901234567890",
     evaluationStatus: "approved",

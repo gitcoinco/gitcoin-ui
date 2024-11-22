@@ -1,16 +1,12 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-
-
 import { cn } from "@/lib/utils";
 
+import { Evaluation } from "~checker/services/checker";
 
+import { ReviewDropdown } from "../ReviewDropdown";
 
-import ReviewDropdown from "../ReviewDropdown/ReviewDropdown";
-import { EvaluationSummaryProps } from "../ReviewDropdown/types";
-
-
-const reviewDropdownVariants = tv({
+const reviewDropdownListVariants = tv({
   slots: {
     container: "flex flex-col gap-6",
   },
@@ -19,27 +15,31 @@ const reviewDropdownVariants = tv({
   },
 });
 
-export type ReviewDropdownVariants = VariantProps<typeof reviewDropdownVariants>;
+export type ReviewDropdownListVariants = VariantProps<typeof reviewDropdownListVariants>;
 
 interface ReviewDropdownListProps {
-  evaluations: EvaluationSummaryProps[];
+  evaluations: Evaluation[];
 }
 
-const ReviewDropdownList: React.FC<ReviewDropdownListProps> = ({ evaluations }) => {
-  const { container } = reviewDropdownVariants();
+export const ReviewDropdownList: React.FC<ReviewDropdownListProps> = ({ evaluations }) => {
+  const { container } = reviewDropdownListVariants();
 
   return (
     <div className={cn(container())}>
-      {evaluations.map((evaluation, index) => (
-        <ReviewDropdown
-          key={index}
-          evaluation={evaluation}
-          index={index + 1}
-          isOpen={index === 0}
-        />
-      ))}
+      {evaluations
+        .sort((a, b) => {
+          if (a.evaluatorType === "HUMAN" && b.evaluatorType !== "HUMAN") return -1;
+          if (a.evaluatorType !== "HUMAN" && b.evaluatorType === "HUMAN") return 1;
+          return 0;
+        })
+        .map((evaluation, index) => (
+          <ReviewDropdown
+            key={index}
+            evaluation={evaluation}
+            index={index + 1}
+            isOpen={index === 0}
+          />
+        ))}
     </div>
   );
 };
-
-export default ReviewDropdownList;

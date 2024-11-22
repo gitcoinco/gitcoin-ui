@@ -1,4 +1,6 @@
-import { CheckerAction, CheckerContextType, CheckerRoute } from "../types";
+import { generatePoolUUID } from "../utils/generatePoolUUID";
+import { CheckerAction } from "./actions";
+import { CheckerContextType, CheckerRoute } from "./types";
 
 export const checkerReducer = (
   state: CheckerContextType,
@@ -24,8 +26,16 @@ export const checkerReducer = (
       };
     case "GO_TO_SUBMIT_FINAL_EVALUATION":
       return { ...state, route: { id: CheckerRoute.SubmitFinalEvaluation } };
-    case "SET_APPLICATIONS":
-      return { ...state, applications: action.payload };
+    case "SET_POOL_DATA": {
+      const { poolId, chainId } = action.payload;
+      const poolUUID = generatePoolUUID(poolId, chainId);
+      if (!poolUUID) return state;
+
+      return {
+        ...state,
+        poolsData: { ...state.poolsData, [poolUUID]: { ...action.payload } },
+      };
+    }
     default:
       return state;
   }

@@ -11,13 +11,45 @@ export const checkerPoolDataQuery = gql`
         alloApplicationId
         evaluations {
           evaluatorScore
+          evaluationStatus
           evaluatorType
           evaluator
+          summary
           lastUpdatedAt
           evaluationAnswers {
             answer
           }
-          metadataCid
+        }
+      }
+    }
+  }
+`;
+
+export const checkerApplicationEvaluationsQuery = gql`
+  query getCheckerApplicationEvaluations(
+    $chainId: Int!
+    $alloPoolId: String!
+    $alloApplicationId: String!
+  ) {
+    applications(
+      filter: {
+        chainId: { equalTo: $chainId }
+        pool: { alloPoolId: { equalTo: $alloPoolId } }
+        alloApplicationId: { equalTo: $alloApplicationId }
+      }
+    ) {
+      evaluations {
+        evaluatorScore
+        evaluationStatus
+        evaluatorType
+        evaluator
+        summary
+        lastUpdatedAt
+        evaluationAnswers {
+          answer
+          evaluationQuestion {
+            question
+          }
         }
       }
     }
