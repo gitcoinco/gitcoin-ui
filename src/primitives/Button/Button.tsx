@@ -97,7 +97,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon && iconPosition === "left" && <span>{icon}</span>}
-        {value && <span className={icon ? "" : "mt-0.5"}>{value}</span>}
+        {value && <span className={cn(icon ? "" : "mt-0.5", "font-mono")}>{value}</span>}
         {icon && iconPosition === "right" && <span>{icon}</span>}
       </Comp>
     );
