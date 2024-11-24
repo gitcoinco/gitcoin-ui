@@ -1,4 +1,4 @@
-import { Evaluation } from "../../services/checker";
+import { Evaluation } from "~checker/services/checker";
 
 export const mockEvaluations: Evaluation[] = [
   {

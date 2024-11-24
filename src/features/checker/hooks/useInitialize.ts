@@ -2,7 +2,8 @@ import { useEffect } from "react";
 
 import { Hex } from "viem";
 
-import { setInitialStateAction, useCheckerDispatchContext } from "../store";
+import { setInitialStateAction, useCheckerDispatchContext } from "~checker/store";
+
 import { usePoolData } from "./usePoolData";
 
 interface Props {

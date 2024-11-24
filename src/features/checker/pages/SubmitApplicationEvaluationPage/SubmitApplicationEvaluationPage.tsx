@@ -44,7 +44,7 @@ export const SubmitApplicationEvaluationPage = ({
         logoImg={project.logoImg ?? ""}
         avatarPosition="left"
       />
-      <h1 className="text-3xl font-medium leading-9">{project.title}</h1>
+      <h1 className="text-3xl font-medium leading-9">Evaluate {project.title}</h1>
       <div className="h-0.5 bg-[#EAEAEA]" />
 
       <div className="flex flex-col">

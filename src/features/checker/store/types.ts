@@ -1,7 +1,7 @@
 import { Hex } from "viem";
 
-import { ProjectApplicationForManager } from "../services/allo";
-import { CheckerApiApplication, CheckerApiEvaluationQuestion } from "../services/checker";
+import { ProjectApplicationForManager } from "~checker/services/allo";
+import { CheckerApiApplication, CheckerApiEvaluationQuestion } from "~checker/services/checker";
 
 export interface CheckerApplication extends ProjectApplicationForManager, CheckerApiApplication {
   lastFetchedAt?: Date;

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getApplicationByIdFromIndexer } from "../services/allo";
-import { getCheckerApplicationEvaluations } from "../services/checker";
+import { getApplicationByIdFromIndexer } from "~checker/services/allo";
+import { getCheckerApplicationEvaluations } from "~checker/services/checker";
 
 export const useApplicationEvaluations = (
   chainId: number,
