@@ -44,11 +44,11 @@ export const SubmitApplicationEvaluationPage = ({
     //   chainId,
     //   alloPoolId: poolId,
     //   alloApplicationId: applicationId,
-    //   cid: application.cid,
-    //   evaluator: address ?? "0x",
+    //   cid: application.metadataCid,
+    //   evaluator: address,
     //   summaryInput: {
-    //     questions: data.map((d: any) => ({
-    //       questionIndex: parseInt(d.id),
+    //     questions: data.map((d: any, index) => ({
+    //       questionIndex: index,
     //       answerEnum: d.answer,
     //     })),
     //     summary: "TODO",
