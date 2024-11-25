@@ -30,7 +30,7 @@ export const PoolStatusBadge: Story = {
   },
 };
 
-// Story for roundType
+// Story for poolType
 export const PoolTypeBadge: Story = {
   argTypes: {
     badge: {
@@ -45,7 +45,7 @@ export const PoolTypeBadge: Story = {
     },
   },
   args: {
-    type: "roundType",
+    type: "poolType",
     badge: PoolType.QuadraticFunding,
   },
 };
@@ -100,7 +100,7 @@ export const FundingPending: Story = {
 
 export const QuadraticFunding: Story = {
   args: {
-    type: "roundType",
+    type: "poolType",
     badge: PoolType.QuadraticFunding,
   },
   parameters: {
@@ -112,7 +112,7 @@ export const QuadraticFunding: Story = {
 
 export const DirectGrants: Story = {
   args: {
-    type: "roundType",
+    type: "poolType",
     badge: PoolType.DirectGrants,
   },
   parameters: {

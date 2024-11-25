@@ -59,7 +59,7 @@ export function DataCard({
     >
       <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
         <span>{data.roundName}</span>
-        <PoolBadge badge={data.roundType} type="roundType" />
+        <PoolBadge badge={data.poolType} type="poolType" />
         <IconLabel type="period" startDate={data.startDate} endDate={data.endDate} />
         <IconLabel type="default" label={name} iconType={icon} />
       </div>

@@ -32,7 +32,7 @@ export const PoolBadgeVariants = tv({
 
 type PoolBadgeProps =
   | { type: "poolStatus"; badge: PoolStatus }
-  | { type: "roundType"; badge: PoolType };
+  | { type: "poolType"; badge: PoolType };
 
 export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
   const { variant, text } = match(props)
@@ -52,11 +52,11 @@ export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
       variant: PoolBadgeVariants({ variant: "funding-pending" }),
       text: "Funding pending",
     }))
-    .with({ type: "roundType", badge: PoolType.QuadraticFunding }, () => ({
+    .with({ type: "poolType", badge: PoolType.QuadraticFunding }, () => ({
       variant: PoolBadgeVariants({ variant: "quadratic-funding" }),
       text: "Quadratic funding",
     }))
-    .with({ type: "roundType", badge: PoolType.DirectGrants }, () => ({
+    .with({ type: "poolType", badge: PoolType.DirectGrants }, () => ({
       variant: PoolBadgeVariants({ variant: "direct-grants" }),
       text: "Direct grants",
     }))
