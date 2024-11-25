@@ -12,7 +12,7 @@ export interface EvaluationSummaryInput {
   summary: string;
 }
 
-enum EVALUATION_STATUS {
+export enum EVALUATION_STATUS {
   APPROVED = "approved",
   REJECTED = "rejected",
   UNCERTAIN = "uncertain",
@@ -37,7 +37,7 @@ export interface SyncPoolBody {
 export async function submitEvaluation(
   evaluationBody: EvaluationBody,
 ): Promise<{ evaluationId: string }> {
-  const url = `${CHECKER_ENDPOINT}/api/evaluation`;
+  const url = `${CHECKER_ENDPOINT}/api/evaluate`;
 
   try {
     const response = await fetch(url, {
@@ -45,10 +45,7 @@ export async function submitEvaluation(
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        ...evaluationBody,
-        evaluatorType: "human",
-      }),
+      body: JSON.stringify({ ...evaluationBody, evaluatorType: "human" }),
     });
 
     if (!response.ok) {

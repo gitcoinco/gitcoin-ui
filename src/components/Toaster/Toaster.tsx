@@ -10,7 +10,7 @@ import {
   type viewportVariants,
 } from "@/primitives/Toast/Toast";
 
-const Toaster = () => {
+export const Toaster = () => {
   const { toasts } = useToast();
 
   // Group toasts by their toastPosition
@@ -60,5 +60,3 @@ const Toaster = () => {
     </ToastProvider>
   );
 };
-
-export { Toaster };
