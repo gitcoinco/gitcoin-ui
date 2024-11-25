@@ -5,14 +5,14 @@ import { match } from "ts-pattern";
 
 import { Badge } from "@/primitives/Badge/Badge";
 
-export enum RoundStatus {
+export enum PoolStatus {
   PreRound = "PreRound",
   RoundInProgress = "RoundInProgress",
   ApplicationsInProgress = "ApplicationsInProgress",
   FundingPending = "FundingPending",
 }
 
-export enum RoundType {
+export enum PoolType {
   QuadraticFunding = "QuadraticFunding",
   DirectGrants = "DirectGrants",
 }
@@ -31,32 +31,32 @@ export const PoolBadgeVariants = tv({
 });
 
 type PoolBadgeProps =
-  | { type: "roundStatus"; badge: RoundStatus }
-  | { type: "roundType"; badge: RoundType };
+  | { type: "poolStatus"; badge: PoolStatus }
+  | { type: "roundType"; badge: PoolType };
 
 export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
   const { variant, text } = match(props)
-    .with({ type: "roundStatus", badge: RoundStatus.PreRound }, () => ({
+    .with({ type: "poolStatus", badge: PoolStatus.PreRound }, () => ({
       variant: PoolBadgeVariants({ variant: "pre-round" }),
       text: "Pre round",
     }))
-    .with({ type: "roundStatus", badge: RoundStatus.RoundInProgress }, () => ({
+    .with({ type: "poolStatus", badge: PoolStatus.RoundInProgress }, () => ({
       variant: PoolBadgeVariants({ variant: "round-in-progress" }),
       text: "Round in progress",
     }))
-    .with({ type: "roundStatus", badge: RoundStatus.ApplicationsInProgress }, () => ({
+    .with({ type: "poolStatus", badge: PoolStatus.ApplicationsInProgress }, () => ({
       variant: PoolBadgeVariants({ variant: "applications-in-progress" }),
       text: "Applications in progress",
     }))
-    .with({ type: "roundStatus", badge: RoundStatus.FundingPending }, () => ({
+    .with({ type: "poolStatus", badge: PoolStatus.FundingPending }, () => ({
       variant: PoolBadgeVariants({ variant: "funding-pending" }),
       text: "Funding pending",
     }))
-    .with({ type: "roundType", badge: RoundType.QuadraticFunding }, () => ({
+    .with({ type: "roundType", badge: PoolType.QuadraticFunding }, () => ({
       variant: PoolBadgeVariants({ variant: "quadratic-funding" }),
       text: "Quadratic funding",
     }))
-    .with({ type: "roundType", badge: RoundType.DirectGrants }, () => ({
+    .with({ type: "roundType", badge: PoolType.DirectGrants }, () => ({
       variant: PoolBadgeVariants({ variant: "direct-grants" }),
       text: "Direct grants",
     }))

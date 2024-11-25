@@ -64,7 +64,7 @@ export function DataCard({
         <IconLabel type="default" label={name} iconType={icon} />
       </div>
       <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        <PoolBadge badge={data.roundStatus} type="roundStatus" />
+        <PoolBadge badge={data.poolStatus} type="poolStatus" />
       </div>
     </div>
   );

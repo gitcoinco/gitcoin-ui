@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { RoundStatus, RoundType } from "@/components/Badges";
+import { PoolStatus, PoolType } from "@/components/Badges";
 import { PoolCardProps } from "@/components/pool/types/types";
 import { createQueryState } from "@/lib/tanstack/queryResults";
 
@@ -10,10 +10,10 @@ const simpleRound = {
   roundName: "Round Card",
   roundId: "90",
   chainId: 8453,
-  roundType: RoundType.QuadraticFunding,
+  roundType: PoolType.QuadraticFunding,
   startDate: new Date(),
   endDate: new Date(),
-  roundStatus: RoundStatus.ApplicationsInProgress,
+  poolStatus: PoolStatus.ApplicationsInProgress,
   redirectLink: "https://explorer.gitcoin.co/#/round/{chainId}/{roundId}",
   redirect: true,
 };
@@ -25,8 +25,8 @@ export default {
     roundName: { control: "text" },
     roundId: { control: "text" },
     chainId: { control: "number" },
-    roundType: { control: "select", options: Object.values(RoundType) },
-    roundStatus: { control: "select", options: Object.values(RoundStatus) },
+    roundType: { control: "select", options: Object.values(PoolType) },
+    poolStatus: { control: "select", options: Object.values(PoolStatus) },
     startDate: { control: "date" },
     endDate: { control: "date" },
     queryResult: { table: { disable: true } }, // Hide queryResult from controls

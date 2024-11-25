@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { PoolBadge, RoundStatus, RoundType } from "./PoolBadge";
+import { PoolBadge, PoolStatus, PoolType } from "./PoolBadge";
 
 const meta: Meta<typeof PoolBadge> = {
   title: "Components/PoolBadge",
@@ -10,11 +10,11 @@ const meta: Meta<typeof PoolBadge> = {
 export default meta;
 type Story = StoryObj<typeof PoolBadge>;
 
-export const RoundStatusBadge: Story = {
+export const PoolStatusBadge: Story = {
   argTypes: {
     badge: {
       control: "select",
-      options: Object.values(RoundStatus),
+      options: Object.values(PoolStatus),
       description: "The specific badge value.",
     },
     // Exclude the type from the controls
@@ -25,17 +25,17 @@ export const RoundStatusBadge: Story = {
     },
   },
   args: {
-    type: "roundStatus",
-    badge: RoundStatus.ApplicationsInProgress,
+    type: "poolStatus",
+    badge: PoolStatus.ApplicationsInProgress,
   },
 };
 
 // Story for roundType
-export const RoundTypeBadge: Story = {
+export const PoolTypeBadge: Story = {
   argTypes: {
     badge: {
       control: "select",
-      options: Object.values(RoundType),
+      options: Object.values(PoolType),
       description: "The specific badge value.",
     },
     type: {
@@ -46,14 +46,14 @@ export const RoundTypeBadge: Story = {
   },
   args: {
     type: "roundType",
-    badge: RoundType.QuadraticFunding,
+    badge: PoolType.QuadraticFunding,
   },
 };
 
 export const PreRound: Story = {
   args: {
-    type: "roundStatus",
-    badge: RoundStatus.PreRound,
+    type: "poolStatus",
+    badge: PoolStatus.PreRound,
   },
   parameters: {
     docs: {
@@ -64,8 +64,8 @@ export const PreRound: Story = {
 
 export const RoundInProgress: Story = {
   args: {
-    type: "roundStatus",
-    badge: RoundStatus.RoundInProgress,
+    type: "poolStatus",
+    badge: PoolStatus.RoundInProgress,
   },
   parameters: {
     docs: {
@@ -76,8 +76,8 @@ export const RoundInProgress: Story = {
 
 export const ApplicationsInProgress: Story = {
   args: {
-    type: "roundStatus",
-    badge: RoundStatus.ApplicationsInProgress,
+    type: "poolStatus",
+    badge: PoolStatus.ApplicationsInProgress,
   },
   parameters: {
     docs: {
@@ -88,8 +88,8 @@ export const ApplicationsInProgress: Story = {
 
 export const FundingPending: Story = {
   args: {
-    type: "roundStatus",
-    badge: RoundStatus.FundingPending,
+    type: "poolStatus",
+    badge: PoolStatus.FundingPending,
   },
   parameters: {
     docs: {
@@ -101,7 +101,7 @@ export const FundingPending: Story = {
 export const QuadraticFunding: Story = {
   args: {
     type: "roundType",
-    badge: RoundType.QuadraticFunding,
+    badge: PoolType.QuadraticFunding,
   },
   parameters: {
     docs: {
@@ -113,7 +113,7 @@ export const QuadraticFunding: Story = {
 export const DirectGrants: Story = {
   args: {
     type: "roundType",
-    badge: RoundType.DirectGrants,
+    badge: PoolType.DirectGrants,
   },
   parameters: {
     docs: {
