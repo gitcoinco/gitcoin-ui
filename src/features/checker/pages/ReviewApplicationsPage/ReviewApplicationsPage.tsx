@@ -1,3 +1,5 @@
+import { PoolType } from "@/components/Badges";
+import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
@@ -16,7 +18,9 @@ const canSubmitFinalEvaluation = true;
 export const ReviewApplicationsPage = () => {
   const { categorizedReviews, statCardsProps } = useGetApplicationsReviewPage() || {};
   const dispatch = useCheckerDispatchContext();
-  const { address } = useCheckerContext();
+  const { poolId, chainId, address } = useCheckerContext();
+
+  if (!poolId || !chainId) return null;
 
   const goToApplicationEvaluationOverview = (projectId: string) => {
     dispatch(goToApplicationEvaluationOverviewAction({ projectId }));
@@ -32,12 +36,29 @@ export const ReviewApplicationsPage = () => {
 
   return (
     <div className="flex flex-col gap-6 px-20 pt-6">
+      {/* TODO FIX */}
+      <PoolSummary
+        chainId={chainId}
+        poolId={poolId}
+        strategy={PoolType.QuadraticFunding}
+        name={"Hello World"}
+        registerStartDate={new Date()}
+        registerEndDate={new Date()}
+        allocationStartDate={new Date()}
+        allocationEndDate={new Date()}
+      />
+
       <div className="flex flex-col gap-8">
-        <Button
-          value="Exit"
-          icon={<Icon type={IconType.X} className="fill-red-700" />}
-          className="flex h-8 w-fit justify-start gap-2 bg-red-50 p-4 text-red-700"
-        />
+        <div>
+          <Button
+            variant="secondry"
+            icon={<Icon type={IconType.CHEVRON_LEFT} />}
+            onClick={() =>
+              window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`)
+            }
+            value="back to round manager"
+          />
+        </div>
         <StatCardGroup stats={statCardsProps || []} justify="center" />
       </div>
       <div className="flex flex-col gap-8">

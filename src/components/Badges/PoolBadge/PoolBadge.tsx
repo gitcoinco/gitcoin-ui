@@ -13,8 +13,8 @@ export enum PoolStatus {
 }
 
 export enum PoolType {
-  QuadraticFunding = "QuadraticFunding",
-  DirectGrants = "DirectGrants",
+  QuadraticFunding = "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
+  DirectGrants = "allov2.DirectGrantsSimpleStrategy",
 }
 
 export const PoolBadgeVariants = tv({

@@ -28,31 +28,39 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
     poolStatus = PoolStatus.PreRound;
   }
 
+  const applyLink = `https://builder.gitcoin.co/#/chains/${pool.chainId}/round/${pool.poolId}/apply`;
+  const explorerLink = `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`;
+
   return (
-    <div className="inline-flex h-60 w-[1440px] items-end justify-between bg-[#f6f6f6] px-20 pb-6 pt-[88px]">
-      <div>
-        <PoolBadge badge={pool.strategy} type="poolType" />
+    <div className="inline-flex h-48 w-full items-end justify-between bg-grey-50 px-12 pb-6">
+      <div className="flex flex-col gap-2">
+        <div>
+          <PoolBadge badge={pool.strategy} type="poolType" />
+        </div>
         <div className="text-4xl leading-10">{pool.name}</div>
-        <IconLabel
-          endDate={pool.registerStartDate}
-          startDate={pool.registerEndDate}
-          type="period"
-        />
+        <div className="flex gap-2 text-grey-900">
+          Registration Period
+          <IconLabel
+            endDate={pool.registerStartDate}
+            startDate={pool.registerEndDate}
+            type="period"
+          />
+        </div>
       </div>
-      <div className="inline-flex h-32 flex-col items-end justify-between">
+      <div className="inline-flex h-24 flex-col items-end justify-between">
         <PoolBadge badge={poolStatus} type="poolStatus" />
         <div className="inline-flex items-start justify-start gap-6">
           <Button
             icon={<Icon type={IconType.LINK} />}
             variant="outlined-secondary"
             value="Round application"
-            ref={`https://builder.gitcoin.co/#/chains/${pool.chainId}/round/${pool.poolId}/apply`}
+            onClick={() => window.open(applyLink, "_blank")}
           />
           <Button
-            icon-={<Icon type={IconType.EXPLORER} />}
+            icon={<Icon type={IconType.EXPLORER} />}
             variant="outlined-secondary"
             value="View round"
-            ref={`https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`}
+            onClick={() => window.open(explorerLink, "_blank")}
           />
         </div>
       </div>

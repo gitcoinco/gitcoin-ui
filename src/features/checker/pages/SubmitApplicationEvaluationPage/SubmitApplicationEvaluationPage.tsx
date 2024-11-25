@@ -3,18 +3,25 @@ import { useEffect, useState } from "react";
 
 import { Hex } from "viem";
 
+import { PoolType } from "@/components/Badges";
 import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
+import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { useToast } from "@/hooks/use-toast";
 import { Accordion } from "@/primitives/Accordion";
-import { IconType } from "@/primitives/Icon";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
 import { useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
-import { goToSubmitFinalEvaluationAction, useCheckerDispatchContext } from "~checker/store";
+import {
+  goToApplicationEvaluationOverviewAction,
+  goToSubmitFinalEvaluationAction,
+  useCheckerDispatchContext,
+} from "~checker/store";
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";
@@ -65,6 +72,10 @@ export const SubmitApplicationEvaluationPage = ({
         : "Error: Your evaluation has not been saved. Please try again.",
       timeout: 5000,
     });
+  };
+
+  const goToApplicationEvaluationOverview = () => {
+    dispatch(goToApplicationEvaluationOverviewAction({ projectId: applicationId }));
   };
 
   const goToSubmitFinalEvaluation = () => {
@@ -140,6 +151,26 @@ export const SubmitApplicationEvaluationPage = ({
         isError={isError}
         onSave={onSave}
       />
+      <PoolSummary
+        chainId={chainId}
+        poolId={poolId}
+        strategy={PoolType.QuadraticFunding}
+        name={"Hello World"}
+        registerStartDate={new Date()}
+        registerEndDate={new Date()}
+        allocationStartDate={new Date()}
+        allocationEndDate={new Date()}
+      />
+
+      <div>
+        <Button
+          variant="secondry"
+          icon={<Icon type={IconType.CHEVRON_LEFT} />}
+          onClick={goToApplicationEvaluationOverview}
+          value="back to evaluation overview"
+        />
+      </div>
+
       <ProjectBanner
         bannerImg={project.bannerImg ?? ""}
         logoImg={project.logoImg ?? ""}
@@ -147,7 +178,6 @@ export const SubmitApplicationEvaluationPage = ({
       />
       <h1 className="text-3xl font-medium leading-9">Evaluate {project.title}</h1>
       <div className="h-0.5 bg-[#EAEAEA]" />
-
       <div className="flex gap-2">
         <div className="flex w-[628px] flex-col gap-4">
           <Accordion

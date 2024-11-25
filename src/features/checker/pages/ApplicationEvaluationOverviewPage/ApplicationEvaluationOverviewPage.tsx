@@ -1,12 +1,19 @@
 import { Hex } from "viem";
 
+import { PoolType } from "@/components/Badges";
+import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 
 import { EvaluationList } from "~checker/components/EvaluationList/EvaluationList";
 import { useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
-import { goToSubmitApplicationEvaluationAction, useCheckerDispatchContext } from "~checker/store";
+import {
+  goToReviewApplicationsAction,
+  goToSubmitApplicationEvaluationAction,
+  useCheckerDispatchContext,
+} from "~checker/store";
 
 export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;
@@ -34,10 +41,33 @@ export const ApplicationEvaluationOverviewPage = ({
     dispatch(goToSubmitApplicationEvaluationAction({ projectId: applicationId }));
   };
 
+  const goToReviewApplications = () => {
+    dispatch(goToReviewApplicationsAction());
+  };
+
   const project = application.metadata.application.project;
 
   return (
     <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
+      {/* TODO FIX */}
+      <PoolSummary
+        chainId={chainId}
+        poolId={poolId}
+        strategy={application.round.strategyName as PoolType}
+        name={"TODO"}
+        registerStartDate={new Date()}
+        registerEndDate={new Date()}
+        allocationStartDate={new Date()}
+        allocationEndDate={new Date()}
+      />
+      <div>
+        <Button
+          variant="secondry"
+          icon={<Icon type={IconType.CHEVRON_LEFT} />}
+          onClick={goToReviewApplications}
+          value="back to all projects"
+        />
+      </div>
       <ProjectBanner
         bannerImg={project.bannerImg ?? ""}
         logoImg={project.logoImg ?? ""}

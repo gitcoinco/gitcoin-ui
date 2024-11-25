@@ -2,6 +2,7 @@ import React from "react";
 
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { ProjectSummary } from "@/components/project/components/ProjectSummary/ProjectSummary";
+import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
 import { Badge } from "@/primitives/Badge/Badge";
 import { Button } from "@/primitives/Button";
@@ -21,6 +22,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
   roundId,
   applicationId,
 }) => {
+  const { toast } = useToast();
   const { data, isLoading, error } = useApplicationEvaluations(chainId, roundId, applicationId);
 
   if (isLoading) return;
@@ -51,6 +53,20 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
             variant="outlined-secondary"
             className="h-10 w-24 border-grey-100"
             icon={<Icon type={IconType.LINK} className="fill-black" />}
+            onClick={() => {
+              const url = `https://beta.checker.gitcoin.co/#/${chainId}/${roundId}/${applicationId}`;
+              navigator.clipboard.writeText(url).then(
+                () => {
+                  toast({
+                    status: "success",
+                    description: "Successfully copied to clipboard",
+                  });
+                },
+                (err) => {
+                  console.error("Failed to copy: ", err);
+                },
+              );
+            }}
             value="Share"
           />
           <div className="rainbow-button flex items-center">
