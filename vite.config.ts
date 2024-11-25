@@ -14,11 +14,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "./src/index.ts"),
       name: "gitcoin-ui",
-      fileName: (format, filename) => {
-        const extension = format === "es" ? "mjs" : format;
-        return `${filename}.${extension}`;
-      },
-      formats: ["cjs", "es"],
+      fileName: (format, filename) => `${filename}.js`,
+      formats: ["es"],
     },
     rollupOptions: {
       external: ["react", "react-dom", "tailwindcss"],
@@ -29,11 +26,13 @@ export default defineConfig({
           tailwindcss: "tailwindcss",
         },
         preserveModules: true,
+        preserveModulesRoot: "src",
       },
     },
     sourcemap: true,
     emptyOutDir: true,
     minify: false,
+    target: "esnext",
   },
   plugins: [react(), svgr(), dts({ rollupTypes: true }), cssInjectedByJsPlugin()],
   resolve: {
