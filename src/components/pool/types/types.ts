@@ -1,15 +1,15 @@
 import { UseQueryResult } from "@tanstack/react-query";
 
-import { RoundStatus, RoundType } from "@/components/Badges";
+import { PoolStatus, PoolType } from "@/components/Badges";
 
 export interface PoolCardDataProps {
   roundName: string;
   roundId: string;
   chainId: number;
-  roundType: RoundType;
+  poolType: PoolType;
   startDate: Date;
   endDate: Date;
-  roundStatus: RoundStatus;
+  poolStatus: PoolStatus;
 }
 
 interface QueryProps {

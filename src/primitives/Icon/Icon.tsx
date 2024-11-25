@@ -16,6 +16,7 @@ import {
   clipboardListIcon,
   StarIcon,
   InformationCircleIcon,
+  ExplorerIcon,
 } from "@/assets/icons";
 // Social Media Icons
 import { GithubIcon, TwitterIcon, GlobeIcon } from "@/assets/icons";
@@ -47,6 +48,7 @@ export enum IconType {
   USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
   SOLID_QUESTION_MARK_CIRCLE = "questionMarkCircle",
+  EXPLORER = "explorer",
 
   // Social Media Icons
   GITHUB = "github",
@@ -78,6 +80,7 @@ const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGEl
   sparkles: SparklesIcon,
   shine: ShineIcon,
   x: XIcon,
+  explorer: ExplorerIcon,
   "solid-x": XSolidIcon,
   questionMarkCircle: SolidQuestionMarkCircleIcon,
   twitter: TwitterIcon,
