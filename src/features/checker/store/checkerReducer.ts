@@ -1,4 +1,5 @@
-import { generatePoolUUID } from "../utils/generatePoolUUID";
+import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
+
 import { CheckerAction } from "./actions";
 import { CheckerContextType, CheckerRoute } from "./types";
 
