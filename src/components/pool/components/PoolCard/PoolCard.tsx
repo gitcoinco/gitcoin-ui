@@ -1,6 +1,6 @@
 import { match, P } from "ts-pattern";
 
-import { RoundBadge } from "@/components/Badges";
+import { PoolBadge } from "@/components/Badges";
 import { IconLabel } from "@/components/IconLabel";
 import { PoolCardDataProps, PoolCardProps, onClickProps } from "@/components/pool/types/types";
 import { getChainInfo } from "@/lib/icons/chains";
@@ -59,12 +59,12 @@ export function DataCard({
     >
       <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
         <span>{data.roundName}</span>
-        <RoundBadge badge={data.roundType} type="roundType" />
+        <PoolBadge badge={data.roundType} type="roundType" />
         <IconLabel type="period" startDate={data.startDate} endDate={data.endDate} />
         <IconLabel type="default" label={name} iconType={icon} />
       </div>
       <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        <RoundBadge badge={data.roundStatus} type="roundStatus" />
+        <PoolBadge badge={data.roundStatus} type="roundStatus" />
       </div>
     </div>
   );

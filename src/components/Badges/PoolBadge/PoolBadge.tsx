@@ -17,7 +17,7 @@ export enum RoundType {
   DirectGrants = "DirectGrants",
 }
 
-export const RoundBadgeVariants = tv({
+export const PoolBadgeVariants = tv({
   variants: {
     variant: {
       "pre-round": "border border-green-400 bg-white text-green-400",
@@ -30,34 +30,34 @@ export const RoundBadgeVariants = tv({
   },
 });
 
-type RoundBadgeProps =
+type PoolBadgeProps =
   | { type: "roundStatus"; badge: RoundStatus }
   | { type: "roundType"; badge: RoundType };
 
-export const RoundBadge: React.FC<RoundBadgeProps> = (props) => {
+export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
   const { variant, text } = match(props)
     .with({ type: "roundStatus", badge: RoundStatus.PreRound }, () => ({
-      variant: RoundBadgeVariants({ variant: "pre-round" }),
+      variant: PoolBadgeVariants({ variant: "pre-round" }),
       text: "Pre round",
     }))
     .with({ type: "roundStatus", badge: RoundStatus.RoundInProgress }, () => ({
-      variant: RoundBadgeVariants({ variant: "round-in-progress" }),
+      variant: PoolBadgeVariants({ variant: "round-in-progress" }),
       text: "Round in progress",
     }))
     .with({ type: "roundStatus", badge: RoundStatus.ApplicationsInProgress }, () => ({
-      variant: RoundBadgeVariants({ variant: "applications-in-progress" }),
+      variant: PoolBadgeVariants({ variant: "applications-in-progress" }),
       text: "Applications in progress",
     }))
     .with({ type: "roundStatus", badge: RoundStatus.FundingPending }, () => ({
-      variant: RoundBadgeVariants({ variant: "funding-pending" }),
+      variant: PoolBadgeVariants({ variant: "funding-pending" }),
       text: "Funding pending",
     }))
     .with({ type: "roundType", badge: RoundType.QuadraticFunding }, () => ({
-      variant: RoundBadgeVariants({ variant: "quadratic-funding" }),
+      variant: PoolBadgeVariants({ variant: "quadratic-funding" }),
       text: "Quadratic funding",
     }))
     .with({ type: "roundType", badge: RoundType.DirectGrants }, () => ({
-      variant: RoundBadgeVariants({ variant: "direct-grants" }),
+      variant: PoolBadgeVariants({ variant: "direct-grants" }),
       text: "Direct grants",
     }))
     .otherwise(() => ({

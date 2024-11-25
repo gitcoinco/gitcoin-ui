@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { RoundBadge, RoundStatus, RoundType } from "./RoundBadge";
+import { PoolBadge, RoundStatus, RoundType } from "./PoolBadge";
 
-const meta: Meta<typeof RoundBadge> = {
-  title: "Components/RoundBadge",
-  component: RoundBadge,
+const meta: Meta<typeof PoolBadge> = {
+  title: "Components/PoolBadge",
+  component: PoolBadge,
 };
 
 export default meta;
-type Story = StoryObj<typeof RoundBadge>;
+type Story = StoryObj<typeof PoolBadge>;
 
 export const RoundStatusBadge: Story = {
   argTypes: {

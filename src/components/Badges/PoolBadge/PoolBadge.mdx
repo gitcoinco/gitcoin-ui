@@ -1,0 +1,28 @@
+import { Meta, Canvas, Story, Description, Controls, Stories } from "@storybook/blocks";
+
+import { PoolBadge } from "./PoolBadge";
+import * as PoolBadgeStories from "./PoolBadge.stories";
+
+<Meta title="Components/PoolBadge" component={PoolBadge} of={PoolBadgeStories} />
+
+# PoolBadge
+
+The `PoolBadge` component is a versatile UI element that indicates either the status or type of a round. It supports various states and categories, each represented by a distinct badge.
+
+# Example
+
+<Story of={PoolBadgeStories.RoundStatusBadge} />
+
+# Controls
+
+<Controls of={PoolBadgeStories.RoundStatusBadge} />
+
+<Story of={PoolBadgeStories.RoundTypeBadge} />
+
+# Controls
+
+<Controls of={PoolBadgeStories.RoundTypeBadge} />
+
+# Other variations
+
+<Stories />
