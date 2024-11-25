@@ -8,11 +8,12 @@ import { StatCardGroup } from "@/primitives/StatCardGroup";
 
 import { EvaluationAction, ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
+import { goToReviewApplicationsAction, useCheckerDispatchContext } from "~checker/store";
 
 export const SubmitFinalEvaluation = () => {
   const { categorizedReviews, statCardsProps } = useGetApplicationsReviewPage() || {};
-
   const [projectEvaluations, setProjectEvaluations] = useState<Record<string, boolean>>({});
+  const dispatch = useCheckerDispatchContext();
 
   const handleUpdateFinalEvaluations = (projectId: string, action: EvaluationAction) => {
     setProjectEvaluations((prev) => {
@@ -39,6 +40,10 @@ export const SubmitFinalEvaluation = () => {
 
   const handleRecordEvaluationsOnchain = () => {
     console.log("Record evaluations onchain", projectEvaluations);
+  };
+
+  const handleCancel = () => {
+    dispatch(goToReviewApplicationsAction());
   };
 
   const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
@@ -69,7 +74,7 @@ export const SubmitFinalEvaluation = () => {
                 {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
               </div>
               <div className="flex gap-2">
-                <Button value="cancel" />
+                <Button value="Cancel" onClick={handleCancel} />
                 <Button
                   value={`Record (${numberOfOnchainEvaluations}) evaluations onchain`}
                   disabled={Object.keys(projectEvaluations).length === 0}

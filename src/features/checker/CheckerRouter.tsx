@@ -11,7 +11,7 @@ import {
 } from "~checker/pages";
 import { CheckerRoute } from "~checker/store";
 
-import { useInitialize } from "./hooks";
+import { useInitialize, usePerformEvaluation } from "./hooks";
 
 export interface CheckerRouterProps {
   address: Hex;
@@ -21,7 +21,8 @@ export interface CheckerRouterProps {
 
 export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) => {
   useInitialize({ address, poolId, chainId });
-
+  const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
+    usePerformEvaluation();
   const { route } = useCheckerContext();
 
   return match(route)
@@ -38,13 +39,21 @@ export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) 
     )
     .with(
       { id: CheckerRoute.SubmitApplicationEvaluation, projectId: P.string.minLength(1) },
-      ({ projectId }) => (
-        <SubmitApplicationEvaluationPage
-          chainId={chainId}
-          poolId={poolId}
-          applicationId={projectId}
-        />
-      ),
+      ({ projectId }) => {
+        return (
+          <SubmitApplicationEvaluationPage
+            setEvaluationBody={setEvaluationBody}
+            isSigning={isSigning}
+            isErrorSigning={isErrorSigning}
+            isSuccess={isSuccess}
+            isEvaluating={isEvaluating}
+            isError={isError}
+            applicationId={projectId}
+            chainId={chainId}
+            poolId={poolId}
+          />
+        );
+      },
     )
     .with({ id: CheckerRoute.SubmitFinalEvaluation }, () => <SubmitFinalEvaluation />)
     .otherwise(() => <div>{`Route Not Found: ${JSON.stringify(route)}`}</div>);

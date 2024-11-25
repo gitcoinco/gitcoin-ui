@@ -2,6 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { handlers } from "@/mocks/handlers";
 
+import { usePerformEvaluation } from "~checker/hooks";
 import { CheckerProvider } from "~checker/store";
 
 import { SubmitApplicationEvaluationPage } from "./SubmitApplicationEvaluationPage";
@@ -21,11 +22,13 @@ const meta: Meta<typeof SubmitApplicationEvaluationPage> = {
     },
   },
   decorators: [
-    (Story) => (
-      <CheckerProvider>
-        <Story />
-      </CheckerProvider>
-    ),
+    (Story) => {
+      return (
+        <CheckerProvider>
+          <Story />
+        </CheckerProvider>
+      );
+    },
   ],
 };
 
@@ -43,5 +46,22 @@ export const Default: Story = {
     chainId: 42161,
     poolId: "609",
     applicationId: "17",
+  },
+  render: (args) => {
+    const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
+      usePerformEvaluation();
+    return (
+      <SubmitApplicationEvaluationPage
+        setEvaluationBody={setEvaluationBody}
+        isSigning={isSigning}
+        isErrorSigning={isErrorSigning}
+        isSuccess={isSuccess}
+        isEvaluating={isEvaluating}
+        isError={isError}
+        applicationId={args.applicationId}
+        chainId={args.chainId}
+        poolId={args.poolId}
+      />
+    );
   },
 };

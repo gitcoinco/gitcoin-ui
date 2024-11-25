@@ -2,6 +2,8 @@ import { PropsWithChildren, useReducer } from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+import { Toaster } from "@/components/Toaster";
+
 import {
   CheckerContext,
   CheckerDispatchContext,
@@ -17,6 +19,7 @@ export const CheckerProvider = ({ children }: PropsWithChildren) => {
     <QueryClientProvider client={queryClient}>
       <CheckerContext.Provider value={state}>
         <CheckerDispatchContext.Provider value={dispatch}>
+          <Toaster />
           {children}
         </CheckerDispatchContext.Provider>
       </CheckerContext.Provider>

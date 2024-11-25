@@ -6,14 +6,13 @@ import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerCont
 
 import { getApplicationsFromIndexer } from "~checker/services/allo";
 import { getCheckerPoolData } from "~checker/services/checker";
-
 import {
   CheckerApplication,
   CheckerPoolData,
   setPoolDataAction,
   useCheckerDispatchContext,
-} from "../store";
-import { generatePoolUUID } from "../utils/generatePoolUUID";
+} from "~checker/store";
+import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
 
 export const usePoolData = (): { poolData: CheckerPoolData | null; refetch: () => void } => {
   const { poolsData, poolId, chainId } = useCheckerContext();

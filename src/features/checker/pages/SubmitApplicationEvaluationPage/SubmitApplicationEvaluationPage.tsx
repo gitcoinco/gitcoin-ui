@@ -1,20 +1,35 @@
+// src/components/SubmitApplicationEvaluation/SubmitApplicationEvaluationPage.tsx
+import { useEffect, useState } from "react";
+
 import { Hex } from "viem";
 
 import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
+import { useToast } from "@/hooks/use-toast";
 import { Accordion } from "@/primitives/Accordion";
 import { IconType } from "@/primitives/Icon";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
 import { useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
+import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
+import { goToSubmitFinalEvaluationAction, useCheckerDispatchContext } from "~checker/store";
+
+import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
+import { getAnswerEnum } from "./utils";
 
 export interface SubmitApplicationEvaluationPageProps {
   chainId: number;
   poolId: string;
   applicationId: string;
   address?: Hex;
+  setEvaluationBody: (data: EvaluationBody) => void;
+  isSigning: boolean;
+  isErrorSigning: boolean;
+  isSuccess: boolean;
+  isEvaluating: boolean;
+  isError: boolean;
 }
 
 export const SubmitApplicationEvaluationPage = ({
@@ -22,11 +37,48 @@ export const SubmitApplicationEvaluationPage = ({
   poolId,
   applicationId,
   address,
+  setEvaluationBody,
+  isSigning,
+  isErrorSigning,
+  isSuccess,
+  isEvaluating,
+  isError,
 }: SubmitApplicationEvaluationPageProps) => {
   useInitialize({ address: address ?? "0x", poolId, chainId });
 
+  const [evaluationStatus, setEvaluationStatus] = useState<EVALUATION_STATUS>(
+    EVALUATION_STATUS.UNCERTAIN,
+  );
+  const [evaluationBody, setLocalEvaluationBody] = useState<EvaluationBody | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { application, evaluationQuestions } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
+  const [toastShowed, setToastShowed] = useState(false);
+  const dispatch = useCheckerDispatchContext();
+  const { toast } = useToast();
+
+  const showToast = () => {
+    toast({
+      status: isSuccess ? "success" : "error",
+      description: isSuccess
+        ? "Your evaluation has been saved"
+        : "Error: Your evaluation has not been saved. Please try again.",
+      timeout: 5000,
+    });
+  };
+
+  const goToSubmitFinalEvaluation = () => {
+    dispatch(goToSubmitFinalEvaluationAction());
+  };
+
+  useEffect(() => {
+    if ((isSuccess || isError) && !toastShowed) {
+      setToastShowed(true);
+      setIsModalOpen(false);
+      showToast();
+      goToSubmitFinalEvaluation();
+    }
+  }, [isSuccess, isError, toastShowed]);
 
   if (!application || !evaluationQuestions) return null;
 
@@ -36,13 +88,58 @@ export const SubmitApplicationEvaluationPage = ({
     heading: q.question,
   }));
 
-  const handleSubmit = (data: any) => {
-    // TODO
-    console.log("Submitting evaluation for applications : ", project);
+  const handleSubmit = ({
+    type,
+    selections,
+    feedback,
+  }: {
+    type: "approve" | "reject";
+    selections: Record<string, string>;
+    feedback: string;
+  }) => {
+    const data = evaluationQuestions.map((q) => ({
+      questionIndex: q.questionIndex,
+      answerEnum: getAnswerEnum(selections[q.questionIndex - 1]),
+    }));
+
+    const evaluationType =
+      type === "approve" ? EVALUATION_STATUS.APPROVED : EVALUATION_STATUS.REJECTED;
+    setEvaluationStatus(evaluationType);
+    setLocalEvaluationBody({
+      chainId,
+      alloPoolId: poolId,
+      alloApplicationId: applicationId,
+      cid: application.metadataCid,
+      evaluator: address ?? "0xGitcoinShips!!!",
+      summaryInput: {
+        questions: data,
+        summary: feedback,
+      },
+      evaluationStatus: evaluationType,
+      signature: "0x",
+    });
+    setIsModalOpen(true);
+  };
+
+  const onSave = () => {
+    if (evaluationBody) {
+      setEvaluationBody(evaluationBody);
+    }
   };
 
   return (
-    <div className="mx-auto flex flex-col gap-4 px-20">
+    <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
+      <SubmitApplicationEvaluationModal
+        evaluationStatus={evaluationStatus}
+        isOpen={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        isSigning={isSigning}
+        isErrorSigning={isErrorSigning}
+        isSuccess={isSuccess}
+        isEvaluating={isEvaluating}
+        isError={isError}
+        onSave={onSave}
+      />
       <ProjectBanner
         bannerImg={project.bannerImg ?? ""}
         logoImg={project.logoImg ?? ""}
@@ -52,7 +149,7 @@ export const SubmitApplicationEvaluationPage = ({
       <div className="h-0.5 bg-[#EAEAEA]" />
 
       <div className="flex gap-2">
-        <div className="flex w-1/2 flex-col gap-4">
+        <div className="flex w-[628px] flex-col gap-4">
           <Accordion
             header={
               <IconLabel
@@ -62,6 +159,7 @@ export const SubmitApplicationEvaluationPage = ({
                 iconVariant="text-lg font-medium"
               />
             }
+            isOpen={true}
             content={
               <div className="flex flex-col gap-4">
                 <div className="flex flex-wrap items-start gap-10">
@@ -84,7 +182,7 @@ export const SubmitApplicationEvaluationPage = ({
                             ? project.projectTwitter
                             : `https://x.com/${project.projectTwitter}`
                         }
-                        isVerified={project.credentials["twitter"] ? true : false}
+                        isVerified={!!project.credentials["twitter"]}
                       />
                     )}
                     {project.projectGithub && (
@@ -96,7 +194,7 @@ export const SubmitApplicationEvaluationPage = ({
                             ? project.projectGithub
                             : `https://github.com/${project.projectGithub}`
                         }
-                        isVerified={project.credentials["github"] ? true : false}
+                        isVerified={!!project.credentials["github"]}
                       />
                     )}
                   </div>
@@ -124,7 +222,6 @@ export const SubmitApplicationEvaluationPage = ({
             variant="default"
             border="none"
             padding="none"
-            isOpen={false}
           />
           <Accordion
             header={
@@ -135,7 +232,7 @@ export const SubmitApplicationEvaluationPage = ({
                 iconVariant="text-lg font-medium"
               />
             }
-            content={<Markdown children={project.description}></Markdown>}
+            content={<Markdown>{project.description}</Markdown>}
             variant="default"
             border="none"
             padding="none"
@@ -155,18 +252,17 @@ export const SubmitApplicationEvaluationPage = ({
                 {application.metadata.application.answers.map((answer, index) => {
                   if (answer.encryptedAnswer || !answer.answer) {
                     return null;
-                  } else {
-                    return (
-                      <div key={index} className="flex flex-col gap-2">
-                        <span className="font-sans text-[16px]/[24px] font-bold">
-                          {answer.question}
-                        </span>
-                        <span className="font-sans text-[16px]/[24px] font-normal">
-                          <Markdown children={answer.answer} />
-                        </span>
-                      </div>
-                    );
                   }
+                  return (
+                    <div key={index} className="flex flex-col gap-2">
+                      <span className="font-sans text-[16px]/[24px] font-bold">
+                        {answer.question}
+                      </span>
+                      <span className="font-sans text-[16px]/[24px] font-normal">
+                        <Markdown>{answer.answer}</Markdown>
+                      </span>
+                    </div>
+                  );
                 })}
               </div>
             }
@@ -192,7 +288,7 @@ export const SubmitApplicationEvaluationPage = ({
           />
         </div>
 
-        <div className="w-1/2 rounded-[20px] border border-gray-100 p-5">
+        <div className="w-[628px] rounded-[20px] border border-gray-100 p-5">
           <EvaluationForm groups={groups} onSubmit={handleSubmit} />
         </div>
       </div>
