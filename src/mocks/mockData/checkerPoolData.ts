@@ -40,6 +40,7 @@ export const checkerPoolData = {
         {
           evaluatorScore: 80,
           evaluatorType: "LLM_GPT3",
+          evaluationStatus: "APPROVED",
           evaluator: "0x0000000000000000000000000000000000000001",
           lastUpdatedAt: "2024-11-20T13:04:36.042449",
           evaluationAnswers: [
@@ -64,6 +65,7 @@ export const checkerPoolData = {
         {
           evaluatorScore: 80,
           evaluatorType: "HUMAN",
+          evaluationStatus: "APPROVED",
           evaluator: "0x1234567890123456789012345678901234567890",
           lastUpdatedAt: "2024-11-20T13:04:36.042449",
           evaluationAnswers: [
@@ -93,6 +95,7 @@ export const checkerPoolData = {
         {
           evaluatorScore: 30,
           evaluatorType: "LLM_GPT3",
+          evaluationStatus: "REJECTED",
           evaluator: "0x0000000000000000000000000000000000000001",
           lastUpdatedAt: "2024-11-20T13:04:36.042449",
           evaluationAnswers: [
@@ -117,7 +120,8 @@ export const checkerPoolData = {
         {
           evaluatorScore: 30,
           evaluatorType: "HUMAN",
-          evaluator: "0x0000000000000000000000000000000000000101",
+          evaluator: "0x0000000000000000000000000000000000000102",
+          evaluationStatus: "REJECTED",
           lastUpdatedAt: "2024-11-20T13:04:36.042449",
           evaluationAnswers: [
             {
@@ -143,6 +147,7 @@ export const checkerPoolData = {
           evaluatorType: "HUMAN",
           evaluator: "0x0000000000000000000000000000000000000101",
           lastUpdatedAt: "2024-11-20T13:04:36.042449",
+          evaluationStatus: "UNCERTAIN",
           evaluationAnswers: [
             {
               answer: "UNCERTAIN",
@@ -170,6 +175,7 @@ export const checkerPoolData = {
         {
           evaluatorScore: 59,
           evaluatorType: "LLM_GPT3",
+          evaluationStatus: "UNCERTAIN",
           evaluator: "0x0000000000000000000000000000000000000001",
           lastUpdatedAt: "2024-11-20T13:04:35.635041",
           evaluationAnswers: [

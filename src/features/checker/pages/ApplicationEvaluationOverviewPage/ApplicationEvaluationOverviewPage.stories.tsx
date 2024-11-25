@@ -4,16 +4,16 @@ import { handlers } from "@/mocks/handlers";
 
 import { CheckerProvider } from "~checker/store";
 
-import { ViewApplicationEvaluationsPage } from "./ViewApplicationEvaluationsPage";
+import { ApplicationEvaluationOverviewPage } from "./ApplicationEvaluationOverviewPage";
 
-const meta: Meta<typeof ViewApplicationEvaluationsPage> = {
-  title: "Features/Checker/Pages/ViewApplicationEvaluationsPage",
-  component: ViewApplicationEvaluationsPage,
+const meta: Meta<typeof ApplicationEvaluationOverviewPage> = {
+  title: "Features/Checker/Pages/ApplicationEvaluationOverviewPage",
+  component: ApplicationEvaluationOverviewPage,
   argTypes: {
     chainId: {
       control: "number",
     },
-    roundId: {
+    poolId: {
       control: "text",
     },
     applicationId: {
@@ -31,7 +31,7 @@ const meta: Meta<typeof ViewApplicationEvaluationsPage> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ViewApplicationEvaluationsPage>;
+type Story = StoryObj<typeof ApplicationEvaluationOverviewPage>;
 
 export const Default: Story = {
   parameters: {
@@ -41,7 +41,7 @@ export const Default: Story = {
   },
   args: {
     chainId: 42161,
-    roundId: "609",
-    applicationId: "0",
+    poolId: "609",
+    applicationId: "17",
   },
 };

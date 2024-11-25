@@ -1,9 +1,8 @@
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
 import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
-import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";
 
-export const useGetApplicationsReviewPage = () => {
+export const useApplicationOverviewEvaluations = ({ applicationId }: { applicationId: string }) => {
   const { poolId, chainId, poolsData } = useCheckerContext();
 
   const poolUUID = generatePoolUUID(poolId, chainId);
@@ -12,7 +11,9 @@ export const useGetApplicationsReviewPage = () => {
 
   if (!poolData) return null;
 
-  const { categorizedReviews, statCardsProps } = categorizeProjectReviews(poolData.applications);
-
-  return { categorizedReviews, statCardsProps };
+  return {
+    application: poolData.applications[applicationId],
+    applicationEvaluations: poolData.applications[applicationId].evaluations,
+    evaluationQuestions: poolData.evaluationQuestions,
+  };
 };

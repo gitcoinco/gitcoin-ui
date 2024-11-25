@@ -106,3 +106,9 @@ body {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304,
     U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+.rainbow-button {
+  @apply rounded-lg p-px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 100%),
+    linear-gradient(124deg, #ff9776 17.77%, #5f94bc 35.47%, #25bdce 59.3%, #deab0c 91.61%);
+}

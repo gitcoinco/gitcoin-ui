@@ -4,9 +4,9 @@ import { Hex } from "viem";
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
 import {
-  ApplicationEvaluation,
-  ApplicationEvaluationOverview,
+  ApplicationEvaluationOverviewPage,
   ReviewApplicationsPage,
+  SubmitApplicationEvaluationPage,
   SubmitFinalEvaluation,
 } from "~checker/pages";
 import { CheckerRoute } from "~checker/store";
@@ -29,7 +29,7 @@ export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) 
     .with(
       { id: CheckerRoute.ApplicationEvaluationOverview, projectId: P.string.minLength(1) },
       ({ projectId }) => (
-        <ApplicationEvaluationOverview
+        <ApplicationEvaluationOverviewPage
           chainId={chainId}
           poolId={poolId}
           applicationId={projectId}
@@ -37,8 +37,14 @@ export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) 
       ),
     )
     .with(
-      { id: CheckerRoute.ApplicationEvaluation, projectId: P.string.minLength(1) },
-      ({ projectId }) => <ApplicationEvaluation projectId={projectId} />,
+      { id: CheckerRoute.SubmitApplicationEvaluation, projectId: P.string.minLength(1) },
+      ({ projectId }) => (
+        <SubmitApplicationEvaluationPage
+          chainId={chainId}
+          poolId={poolId}
+          applicationId={projectId}
+        />
+      ),
     )
     .with({ id: CheckerRoute.SubmitFinalEvaluation }, () => <SubmitFinalEvaluation />)
     .otherwise(() => <div>{`Route Not Found: ${JSON.stringify(route)}`}</div>);

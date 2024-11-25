@@ -1,19 +1,23 @@
 import { IconLabel } from "@/components/IconLabel";
-import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
-import { getReviewsCount } from "~checker/utils/getReviewsCount";
+import { getReviewsCount } from "../../utils/getReviewsCount";
+import { EvaluationAction, ProjectEvaluationAction } from "../ProjectEvaluationAction";
+import { ProjectStatus } from "../ProjectEvaluationAction";
+import { ProjectReview } from "../ProjectReviewList";
 
-import { ProjectReview } from "./types";
-
-export interface ProjectReviewListProps {
-  reviewer: `0x${string}`;
+export interface ProjectEvaluationListProps {
+  evaluationStatus?: ProjectStatus;
   projects: ProjectReview[];
-  action?: (projectId: string) => void;
+  action: (projectId: string, action: EvaluationAction) => void;
 }
 
-export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewListProps) => {
+export const ProjectEvaluationList = ({
+  evaluationStatus = "pending",
+  projects,
+  action,
+}: ProjectEvaluationListProps) => {
   const columns: ListGridColumn<ProjectReview>[] = [
     {
       header: "Project",
@@ -68,21 +72,15 @@ export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewL
     {
       header: "Action",
       key: "action",
-      width: "1fr",
+      width: "2fr",
       position: "center",
       render: (item) => {
-        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
         return (
           <div className="flex items-center justify-center">
-            <Button
-              variant="outlined-secondary"
-              value="Evaluate project"
-              disabled={isReviewed}
-              onClick={() => {
-                if (action) {
-                  action(item.id);
-                }
-              }}
+            <ProjectEvaluationAction
+              onEvaluate={action}
+              projectId={item.id}
+              status={evaluationStatus}
             />
           </div>
         );

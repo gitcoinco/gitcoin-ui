@@ -12,7 +12,7 @@ export interface EvaluationListProps {
 export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
   const columns: ListGridColumn<Evaluation>[] = [
     {
-      header: "Date",
+      header: "Date Reviewed",
       key: "lastUpdatedAt",
       width: "1fr",
       render: (item) => <IconLabel type="date" date={new Date(item.lastUpdatedAt)} />,
@@ -41,14 +41,14 @@ export const EvaluationList = ({ evaluations }: EvaluationListProps) => {
         const icon =
           item.evaluationStatus === "APPROVED"
             ? IconType.CHECK
-            : item.evaluationStatus === "PENDING"
+            : item.evaluationStatus === "UNCERTAIN"
               ? IconType.EXCLAMATION_CIRCLE
               : IconType.X;
 
         const className =
           item.evaluationStatus === "APPROVED"
             ? "text-moss-700"
-            : item.evaluationStatus === "PENDING"
+            : item.evaluationStatus === "UNCERTAIN"
               ? "text-yellow-700"
               : "text-red-700";
 

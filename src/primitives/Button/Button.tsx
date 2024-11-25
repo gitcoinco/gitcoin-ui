@@ -36,6 +36,7 @@ const buttonVariants = tv({
     variant: {
       primary: "border-brand bg-brand text-white",
       secondary: "border-neutral-100 bg-neutral-100 text-black",
+      grey: "border-neutral-300 bg-neutral-300 text-black",
       error: "border-red-50 bg-red-50 text-red-700",
       success: "border-moss-50 bg-moss-50 text-moss-700",
       "outlined-error": "border-2 border-red-700 text-red-900",
@@ -97,7 +98,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon && iconPosition === "left" && <span>{icon}</span>}
-        {value && <span className={icon ? "" : "mt-0.5"}>{value}</span>}
+        {value && <span className={cn(icon ? "" : "mt-0.5", "font-mono")}>{value}</span>}
         {icon && iconPosition === "right" && <span>{icon}</span>}
       </Comp>
     );

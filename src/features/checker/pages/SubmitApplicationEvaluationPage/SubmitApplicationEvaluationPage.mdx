@@ -1,0 +1,30 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+
+import * as SubmitApplicationEvaluationPageStories from "./SubmitApplicationEvaluationPage.stories";
+
+<Meta of={SubmitApplicationEvaluationPageStories} />
+
+# Submit Application Evaluation Page
+
+The `SubmitApplicationEvaluationPage` component allows users to submit evaluations for a specific application. It initializes the evaluation environment and fetches the necessary data to display the application's details and evaluations.
+
+## Component Structure
+
+### Key Features:
+
+- **Initialization:** Uses the `useInitialize` hook to set up the environment for evaluation submissions.
+- **Data Fetching:** Retrieves application details and existing evaluations via the `useApplicationOverviewEvaluations` hook.
+- **Rendering:** Displays the application's metadata and related evaluations in a structured layout.
+
+## Example Story
+
+### Default
+
+This is the default state of the component when the submit application evaluation is successfully loaded.
+
+<Story of={SubmitApplicationEvaluationPageStories.Default} />
+
+## Controls
+
+<Controls />
+<Stories />

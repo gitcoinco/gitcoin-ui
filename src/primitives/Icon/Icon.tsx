@@ -2,6 +2,7 @@
 import {
   CheckIcon,
   CheckSolidIcon,
+  LinkIcon,
   ClockIcon,
   ExclamationCircleIcon,
   SparklesIcon,
@@ -12,6 +13,9 @@ import {
   ShineIcon,
   UserIcon,
   SolidQuestionMarkCircleIcon,
+  clipboardListIcon,
+  StarIcon,
+  InformationCircleIcon,
 } from "@/assets/icons";
 // Social Media Icons
 import { GithubIcon, TwitterIcon, GlobeIcon } from "@/assets/icons";
@@ -29,7 +33,11 @@ export enum IconType {
   // Status Icons
   CHECK = "check",
   SOLID_CHECK = "solid-check",
+  LINK = "link",
   CLOCK = "clock",
+  CLIPBOARD_LIST = "clipboardList",
+  STAR = "star",
+  INFORMATION_CIRCLE = "informationCircle",
   EXCLAMATION_CIRCLE = "exclamation-circle",
   SPARKLES = "sparkles",
   SHINE = "shine",
@@ -61,7 +69,11 @@ export type IconProps = React.SVGProps<SVGSVGElement> & {
 const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGElement>>> = {
   check: CheckIcon,
   "solid-check": CheckSolidIcon,
+  link: LinkIcon,
   clock: ClockIcon,
+  clipboardList: clipboardListIcon,
+  star: StarIcon,
+  informationCircle: InformationCircleIcon,
   "exclamation-circle": ExclamationCircleIcon,
   sparkles: SparklesIcon,
   shine: ShineIcon,

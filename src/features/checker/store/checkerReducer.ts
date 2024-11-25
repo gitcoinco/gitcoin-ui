@@ -19,10 +19,13 @@ export const checkerReducer = (
           projectId: action.payload.projectId,
         },
       };
-    case "GO_TO_APPLICATION_EVALUATION":
+    case "GO_TO_SUBMIT_APPLICATION_EVALUATION":
       return {
         ...state,
-        route: { id: CheckerRoute.ApplicationEvaluation, projectId: action.payload.projectId },
+        route: {
+          id: CheckerRoute.SubmitApplicationEvaluation,
+          projectId: action.payload.projectId,
+        },
       };
     case "GO_TO_SUBMIT_FINAL_EVALUATION":
       return { ...state, route: { id: CheckerRoute.SubmitFinalEvaluation } };

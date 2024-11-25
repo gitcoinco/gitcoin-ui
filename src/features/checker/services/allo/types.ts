@@ -58,6 +58,7 @@ export interface ProjectApplicationMetadata {
         ciphertext: string;
         encryptedSymmetricKey: string;
       };
+      answer: string;
     }[];
     project: ProjectMetadata;
     recipient: string;

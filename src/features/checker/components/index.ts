@@ -4,3 +4,4 @@ export * from "./ProjectEvaluationAction";
 export * from "./ProjectReviewList";
 export * from "./ReviewDropdown";
 export * from "./ReviewDropdownList";
+export * from "./ProjectEvaluationList";

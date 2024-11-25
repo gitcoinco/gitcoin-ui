@@ -1,7 +1,7 @@
 import { Hex } from "viem";
 
-import { ProjectApplicationForManager } from "../services/allo";
-import { CheckerApiApplication, CheckerApiEvaluationQuestion } from "../services/checker";
+import { ProjectApplicationForManager } from "~checker/services/allo";
+import { CheckerApiApplication, CheckerApiEvaluationQuestion } from "~checker/services/checker";
 
 export interface CheckerApplication extends ProjectApplicationForManager, CheckerApiApplication {
   lastFetchedAt?: Date;
@@ -21,8 +21,9 @@ export interface CheckerPoolData {
 export enum CheckerRoute {
   ReviewApplications = "review-applications",
   ApplicationEvaluationOverview = "application-evaluation-overview",
-  ApplicationEvaluation = "application-evaluation",
+  SubmitApplicationEvaluation = "submit-application-evaluation",
   SubmitFinalEvaluation = "submit-final-evaluation",
+  ApplicationEvaluation = "application-evaluation",
 }
 
 export interface CheckerContextType {
@@ -34,7 +35,11 @@ export interface CheckerContextType {
     | { id: CheckerRoute.SubmitFinalEvaluation }
     | { id: CheckerRoute.ReviewApplications }
     | {
-        id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.ApplicationEvaluation;
+        id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.SubmitApplicationEvaluation;
+        projectId: string;
+      }
+    | {
+        id: CheckerRoute.ApplicationEvaluation;
         projectId: string;
       };
 }
