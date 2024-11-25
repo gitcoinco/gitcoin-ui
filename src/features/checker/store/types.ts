@@ -23,6 +23,7 @@ export enum CheckerRoute {
   ApplicationEvaluationOverview = "application-evaluation-overview",
   SubmitApplicationEvaluation = "submit-application-evaluation",
   SubmitFinalEvaluation = "submit-final-evaluation",
+  ApplicationEvaluation = "application-evaluation",
 }
 
 export interface CheckerContextType {
@@ -35,6 +36,10 @@ export interface CheckerContextType {
     | { id: CheckerRoute.ReviewApplications }
     | {
         id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.SubmitApplicationEvaluation;
+        projectId: string;
+      }
+    | {
+        id: CheckerRoute.ApplicationEvaluation;
         projectId: string;
       };
 }
