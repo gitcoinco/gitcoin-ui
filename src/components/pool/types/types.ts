@@ -2,7 +2,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 
 import { RoundStatus, RoundType } from "@/components/Badges";
 
-export type RoundCardDataProps = {
+export interface PoolCardDataProps {
   roundName: string;
   roundId: string;
   chainId: number;
@@ -10,15 +10,15 @@ export type RoundCardDataProps = {
   startDate: Date;
   endDate: Date;
   roundStatus: RoundStatus;
-};
+}
 
-type QueryProps = {
-  queryResult: UseQueryResult<RoundCardDataProps, Error>;
-};
+interface QueryProps {
+  queryResult: UseQueryResult<PoolCardDataProps, Error>;
+}
 
-export type onClickProps = {
+export interface onClickProps {
   redirectLink?: string;
   redirect?: boolean;
-};
+}
 
-export type RoundCardProps = (RoundCardDataProps | QueryProps) & onClickProps;
+export type PoolCardProps = (PoolCardDataProps | QueryProps) & onClickProps;

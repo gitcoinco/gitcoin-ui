@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { RoundStatus, RoundType } from "@/components/Badges";
-import { RoundCardProps } from "@/components/round/types/types";
+import { PoolCardProps } from "@/components/pool/types/types";
 import { createQueryState } from "@/lib/tanstack/queryResults";
 
-import { RoundCard } from "./RoundCard";
+import { PoolCard } from "./PoolCard";
 
 const simpleRound = {
   roundName: "Round Card",
@@ -19,8 +19,8 @@ const simpleRound = {
 };
 
 export default {
-  title: "Components/round/RoundCard",
-  component: RoundCard,
+  title: "Components/pool/PoolCard",
+  component: PoolCard,
   argTypes: {
     roundName: { control: "text" },
     roundId: { control: "text" },
@@ -31,9 +31,9 @@ export default {
     endDate: { control: "date" },
     queryResult: { table: { disable: true } }, // Hide queryResult from controls
   },
-} as Meta<typeof RoundCard>;
+} as Meta<typeof PoolCard>;
 
-type Story = StoryObj<RoundCardProps>;
+type Story = StoryObj<PoolCardProps>;
 
 export const Default: Story = {
   args: {
