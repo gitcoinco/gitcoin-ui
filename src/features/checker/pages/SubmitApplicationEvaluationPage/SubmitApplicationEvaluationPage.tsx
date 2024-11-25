@@ -10,6 +10,8 @@ import { Markdown } from "@/primitives/Markdown/Markdown";
 import { useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 
+import { submitEvaluation } from "../../services/checker/api";
+
 export interface SubmitApplicationEvaluationPageProps {
   chainId: number;
   poolId: string;
@@ -36,8 +38,24 @@ export const SubmitApplicationEvaluationPage = ({
     heading: q.question,
   }));
 
-  const handleSubmit = (data: any) => {
+  const handleSubmit = async (data: any) => {
     // TODO
+    // await submitEvaluation({
+    //   chainId,
+    //   alloPoolId: poolId,
+    //   alloApplicationId: applicationId,
+    //   cid: application.cid,
+    //   evaluator: address ?? "0x",
+    //   summaryInput: {
+    //     questions: data.map((d: any) => ({
+    //       questionIndex: parseInt(d.id),
+    //       answerEnum: d.answer,
+    //     })),
+    //     summary: "TODO",
+    //   },
+    //   evaluationStatus: "",
+    //   signature: "0x",
+    // })
     console.log("Submitting evaluation for applications : ", project);
   };
 
