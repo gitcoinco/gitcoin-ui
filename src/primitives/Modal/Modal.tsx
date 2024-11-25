@@ -26,15 +26,15 @@ const overlayVariants = tv({
 
 export const Modal = React.forwardRef<
   React.ElementRef<typeof DialogContent>,
-  React.ComponentPropsWithoutRef<typeof DialogContent> & ModalProps
->(({ children, overlayVariant = "blur", ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DialogContent> & ModalProps & { showCloseButton?: boolean }
+>(({ children, overlayVariant = "blur", showCloseButton, ...props }, ref) => (
   <>
     <DialogOverlay
       className={overlayVariants({
         overlayVariant,
       })}
     />
-    <DialogContent ref={ref} className="sm:max-w-md" {...props}>
+    <DialogContent showCloseButton={showCloseButton} ref={ref} className="sm:max-w-md" {...props}>
       {children}
     </DialogContent>
   </>
