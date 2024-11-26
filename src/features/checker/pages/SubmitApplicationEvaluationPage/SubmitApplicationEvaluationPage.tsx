@@ -20,13 +20,15 @@ import { Icon, IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
-
-
 import { useCredentialverification, useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { PastApplication } from "~checker/services/allo";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
-import { goToApplicationEvaluationOverviewAction, goToSubmitFinalEvaluationAction, useCheckerDispatchContext } from "~checker/store";
+import {
+  goToApplicationEvaluationOverviewAction,
+  goToSubmitFinalEvaluationAction,
+  useCheckerDispatchContext,
+} from "~checker/store";
 
 
 
