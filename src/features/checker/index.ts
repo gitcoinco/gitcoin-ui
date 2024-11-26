@@ -1,2 +1,2 @@
 export * from "./Checker";
-export * from "./pages";
+export * from "./ApplicationView"
