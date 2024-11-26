@@ -17,8 +17,13 @@ export const applicationsForManagerQuery = gql`
       statusSnapshots
       anchorAddress
       round {
+        roundMetadata
         strategyName
         strategyAddress
+        applicationsStartTime
+        applicationsEndTime
+        donationsEndTime
+        donationsStartTime
       }
       canonicalProject {
         roles {
@@ -49,6 +54,34 @@ export const getApplicationByIdQuery = gql`
       canonicalProject {
         roles {
           address
+        }
+      }
+    }
+  }
+`;
+
+export const getPastApplicationsQueryByApplicationId = gql`
+  query getPastApplicationsByApplicationId(
+    $chainId: Int!
+    $roundId: String!
+    $applicationId: String!
+  ) {
+    applications(
+      filter: {
+        chainId: { equalTo: $chainId }
+        roundId: { equalTo: $roundId }
+        id: { equalTo: $applicationId }
+      }
+    ) {
+      project {
+        applications {
+          id
+          roundId
+          statusSnapshots
+          status
+          round {
+            roundMetadata
+          }
         }
       }
     }

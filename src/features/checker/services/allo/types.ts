@@ -92,18 +92,39 @@ export interface ProjectApplication extends BaseDonorValues {
   distributionTransaction: string | null;
 }
 
+interface StatusSnapshot {
+  status: ApplicationStatus;
+  updatedAtBlock: string;
+  updatedAt: string;
+}
+
 export interface ProjectApplicationForManager extends ProjectApplication {
   anchorAddress: Address;
-  statusSnapshots: {
-    status: ApplicationStatus;
-    updatedAtBlock: string;
-    updatedAt: string;
-  }[];
+  statusSnapshots: StatusSnapshot[];
   round: {
     strategyName: string;
     strategyAddress: string;
+    roundMetadata: {
+      name: string;
+    };
+    applicationsStartTime: string;
+    applicationsEndTime: string;
+    donationsEndTime: string;
+    donationsStartTime: string;
   };
   canonicalProject: {
     roles: { address: Address }[];
+  };
+}
+
+export interface PastApplication {
+  id: string;
+  roundId: string;
+  statusSnapshots: StatusSnapshot[];
+  status: ApplicationStatus;
+  round: {
+    roundMetadata: {
+      name: string;
+    };
   };
 }

@@ -1,1 +1,2 @@
-export * from "./RoundBadge/RoundBadge";
+export * from "./PoolBadge/PoolBadge";
+export * from "./ApplicationBadge/ApplicationBadge";

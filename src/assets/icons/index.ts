@@ -12,6 +12,7 @@ export { default as InformationCircleIcon } from "./information_circle.svg?react
 // Solid X Icon
 export { default as XSolidIcon } from "./solid/x.svg?react";
 export { default as SolidQuestionMarkCircleIcon } from "./solid/questionMarkCircle.svg?react";
+export { default as ChevronLeftIcon } from "./solid/chevron-left.svg?react";
 
 // Time Icons
 export { default as ClockIcon } from "./clock.svg?react";
@@ -23,6 +24,7 @@ export { default as ShineIcon } from "./shine.svg?react";
 export { default as UserIcon } from "./user.svg?react";
 export { default as VerifiedBadgeIcon } from "./verifiedBadge.svg?react";
 export { default as GlobeIcon } from "./globe.svg?react";
+export { default as ExplorerIcon } from "./explorer.svg?react";
 
 // Social Media Icons
 export { default as GithubIcon } from "./github.svg?react";

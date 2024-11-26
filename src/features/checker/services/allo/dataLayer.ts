@@ -1,6 +1,10 @@
 import { executeQuery } from "./alloClient";
-import { applicationsForManagerQuery, getApplicationByIdQuery } from "./queries";
-import { ProjectApplication, ProjectApplicationForManager } from "./types";
+import {
+  applicationsForManagerQuery,
+  getApplicationByIdQuery,
+  getPastApplicationsQueryByApplicationId,
+} from "./queries";
+import { PastApplication, ProjectApplication, ProjectApplicationForManager } from "./types";
 
 export async function getApplicationsFromIndexer(
   chainId?: number,
@@ -33,5 +37,23 @@ export async function getApplicationByIdFromIndexer(
     return response.application as ProjectApplication;
   } catch (e) {
     throw new Error(`Failed to fetch application data. with error: ${e}`);
+  }
+}
+
+export async function getPastApplicationsByApplicationIdFromIndexer(
+  chainId: number,
+  roundId: string,
+  applicationId: string,
+): Promise<PastApplication[]> {
+  try {
+    const response = await executeQuery(getPastApplicationsQueryByApplicationId, {
+      chainId,
+      roundId,
+      applicationId,
+    });
+
+    return response.applications[0].project.applications as PastApplication[];
+  } catch (e) {
+    throw new Error(`Failed to fetch past applications data. with error: ${e}`);
   }
 }

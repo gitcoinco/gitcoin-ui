@@ -2,18 +2,24 @@ import { useState, useMemo } from "react";
 
 import { match } from "ts-pattern";
 
+import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
 
 import { EvaluationAction, ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
-import { goToReviewApplicationsAction, useCheckerDispatchContext } from "~checker/store";
+import {
+  goToReviewApplicationsAction,
+  useCheckerDispatchContext,
+  useCheckerContext,
+} from "~checker/store";
 
 export const SubmitFinalEvaluation = () => {
-  const { categorizedReviews, statCardsProps } = useGetApplicationsReviewPage() || {};
+  const { categorizedReviews, statCardsProps, application } = useGetApplicationsReviewPage() || {};
   const [projectEvaluations, setProjectEvaluations] = useState<Record<string, boolean>>({});
   const dispatch = useCheckerDispatchContext();
+  const { poolId, chainId } = useCheckerContext();
 
   const handleUpdateFinalEvaluations = (projectId: string, action: EvaluationAction) => {
     setProjectEvaluations((prev) => {
@@ -49,54 +55,68 @@ export const SubmitFinalEvaluation = () => {
   const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
 
   return (
-    <div className="flex flex-col gap-6 px-20 pt-6">
-      <div className="flex flex-col gap-8">
-        <Button
-          value="Exit"
-          icon={<Icon type={IconType.X} className="fill-red-700" />}
-          className="flex h-8 w-fit justify-start gap-2 bg-red-50 p-4 text-red-700"
-        />
-        <StatCardGroup stats={statCardsProps || []} justify="center" />
-      </div>
-      <div className="flex flex-col gap-8">
-        <div className="flex flex-col gap-4">
-          <div className="font-mono text-2xl font-medium leading-loose text-black">
-            Review applications
+    <div className="flex flex-col gap-6">
+      <PoolSummary
+        chainId={chainId ?? 1}
+        poolId={poolId ?? "1"}
+        strategyName={application?.round.strategyName ?? ""}
+        name={application?.round.roundMetadata.name ?? ""}
+        registerStartDate={new Date()}
+        registerEndDate={new Date()}
+        allocationStartDate={new Date()}
+        allocationEndDate={new Date()}
+      />
+      <div className="mx-auto flex max-w-[1440px]">
+        <div className="flex flex-col gap-6 px-20 pt-6">
+          <div className="flex flex-col gap-8">
+            <Button
+              value="Exit"
+              icon={<Icon type={IconType.X} className="fill-red-700" />}
+              className="flex h-8 w-fit justify-start gap-2 bg-red-50 p-4 text-red-700"
+            />
+            <StatCardGroup stats={statCardsProps || []} justify="center" />
           </div>
-          <div className="font-mono text-base font-normal leading-7 text-grey-900">
-            Evaluate projects here.
-          </div>
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="pb-1">
-            <div className="flex items-center justify-between pb-1">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-4">
               <div className="font-mono text-2xl font-medium leading-loose text-black">
-                {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
+                Review applications
               </div>
-              <div className="flex gap-2">
-                <Button value="Cancel" onClick={handleCancel} />
-                <Button
-                  value={`Record (${numberOfOnchainEvaluations}) evaluations onchain`}
-                  disabled={Object.keys(projectEvaluations).length === 0}
-                  onClick={handleRecordEvaluationsOnchain}
-                />
+              <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                Evaluate projects here.
               </div>
             </div>
-            <div className="h-px bg-grey-300" />
-          </div>
-
-          <div>
-            {ReadyApplicationsToSubmit.length === 0 ? (
-              <div className="font-mono text-base font-normal leading-7 text-grey-900">
-                Evaluations that are ready to be submitted onchain will appear here once reviewed.
-                Manager supports multiple reviewers.
+            <div className="flex flex-col gap-2">
+              <div className="pb-1">
+                <div className="flex items-center justify-between pb-1">
+                  <div className="font-mono text-2xl font-medium leading-loose text-black">
+                    {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button value="Cancel" onClick={handleCancel} />
+                    <Button
+                      value={`Record (${numberOfOnchainEvaluations}) evaluations onchain`}
+                      disabled={Object.keys(projectEvaluations).length === 0}
+                      onClick={handleRecordEvaluationsOnchain}
+                    />
+                  </div>
+                </div>
+                <div className="h-px bg-grey-300" />
               </div>
-            ) : (
-              <ProjectEvaluationList
-                projects={ReadyApplicationsToSubmit}
-                action={handleUpdateFinalEvaluations}
-              />
-            )}
+
+              <div>
+                {ReadyApplicationsToSubmit.length === 0 ? (
+                  <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                    Evaluations that are ready to be submitted onchain will appear here once
+                    reviewed. Manager supports multiple reviewers.
+                  </div>
+                ) : (
+                  <ProjectEvaluationList
+                    projects={ReadyApplicationsToSubmit}
+                    action={handleUpdateFinalEvaluations}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </div>

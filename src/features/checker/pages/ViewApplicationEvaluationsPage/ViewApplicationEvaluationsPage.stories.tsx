@@ -13,7 +13,7 @@ const meta: Meta<typeof ViewApplicationEvaluationsPage> = {
     chainId: {
       control: "number",
     },
-    roundId: {
+    poolId: {
       control: "text",
     },
     applicationId: {
@@ -41,7 +41,7 @@ export const Default: Story = {
   },
   args: {
     chainId: 42161,
-    roundId: "609",
+    poolId: "609",
     applicationId: "0",
   },
 };

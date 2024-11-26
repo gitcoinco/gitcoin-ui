@@ -8,6 +8,7 @@ import { ProjectReview, Review } from "../components/ProjectReviewList/types";
 interface ProjectReviewsResultByCategory {
   categorizedReviews: Record<"INREVIEW" | "READY_TO_REVIEW", ProjectReview[]>;
   statCardsProps: StatCardProps[];
+  application: CheckerApplication;
 }
 
 // Define the AI evaluator address
@@ -135,8 +136,11 @@ export function categorizeProjectReviews(
     },
   ];
 
+  const application = applicationsArray[0];
+
   return {
     categorizedReviews,
     statCardsProps,
+    application,
   };
 }

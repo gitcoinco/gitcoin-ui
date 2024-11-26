@@ -3,3 +3,4 @@ export * from "./usePoolData";
 export * from "./useInitialize";
 export * from "./useGetApplicationsReviewPage";
 export * from "./usePerformEvaluation";
+export * from "./useGetPastApplications";

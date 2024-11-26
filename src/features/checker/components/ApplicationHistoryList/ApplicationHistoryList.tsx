@@ -1,4 +1,4 @@
-import { ApplicationBadge } from "@/components/Badges/ApplicationBadge/ApplicationBadge";
+import { ApplicationBadge } from "@/components/Badges";
 import { IconLabel } from "@/components/IconLabel";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 

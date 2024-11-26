@@ -1,13 +1,13 @@
 import { match, P } from "ts-pattern";
 
-import { RoundBadge } from "@/components/Badges";
+import { PoolBadge } from "@/components/Badges";
 import { IconLabel } from "@/components/IconLabel";
-import { RoundCardDataProps, RoundCardProps, onClickProps } from "@/components/round/types/types";
+import { PoolCardDataProps, PoolCardProps, onClickProps } from "@/components/pool/types/types";
 import { getChainInfo } from "@/lib/icons/chains";
 import { modularRedirect } from "@/lib/utils";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
-export function RoundCard(props: RoundCardProps) {
+export function PoolCard(props: PoolCardProps) {
   return match(props)
     .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
       match(queryResult)
@@ -18,7 +18,7 @@ export function RoundCard(props: RoundCardProps) {
         ))
         .otherwise(() => <ErrorCard />),
     )
-    .otherwise(() => <DataCard data={props as RoundCardDataProps} redirectProps={props} />);
+    .otherwise(() => <DataCard data={props as PoolCardDataProps} redirectProps={props} />);
 }
 
 function LoadingCard() {
@@ -41,7 +41,7 @@ export function DataCard({
   data,
   redirectProps,
 }: {
-  data: RoundCardDataProps;
+  data: PoolCardDataProps;
   redirectProps?: onClickProps;
 }) {
   const { name, icon } = getChainInfo(data.chainId);
@@ -59,12 +59,12 @@ export function DataCard({
     >
       <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
         <span>{data.roundName}</span>
-        <RoundBadge badge={data.roundType} type="roundType" />
+        <PoolBadge badge={data.poolType} type="poolType" />
         <IconLabel type="period" startDate={data.startDate} endDate={data.endDate} />
         <IconLabel type="default" label={name} iconType={icon} />
       </div>
       <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        <RoundBadge badge={data.roundStatus} type="roundStatus" />
+        <PoolBadge badge={data.poolStatus} type="poolStatus" />
       </div>
     </div>
   );

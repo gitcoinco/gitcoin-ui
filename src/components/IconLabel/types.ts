@@ -1,6 +1,5 @@
 import { IconType } from "@/primitives/Icon";
 
-
 interface AIEvaluationProps {
   type: "ai-evaluation";
   percent?: number;
@@ -15,6 +14,13 @@ interface DateProps {
 
 interface PeriodProps {
   type: "period";
+  startDate?: Date;
+  endDate?: Date;
+  className?: string;
+}
+
+interface RoundPeriodProps {
+  type: "roundPeriod";
   startDate?: Date;
   endDate?: Date;
   className?: string;
@@ -61,6 +67,7 @@ export type IconLabelProps =
   | AIEvaluationProps
   | DateProps
   | PeriodProps
+  | RoundPeriodProps
   | ReviewsProps
   | AddressProps
   | SocialProps
