@@ -107,3 +107,15 @@ export interface ProjectApplicationForManager extends ProjectApplication {
     roles: { address: Address }[];
   };
 }
+
+export interface PastApplication {
+  id: string;
+  roundId: string;
+  createdAtBlock: string;
+  status: ApplicationStatus;
+  round: {
+    roundMetadata: {
+      name: string;
+    };
+  };
+}

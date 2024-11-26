@@ -4,17 +4,20 @@ import { useEffect, useState } from "react";
 import { Hex } from "viem";
 
 import { PoolType } from "@/components/Badges";
+import { ApplicationStatus } from "@/components/Badges/ApplicationBadge/ApplicationBadge";
 import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { useToast } from "@/hooks/use-toast";
 import { Accordion } from "@/primitives/Accordion";
+import { Badge, BadgeVariants } from "@/primitives/Badge/Badge";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
+import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
-import { useInitialize } from "~checker/hooks";
+import { useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
 import {
@@ -23,6 +26,7 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 
+import { PastApplication } from "../../services/allo";
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";
 
@@ -62,6 +66,7 @@ export const SubmitApplicationEvaluationPage = ({
     useApplicationOverviewEvaluations({ applicationId }) || {};
   const [toastShowed, setToastShowed] = useState(false);
   const dispatch = useCheckerDispatchContext();
+  const { data: pastApplications } = useGetPastApplications(chainId, poolId, applicationId);
   const { toast } = useToast();
 
   const showToast = () => {
@@ -98,6 +103,49 @@ export const SubmitApplicationEvaluationPage = ({
     id: q.questionIndex.toString(),
     heading: q.question,
   }));
+
+  const columns: ListGridColumn<PastApplication>[] = [
+    {
+      header: "Status",
+      key: "status",
+      width: "1fr",
+      render: (item) => {
+        const badgeProps = {
+          variant: "",
+          children: "",
+        };
+        // Determine the badge properties based on the status
+        if (item.status === ApplicationStatus.Rejected.toString()) {
+          badgeProps.variant = "warning-strong";
+          badgeProps.children = "Rejected";
+        } else if (item.status === ApplicationStatus.Approved.toString()) {
+          badgeProps.variant = "success-strong";
+          badgeProps.children = "Approved";
+        } else {
+          badgeProps.variant = "info-strong";
+          badgeProps.children = "Pending";
+        }
+
+        return (
+          <Badge variant={badgeProps.variant as BadgeVariants} size="md">
+            {badgeProps.children}
+          </Badge>
+        );
+      },
+    },
+    {
+      header: "Date",
+      key: "createdAtBlock",
+      width: "1fr",
+      render: (item) => <IconLabel type="date" date={new Date(item.createdAtBlock)} />, //  SHITZU TODO FIX : FIX AS BLOCK NUMBER CONVERSION IS WRONG
+    },
+    {
+      header: "Round",
+      key: "name",
+      width: "1fr",
+      render: (item) => <p>{item.round.roundMetadata.name}</p>,
+    },
+  ];
 
   const handleSubmit = ({
     type,
@@ -151,6 +199,8 @@ export const SubmitApplicationEvaluationPage = ({
         isError={isError}
         onSave={onSave}
       />
+
+      {/* SHITZU TODO FIX  */}
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
@@ -310,7 +360,20 @@ export const SubmitApplicationEvaluationPage = ({
                 iconVariant="text-lg font-medium"
               />
             }
-            content={<div>TODO</div>}
+            content={
+              pastApplications ? (
+                <div>
+                  <ListGrid
+                    data={pastApplications}
+                    columns={columns}
+                    rowClassName="h-[72px]"
+                    getRowKey={(item: PastApplication) => `${item.id}-${item.roundId}`}
+                  />
+                </div>
+              ) : (
+                <div>No past applications</div>
+              )
+            }
             variant="default"
             border="none"
             padding="none"

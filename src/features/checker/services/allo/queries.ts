@@ -54,3 +54,31 @@ export const getApplicationByIdQuery = gql`
     }
   }
 `;
+
+export const getPastApplicationsQueryByApplicationId = gql`
+  query getPastApplicationsByApplicationId(
+    $chainId: Int!
+    $roundId: String!
+    $applicationId: String!
+  ) {
+    applications(
+      filter: {
+        chainId: { equalTo: $chainId }
+        roundId: { equalTo: $roundId }
+        id: { equalTo: $applicationId }
+      }
+    ) {
+      project {
+        applications {
+          id
+          roundId
+          createdAtBlock
+          status
+          round {
+            roundMetadata
+          }
+        }
+      }
+    }
+  }
+`;

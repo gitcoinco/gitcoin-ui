@@ -36,7 +36,7 @@ export const ReviewApplicationsPage = () => {
 
   return (
     <div className="flex flex-col gap-6 px-20 pt-6">
-      {/* TODO FIX */}
+      {/*  SHITZU TODO FIX */}
       <PoolSummary
         chainId={chainId}
         poolId={poolId}

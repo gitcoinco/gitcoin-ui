@@ -49,12 +49,12 @@ export const ApplicationEvaluationOverviewPage = ({
 
   return (
     <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
-      {/* TODO FIX */}
+      {/* SHITZU TODO FIX */}
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
         strategy={application.round.strategyName as PoolType}
-        name={"TODO"}
+        name={"Hello World"}
         registerStartDate={new Date()}
         registerEndDate={new Date()}
         allocationStartDate={new Date()}
