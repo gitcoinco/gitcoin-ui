@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 import svgr from "vite-plugin-svgr";
+import wasm from "vite-plugin-wasm";
 
 import react from "@vitejs/plugin-react-swc";
 
@@ -34,7 +35,7 @@ export default defineConfig({
     minify: false,
     target: "esnext",
   },
-  plugins: [react(), svgr(), dts({ rollupTypes: true }), cssInjectedByJsPlugin()],
+  plugins: [react(), svgr(), dts({ rollupTypes: true }), cssInjectedByJsPlugin(), wasm()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

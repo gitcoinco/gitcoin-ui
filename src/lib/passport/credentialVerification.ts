@@ -1,5 +1,6 @@
 import {
-  type ProjectApplicationMetadata,
+  ProjectApplicationMetadata,
+  type ProjectApplicationForManager,
   type VerifiableCredential,
 } from "@/features/checker/services/allo";
 
@@ -11,24 +12,33 @@ const verifier = new PassportVerifier();
 
 export async function isVerified(
   provider: "twitter" | "github",
-  applicationMetadata: ProjectApplicationMetadata | undefined,
+  application: ProjectApplicationForManager | undefined,
 ): Promise<boolean> {
+  console.log(" ===> provider", provider);
+  const applicationMetadata = application?.metadata;
+  console.log(" ===> applicationMetadata", applicationMetadata);
   const verifiableCredential = applicationMetadata?.application.project.credentials[provider];
+  console.log(" ===> verifiableCredential", verifiableCredential);
   if (verifiableCredential === undefined) {
+    console.log(" ===> verifiableCredential is undefined");
     return false;
   }
 
   const vcHasValidProof = await verifier.verifyCredential(verifiableCredential);
+  console.log(" ===> vcHasValidProof", vcHasValidProof);
   const vcIssuedByValidIAMServer = verifiableCredential.issuer === IAM_SERVER;
+  console.log(" ===> vcIssuedByValidIAMServer", vcIssuedByValidIAMServer);
   const providerMatchesProject = vcProviderMatchesProject(
     provider,
     verifiableCredential,
     applicationMetadata,
   );
-  const vcIssuedToAtLeastOneProjectOwner = (
-    applicationMetadata?.application.project?.owners ?? []
-  ).some((owner) => vcIssuedToAddress(verifiableCredential, owner.address));
-
+  console.log(" ===> providerMatchesProject", providerMatchesProject);
+  const roleAddresses = application?.canonicalProject?.roles.map((role) => role.address);
+  const vcIssuedToAtLeastOneProjectOwner = (roleAddresses ?? []).some((role) =>
+    vcIssuedToAddress(verifiableCredential, role.toLowerCase()),
+  );
+  console.log(" ===> vcIssuedToAtLeastOneProjectOwner", vcIssuedToAtLeastOneProjectOwner);
   return (
     vcHasValidProof &&
     vcIssuedByValidIAMServer &&

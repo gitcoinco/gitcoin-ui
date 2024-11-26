@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 
+
+
 import { isVerified } from "@/lib/passport/credentialVerification";
 
-import { ProjectApplicationMetadata } from "../services/allo";
+import { ProjectApplicationForManager } from "../services/allo";
+
 
 export function useCredentialverification(
-  applicationMetadata: ProjectApplicationMetadata | undefined,
+  applicationMetadata: ProjectApplicationForManager | undefined,
 ) {
   const [isTwitterVerified, setIsTwitterVerified] = useState<boolean>(false);
   const [isGithubVerified, setIsGithubVerified] = useState<boolean>(false);

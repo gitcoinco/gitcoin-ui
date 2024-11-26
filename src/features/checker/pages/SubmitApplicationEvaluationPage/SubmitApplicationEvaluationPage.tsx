@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 import { Hex } from "viem";
 
+
+
 import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
 import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
@@ -18,18 +20,19 @@ import { Icon, IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
+
+
 import { useCredentialverification, useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { PastApplication } from "~checker/services/allo";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
-import {
-  goToApplicationEvaluationOverviewAction,
-  goToSubmitFinalEvaluationAction,
-  useCheckerDispatchContext,
-} from "~checker/store";
+import { goToApplicationEvaluationOverviewAction, goToSubmitFinalEvaluationAction, useCheckerDispatchContext } from "~checker/store";
+
+
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";
+
 
 export interface SubmitApplicationEvaluationPageProps {
   chainId: number;

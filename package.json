@@ -156,6 +156,7 @@
     "vaul": "^1.1.0",
     "viem": "^2.21.48",
     "vite-plugin-svgr": "^4.2.0",
+    "vite-plugin-wasm": "^3.3.0",
     "zod": "^3.23.8"
   }
 }
