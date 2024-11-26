@@ -14,31 +14,23 @@ export async function isVerified(
   provider: "twitter" | "github",
   application: ProjectApplicationForManager | undefined,
 ): Promise<boolean> {
-  console.log(" ===> provider", provider);
   const applicationMetadata = application?.metadata;
-  console.log(" ===> applicationMetadata", applicationMetadata);
   const verifiableCredential = applicationMetadata?.application.project.credentials[provider];
-  console.log(" ===> verifiableCredential", verifiableCredential);
   if (verifiableCredential === undefined) {
-    console.log(" ===> verifiableCredential is undefined");
     return false;
   }
 
   const vcHasValidProof = await verifier.verifyCredential(verifiableCredential);
-  console.log(" ===> vcHasValidProof", vcHasValidProof);
   const vcIssuedByValidIAMServer = verifiableCredential.issuer === IAM_SERVER;
-  console.log(" ===> vcIssuedByValidIAMServer", vcIssuedByValidIAMServer);
   const providerMatchesProject = vcProviderMatchesProject(
     provider,
     verifiableCredential,
     applicationMetadata,
   );
-  console.log(" ===> providerMatchesProject", providerMatchesProject);
   const roleAddresses = application?.canonicalProject?.roles.map((role) => role.address);
   const vcIssuedToAtLeastOneProjectOwner = (roleAddresses ?? []).some((role) =>
     vcIssuedToAddress(verifiableCredential, role.toLowerCase()),
   );
-  console.log(" ===> vcIssuedToAtLeastOneProjectOwner", vcIssuedToAtLeastOneProjectOwner);
   return (
     vcHasValidProof &&
     vcIssuedByValidIAMServer &&
