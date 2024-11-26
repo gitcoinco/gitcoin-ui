@@ -1,3 +1,4 @@
 import "./index.css";
 
-export * from "~checker/pages";
+export * from "./features/checker";
+export { handlers } from "./mocks/handlers";

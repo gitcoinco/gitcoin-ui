@@ -21,6 +21,9 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true, // 👈 Used to ignore update notifications.
   },
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
+  },
   async viteFinal(config) {
     config.plugins = await withoutVitePlugins(config.plugins, ["vite:dts"]);
 
