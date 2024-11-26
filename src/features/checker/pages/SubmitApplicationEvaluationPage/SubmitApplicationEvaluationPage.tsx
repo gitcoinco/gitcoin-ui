@@ -5,8 +5,6 @@ import { useEffect, useState } from "react";
 
 import { Hex } from "viem";
 
-
-
 import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
 import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
@@ -30,11 +28,8 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 
-
-
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";
-
 
 export interface SubmitApplicationEvaluationPageProps {
   chainId: number;

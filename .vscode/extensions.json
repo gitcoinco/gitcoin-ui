@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode",
     "csstools.postcss",
     "figma.figma-vscode-extension",
     "bradlc.vscode-tailwindcss"

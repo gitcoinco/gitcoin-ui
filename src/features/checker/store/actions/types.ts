@@ -1,7 +1,5 @@
 import { Hex } from "viem";
 
-
-
 import { CheckerPoolData } from "../types";
 
 export interface SetInitialStateAction {

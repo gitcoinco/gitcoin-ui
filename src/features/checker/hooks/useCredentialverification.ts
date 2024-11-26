@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 
-
-
 import { isVerified } from "@/lib/passport/credentialVerification";
 
 import { ProjectApplicationForManager } from "../services/allo";
-
 
 export function useCredentialverification(
   applicationMetadata: ProjectApplicationForManager | undefined,
