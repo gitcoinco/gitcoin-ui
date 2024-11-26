@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getPastApplicationsByApplicationIdFromIndexer } from "../services/allo";
+import { getPastApplicationsByApplicationIdFromIndexer } from "~checker/services/allo";
 
 export const useGetPastApplications = (chainId: number, roundId: string, applicationId: string) => {
   const query = useQuery({

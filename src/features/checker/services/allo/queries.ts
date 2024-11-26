@@ -72,7 +72,7 @@ export const getPastApplicationsQueryByApplicationId = gql`
         applications {
           id
           roundId
-          createdAtBlock
+          statusSnapshots
           status
           round {
             roundMetadata

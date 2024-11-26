@@ -40,7 +40,7 @@ export async function getApplicationByIdFromIndexer(
   }
 }
 
-export async function getGetPastApplicationsByApplicationIdFromIndexer(
+export async function getPastApplicationsByApplicationIdFromIndexer(
   chainId: number,
   roundId: string,
   applicationId: string,

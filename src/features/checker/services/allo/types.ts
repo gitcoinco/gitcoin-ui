@@ -92,13 +92,15 @@ export interface ProjectApplication extends BaseDonorValues {
   distributionTransaction: string | null;
 }
 
+interface StatusSnapshot {
+  status: ApplicationStatus;
+  updatedAtBlock: string;
+  updatedAt: string;
+}
+
 export interface ProjectApplicationForManager extends ProjectApplication {
   anchorAddress: Address;
-  statusSnapshots: {
-    status: ApplicationStatus;
-    updatedAtBlock: string;
-    updatedAt: string;
-  }[];
+  statusSnapshots: StatusSnapshot[];
   round: {
     strategyName: string;
     strategyAddress: string;
@@ -111,7 +113,7 @@ export interface ProjectApplicationForManager extends ProjectApplication {
 export interface PastApplication {
   id: string;
   roundId: string;
-  createdAtBlock: string;
+  statusSnapshot: StatusSnapshot[];
   status: ApplicationStatus;
   round: {
     roundMetadata: {

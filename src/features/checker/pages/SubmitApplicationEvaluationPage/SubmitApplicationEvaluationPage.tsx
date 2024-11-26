@@ -137,7 +137,9 @@ export const SubmitApplicationEvaluationPage = ({
       header: "Date",
       key: "createdAtBlock",
       width: "1fr",
-      render: (item) => <IconLabel type="date" date={new Date(item.createdAtBlock)} />, //  SHITZU TODO FIX : FIX AS BLOCK NUMBER CONVERSION IS WRONG
+      render: (item) => (
+        <IconLabel type="date" date={new Date(item.statusSnapshot[0]?.updatedAt)} />
+      ), //  SHITZU TODO FIX : FIX AS BLOCK NUMBER CONVERSION IS WRONG
     },
     {
       header: "Round",
