@@ -45,21 +45,23 @@ export interface ProjectMetadata {
   lastUpdated: number;
 }
 
+export interface ApplicationAnswer {
+  type: string;
+  hidden: boolean;
+  question: string;
+  questionId: number;
+  encryptedAnswer?: {
+    ciphertext: string;
+    encryptedSymmetricKey: string;
+  };
+  answer: string;
+}
+
 export interface ProjectApplicationMetadata {
   signature: string;
   application: {
     round: string;
-    answers: {
-      type: string;
-      hidden: boolean;
-      question: string;
-      questionId: number;
-      encryptedAnswer?: {
-        ciphertext: string;
-        encryptedSymmetricKey: string;
-      };
-      answer: string;
-    }[];
+    answers: ApplicationAnswer[];
     project: ProjectMetadata;
     recipient: string;
   };

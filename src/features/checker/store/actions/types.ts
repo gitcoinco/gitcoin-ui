@@ -1,8 +1,6 @@
 import { Hex } from "viem";
 
-import { CheckerApiEvaluationQuestion } from "~checker/services/checker";
-
-import { CheckerApplication } from "../types";
+import { CheckerPoolData } from "../types";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
@@ -37,17 +35,7 @@ export interface GoToSubmitFinalEvaluationAction {
 
 export interface SetPoolDataAction {
   type: "SET_POOL_DATA";
-  payload: {
-    poolId: string;
-    chainId: number;
-    applications: Record<string, CheckerApplication>;
-    evaluationQuestions: CheckerApiEvaluationQuestion[];
-    lastFetchedAt: Date;
-    isLoading?: boolean;
-    isFetching?: boolean;
-    isError?: boolean;
-    error: Error | null;
-  };
+  payload: CheckerPoolData;
 }
 
 export type CheckerAction =

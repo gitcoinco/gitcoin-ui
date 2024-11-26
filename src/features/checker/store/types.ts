@@ -14,6 +14,7 @@ export interface CheckerPoolData {
   evaluationQuestions: CheckerApiEvaluationQuestion[];
   lastFetchedAt: Date;
   isLoading?: boolean;
+  isFetching?: boolean;
   isError?: boolean;
   error: Error | null;
 }
