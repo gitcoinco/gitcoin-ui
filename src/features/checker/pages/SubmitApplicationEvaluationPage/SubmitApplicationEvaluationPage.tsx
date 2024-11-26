@@ -1,6 +1,8 @@
 // src/components/SubmitApplicationEvaluation/SubmitApplicationEvaluationPage.tsx
 import { useEffect, useState } from "react";
 
+
+
 import { Hex } from "viem";
 
 import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
@@ -16,7 +18,7 @@ import { Icon, IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
-import { useGetPastApplications, useInitialize } from "~checker/hooks";
+import { useCredentialverification, useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { PastApplication } from "~checker/services/allo";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
@@ -63,6 +65,8 @@ export const SubmitApplicationEvaluationPage = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { application, evaluationQuestions } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
+  const { isTwitterVerified, isGithubVerified } = useCredentialverification(application);
+
   const [toastShowed, setToastShowed] = useState(false);
   const dispatch = useCheckerDispatchContext();
   const { data: pastApplications } = useGetPastApplications(chainId, poolId, applicationId);
@@ -256,7 +260,7 @@ export const SubmitApplicationEvaluationPage = ({
                               ? project.projectTwitter
                               : `https://x.com/${project.projectTwitter}`
                           }
-                          isVerified={!!project.credentials["twitter"]}
+                          isVerified={isTwitterVerified}
                         />
                       )}
                       {project.projectGithub && (
@@ -268,7 +272,7 @@ export const SubmitApplicationEvaluationPage = ({
                               ? project.projectGithub
                               : `https://github.com/${project.projectGithub}`
                           }
-                          isVerified={!!project.credentials["github"]}
+                          isVerified={isGithubVerified}
                         />
                       )}
                     </div>
