@@ -17,8 +17,13 @@ export const applicationsForManagerQuery = gql`
       statusSnapshots
       anchorAddress
       round {
+        roundMetadata
         strategyName
         strategyAddress
+        applicationsStartTime
+        applicationsEndTime
+        donationsEndTime
+        donationsStartTime
       }
       canonicalProject {
         roles {

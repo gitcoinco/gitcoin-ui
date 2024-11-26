@@ -3,6 +3,7 @@ import * as React from "react";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
+import { cn } from "@/lib/utils";
 import { Badge } from "@/primitives/Badge/Badge";
 
 export enum PoolStatus {
@@ -31,8 +32,8 @@ export const PoolBadgeVariants = tv({
 });
 
 type PoolBadgeProps =
-  | { type: "poolStatus"; badge: PoolStatus }
-  | { type: "poolType"; badge: PoolType };
+  | ({ type: "poolStatus"; badge: PoolStatus } & { className?: string })
+  | ({ type: "poolType"; badge: PoolType } & { className?: string });
 
 export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
   const { variant, text } = match(props)
@@ -65,5 +66,5 @@ export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
       text: "Error: Invalid badge type",
     }));
 
-  return <Badge className={variant}>{text}</Badge>;
+  return <Badge className={cn(props.className, variant)}>{text}</Badge>;
 };

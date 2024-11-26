@@ -33,6 +33,11 @@ export const variants = tv({
       period: {
         container: "gap-2",
       },
+      roundPeriod: {
+        container: "gap-2",
+        text: "text-[14px]/[17px] text-grey-700",
+        icon: "size-4 fill-grey-700",
+      },
       reviews: {
         container: "gap-2",
         icon: "size-7 rounded-full border border-grey-100 bg-white",

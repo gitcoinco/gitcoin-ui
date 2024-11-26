@@ -13,17 +13,17 @@ import { useApplicationEvaluations } from "~checker/hooks";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;
-  roundId: string;
+  poolId: string;
   applicationId: string;
 }
 
 export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluationsPageProps> = ({
   chainId,
-  roundId,
+  poolId,
   applicationId,
 }) => {
   const { toast } = useToast();
-  const { data, isLoading, error } = useApplicationEvaluations(chainId, roundId, applicationId);
+  const { data, isLoading, error } = useApplicationEvaluations(chainId, poolId, applicationId);
 
   if (isLoading) return;
   if (error) return <div>Error loading evaluations</div>;
@@ -40,7 +40,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
         : "info-strong";
 
   return (
-    <div className="mx-auto flex  max-w-[1440px] flex-col  gap-4 px-20">
+    <div className="mx-auto flex max-w-[1440px] flex-col  gap-4 px-20">
       <ProjectBanner
         bannerImg={project.bannerImg ?? ""}
         logoImg={project.logoImg ?? ""}
@@ -54,7 +54,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
             className="h-10 w-24 border-grey-100"
             icon={<Icon type={IconType.LINK} className="fill-black" />}
             onClick={() => {
-              const url = `https://beta.checker.gitcoin.co/#/${chainId}/${roundId}/${applicationId}`;
+              const url = `https://beta.checker.gitcoin.co/#/${chainId}/${poolId}/${applicationId}`;
               navigator.clipboard.writeText(url).then(
                 () => {
                   toast({
@@ -76,7 +76,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
               className=" h-[38px] w-40 rounded-lg border-none bg-white font-mono text-black"
               onClick={() => {
                 window.open(
-                  `https://explorer.gitcoin.co/#/round/${chainId}/${roundId}/${applicationId}`,
+                  `https://explorer.gitcoin.co/#/round/${chainId}/${poolId}/${applicationId}`,
                   "_blank",
                 );
               }}

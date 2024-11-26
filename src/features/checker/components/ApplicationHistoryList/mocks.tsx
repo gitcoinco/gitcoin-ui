@@ -1,4 +1,4 @@
-import { ApplicationStatus } from "@/components/Badges/ApplicationBadge/ApplicationBadge";
+import { ApplicationStatus } from "@/components/Badges";
 
 import { Application } from "./types";
 

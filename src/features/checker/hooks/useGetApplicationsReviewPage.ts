@@ -12,7 +12,9 @@ export const useGetApplicationsReviewPage = () => {
 
   if (!poolData) return null;
 
-  const { categorizedReviews, statCardsProps } = categorizeProjectReviews(poolData.applications);
+  const { categorizedReviews, statCardsProps, application } = categorizeProjectReviews(
+    poolData.applications,
+  );
 
-  return { categorizedReviews, statCardsProps };
+  return { categorizedReviews, statCardsProps, application };
 };

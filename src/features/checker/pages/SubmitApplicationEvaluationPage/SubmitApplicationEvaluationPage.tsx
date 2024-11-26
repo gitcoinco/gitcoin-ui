@@ -3,15 +3,14 @@ import { useEffect, useState } from "react";
 
 import { Hex } from "viem";
 
-import { PoolType } from "@/components/Badges";
-import { ApplicationStatus } from "@/components/Badges/ApplicationBadge/ApplicationBadge";
+import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
 import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { useToast } from "@/hooks/use-toast";
+import { formatDate, DateFormat } from "@/lib/dates/formatDate";
 import { Accordion } from "@/primitives/Accordion";
-import { Badge, BadgeVariants } from "@/primitives/Badge/Badge";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
@@ -19,6 +18,7 @@ import { Markdown } from "@/primitives/Markdown/Markdown";
 
 import { useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
+import { PastApplication } from "~checker/services/allo";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
 import {
   goToApplicationEvaluationOverviewAction,
@@ -26,7 +26,6 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 
-import { PastApplication } from "../../services/allo";
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";
 
@@ -104,50 +103,44 @@ export const SubmitApplicationEvaluationPage = ({
     heading: q.question,
   }));
 
-  const columns: ListGridColumn<PastApplication>[] = [
-    {
-      header: "Status",
-      key: "status",
-      width: "1fr",
-      render: (item) => {
-        const badgeProps = {
-          variant: "",
-          children: "",
-        };
-        // Determine the badge properties based on the status
-        if (item.status === ApplicationStatus.Rejected.toString()) {
-          badgeProps.variant = "warning-strong";
-          badgeProps.children = "Rejected";
-        } else if (item.status === ApplicationStatus.Approved.toString()) {
-          badgeProps.variant = "success-strong";
-          badgeProps.children = "Approved";
-        } else {
-          badgeProps.variant = "info-strong";
-          badgeProps.children = "Pending";
-        }
+  const columns: ListGridColumn<PastApplication>[] = pastApplications
+    ? [
+        {
+          header: "Status",
+          key: "status",
+          width: "0.5fr",
+          render: (item) => {
+            let status;
+            // Determine the badge properties based on the status
+            if (item.status === "REJECTED") {
+              status = ApplicationStatus.Rejected;
+            } else if (item.status === "APPROVED") {
+              status = ApplicationStatus.Approved;
+            } else {
+              status = ApplicationStatus.Pending;
+            }
 
-        return (
-          <Badge variant={badgeProps.variant as BadgeVariants} size="md">
-            {badgeProps.children}
-          </Badge>
-        );
-      },
-    },
-    {
-      header: "Date",
-      key: "createdAtBlock",
-      width: "1fr",
-      render: (item) => (
-        <IconLabel type="date" date={new Date(item.statusSnapshot[0]?.updatedAt)} />
-      ), //  SHITZU TODO FIX : FIX AS BLOCK NUMBER CONVERSION IS WRONG
-    },
-    {
-      header: "Round",
-      key: "name",
-      width: "1fr",
-      render: (item) => <p>{item.round.roundMetadata.name}</p>,
-    },
-  ];
+            return <ApplicationBadge status={status} />;
+          },
+        },
+        {
+          header: "Date",
+          key: "createdAtBlock",
+          width: "1.2fr",
+          render: (item) => (
+            <span className="text-[16px]/[24px]">
+              {formatDate(new Date(item.statusSnapshots[0]?.updatedAt), DateFormat.FullDate24Hour)}
+            </span>
+          ),
+        },
+        {
+          header: "Round",
+          key: "name",
+          width: "1.8fr",
+          render: (item) => <p className="text-[16px]/[24px]">{item.round.roundMetadata.name}</p>,
+        },
+      ]
+    : [];
 
   const handleSubmit = ({
     type,
@@ -189,202 +182,202 @@ export const SubmitApplicationEvaluationPage = ({
   };
 
   return (
-    <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
-      <SubmitApplicationEvaluationModal
-        evaluationStatus={evaluationStatus}
-        isOpen={isModalOpen}
-        onOpenChange={setIsModalOpen}
-        isSigning={isSigning}
-        isErrorSigning={isErrorSigning}
-        isSuccess={isSuccess}
-        isEvaluating={isEvaluating}
-        isError={isError}
-        onSave={onSave}
-      />
-
-      {/* SHITZU TODO FIX  */}
+    <div className="flex flex-col gap-6">
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
-        strategy={PoolType.QuadraticFunding}
-        name={"Hello World"}
+        strategyName={application.round.strategyName}
+        name={application.round.roundMetadata.name}
         registerStartDate={new Date()}
         registerEndDate={new Date()}
         allocationStartDate={new Date()}
         allocationEndDate={new Date()}
       />
-
-      <div>
-        <Button
-          variant="secondry"
-          icon={<Icon type={IconType.CHEVRON_LEFT} />}
-          onClick={goToApplicationEvaluationOverview}
-          value="back to evaluation overview"
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
+        <SubmitApplicationEvaluationModal
+          evaluationStatus={evaluationStatus}
+          isOpen={isModalOpen}
+          onOpenChange={setIsModalOpen}
+          isSigning={isSigning}
+          isErrorSigning={isErrorSigning}
+          isSuccess={isSuccess}
+          isEvaluating={isEvaluating}
+          isError={isError}
+          onSave={onSave}
         />
-      </div>
 
-      <ProjectBanner
-        bannerImg={project.bannerImg ?? ""}
-        logoImg={project.logoImg ?? ""}
-        avatarPosition="left"
-      />
-      <h1 className="text-3xl font-medium leading-9">Evaluate {project.title}</h1>
-      <div className="h-0.5 bg-[#EAEAEA]" />
-      <div className="flex gap-2">
-        <div className="flex w-[628px] flex-col gap-4">
-          <Accordion
-            header={
-              <IconLabel
-                type="default"
-                label={project.title}
-                iconType={IconType.GLOBE}
-                iconVariant="text-lg font-medium"
-              />
-            }
-            isOpen={true}
-            content={
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-wrap items-start gap-10">
-                  <div className="flex flex-col gap-4">
-                    {application.metadata.application.recipient && (
-                      <IconLabel
-                        type="address"
-                        address={application.metadata.application.recipient}
-                      />
-                    )}
-                    {project.website && (
-                      <IconLabel type="social" platform="website" link={project.website} />
-                    )}
-                    {project.projectTwitter && (
-                      <IconLabel
-                        type="social"
-                        platform="twitter"
-                        link={
-                          project.projectTwitter.includes("https://")
-                            ? project.projectTwitter
-                            : `https://x.com/${project.projectTwitter}`
-                        }
-                        isVerified={!!project.credentials["twitter"]}
-                      />
-                    )}
-                    {project.projectGithub && (
-                      <IconLabel
-                        type="social"
-                        platform="github"
-                        link={
-                          project.projectGithub.includes("https://")
-                            ? project.projectGithub
-                            : `https://github.com/${project.projectGithub}`
-                        }
-                        isVerified={!!project.credentials["github"]}
-                      />
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <IconLabel
-                      type="dateWithPrefix"
-                      prefix="Applied on:"
-                      date={new Date(project.createdAt)}
-                    />
-                    {project.projectGithub && (
-                      <IconLabel
-                        type="social"
-                        platform="github"
-                        link={
-                          project.projectGithub.includes("https://")
-                            ? project.projectGithub
-                            : `https://github.com/${project.projectGithub}`
-                        }
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-            }
-            variant="default"
-            border="none"
-            padding="none"
-          />
-          <Accordion
-            header={
-              <IconLabel
-                type="default"
-                label="Project details"
-                iconType={IconType.CLIPBOARD_LIST}
-                iconVariant="text-lg font-medium"
-              />
-            }
-            content={<Markdown>{project.description}</Markdown>}
-            variant="default"
-            border="none"
-            padding="none"
-            isOpen={false}
-          />
-          <Accordion
-            header={
-              <IconLabel
-                type="default"
-                label="Application answers"
-                iconType={IconType.STAR}
-                iconVariant="text-lg font-medium"
-              />
-            }
-            content={
-              <div className="flex flex-col gap-4">
-                {application.metadata.application.answers.map((answer, index) => {
-                  if (answer.encryptedAnswer || !answer.answer) {
-                    return null;
-                  }
-                  return (
-                    <div key={index} className="flex flex-col gap-2">
-                      <span className="font-sans text-[16px]/[24px] font-bold">
-                        {answer.question}
-                      </span>
-                      <span className="font-sans text-[16px]/[24px] font-normal">
-                        <Markdown>{answer.answer}</Markdown>
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            }
-            variant="default"
-            border="none"
-            padding="none"
-            isOpen={false}
-          />
-          <Accordion
-            header={
-              <IconLabel
-                type="default"
-                label="Past applications"
-                iconType={IconType.INFORMATION_CIRCLE}
-                iconVariant="text-lg font-medium"
-              />
-            }
-            content={
-              pastApplications ? (
-                <div>
-                  <ListGrid
-                    data={pastApplications}
-                    columns={columns}
-                    rowClassName="h-[72px]"
-                    getRowKey={(item: PastApplication) => `${item.id}-${item.roundId}`}
-                  />
-                </div>
-              ) : (
-                <div>No past applications</div>
-              )
-            }
-            variant="default"
-            border="none"
-            padding="none"
-            isOpen={false}
+        <div>
+          <Button
+            variant="secondry"
+            icon={<Icon type={IconType.CHEVRON_LEFT} />}
+            onClick={goToApplicationEvaluationOverview}
+            value="back to evaluation overview"
           />
         </div>
 
-        <div className="w-[628px] rounded-[20px] border border-gray-100 p-5">
-          <EvaluationForm groups={groups} onSubmit={handleSubmit} />
+        <ProjectBanner
+          bannerImg={project.bannerImg ?? ""}
+          logoImg={project.logoImg ?? ""}
+          avatarPosition="left"
+        />
+        <h1 className="text-3xl font-medium leading-9">Evaluate {project.title}</h1>
+        <div className="h-0.5 bg-[#EAEAEA]" />
+        <div className="flex gap-2">
+          <div className="flex w-[628px] flex-col gap-4">
+            <Accordion
+              header={
+                <IconLabel
+                  type="default"
+                  label={project.title}
+                  iconType={IconType.GLOBE}
+                  iconVariant="text-lg font-medium"
+                />
+              }
+              isOpen={true}
+              content={
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-wrap items-start gap-10">
+                    <div className="flex flex-col gap-4">
+                      {application.metadata.application.recipient && (
+                        <IconLabel
+                          type="address"
+                          address={application.metadata.application.recipient}
+                        />
+                      )}
+                      {project.website && (
+                        <IconLabel type="social" platform="website" link={project.website} />
+                      )}
+                      {project.projectTwitter && (
+                        <IconLabel
+                          type="social"
+                          platform="twitter"
+                          link={
+                            project.projectTwitter.includes("https://")
+                              ? project.projectTwitter
+                              : `https://x.com/${project.projectTwitter}`
+                          }
+                          isVerified={!!project.credentials["twitter"]}
+                        />
+                      )}
+                      {project.projectGithub && (
+                        <IconLabel
+                          type="social"
+                          platform="github"
+                          link={
+                            project.projectGithub.includes("https://")
+                              ? project.projectGithub
+                              : `https://github.com/${project.projectGithub}`
+                          }
+                          isVerified={!!project.credentials["github"]}
+                        />
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      <IconLabel
+                        type="dateWithPrefix"
+                        prefix="Applied on:"
+                        date={new Date(project.createdAt)}
+                      />
+                      {project.projectGithub && (
+                        <IconLabel
+                          type="social"
+                          platform="github"
+                          link={
+                            project.projectGithub.includes("https://")
+                              ? project.projectGithub
+                              : `https://github.com/${project.projectGithub}`
+                          }
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              }
+              variant="default"
+              border="none"
+              padding="none"
+            />
+            <Accordion
+              header={
+                <IconLabel
+                  type="default"
+                  label="Project details"
+                  iconType={IconType.CLIPBOARD_LIST}
+                  iconVariant="text-lg font-medium"
+                />
+              }
+              content={<Markdown>{project.description}</Markdown>}
+              variant="default"
+              border="none"
+              padding="none"
+              isOpen={false}
+            />
+            <Accordion
+              header={
+                <IconLabel
+                  type="default"
+                  label="Application answers"
+                  iconType={IconType.STAR}
+                  iconVariant="text-lg font-medium"
+                />
+              }
+              content={
+                <div className="flex flex-col gap-4">
+                  {application.metadata.application.answers.map((answer, index) => {
+                    if (answer.encryptedAnswer || !answer.answer) {
+                      return null;
+                    }
+                    return (
+                      <div key={index} className="flex flex-col gap-2">
+                        <span className="font-sans text-[16px]/[24px] font-bold">
+                          {answer.question}
+                        </span>
+                        <span className="font-sans text-[16px]/[24px] font-normal">
+                          <Markdown>{answer.answer}</Markdown>
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              }
+              variant="default"
+              border="none"
+              padding="none"
+              isOpen={false}
+            />
+            <Accordion
+              header={
+                <IconLabel
+                  type="default"
+                  label="Past applications"
+                  iconType={IconType.INFORMATION_CIRCLE}
+                  iconVariant="text-lg font-medium"
+                />
+              }
+              content={
+                pastApplications ? (
+                  <div>
+                    <ListGrid
+                      data={pastApplications}
+                      columns={columns}
+                      rowClassName="h-[72px]"
+                      getRowKey={(item: PastApplication) => `${item.id}-${item.roundId}`}
+                    />
+                  </div>
+                ) : (
+                  <div>No past applications</div>
+                )
+              }
+              variant="default"
+              border="none"
+              padding="none"
+              isOpen={false}
+            />
+          </div>
+
+          <div className="w-[628px] rounded-[20px] border border-gray-100 p-5">
+            <EvaluationForm groups={groups} onSubmit={handleSubmit} />
+          </div>
         </div>
       </div>
     </div>

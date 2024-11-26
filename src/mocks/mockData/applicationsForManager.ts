@@ -189,6 +189,13 @@ export const applicationsForManagers = [
     round: {
       strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
       strategyAddress: "0xd2d99614321becd7cd0636715bbb4c94968e6271",
+      roundMetadata: {
+        name: "Beta Round",
+      },
+      applicationsStartTime: "2024-09-30T12:00:00+00:00",
+      applicationsEndTime: "2024-10-29T23:59:00+00:00",
+      donationsEndTime: "2024-11-07T00:59:00+00:00",
+      donationsStartTime: "2024-10-23T12:00:00+00:00",
     },
     canonicalProject: {
       roles: [
@@ -388,6 +395,13 @@ export const applicationsForManagers = [
     round: {
       strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
       strategyAddress: "0xd2d99614321becd7cd0636715bbb4c94968e6271",
+      roundMetadata: {
+        name: "Beta Round",
+      },
+      applicationsStartTime: "2024-09-30T12:00:00+00:00",
+      applicationsEndTime: "2024-10-29T23:59:00+00:00",
+      donationsEndTime: "2024-11-07T00:59:00+00:00",
+      donationsStartTime: "2024-10-23T12:00:00+00:00",
     },
     canonicalProject: {
       roles: [
@@ -587,6 +601,13 @@ export const applicationsForManagers = [
     round: {
       strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
       strategyAddress: "0xd2d99614321becd7cd0636715bbb4c94968e6271",
+      roundMetadata: {
+        name: "Beta Round",
+      },
+      applicationsStartTime: "2024-09-30T12:00:00+00:00",
+      applicationsEndTime: "2024-10-29T23:59:00+00:00",
+      donationsEndTime: "2024-11-07T00:59:00+00:00",
+      donationsStartTime: "2024-10-23T12:00:00+00:00",
     },
     canonicalProject: {
       roles: [
@@ -786,6 +807,13 @@ export const applicationsForManagers = [
     round: {
       strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
       strategyAddress: "0xd2d99614321becd7cd0636715bbb4c94968e6271",
+      roundMetadata: {
+        name: "Beta Round",
+      },
+      applicationsStartTime: "2024-09-30T12:00:00+00:00",
+      applicationsEndTime: "2024-10-29T23:59:00+00:00",
+      donationsEndTime: "2024-11-07T00:59:00+00:00",
+      donationsStartTime: "2024-10-23T12:00:00+00:00",
     },
     canonicalProject: {
       roles: [
@@ -985,6 +1013,13 @@ export const applicationsForManagers = [
     round: {
       strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
       strategyAddress: "0xd2d99614321becd7cd0636715bbb4c94968e6271",
+      roundMetadata: {
+        name: "Beta Round",
+      },
+      applicationsStartTime: "2024-09-30T12:00:00+00:00",
+      applicationsEndTime: "2024-10-29T23:59:00+00:00",
+      donationsEndTime: "2024-11-07T00:59:00+00:00",
+      donationsStartTime: "2024-10-23T12:00:00+00:00",
     },
     canonicalProject: {
       roles: [

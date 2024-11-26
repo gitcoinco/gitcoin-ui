@@ -104,6 +104,13 @@ export interface ProjectApplicationForManager extends ProjectApplication {
   round: {
     strategyName: string;
     strategyAddress: string;
+    roundMetadata: {
+      name: string;
+    };
+    applicationsStartTime: string;
+    applicationsEndTime: string;
+    donationsEndTime: string;
+    donationsStartTime: string;
   };
   canonicalProject: {
     roles: { address: Address }[];
@@ -113,7 +120,7 @@ export interface ProjectApplicationForManager extends ProjectApplication {
 export interface PastApplication {
   id: string;
   roundId: string;
-  statusSnapshot: StatusSnapshot[];
+  statusSnapshots: StatusSnapshot[];
   status: ApplicationStatus;
   round: {
     roundMetadata: {

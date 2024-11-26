@@ -1,13 +1,24 @@
+import { tv } from "tailwind-variants";
+
 import { PoolBadge, PoolStatus, PoolType } from "@/components/Badges";
 import { IconLabel } from "@/components/IconLabel";
+import { getChainInfo } from "@/lib/icons/chains";
+import { cn } from "@/lib/utils";
+import { Breadcrumb } from "@/primitives/Breadcrumb";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
+
+export const variants = tv({
+  variants: {
+    default: "bg-grey-50 px-20 py-3",
+  },
+});
 
 export interface PoolSummaryProps {
   chainId: number;
   poolId: string;
-  strategy: PoolType;
   name: string;
+  strategyName: string;
   registerStartDate: Date;
   registerEndDate: Date;
   allocationStartDate: Date;
@@ -15,7 +26,10 @@ export interface PoolSummaryProps {
 }
 
 export const PoolSummary = (pool: PoolSummaryProps) => {
+  const chainInfo = getChainInfo(pool.chainId);
   let poolStatus: PoolStatus;
+  const poolType = pool.strategyName as PoolType;
+
   const now = new Date();
 
   if (now >= pool.registerStartDate && now <= pool.registerEndDate) {
@@ -27,38 +41,51 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   } else {
     poolStatus = PoolStatus.PreRound;
   }
-
   const applyLink = `https://builder.gitcoin.co/#/chains/${pool.chainId}/round/${pool.poolId}/apply`;
   const explorerLink = `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`;
 
+  // TODO Fix breadcrumbItems hrefs
+  const breadcrumbItems = [
+    { label: "My Programs", href: "#" },
+    { label: "Program Details", href: "#" },
+    { label: "Round Details", href: "#" },
+  ];
   return (
-    <div className="inline-flex h-48 w-full items-end justify-between bg-grey-50 px-12 pb-6">
-      <div className="flex flex-col gap-2">
-        <div>
-          <PoolBadge badge={pool.strategy} type="poolType" />
-        </div>
-        <div className="text-4xl leading-10">{pool.name}</div>
-        <div className="flex gap-2 text-grey-900">
-          Registration Period
+    <div className={cn(variants.variants.default, "grid grid-cols-2")}>
+      <div className="flex flex-col items-start justify-start gap-4">
+        <Breadcrumb items={breadcrumbItems} />
+        <div className="flex flex-col gap-2">
+          <div>
+            <PoolBadge type="poolType" badge={poolType} />
+          </div>
           <IconLabel
-            endDate={pool.registerStartDate}
-            startDate={pool.registerEndDate}
-            type="period"
+            textVariant="text-[36px]/[39px]"
+            iconVariant="size-6"
+            iconType={chainInfo.icon}
+            type="default"
+            label={pool.name}
+          />
+          <IconLabel
+            type="roundPeriod"
+            startDate={pool.registerStartDate}
+            endDate={pool.registerEndDate}
           />
         </div>
       </div>
-      <div className="inline-flex h-24 flex-col items-end justify-between">
-        <PoolBadge badge={poolStatus} type="poolStatus" />
-        <div className="inline-flex items-start justify-start gap-6">
+      <div className="flex flex-col items-end justify-between">
+        <div className="flex items-end">
+          <PoolBadge type="poolStatus" badge={poolStatus} />
+        </div>
+        <div className="flex items-end gap-6">
           <Button
             icon={<Icon type={IconType.LINK} />}
-            variant="outlined-secondary"
+            className="border-gray-100 bg-white text-black shadow-sm"
             value="Round application"
             onClick={() => window.open(applyLink, "_blank")}
           />
           <Button
             icon={<Icon type={IconType.EXPLORER} />}
-            variant="outlined-secondary"
+            className="border-gray-100 bg-white text-black shadow-sm"
             value="View round"
             onClick={() => window.open(explorerLink, "_blank")}
           />

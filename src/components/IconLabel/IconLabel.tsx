@@ -1,6 +1,6 @@
 import React from "react";
 
-import { match, P } from "ts-pattern";
+import { match } from "ts-pattern";
 
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
 import { getAddressLabel } from "@/lib/utils";
@@ -56,6 +56,23 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
           startDate,
           DateFormat.ShortMonthDayYear,
         )} - ${formatDate(endDate, DateFormat.ShortMonthDayYear)}`}</span>
+      </IconLabelContainer>
+    ))
+    .with({ type: "roundPeriod" }, ({ startDate = new Date(), endDate = undefined, className }) => (
+      <IconLabelContainer
+        type="period"
+        className={className}
+        iconType={IconType.CLOCK}
+        iconVariant={icon({ type: "roundPeriod" })}
+      >
+        <span className={text({ type: "roundPeriod" })}>{`Review period: ${formatDate(
+          startDate,
+          DateFormat.ShortMonthDayYear24HourUTC,
+        )} - ${
+          endDate
+            ? formatDate(endDate, DateFormat.ShortMonthDayYear24HourUTC)
+            : "No end date (open round)"
+        }`}</span>
       </IconLabelContainer>
     ))
     .with({ type: "dateWithPrefix" }, ({ date = new Date(), prefix, className }) => (

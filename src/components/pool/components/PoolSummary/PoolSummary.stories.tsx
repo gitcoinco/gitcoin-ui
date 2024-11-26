@@ -1,27 +1,24 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { PoolType } from "@/components/Badges";
+import { PoolSummary, PoolSummaryProps } from "./PoolSummary";
 
-import { PoolSummary } from "./PoolSummary";
-
-const meta: Meta<typeof PoolSummary> = {
-  component: PoolSummary,
+const meta: Meta<PoolSummaryProps> = {
   title: "Components/pool/PoolSummary",
-} satisfies Meta<typeof PoolSummary>;
+  component: PoolSummary,
+  args: {
+    chainId: 1,
+    name: "Beta Round",
+    poolId: "1",
+    strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
+    registerStartDate: new Date(),
+    registerEndDate: new Date(Date.now() + 86400000),
+    allocationStartDate: new Date(),
+    allocationEndDate: new Date(),
+  },
+} satisfies Meta;
 
 export default meta;
 
 type Story = StoryObj<typeof PoolSummary>;
 
-export const Default: Story = {
-  args: {
-    chainId: 8453,
-    poolId: "90",
-    strategy: PoolType.QuadraticFunding,
-    name: "Pool Summary",
-    registerStartDate: new Date(),
-    registerEndDate: new Date(),
-    allocationStartDate: new Date(),
-    allocationEndDate: new Date(),
-  },
-};
+export const Default: Story = {};
