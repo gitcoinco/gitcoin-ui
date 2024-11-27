@@ -3,7 +3,6 @@ import * as React from "react";
 import { IconLabel } from "@/components/IconLabel";
 import { useCredentialverification } from "@/features/checker/hooks";
 import { ProjectApplicationForManager, ProjectMetadata } from "@/features/checker/services/allo";
-import { isVerified } from "@/lib/passport/credentialVerification";
 import { IconType } from "@/primitives/Icon";
 
 export interface ProjectSummaryProps {
