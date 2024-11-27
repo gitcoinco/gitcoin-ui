@@ -7,13 +7,7 @@ import { getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 
 import { IconLabelProps } from "./types";
-import {
-  getEvaluation,
-  renderReviewIcons,
-  IconLabelContainer,
-  getFormattedLink,
-  RenderIcon,
-} from "./utils";
+import { getEvaluation, IconLabelContainer, getFormattedLink, RenderIcon } from "./utils";
 import { variants } from "./variants";
 
 export const IconLabel: React.FC<IconLabelProps> = (props) => {
@@ -88,16 +82,6 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
         )}`}</span>
       </IconLabelContainer>
     ))
-    .with({ type: "reviews" }, ({ posReviews = 0, negReviews = 0, className }) => {
-      const totalReviews = Math.max(0, posReviews) + Math.max(0, negReviews);
-
-      return (
-        <IconLabelContainer type="reviews" className={className}>
-          <div className="flex items-center">{renderReviewIcons(posReviews, negReviews)}</div>
-          <span className={text()}>{`${totalReviews} Reviews`}</span>
-        </IconLabelContainer>
-      );
-    })
     .with({ type: "address" }, ({ address, ens, className }) => {
       const label = getAddressLabel(ens, address);
 

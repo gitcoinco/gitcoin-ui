@@ -5,6 +5,7 @@ import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
 import { getReviewsCount } from "~checker/utils/getReviewsCount";
 
+import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
 import { ProjectReview } from "./types";
 
 export interface ProjectReviewListProps {
@@ -45,7 +46,7 @@ export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewL
       width: "1fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
-        return <IconLabel type="reviews" posReviews={nApproved} negReviews={nRejected} />;
+        return <ReviewsCounterLabel posReviews={nApproved} negReviews={nRejected} />;
       },
     },
     {

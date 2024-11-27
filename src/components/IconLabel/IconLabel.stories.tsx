@@ -13,15 +13,7 @@ const meta: Meta<typeof IconLabel> = {
   argTypes: {
     type: {
       control: "select",
-      options: [
-        "default",
-        "ai-evaluation",
-        "date",
-        "dateWithPrefix",
-        "reviews",
-        "address",
-        "social",
-      ],
+      options: ["default", "ai-evaluation", "date", "dateWithPrefix", "address", "social"],
     },
     platform: {
       control: "select",
@@ -57,20 +49,6 @@ const meta: Meta<typeof IconLabel> = {
         type: "date",
       },
       if: { arg: "type", eq: "period" },
-    },
-    posReviews: {
-      control: {
-        type: "number",
-        min: 0,
-      },
-      if: { arg: "type", eq: "reviews" },
-    },
-    negReviews: {
-      control: {
-        type: "number",
-        min: 0,
-      },
-      if: { arg: "type", eq: "reviews" },
     },
     address: {
       control: "text",
@@ -114,8 +92,6 @@ export const Playground: Story = {
     percent: 77, // Default for evaluation
     date: new Date(), // Default for date
     prefix: "Applied on: ", // Default for dateWithPrefix
-    posReviews: 3, // Default for reviews
-    negReviews: 3, // Default for reviews
     address: "0xE307051C410e970b861CC55CBFD5Acc7BB477750", // Default for address
     link: "https://github.com/user", // Default for social
     isVerified: false, // Default for social
@@ -259,18 +235,5 @@ export const SocialTwitter: Story = {
     const canvas = within(canvasElement);
     const linkText = await canvas.findByText("@user");
     expect(linkText).toBeInTheDocument();
-  },
-};
-// Reviews Label Story
-export const Reviews: Story = {
-  args: {
-    type: "reviews",
-    posReviews: 3,
-    negReviews: 2,
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const reviewsText = await canvas.findByText("5 Reviews");
-    expect(reviewsText).toBeInTheDocument();
   },
 };
