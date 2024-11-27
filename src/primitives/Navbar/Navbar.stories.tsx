@@ -1,15 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-
 import { DefaultLogo } from "@/assets";
 
-
-
 import { Navbar } from "./Navbar";
-
-
-// Default logo import for demonstration purposes
 
 const meta = {
   title: "Primitives/Navbar",

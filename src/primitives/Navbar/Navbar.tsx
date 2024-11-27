@@ -1,13 +1,8 @@
 import * as React from "react";
 
-
-
-import { tv, type VariantProps } from "tailwind-variants";
-
-
+import { tv } from "tailwind-variants";
 
 import { GitcoinLogo } from "@/assets";
-
 
 const defaultLogo = GitcoinLogo;
 
@@ -31,7 +26,7 @@ export interface NavbarProps {
   children?: React.ReactNode;
 }
 
-export const Navbar = ({ logo1, logo2, showDivider=true, text, children }: NavbarProps) => {
+export const Navbar = ({ logo1, logo2, showDivider = true, text, children }: NavbarProps) => {
   const { base, container, left, logo, divider, text: textStyle, right } = navbarVariants();
 
   return (
