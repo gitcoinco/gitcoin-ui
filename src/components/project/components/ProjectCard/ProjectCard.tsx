@@ -11,15 +11,15 @@ export function ProjectCard(props: ProjectCardProps) {
   return match(props)
     .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
       match(queryResult)
-        .with({ status: "error", error: P.select() }, (error) => <ErrorCard error={error} />)
+        .with({ status: "error", error: P.select() }, (error) => <ProjectErrorCard error={error} />)
         .with({ status: "pending" }, () => <LoadingCard />)
-        .with({ status: "success", data: P.select() }, (data) => <DataCard data={data} />)
-        .otherwise(() => <ErrorCard />),
+        .with({ status: "success", data: P.select() }, (data) => <ProjectDataCard data={data} />)
+        .otherwise(() => <ProjectErrorCard />),
     )
-    .otherwise(() => <DataCard data={props as ProjectCardDataProps} />);
+    .otherwise(() => <ProjectDataCard data={props as ProjectCardDataProps} />);
 }
 
-export function DataCard({ data }: { data: ProjectCardDataProps }) {
+export function ProjectDataCard({ data }: { data: ProjectCardDataProps }) {
   return (
     <Card className="block max-w-sm overflow-hidden">
       <div className="relative">
@@ -50,6 +50,6 @@ export function LoadingCard() {
   );
 }
 
-export function ErrorCard({ error }: { error?: Error }) {
+export function ProjectErrorCard({ error }: { error?: Error }) {
   return <></>;
 }
