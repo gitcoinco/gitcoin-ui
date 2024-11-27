@@ -5,7 +5,7 @@ import { isVerified } from "@/lib/passport/credentialVerification";
 import { ProjectApplicationForManager } from "../services/allo";
 
 export function useCredentialverification(
-  applicationMetadata: ProjectApplicationForManager | undefined,
+  applicationMetadata: Partial<ProjectApplicationForManager> | undefined,
 ) {
   const [isTwitterVerified, setIsTwitterVerified] = useState<boolean>(false);
   const [isGithubVerified, setIsGithubVerified] = useState<boolean>(false);

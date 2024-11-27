@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { ProjectApplicationForManager } from "@/features/checker/services/allo";
+import { applicationsForManagers } from "@/mocks/mockData/applicationsForManager";
+
 import { ProjectSummary } from "./ProjectSummary";
 
 const meta = {
@@ -25,5 +28,6 @@ export const Default: Story = {
       credentials: {},
       owners: [],
     },
+    application: applicationsForManagers[0] as unknown as Partial<ProjectApplicationForManager>,
   },
 };

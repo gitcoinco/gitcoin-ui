@@ -30,7 +30,6 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
   if (!data) return;
 
   const project = data?.application.metadata.application.project;
-  project.recipient = data?.application.metadata.application.recipient;
 
   const reviewStatusBadgeVariant =
     data?.application.status === "APPROVED"
@@ -90,7 +89,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
           {capitalizeWord(data?.application.status)}
         </Badge>
       </div>
-      <ProjectSummary projectMetadata={project} />
+      <ProjectSummary projectMetadata={project} application={data?.application}/>
       <div className="h-0.5 bg-[#EAEAEA]" />
       {data?.applicationEvaluations.length > 0 ? (
         <ReviewDropdownList evaluations={data?.applicationEvaluations} />
