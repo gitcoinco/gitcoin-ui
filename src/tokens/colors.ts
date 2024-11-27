@@ -53,6 +53,9 @@ export const colors: Colors = {
     "700": "#BE3F17",
     "900": "#82331A",
   },
+  pink: {
+    "500": "#D44D6E",
+  },
   yellow: {
     "50": "#FDFCED",
     "100": "#F8F4CD",

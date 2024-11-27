@@ -1,25 +1,40 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 import { match } from "ts-pattern";
 
+import { Step } from "@/components/ProgressModal";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
 
 import { EvaluationAction, ProjectEvaluationList } from "~checker/components";
-import { useGetApplicationsReviewPage } from "~checker/hooks";
+import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";
 import {
   goToReviewApplicationsAction,
   useCheckerDispatchContext,
   useCheckerContext,
 } from "~checker/store";
 
-export const SubmitFinalEvaluation = () => {
-  const { categorizedReviews, statCardsProps, application } = useGetApplicationsReviewPage() || {};
+import { ReviewBody, SubmitFinalEvaluationModal } from ".";
+
+export const SubmitFinalEvaluationPage = ({
+  steps,
+  setReviewBody,
+  isReviewing,
+}: {
+  steps: Step[];
+  setReviewBody: (reviewBody: ReviewBody | null) => void;
+  isReviewing: boolean;
+}) => {
+  const { categorizedReviews, statCardsProps, application, reviewBody } =
+    useGetApplicationsFinalEvaluationPage() || {};
   const [projectEvaluations, setProjectEvaluations] = useState<Record<string, boolean>>({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useCheckerDispatchContext();
   const { poolId, chainId } = useCheckerContext();
+  const { toast } = useToast();
 
   const handleUpdateFinalEvaluations = (projectId: string, action: EvaluationAction) => {
     setProjectEvaluations((prev) => {
@@ -45,8 +60,31 @@ export const SubmitFinalEvaluation = () => {
   );
 
   const handleRecordEvaluationsOnchain = () => {
-    console.log("Record evaluations onchain", projectEvaluations);
+    setReviewBody(reviewBody ?? null);
+    setIsModalOpen(true);
   };
+
+  const [success, error] = useMemo(() => {
+    const success = steps.every((step) => step.status === "IS_SUCCESS");
+    const error = steps.some((step) => step.status === "IS_ERROR");
+    return [success, error];
+  }, [steps]);
+
+  useEffect(() => {
+    if (success) {
+      setReviewBody(null);
+      setIsModalOpen(false);
+      toast({ status: "success", description: "Your evaluations have been submitted" });
+    }
+    if (error) {
+      setReviewBody(null);
+      setIsModalOpen(false);
+      toast({
+        status: "error",
+        description: "Error: Your evaluations have not been submitted. Please try again.",
+      });
+    }
+  }, [success, error]);
 
   const handleCancel = () => {
     dispatch(goToReviewApplicationsAction());
@@ -96,7 +134,9 @@ export const SubmitFinalEvaluation = () => {
                     <Button
                       value={`Record (${numberOfOnchainEvaluations}) evaluations onchain`}
                       disabled={Object.keys(projectEvaluations).length === 0}
-                      onClick={handleRecordEvaluationsOnchain}
+                      onClick={() => {
+                        setIsModalOpen(true);
+                      }}
                     />
                   </div>
                 </div>
@@ -120,6 +160,14 @@ export const SubmitFinalEvaluation = () => {
           </div>
         </div>
       </div>
+      <SubmitFinalEvaluationModal
+        steps={steps}
+        reviews={projectEvaluations}
+        onOpenChange={(isOpen: boolean) => setIsModalOpen(isOpen)}
+        isOpen={isModalOpen}
+        onSave={handleRecordEvaluationsOnchain}
+        isReviewing={isReviewing}
+      />
     </div>
   );
 };

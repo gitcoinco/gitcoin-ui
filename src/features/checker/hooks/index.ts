@@ -5,3 +5,5 @@ export * from "./useGetApplicationsReviewPage";
 export * from "./usePerformEvaluation";
 export * from "./useGetPastApplications";
 export * from "./useCredentialverification";
+export * from "./useGetApplicationsFinalEvaluationPage";
+export * from "./usePerformOnChainReview";

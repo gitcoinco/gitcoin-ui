@@ -3,15 +3,14 @@ import { Hex } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
+import { useInitialize, usePerformEvaluation, usePerformOnChainReview } from "~checker/hooks";
 import {
   ApplicationEvaluationOverviewPage,
   ReviewApplicationsPage,
   SubmitApplicationEvaluationPage,
-  SubmitFinalEvaluation,
+  SubmitFinalEvaluationPage,
 } from "~checker/pages";
 import { CheckerRoute } from "~checker/store";
-
-import { useInitialize, usePerformEvaluation } from "./hooks";
 
 export interface CheckerRouterProps {
   address: Hex;
@@ -24,6 +23,14 @@ export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) 
   const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
     usePerformEvaluation();
   const { route } = useCheckerContext();
+
+  const {
+    steps,
+    setReviewBody,
+    isSuccess: isReviewSuccess,
+    isError: isReviewError,
+    isReviewing,
+  } = usePerformOnChainReview();
 
   return match(route)
     .with({ id: CheckerRoute.ReviewApplications }, () => <ReviewApplicationsPage />)
@@ -55,6 +62,12 @@ export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) 
         );
       },
     )
-    .with({ id: CheckerRoute.SubmitFinalEvaluation }, () => <SubmitFinalEvaluation />)
+    .with({ id: CheckerRoute.SubmitFinalEvaluation }, () => (
+      <SubmitFinalEvaluationPage
+        steps={steps}
+        setReviewBody={setReviewBody}
+        isReviewing={isReviewing}
+      />
+    ))
     .otherwise(() => <div>{`Route Not Found: ${JSON.stringify(route)}`}</div>);
 };
