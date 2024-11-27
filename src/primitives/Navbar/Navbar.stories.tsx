@@ -1,8 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+
+
 import { DefaultLogo } from "@/assets";
 
+
+
 import { Navbar } from "./Navbar";
+import { Button } from "../Button";
+
+
+// Adjust the path as needed
 
 const meta = {
   title: "Primitives/Navbar",
@@ -11,10 +19,19 @@ const meta = {
     text: "My Navbar",
   },
   argTypes: {
-    logo1: {
+    primaryLogo: {
       control: "text",
     },
-    logo2: {
+    secondaryLogo: {
+      control: "text",
+    },
+    primaryLogoLink: {
+      control: "text",
+    },
+    secondaryLogoLink: {
+      control: "text",
+    },
+    textLink: {
       control: "text",
     },
     text: {
@@ -30,23 +47,38 @@ export default meta;
 
 type Story = StoryObj<typeof Navbar>;
 
-export const Default: Story = {};
-
-export const WithSecondLogo: Story = {
+export const Default: Story = {
   args: {
-    logo2: DefaultLogo,
+    primaryLogoLink: "#",
+    secondaryLogo: DefaultLogo,
+    secondaryLogoLink: "#",
+    textLink: "#",
+  },
+};
+
+export const WithSecondaryLogo: Story = {
+  args: {
+    primaryLogoLink: "#",
+    secondaryLogo: DefaultLogo,
+    secondaryLogoLink: "#",
+    textLink: "#",
   },
 };
 
 export const WithCustomTextAndWithoutDivider: Story = {
   args: {
+    primaryLogoLink: "#",
     text: "Custom Navbar",
+    textLink: "#",
     showDivider: false,
   },
 };
 
 export const WithChildren: Story = {
   args: {
-    children: <button>Login</button>,
+    secondaryLogo: DefaultLogo,
+    secondaryLogoLink: "#",
+    textLink: "#",
+    children: <Button value="Connect Wallet"/>,
   },
 };
