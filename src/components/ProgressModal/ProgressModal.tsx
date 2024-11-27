@@ -1,27 +1,21 @@
 // ProgressModal.tsx
 import { Check, X } from "lucide-react";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogOverlay,
-} from "@/ui-shadcn/dialog";
+import { Modal } from "@/primitives/Modal";
+import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
 
 import { ProgressStatus, ProgressModalProps, Step } from "./types";
 
-export default function ProgressModal({
+export const ProgressModal = ({
   isOpen,
+  onOpenChange,
   heading = "Processing...",
   subheading = "Please hold while your operation is in progress.",
   steps,
-}: ProgressModalProps) {
+}: ProgressModalProps) => {
   return (
-    <Dialog open={isOpen}>
-      <DialogOverlay className=" bg-black/50 " />
-      <DialogContent className="w-[450px] flex-col gap-8 rounded-2xl p-8">
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <Modal className="w-[450px] flex-col gap-8 rounded-2xl p-8">
         <DialogHeader className="flex  flex-col gap-1">
           <DialogTitle className="text-base font-semibold text-black">{heading}</DialogTitle>
           <DialogDescription className="text-[14px]/[24px] text-grey-700">
@@ -43,10 +37,10 @@ export default function ProgressModal({
             </div>
           ))}
         </div>
-      </DialogContent>
+      </Modal>
     </Dialog>
   );
-}
+};
 
 function ModalStep({
   step,

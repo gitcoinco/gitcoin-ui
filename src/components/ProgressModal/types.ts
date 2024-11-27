@@ -14,8 +14,8 @@ export interface Step {
 
 export interface ProgressModalProps {
   steps: Step[];
-  isOpen: boolean;
-  setIsOpen?: (isOpen: boolean) => void;
+  isOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
   heading?: string;
   subheading?: string;
 }

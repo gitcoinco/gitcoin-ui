@@ -2,7 +2,7 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import ProgressModal from "./ProgressModal";
+import { ProgressModal } from "./ProgressModal";
 import { ProgressStatus, Step } from "./types";
 
 const meta: Meta<typeof ProgressModal> = {
@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof ProgressModal>;
 
 const Template: React.FC<{
-  isOpen: boolean;
+  isOpen?: boolean;
   heading?: string;
   subheading?: string;
   steps: Step[];
