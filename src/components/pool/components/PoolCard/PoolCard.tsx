@@ -11,14 +11,14 @@ export function PoolCard(props: PoolCardProps) {
   return match(props)
     .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
       match(queryResult)
-        .with({ status: "error", error: P.select() }, (error) => <ErrorCard error={error} />)
+        .with({ status: "error", error: P.select() }, (error) => <PoolErrorCard error={error} />)
         .with({ status: "pending" }, () => <LoadingCard />)
         .with({ status: "success", data: P.select() }, (data) => (
-          <DataCard data={data} redirectProps={props} />
+          <PoolDataCard data={data} redirectProps={props} />
         ))
-        .otherwise(() => <ErrorCard />),
+        .otherwise(() => <PoolErrorCard />),
     )
-    .otherwise(() => <DataCard data={props as PoolCardDataProps} redirectProps={props} />);
+    .otherwise(() => <PoolDataCard data={props as PoolCardDataProps} redirectProps={props} />);
 }
 
 function LoadingCard() {
@@ -37,7 +37,7 @@ function LoadingCard() {
   );
 }
 
-export function DataCard({
+export function PoolDataCard({
   data,
   redirectProps,
 }: {
@@ -70,6 +70,6 @@ export function DataCard({
   );
 }
 
-export function ErrorCard({ error }: { error?: Error | null }) {
+export function PoolErrorCard({ error }: { error?: Error | null }) {
   return <>{error ? <div>Error: {error.message}</div> : <div>Unknown Error</div>}</>;
 }
