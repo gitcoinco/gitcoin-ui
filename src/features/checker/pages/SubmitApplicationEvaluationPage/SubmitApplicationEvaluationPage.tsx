@@ -1,8 +1,6 @@
 // src/components/SubmitApplicationEvaluation/SubmitApplicationEvaluationPage.tsx
 import { useEffect, useState } from "react";
 
-
-
 import { Hex } from "viem";
 
 import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
@@ -10,6 +8,7 @@ import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
+import { ProjectSummary } from "@/components/project/components/ProjectSummary/ProjectSummary";
 import { useToast } from "@/hooks/use-toast";
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
 import { Accordion } from "@/primitives/Accordion";
@@ -18,7 +17,7 @@ import { Icon, IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
-import { useCredentialverification, useGetPastApplications, useInitialize } from "~checker/hooks";
+import { useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { PastApplication } from "~checker/services/allo";
 import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
@@ -65,7 +64,6 @@ export const SubmitApplicationEvaluationPage = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { application, evaluationQuestions } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
-  const { isTwitterVerified, isGithubVerified } = useCredentialverification(application);
 
   const [toastShowed, setToastShowed] = useState(false);
   const dispatch = useCheckerDispatchContext();
@@ -102,6 +100,7 @@ export const SubmitApplicationEvaluationPage = ({
   if (!application || !evaluationQuestions) return null;
 
   const project = application.metadata.application.project;
+
   const groups = evaluationQuestions.map((q) => ({
     id: q.questionIndex.toString(),
     heading: q.question,
@@ -238,65 +237,7 @@ export const SubmitApplicationEvaluationPage = ({
                 />
               }
               isOpen={true}
-              content={
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-wrap items-start gap-10">
-                    <div className="flex flex-col gap-4">
-                      {application.metadata.application.recipient && (
-                        <IconLabel
-                          type="address"
-                          address={application.metadata.application.recipient}
-                        />
-                      )}
-                      {project.website && (
-                        <IconLabel type="social" platform="website" link={project.website} />
-                      )}
-                      {project.projectTwitter && (
-                        <IconLabel
-                          type="social"
-                          platform="twitter"
-                          link={
-                            project.projectTwitter.includes("https://")
-                              ? project.projectTwitter
-                              : `https://x.com/${project.projectTwitter}`
-                          }
-                          isVerified={isTwitterVerified}
-                        />
-                      )}
-                      {project.projectGithub && (
-                        <IconLabel
-                          type="social"
-                          platform="github"
-                          link={
-                            project.projectGithub.includes("https://")
-                              ? project.projectGithub
-                              : `https://github.com/${project.projectGithub}`
-                          }
-                          isVerified={isGithubVerified}
-                        />
-                      )}
-                    </div>
-                    <div className="flex flex-col gap-4">
-                      <IconLabel
-                        type="dateWithPrefix"
-                        prefix="Applied on:"
-                        date={new Date(project.createdAt)}
-                      />
-                      {project.projectGithub && (
-                        <IconLabel
-                          type="social"
-                          platform="github"
-                          link={
-                            project.projectGithub.includes("https://")
-                              ? project.projectGithub
-                              : `https://github.com/${project.projectGithub}`
-                          }
-                        />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              }
+              content={<ProjectSummary projectMetadata={project} application={application} />}
               variant="default"
               border="none"
               padding="none"

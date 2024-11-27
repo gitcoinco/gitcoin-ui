@@ -1,21 +1,27 @@
 import * as React from "react";
 
 import { IconLabel } from "@/components/IconLabel";
-import { ProjectMetadata } from "@/features/checker/services/allo";
+import { useCredentialverification } from "@/features/checker/hooks";
+import { ProjectApplicationForManager, ProjectMetadata } from "@/features/checker/services/allo";
+import { isVerified } from "@/lib/passport/credentialVerification";
 import { IconType } from "@/primitives/Icon";
 
 export interface ProjectSummaryProps {
   projectMetadata: ProjectMetadata;
+  application: Partial<ProjectApplicationForManager>;
 }
 
-export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata }) => {
-  const { recipient, createdAt, website, lastUpdated, projectTwitter, projectGithub } =
-    projectMetadata;
+export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata, application }) => {
+  const { createdAt, website, lastUpdated, projectTwitter, projectGithub } = projectMetadata;
+
+  const recipient = application.metadata?.application.recipient;
 
   const appliedOnLabel = `Applied on: ${new Date(createdAt).toLocaleString()}`;
   const lastEditedLabel = `Last edited: ${new Date(
     lastUpdated.toString() !== "0" ? lastUpdated : createdAt,
   ).toLocaleString()}`;
+
+  const { isTwitterVerified, isGithubVerified } = useCredentialverification(application);
 
   return (
     <div className="flex gap-16">
@@ -23,7 +29,12 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata 
         {recipient && <IconLabel type="address" address={recipient} />}
         {website && <IconLabel type="social" platform="website" link={website} />}
         {projectTwitter && (
-          <IconLabel type="social" platform="twitter" link={`https://x.com/${projectTwitter}`} />
+          <IconLabel
+            type="social"
+            platform="twitter"
+            link={`https://x.com/${projectTwitter}`}
+            isVerified={isTwitterVerified}
+          />
         )}
       </div>
       <div className="flex flex-col gap-4">
@@ -44,7 +55,12 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata 
           />
         )}
         {projectGithub && (
-          <IconLabel type="social" platform="github" link={`https://github.com/${projectGithub}`} />
+          <IconLabel
+            type="social"
+            platform="github"
+            link={`https://github.com/${projectGithub}`}
+            isVerified={isGithubVerified}
+          />
         )}
       </div>
     </div>

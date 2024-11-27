@@ -12,7 +12,7 @@ const verifier = new PassportVerifier();
 
 export async function isVerified(
   provider: "twitter" | "github",
-  application: ProjectApplicationForManager | undefined,
+  application: Partial<ProjectApplicationForManager> | undefined,
 ): Promise<boolean> {
   const applicationMetadata = application?.metadata;
   const verifiableCredential = applicationMetadata?.application.project.credentials[provider];
