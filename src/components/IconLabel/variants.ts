@@ -38,18 +38,10 @@ export const variants = tv({
         text: "text-[14px]/[17px] text-grey-700",
         icon: "size-4 fill-grey-700",
       },
-      reviews: {
-        container: "gap-2",
-        icon: "size-7 rounded-full border border-grey-100 bg-white",
-      },
+
       verifiedBadge: {
         icon: "h-5 w-[28px]",
       },
-    },
-    reviewType: {
-      posFirst: { icon: "fill-green-600" },
-      posNotFirst: { icon: "-ml-2 fill-green-600" },
-      neg: { icon: "-ml-2 fill-red-200" },
     },
   },
 });

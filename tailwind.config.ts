@@ -33,6 +33,7 @@ export default withTV({
         sans: ["DM Sans", "sans-serif"],
       },
       borderRadius: {
+        "3.5": "14px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",

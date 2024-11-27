@@ -7,6 +7,7 @@ import { getReviewsCount } from "~checker/utils/getReviewsCount";
 import { EvaluationAction, ProjectEvaluationAction } from "../ProjectEvaluationAction";
 import { ProjectStatus } from "../ProjectEvaluationAction";
 import { ProjectReview } from "../ProjectReviewList";
+import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
 
 export interface ProjectEvaluationListProps {
   evaluationStatus?: ProjectStatus;
@@ -50,7 +51,7 @@ export const ProjectEvaluationList = ({
       width: "1fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
-        return <IconLabel type="reviews" posReviews={nApproved} negReviews={nRejected} />;
+        return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
       },
     },
     {

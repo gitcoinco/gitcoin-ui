@@ -33,12 +33,6 @@ interface DateWithPrefixProps {
   className?: string;
 }
 
-interface ReviewsProps {
-  type: "reviews";
-  posReviews?: number;
-  negReviews?: number;
-  className?: string;
-}
 interface AddressProps {
   type: "address";
   address?: string;
@@ -68,7 +62,6 @@ export type IconLabelProps =
   | DateProps
   | PeriodProps
   | RoundPeriodProps
-  | ReviewsProps
   | AddressProps
   | SocialProps
   | DateWithPrefixProps
