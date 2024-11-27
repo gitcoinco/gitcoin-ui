@@ -1,15 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-
 import { DefaultLogo } from "@/assets";
-
-
-
-import { Navbar } from "./Navbar";
-import { Button } from "../Button";
 import { CheckerIcon } from "@/assets/icons";
 
+import { Button } from "../Button";
+import { Navbar } from "./Navbar";
 
 // Adjust the path as needed
 
@@ -80,6 +75,6 @@ export const WithChildren: Story = {
     secondaryLogo: DefaultLogo,
     secondaryLogoLink: "#",
     textLink: "#",
-    children: <Button value="Connect Wallet"/>,
+    children: <Button value="Connect Wallet" />,
   },
 };
