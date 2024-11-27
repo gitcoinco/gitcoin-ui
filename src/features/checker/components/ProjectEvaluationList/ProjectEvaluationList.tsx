@@ -51,7 +51,7 @@ export const ProjectEvaluationList = ({
       width: "1fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
-        return <ReviewsCounterLabel posReviews={nApproved} negReviews={nRejected} />;
+        return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
       },
     },
     {

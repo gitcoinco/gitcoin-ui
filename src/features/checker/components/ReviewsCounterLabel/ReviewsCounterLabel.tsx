@@ -14,23 +14,23 @@ const variants = tv({
 });
 
 interface ReviewsCounterLabelProps {
-  posReviews?: number;
-  negReviews?: number;
+  positiveReviews?: number;
+  negativeReviews?: number;
   className?: string;
 }
 
 export const ReviewsCounterLabel: React.FC<ReviewsCounterLabelProps> = ({
-  posReviews = 0,
-  negReviews = 0,
+  positiveReviews = 0,
+  negativeReviews = 0,
   className,
 }) => {
   const { text, container } = variants();
 
-  const totalReviews = Math.max(0, posReviews) + Math.max(0, negReviews);
+  const totalReviews = Math.max(0, positiveReviews) + Math.max(0, negativeReviews);
 
   return (
     <div className={cn(container(), className)}>
-      <ReviewIconGroup positiveReviews={posReviews} negativeReviews={negReviews} />
+      <ReviewIconGroup positiveReviews={positiveReviews} negativeReviews={negativeReviews} />
       <span className={text()}>
         {totalReviews ? `${totalReviews} Review${totalReviews > 1 ? "s" : ""}` : "Needs review"}
       </span>
