@@ -25,6 +25,7 @@ export { default as UserIcon } from "./user.svg?react";
 export { default as VerifiedBadgeIcon } from "./verifiedBadge.svg?react";
 export { default as GlobeIcon } from "./globe.svg?react";
 export { default as ExplorerIcon } from "./explorer.svg?react";
+export { default as CheckerIcon } from "./checker.svg?react";
 
 // Social Media Icons
 export { default as GithubIcon } from "./github.svg?react";

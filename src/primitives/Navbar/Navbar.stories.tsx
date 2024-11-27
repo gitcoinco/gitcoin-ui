@@ -8,6 +8,7 @@ import { DefaultLogo } from "@/assets";
 
 import { Navbar } from "./Navbar";
 import { Button } from "../Button";
+import { CheckerIcon } from "@/assets/icons";
 
 
 // Adjust the path as needed
@@ -50,7 +51,7 @@ type Story = StoryObj<typeof Navbar>;
 export const Default: Story = {
   args: {
     primaryLogoLink: "#",
-    secondaryLogo: DefaultLogo,
+    secondaryLogo: CheckerIcon,
     secondaryLogoLink: "#",
     textLink: "#",
   },

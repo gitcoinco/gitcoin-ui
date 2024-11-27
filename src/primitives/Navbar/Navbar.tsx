@@ -11,7 +11,7 @@ const navbarVariants = tv({
     base: "top-0 flex h-[64px] w-full shrink-0 flex-col items-center justify-center gap-2 p-[10px_80px]",
     container: "flex w-full items-center justify-between",
     leftSection: "flex items-center gap-4",
-    logo: "h-10",
+    logo: "h-10 max-w-12",
     divider: "h-4 border-r border-grey-700",
     text: "text-lg font-semibold",
     rightSection: "flex items-center",
@@ -19,8 +19,8 @@ const navbarVariants = tv({
 });
 
 export interface NavbarProps {
-  primaryLogo?: string;
-  secondaryLogo?: string;
+  primaryLogo?: string | React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  secondaryLogo?: string | React.FunctionComponent<React.SVGAttributes<SVGElement>>;
   showDivider?: boolean;
   text: string;
   primaryLogoLink?: string;
@@ -49,19 +49,28 @@ export const Navbar = ({
     rightSection,
   } = navbarVariants();
 
+  const renderLogo = (
+    img: string | React.FunctionComponent<React.SVGAttributes<SVGElement>> | undefined,
+  ) => {
+    if (!img) {
+      return <img src={defaultLogo} alt="Default Logo" className={logo()} />;
+    }
+
+    if (typeof img === "string") {
+      return <img src={img} alt="Logo" className={logo()} />;
+    }
+
+    const LogoComponent = img;
+    return <LogoComponent className={logo()} />;
+  };
+
   return (
     <nav className={base()}>
       <div className={container()}>
         <div className={leftSection()}>
-          <a href={primaryLogoLink || "#"}>
-            <img src={primaryLogo || defaultLogo} alt="Primary Logo" className={logo()} />
-          </a>
+          <a href={primaryLogoLink || "#"}>{renderLogo(primaryLogo)}</a>
           {showDivider && <div className={divider()}></div>}
-          {secondaryLogo && (
-            <a href={secondaryLogoLink || "#"}>
-              <img src={secondaryLogo} alt="Secondary Logo" className={logo()} />
-            </a>
-          )}
+          {secondaryLogo && <a href={secondaryLogoLink || "#"}>{renderLogo(secondaryLogo)}</a>}
           <a href={textLink || "#"} className={textStyle()}>
             {text}
           </a>
