@@ -14,7 +14,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata 
 
   const appliedOnLabel = `Applied on: ${new Date(createdAt).toLocaleString()}`;
   const lastEditedLabel = `Last edited: ${new Date(
-    lastUpdated.toString() == "0" ? lastUpdated : createdAt,
+    lastUpdated.toString() !== "0" ? lastUpdated : createdAt,
   ).toLocaleString()}`;
 
   return (
