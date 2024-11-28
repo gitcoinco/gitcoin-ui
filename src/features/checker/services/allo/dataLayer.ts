@@ -15,7 +15,6 @@ export async function getApplicationsFromIndexer(
       chainId,
       roundId,
     });
-
     return response.applications as ProjectApplicationForManager[];
   } catch (e) {
     throw new Error(`Failed to fetch applications data. with error: ${e}`);
@@ -33,7 +32,6 @@ export async function getApplicationByIdFromIndexer(
       roundId,
       applicationId,
     });
-
     return response.application as ProjectApplication;
   } catch (e) {
     throw new Error(`Failed to fetch application data. with error: ${e}`);

@@ -72,7 +72,7 @@ export async function syncPool(syncPoolBody: SyncPoolBody): Promise<boolean> {
       },
       body: JSON.stringify({
         ...syncPoolBody,
-        skipEvaluation: true,
+        skipEvaluation: false,
       }),
     });
 

@@ -1,6 +1,5 @@
 import { Hex } from "viem";
 
-import { PoolType } from "@/components/Badges";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { Button } from "@/primitives/Button";
@@ -33,7 +32,7 @@ export const ApplicationEvaluationOverviewPage = ({
   const { application, applicationEvaluations } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
 
-  if (!application || !applicationEvaluations) return null;
+  if (!application) return null;
 
   const dispatch = useCheckerDispatchContext();
 
@@ -80,7 +79,7 @@ export const ApplicationEvaluationOverviewPage = ({
         </p>
         <div className="flex flex-col gap-8">
           <div className="px-16">
-            <EvaluationList evaluations={applicationEvaluations} />
+            <EvaluationList evaluations={applicationEvaluations ?? []} />
           </div>
           <div className="flex items-center justify-center">
             <Button
