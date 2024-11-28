@@ -46,9 +46,9 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
 
   // TODO Fix breadcrumbItems hrefs
   const breadcrumbItems = [
-    { label: "My Programs", href: "#" },
-    { label: "Program Details", href: "#" },
-    { label: "Round Details", href: "#" },
+    { label: "My Programs", href: "https://manager.gitcoin.co/#/" },
+    { label: "Program Details", href: "https://manager.gitcoin.co/#/1" },
+    { label: "Round Details", href: "https://manager.gitcoin.co/#/2" },
   ];
   return (
     <div className={cn(variants.variants.default, "grid grid-cols-2")}>

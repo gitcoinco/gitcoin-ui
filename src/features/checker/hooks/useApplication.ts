@@ -20,7 +20,7 @@ export const useApplicationEvaluations = (
       );
       const data = {
         application,
-        applicationEvaluations,
+        applicationEvaluations: applicationEvaluations,
       };
       return data;
     },

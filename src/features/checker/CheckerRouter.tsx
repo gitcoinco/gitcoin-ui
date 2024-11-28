@@ -1,36 +1,52 @@
 import { match, P } from "ts-pattern";
 import { Hex } from "viem";
 
+import { Step } from "@/components/ProgressModal";
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
-import { useInitialize, usePerformEvaluation, usePerformOnChainReview } from "~checker/hooks";
+import { useInitialize } from "~checker/hooks";
 import {
   ApplicationEvaluationOverviewPage,
   ReviewApplicationsPage,
+  ReviewBody,
   SubmitApplicationEvaluationPage,
   SubmitFinalEvaluationPage,
 } from "~checker/pages";
+import { EvaluationBody } from "~checker/services/checker/api";
 import { CheckerRoute } from "~checker/store";
 
-export interface CheckerRouterProps {
+export interface CheckerProps {
   address: Hex;
   poolId: string;
   chainId: number;
+  setEvaluationBody: (body: EvaluationBody) => void;
+  isSigning: boolean;
+  isSuccess: boolean;
+  isEvaluating: boolean;
+  isError: boolean;
+  isErrorSigning: boolean;
+  steps: Step[];
+  setReviewBody: (reviewBody: ReviewBody | null) => void;
+  isReviewing: boolean;
 }
 
-export const CheckerRouter = ({ address, poolId, chainId }: CheckerRouterProps) => {
+export const CheckerRouter = ({
+  address,
+  poolId,
+  chainId,
+  setEvaluationBody,
+  isSigning,
+  isSuccess,
+  isEvaluating,
+  isError,
+  isErrorSigning,
+  steps,
+  setReviewBody,
+  isReviewing,
+}: CheckerProps) => {
   useInitialize({ address, poolId, chainId });
-  const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
-    usePerformEvaluation();
-  const { route } = useCheckerContext();
 
-  const {
-    steps,
-    setReviewBody,
-    isSuccess: isReviewSuccess,
-    isError: isReviewError,
-    isReviewing,
-  } = usePerformOnChainReview();
+  const { route } = useCheckerContext();
 
   return match(route)
     .with({ id: CheckerRoute.ReviewApplications }, () => <ReviewApplicationsPage />)

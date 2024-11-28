@@ -15,6 +15,7 @@ export async function getApplicationsFromIndexer(
       chainId,
       roundId,
     });
+    // console.log("DEBUG: ", response);
 
     return response.applications as ProjectApplicationForManager[];
   } catch (e) {
@@ -33,6 +34,8 @@ export async function getApplicationByIdFromIndexer(
       roundId,
       applicationId,
     });
+
+    console.log("DEBUG: ", response);
 
     return response.application as ProjectApplication;
   } catch (e) {

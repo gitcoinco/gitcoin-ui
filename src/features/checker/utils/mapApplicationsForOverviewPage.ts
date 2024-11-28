@@ -57,13 +57,15 @@ export function categorizeProjectReviews(
     applicationCounts.total += 1;
 
     // Separate evaluations into AI and non-AI
-    const aiEvaluations = application.evaluations.filter(
-      (evaluation) => evaluation.evaluator.toLowerCase() === AI_EVALUATOR_ADDRESS.toLowerCase(),
-    );
+    const aiEvaluations =
+      application.evaluations?.filter(
+        (evaluation) => evaluation.evaluator.toLowerCase() === AI_EVALUATOR_ADDRESS.toLowerCase(),
+      ) ?? [];
 
-    const humanEvaluations = application.evaluations.filter(
-      (evaluation) => evaluation.evaluator.toLowerCase() !== AI_EVALUATOR_ADDRESS.toLowerCase(),
-    );
+    const humanEvaluations =
+      application.evaluations?.filter(
+        (evaluation) => evaluation.evaluator.toLowerCase() !== AI_EVALUATOR_ADDRESS.toLowerCase(),
+      ) ?? [];
 
     // Determine the category based on the number of human evaluations
     const isReadyForReview = humanEvaluations.length >= 2;
@@ -72,7 +74,7 @@ export function categorizeProjectReviews(
       : "INREVIEW";
 
     // Map human evaluations to reviews
-    const reviews: Review[] = humanEvaluations.map((evaluation) => {
+    const reviews: Review[] = humanEvaluations?.map((evaluation) => {
       const isApproved = evaluation.evaluatorScore >= 50; // Assuming 50 as the approval threshold
       const reviewerAddress: `0x${string}` = evaluation.evaluator.startsWith("0x")
         ? (evaluation.evaluator as `0x${string}`)
@@ -84,18 +86,14 @@ export function categorizeProjectReviews(
     });
 
     // Calculate the average score including both AI and human evaluations
-    const totalScore = application.evaluations.reduce(
-      (sum, evaluation) => sum + evaluation.evaluatorScore,
-      0,
-    );
-    const totalEvaluations = application.evaluations.length;
+    const totalScore =
+      application.evaluations?.reduce((sum, evaluation) => sum + evaluation.evaluatorScore, 0) ?? 0;
+    const totalEvaluations = application.evaluations?.length ?? 0;
     const scoreAverage = totalEvaluations > 0 ? totalScore / totalEvaluations : 0;
 
     // Calculate AI suggestion score (average AI evaluator scores)
-    const aiTotalScore = aiEvaluations.reduce(
-      (sum, evaluation) => sum + evaluation.evaluatorScore,
-      0,
-    );
+    const aiTotalScore =
+      aiEvaluations?.reduce((sum, evaluation) => sum + evaluation.evaluatorScore, 0) ?? 0;
     const aiSuggestion = aiEvaluations.length > 0 ? aiTotalScore / aiEvaluations.length : 0;
 
     const projectData = application.metadata.application.project;

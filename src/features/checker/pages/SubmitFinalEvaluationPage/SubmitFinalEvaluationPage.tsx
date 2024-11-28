@@ -65,8 +65,8 @@ export const SubmitFinalEvaluationPage = ({
   };
 
   const [success, error] = useMemo(() => {
-    const success = steps.every((step) => step.status === "IS_SUCCESS");
-    const error = steps.some((step) => step.status === "IS_ERROR");
+    const success = steps?.every((step) => step.status === "IS_SUCCESS");
+    const error = steps?.some((step) => step.status === "IS_ERROR");
     return [success, error];
   }, [steps]);
 

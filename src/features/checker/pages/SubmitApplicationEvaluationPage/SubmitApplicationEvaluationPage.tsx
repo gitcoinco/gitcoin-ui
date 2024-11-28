@@ -167,7 +167,7 @@ export const SubmitApplicationEvaluationPage = ({
       alloPoolId: poolId,
       alloApplicationId: applicationId,
       cid: application.metadataCid,
-      evaluator: address ?? "0xGitcoinShips!!!",
+      evaluator: address ?? "0xGitcoinShips!",
       summaryInput: {
         questions: data,
         summary: feedback,
