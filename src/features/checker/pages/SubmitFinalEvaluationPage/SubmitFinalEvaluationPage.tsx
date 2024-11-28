@@ -60,7 +60,13 @@ export const SubmitFinalEvaluationPage = ({
   );
 
   const handleRecordEvaluationsOnchain = () => {
-    setReviewBody(reviewBody ?? null);
+    setReviewBody({
+      ...reviewBody,
+      applicationsToUpdate: Object.entries(projectEvaluations).map(([projectId, isApproved]) => ({
+        index: Number(projectId),
+        status: isApproved ? "APPROVED" : "REJECTED",
+      })),
+    } as ReviewBody);
     setIsModalOpen(true);
   };
 
