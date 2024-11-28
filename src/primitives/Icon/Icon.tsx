@@ -1,108 +1,62 @@
 // Status Icons
 import {
-  CheckIcon,
-  CheckSolidIcon,
-  LinkIcon,
-  ClockIcon,
-  ExclamationCircleIcon,
-  SparklesIcon,
-  XIcon,
-  XSolidIcon,
-  CalendarIcon,
-  VerifiedBadgeIcon,
-  ShineIcon,
-  UserIcon,
-  SolidQuestionMarkCircleIcon,
-  clipboardListIcon,
-  StarIcon,
-  InformationCircleIcon,
-  ExplorerIcon,
-  ChevronLeftIcon,
+  customIconComponents,
+  heroiconsComponents,
+  networkIconComponents,
+  socialMediaIconComponents,
 } from "@/assets/icons";
-// Social Media Icons
-import { GithubIcon, TwitterIcon, GlobeIcon } from "@/assets/icons";
-// Blockchain Icons
-import {
-  ETHIcon,
-  OptimismIcon,
-  PolygonIcon,
-  ArbitrumIcon,
-  AvaxIcon,
-  BaseIcon,
-} from "@/assets/icons";
+import { cn } from "@/lib/utils";
 
 export enum IconType {
-  // Status Icons
-  CHECK = "check",
-  SOLID_CHECK = "solid-check",
-  LINK = "link",
-  CLOCK = "clock",
-  CLIPBOARD_LIST = "clipboardList",
-  STAR = "star",
-  INFORMATION_CIRCLE = "informationCircle",
-  EXCLAMATION_CIRCLE = "exclamation-circle",
-  SPARKLES = "sparkles",
-  SHINE = "shine",
-  X = "x",
-  SOLID_X = "solid-x",
+  // Heroicons
   CALENDAR = "calendar",
-  USER = "user",
-  VERIFIEDBADGE = "verifiedBadge",
-  SOLID_QUESTION_MARK_CIRCLE = "questionMarkCircle",
-  EXPLORER = "explorer",
+  CHECK = "check",
   CHEVRON_LEFT = "chevron-left",
-
-  // Social Media Icons
-  GITHUB = "github",
-  TWITTER = "twitter",
+  CLIPBOARD_LIST = "clipboardList",
+  CLOCK = "clock",
+  EXCLAMATION_CIRCLE = "exclamation-circle",
+  LINK = "link",
   GLOBE = "globe",
-
-  // Blockchain Icons
+  INFORMATION_CIRCLE = "informationCircle",
+  SOLID_CHECK = "solid-check",
+  SOLID_QUESTION_MARK_CIRCLE = "questionMarkCircle",
+  SOLID_X = "solid-x",
+  SPARKLES = "sparkles",
+  STAR = "star",
+  X = "x",
+  // Social Media
+  TWITTER = "twitter",
+  GITHUB = "github",
+  // Networks
   ETH = "eth",
   OPTIMISM = "optimism",
   POLYGON = "polygon",
   ARBITRUM = "arbitrum",
   AVAX = "avax",
   BASE = "base",
+  // Custom
+  CHECKER = "checker",
+  EXPLORER = "explorer",
+  SHINE = "shine",
+  USER = "user",
+  VERIFIEDBADGE = "verifiedBadge",
 }
-
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   type: IconType;
 };
 
 const iconComponents: Record<IconProps["type"], React.FC<React.SVGProps<SVGSVGElement>>> = {
-  check: CheckIcon,
-  "solid-check": CheckSolidIcon,
-  link: LinkIcon,
-  clock: ClockIcon,
-  clipboardList: clipboardListIcon,
-  star: StarIcon,
-  informationCircle: InformationCircleIcon,
-  "exclamation-circle": ExclamationCircleIcon,
-  sparkles: SparklesIcon,
-  shine: ShineIcon,
-  x: XIcon,
-  "chevron-left": ChevronLeftIcon,
-  explorer: ExplorerIcon,
-  "solid-x": XSolidIcon,
-  questionMarkCircle: SolidQuestionMarkCircleIcon,
-  twitter: TwitterIcon,
-  github: GithubIcon,
-  eth: ETHIcon,
-  calendar: CalendarIcon,
-  user: UserIcon,
-  verifiedBadge: VerifiedBadgeIcon,
-  globe: GlobeIcon,
-  optimism: OptimismIcon,
-  polygon: PolygonIcon,
-  arbitrum: ArbitrumIcon,
-  avax: AvaxIcon,
-  base: BaseIcon,
+  ...heroiconsComponents,
+  ...socialMediaIconComponents,
+  ...networkIconComponents,
+  ...customIconComponents,
 };
 
 export const Icon: React.FC<IconProps> = ({ type, className, ...props }) => {
   const IconComponent = iconComponents[type];
-  return <IconComponent className={className} {...props} />;
+  return <IconComponent className={cn("size-5", className)} {...props} />;
 };
 
-export const icons = Object.keys(iconComponents) as IconProps["type"][];
+export const icons = Object.keys(iconComponents).sort((a, b) =>
+  a.localeCompare(b),
+) as IconProps["type"][];

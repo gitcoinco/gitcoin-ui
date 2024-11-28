@@ -1,6 +1,6 @@
 {
   "name": "gitcoin-ui",
-  "version": "0.0.10",
+  "version": "0.0.0",
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -106,6 +106,7 @@
     ]
   },
   "dependencies": {
+    "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
