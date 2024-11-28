@@ -48,9 +48,9 @@ export const checkerApplicationEvaluationsHandler = graphql.query(
 );
 
 export const handlers = [
-  // taskListHandler,
-  // applicationForManagerHandler,
-  // checkerPoolDataHandler,
-  // indexerGetApplicationByIdHandler,
-  // checkerApplicationEvaluationsHandler,
+  taskListHandler,
+  applicationForManagerHandler,
+  checkerPoolDataHandler,
+  indexerGetApplicationByIdHandler,
+  checkerApplicationEvaluationsHandler,
 ];

@@ -44,11 +44,14 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   const applyLink = `https://builder.gitcoin.co/#/chains/${pool.chainId}/round/${pool.poolId}/apply`;
   const explorerLink = `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`;
 
-  // TODO Fix breadcrumbItems hrefs
   const breadcrumbItems = [
     { label: "My Programs", href: "https://manager.gitcoin.co/#/" },
+    // TODO: Fix href for Program Details
     { label: "Program Details", href: "https://manager.gitcoin.co/#/1" },
-    { label: "Round Details", href: "https://manager.gitcoin.co/#/2" },
+    {
+      label: "Round Details",
+      href: `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`,
+    },
   ];
   return (
     <div className={cn(variants.variants.default, "grid grid-cols-2")}>
