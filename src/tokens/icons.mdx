@@ -1,4 +1,9 @@
-import { Meta, Title, IconGallery, IconItem } from "@storybook/blocks";
+import { Meta, Title, Subtitle, IconGallery, IconItem } from "@storybook/blocks";
+
+import { customIcons } from "@/assets/icons/custom";
+import { heroIcons } from "@/assets/icons/heroicons";
+import { networkIcons } from "@/assets/icons/networks";
+import { socialMediaIcons } from "@/assets/icons/socialMedia";
 
 import { icons, Icon } from "@/primitives/Icon";
 
@@ -6,6 +11,48 @@ import { icons, Icon } from "@/primitives/Icon";
 
 <Title>Icons</Title>
 These are the icons being used in our design system. They are available as React components.
+
+<Subtitle>Heroicons</Subtitle>
+
+<IconGallery>
+  {heroIcons.map((icon) => (
+    <IconItem key={icon} name={icon}>
+      <Icon type={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+<Subtitle>SocialMedia</Subtitle>
+
+<IconGallery>
+  {socialMediaIcons.map((icon) => (
+    <IconItem key={icon} name={icon}>
+      <Icon type={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+<Subtitle>Networks</Subtitle>
+
+<IconGallery>
+  {networkIcons.map((icon) => (
+    <IconItem key={icon} name={icon}>
+      <Icon type={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+<Subtitle>Custom</Subtitle>
+
+<IconGallery>
+  {customIcons.map((icon) => (
+    <IconItem key={icon} name={icon}>
+      <Icon type={icon} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+<Subtitle>All Icons</Subtitle>
 
 <IconGallery>
   {icons.map((icon) => (
