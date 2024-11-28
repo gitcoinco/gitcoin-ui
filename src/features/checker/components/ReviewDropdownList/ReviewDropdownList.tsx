@@ -10,14 +10,9 @@ const reviewDropdownListVariants = tv({
   slots: {
     container: "flex flex-col gap-6",
   },
-  defaultVariants: {
-    // You can define default variants if needed
-  },
 });
 
-export type ReviewDropdownListVariants = VariantProps<typeof reviewDropdownListVariants>;
-
-interface ReviewDropdownListProps {
+export interface ReviewDropdownListProps {
   evaluations: Evaluation[];
 }
 

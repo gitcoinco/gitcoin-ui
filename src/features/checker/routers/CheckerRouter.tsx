@@ -8,12 +8,11 @@ import { useInitialize } from "~checker/hooks";
 import {
   ApplicationEvaluationOverviewPage,
   ReviewApplicationsPage,
-  ReviewBody,
   SubmitApplicationEvaluationPage,
   SubmitFinalEvaluationPage,
 } from "~checker/pages";
-import { EvaluationBody } from "~checker/services/checker/api";
 import { CheckerRoute } from "~checker/store";
+import { EvaluationBody, ReviewBody } from "~checker/types";
 
 export interface CheckerRouterProps {
   address: Hex;

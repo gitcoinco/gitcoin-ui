@@ -30,19 +30,21 @@ const iconVariants = tv({
   },
 });
 
+export interface ReviewIconProps {
+  withCounter?: boolean;
+  nReviews?: number;
+  status: "approved" | "rejected" | "pending";
+  className?: string;
+  style?: React.CSSProperties;
+}
+
 export const ReviewIcon = ({
   withCounter,
   nReviews = 0,
   status,
   className,
   style,
-}: {
-  withCounter?: boolean;
-  nReviews?: number;
-  status: "approved" | "rejected" | "pending";
-  className?: string;
-  style?: React.CSSProperties;
-}) => {
+}: ReviewIconProps) => {
   const { icon, container } = iconVariants({ status, withCounter });
 
   if (status === "pending") {

@@ -1,13 +1,10 @@
 import { Hex } from "viem";
 
-import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
-import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
-import { Button } from "@/primitives/Button";
-import { Icon, IconType } from "@/primitives/Icon";
+import { PoolSummary, ProjectBanner } from "@/components";
+import { Button, Icon, IconType } from "@/primitives";
 
-import { EvaluationList } from "~checker/components/EvaluationList/EvaluationList";
-import { useInitialize } from "~checker/hooks";
-import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
+import { EvaluationList } from "~checker/components";
+import { useApplicationOverviewEvaluations, useInitialize } from "~checker/hooks";
 import {
   goToReviewApplicationsAction,
   goToSubmitApplicationEvaluationAction,

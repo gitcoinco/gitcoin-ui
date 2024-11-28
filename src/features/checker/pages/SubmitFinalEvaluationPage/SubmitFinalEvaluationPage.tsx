@@ -9,25 +9,28 @@ import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
 
-import { EvaluationAction, ProjectEvaluationList } from "~checker/components";
+import { ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";
 import {
   goToReviewApplicationsAction,
   useCheckerDispatchContext,
   useCheckerContext,
 } from "~checker/store";
+import { EvaluationAction, ReviewBody } from "~checker/types";
 
-import { ReviewBody, SubmitFinalEvaluationModal } from ".";
+import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
+
+export interface SubmitFinalEvaluationPageProps {
+  steps: Step[];
+  setReviewBody: (reviewBody: ReviewBody | null) => void;
+  isReviewing: boolean;
+}
 
 export const SubmitFinalEvaluationPage = ({
   steps,
   setReviewBody,
   isReviewing,
-}: {
-  steps: Step[];
-  setReviewBody: (reviewBody: ReviewBody | null) => void;
-  isReviewing: boolean;
-}) => {
+}: SubmitFinalEvaluationPageProps) => {
   const { categorizedReviews, statCardsProps, application, reviewBody } =
     useGetApplicationsFinalEvaluationPage() || {};
   const [projectEvaluations, setProjectEvaluations] = useState<Record<string, boolean>>({});

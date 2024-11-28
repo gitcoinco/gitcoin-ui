@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Hex } from "viem";
 
 import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
-import EvaluationForm from "@/components/EvaluationForm/EvaluationForm";
+import { EvaluationForm } from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
@@ -20,12 +20,12 @@ import { Markdown } from "@/primitives/Markdown/Markdown";
 import { useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { PastApplication } from "~checker/services/allo";
-import { EVALUATION_STATUS, EvaluationBody } from "~checker/services/checker/api";
 import {
   goToApplicationEvaluationOverviewAction,
   goToSubmitFinalEvaluationAction,
   useCheckerDispatchContext,
 } from "~checker/store";
+import { EvaluationStatus, EvaluationBody } from "~checker/types";
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";
@@ -57,8 +57,8 @@ export const SubmitApplicationEvaluationPage = ({
 }: SubmitApplicationEvaluationPageProps) => {
   useInitialize({ address: address ?? "0x", poolId, chainId });
 
-  const [evaluationStatus, setEvaluationStatus] = useState<EVALUATION_STATUS>(
-    EVALUATION_STATUS.UNCERTAIN,
+  const [evaluationStatus, setEvaluationStatus] = useState<EvaluationStatus>(
+    EvaluationStatus.UNCERTAIN,
   );
   const [evaluationBody, setLocalEvaluationBody] = useState<EvaluationBody | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -160,7 +160,7 @@ export const SubmitApplicationEvaluationPage = ({
     }));
 
     const evaluationType =
-      type === "approve" ? EVALUATION_STATUS.APPROVED : EVALUATION_STATUS.REJECTED;
+      type === "approve" ? EvaluationStatus.APPROVED : EvaluationStatus.REJECTED;
     setEvaluationStatus(evaluationType);
     setLocalEvaluationBody({
       chainId,

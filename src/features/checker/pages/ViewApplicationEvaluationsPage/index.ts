@@ -1,1 +1,1 @@
-export { ViewApplicationEvaluationsPage } from "./ViewApplicationEvaluationsPage";
+export * from "./ViewApplicationEvaluationsPage";

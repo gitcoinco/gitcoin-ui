@@ -2,10 +2,8 @@ import * as React from "react";
 
 import { tv } from "tailwind-variants";
 
-import RadioGroupList from "@/components/RadioGroupList/RadioGroupList";
-import { Button } from "@/primitives/Button";
-import { Icon, IconType } from "@/primitives/Icon";
-import { TextArea } from "@/primitives/TextArea";
+import { RadioGroupList } from "@/components";
+import { Button, Icon, IconType, TextArea } from "@/primitives";
 
 const formVariants = tv({
   base: "flex flex-col gap-6 p-5",
@@ -14,7 +12,7 @@ const formVariants = tv({
 const headingStyles =
   "font-sans text-[24px] font-500 leading-[32px] tracking-[-0.006em] text-left bg-white";
 
-interface EvaluationFormProps {
+export interface EvaluationFormProps {
   onSubmit: (data: {
     type: "approve" | "reject";
     selections: Record<string, string>;
@@ -28,7 +26,7 @@ interface EvaluationFormProps {
   }[];
 }
 
-const EvaluationForm: React.FC<EvaluationFormProps> = ({ onSubmit, groups }) => {
+export const EvaluationForm: React.FC<EvaluationFormProps> = ({ onSubmit, groups }) => {
   const [selections, setSelections] = React.useState<Record<string, string>>({});
   const [feedback, setFeedback] = React.useState("");
 
@@ -88,5 +86,3 @@ const EvaluationForm: React.FC<EvaluationFormProps> = ({ onSubmit, groups }) => 
     </form>
   );
 };
-
-export default EvaluationForm;

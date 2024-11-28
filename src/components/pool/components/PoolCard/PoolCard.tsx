@@ -1,13 +1,18 @@
+import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { PoolBadge } from "@/components/Badges";
-import { IconLabel } from "@/components/IconLabel";
-import { PoolCardDataProps, PoolCardProps, onClickProps } from "@/components/pool/types/types";
-import { getChainInfo } from "@/lib/icons/chains";
-import { modularRedirect } from "@/lib/utils";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
-export function PoolCard(props: PoolCardProps) {
+import { onClickProps, PoolData } from "../../types";
+import { PoolDataCard } from "./PoolDataCard";
+
+export interface PoolCardQueryProps extends onClickProps {
+  queryResult: UseQueryResult<PoolData, Error>;
+}
+
+export interface PoolCardProps extends PoolData, onClickProps {}
+
+export function PoolCard(props: PoolCardProps | PoolCardQueryProps) {
   return match(props)
     .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
       match(queryResult)
@@ -18,7 +23,7 @@ export function PoolCard(props: PoolCardProps) {
         ))
         .otherwise(() => <PoolErrorCard />),
     )
-    .otherwise(() => <PoolDataCard data={props as PoolCardDataProps} redirectProps={props} />);
+    .otherwise(() => <PoolDataCard data={props as PoolData} redirectProps={props} />);
 }
 
 function LoadingCard() {
@@ -32,39 +37,6 @@ function LoadingCard() {
       </div>
       <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
         <Skeleton className="h-5 w-2/4 rounded-md" />
-      </div>
-    </div>
-  );
-}
-
-export function PoolDataCard({
-  data,
-  redirectProps,
-}: {
-  data: PoolCardDataProps;
-  redirectProps?: onClickProps;
-}) {
-  const { name, icon } = getChainInfo(data.chainId);
-  return (
-    <div
-      className="grid w-full cursor-pointer grid-cols-2 items-center rounded-lg border p-3 max-[450px]:grid-cols-1"
-      onClick={() =>
-        modularRedirect(
-          redirectProps?.redirectLink,
-          redirectProps?.redirect,
-          data.chainId.toString(),
-          data.roundId,
-        )
-      }
-    >
-      <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
-        <span>{data.roundName}</span>
-        <PoolBadge badge={data.poolType} type="poolType" />
-        <IconLabel type="period" startDate={data.startDate} endDate={data.endDate} />
-        <IconLabel type="default" label={name} iconType={icon} />
-      </div>
-      <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        <PoolBadge badge={data.poolStatus} type="poolStatus" />
       </div>
     </div>
   );

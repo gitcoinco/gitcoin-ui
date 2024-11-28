@@ -4,7 +4,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn, formatLocalDate, getAddressLabel, capitalizeWord } from "@/lib/utils";
 import { Accordion } from "@/primitives/Accordion";
-import { Badge } from "@/primitives/Badge/Badge";
+import { Badge } from "@/primitives/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { Evaluation } from "~checker/services/checker";
@@ -37,10 +37,9 @@ const evaluationSummaryVariants = tv({
   },
 });
 
-export type ReviewDropdownVariants = VariantProps<typeof ReviewDropdownVariants>;
-export type EvaluationSummaryVariants = VariantProps<typeof evaluationSummaryVariants>;
+type ReviewDropdownVariants = VariantProps<typeof ReviewDropdownVariants>;
 
-interface ReviewDropdownContentProps {
+export interface ReviewDropdownContentProps {
   evaluation: Evaluation;
   index?: number;
   isOpen?: boolean;

@@ -7,10 +7,11 @@ import { Modal } from "@/primitives/Modal";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
 
 import { EVALUATION_STATUS } from "~checker/services/checker/api";
+import { EvaluationActionState } from "~checker/types";
 
 import { getButtonConfig } from "./utils";
 
-type SubmitApplicationEvaluationModalProps = {
+interface SubmitApplicationEvaluationModalProps {
   evaluationStatus?: EVALUATION_STATUS;
   onOpenChange: (isOpen: boolean) => void;
   isOpen: boolean;
@@ -20,15 +21,7 @@ type SubmitApplicationEvaluationModalProps = {
   isEvaluating: boolean;
   isError: boolean;
   onSave: () => void;
-};
-
-type ActionState =
-  | { status: "idle" }
-  | { status: "signing" }
-  | { status: "signingError" }
-  | { status: "evaluating" }
-  | { status: "evaluatingError" }
-  | { status: "success" };
+}
 
 export const SubmitApplicationEvaluationModal = ({
   evaluationStatus = EVALUATION_STATUS.APPROVED,
@@ -53,8 +46,8 @@ export const SubmitApplicationEvaluationModal = ({
     "Make sure your evaluation is complete before saving. If you want to go back to edit, press cancel.";
 
   // Determine the current action state
-  const actionState: ActionState = useMemo(() => {
-    let status: ActionState["status"] = "idle";
+  const actionState: EvaluationActionState = useMemo(() => {
+    let status: EvaluationActionState["status"] = "idle";
     if (isSigning) {
       status = "signing";
     } else if (isErrorSigning) {

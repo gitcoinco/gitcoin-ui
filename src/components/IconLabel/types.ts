@@ -48,7 +48,7 @@ export interface SocialProps {
   className?: string;
 }
 
-interface DefaultProps {
+export interface DefaultProps {
   type: "default";
   iconType: IconType;
   label: string;

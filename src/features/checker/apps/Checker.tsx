@@ -2,10 +2,9 @@ import { Hex } from "viem";
 
 import { Step } from "@/components/ProgressModal";
 
-import { CheckerRouter } from "~checker/CheckerRouter";
-import { ReviewBody } from "~checker/pages";
-import { EvaluationBody } from "~checker/services/checker/api";
+import { CheckerRouter } from "~checker/routers";
 import { CheckerProvider } from "~checker/store";
+import { EvaluationBody, ReviewBody } from "~checker/types";
 
 export interface CheckerProps {
   address: Hex;

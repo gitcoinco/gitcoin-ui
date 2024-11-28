@@ -4,10 +4,17 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/primitives/Button";
 import { IconType, Icon } from "@/primitives/Icon";
 
-import { ProjectEvaluationActionProps } from "./types";
+import { EvaluationAction, ProjectStatus } from "~checker/types";
+
 import { getButtonProps, evaluateProject } from "./utils";
 
 const baseButtonStyles = "font-mona flex gap-2 rounded-lg px-4 py-2";
+
+export interface ProjectEvaluationActionProps {
+  onEvaluate: (projectId: string, action: EvaluationAction) => void;
+  projectId: string;
+  status: ProjectStatus;
+}
 
 export const ProjectEvaluationAction = ({
   onEvaluate,

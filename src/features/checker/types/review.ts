@@ -1,16 +1,11 @@
 import { Address } from "viem";
 
-export enum ApplicationStatus {
-  PENDING = "PENDING",
-  APPROVED = "APPROVED",
-  REJECTED = "REJECTED",
-  APPEAL = "APPEAL",
-  IN_REVIEW = "IN_REVIEW",
-  CANCELLED = "CANCELLED",
-}
-export enum RoundCategory {
-  QuadraticFunding,
-  Direct,
+import { ApplicationStatus } from "./application";
+import { PoolCategory } from "./pool";
+
+export interface Review {
+  reviewer: `0x${string}`;
+  approved: boolean;
 }
 
 export interface ReviewBody {
@@ -24,5 +19,5 @@ export interface ReviewBody {
     index: number;
     status: ApplicationStatus;
   }[];
-  strategy?: RoundCategory;
+  strategy?: PoolCategory;
 }

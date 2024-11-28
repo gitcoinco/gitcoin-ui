@@ -3,7 +3,7 @@ import * as React from "react";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
-import { Badge } from "@/primitives/Badge/Badge";
+import { Badge } from "@/primitives";
 
 export enum ApplicationStatus {
   Pending = "pending",
@@ -11,7 +11,7 @@ export enum ApplicationStatus {
   Rejected = "rejected",
 }
 
-export const ApplicationBadgeVariants = tv({
+const ApplicationBadgeVariants = tv({
   variants: {
     variant: {
       pending: "border-transparent bg-yellow-100 text-black",
@@ -21,7 +21,7 @@ export const ApplicationBadgeVariants = tv({
   },
 });
 
-interface ApplicationBadgeProps {
+export interface ApplicationBadgeProps {
   status: ApplicationStatus;
 }
 
