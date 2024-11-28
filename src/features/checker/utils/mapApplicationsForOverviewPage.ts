@@ -56,6 +56,10 @@ export function categorizeProjectReviews(
     applicationCounts.pending += 1;
     applicationCounts.total += 1;
 
+    if (!application.evaluations) {
+      application.evaluations = [];
+    }
+
     // Separate evaluations into AI and non-AI
     const aiEvaluations = application.evaluations.filter(
       (evaluation) => evaluation.evaluator.toLowerCase() === AI_EVALUATOR_ADDRESS.toLowerCase(),
