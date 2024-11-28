@@ -15,7 +15,7 @@ import {
 import { EvaluationBody } from "~checker/services/checker/api";
 import { CheckerRoute } from "~checker/store";
 
-export interface CheckerProps {
+export interface CheckerRouterProps {
   address: Hex;
   poolId: string;
   chainId: number;
@@ -43,7 +43,7 @@ export const CheckerRouter = ({
   steps,
   setReviewBody,
   isReviewing,
-}: CheckerProps) => {
+}: CheckerRouterProps) => {
   useInitialize({ address, poolId, chainId });
 
   const { route } = useCheckerContext();
