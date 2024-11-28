@@ -26,7 +26,7 @@ export const useGetApplicationsFinalEvaluationPage = () => {
     applicationsToUpdate: [],
     currentApplications: Object.values(poolData.applications).map((app) => ({
       index: Number(app.id),
-      status: app.status === "APPROVED" ? ApplicationStatus.APPROVED : ApplicationStatus.REJECTED,
+      status: app.status as ApplicationStatus,
     })),
     strategy: poolData.applications[0]?.round.strategyName === PoolType.QuadraticFunding ? 0 : 1,
   };
