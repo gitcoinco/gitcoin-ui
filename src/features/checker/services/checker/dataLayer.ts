@@ -1,4 +1,3 @@
-import { syncPool } from "./api";
 import { executeQuery } from "./checkerClient";
 import { checkerApplicationEvaluationsQuery, checkerPoolDataQuery } from "./queries";
 import { CheckerApiApplication, CheckerApiPoolData } from "./types";
@@ -8,7 +7,6 @@ export async function getCheckerPoolData(
   alloPoolId?: string,
 ): Promise<CheckerApiPoolData> {
   try {
-    await syncPool({ chainId: chainId as number, alloPoolId: alloPoolId as string });
     const response = (await executeQuery(checkerPoolDataQuery, {
       chainId,
       alloPoolId,
