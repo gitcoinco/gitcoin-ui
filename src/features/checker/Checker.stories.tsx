@@ -20,39 +20,32 @@ export default meta;
 type Story = StoryObj<typeof Checker>;
 
 export const Default: Story = {
-  decorators: [
-    (Story) => {
-      // New StoryWrapper component
-      const StoryWrapper = () => {
-        const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
-          usePerformEvaluation();
-        const { steps, setReviewBody, isReviewing } = usePerformOnChainReview();
-
-        return (
-          <Story
-            setEvaluationBody={setEvaluationBody}
-            isSigning={isSigning}
-            isSuccess={isSuccess}
-            isEvaluating={isEvaluating}
-            isError={isError}
-            isErrorSigning={isErrorSigning}
-            steps={steps}
-            setReviewBody={setReviewBody}
-            isReviewing={isReviewing}
-          />
-        );
-      };
+  render(args) {
+    // New StoryWrapper component
+    const StoryWrapper = () => {
+      const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
+        usePerformEvaluation();
+      const { steps, setReviewBody, isReviewing } = usePerformOnChainReview();
 
       return (
-        <CheckerProvider>
-          <StoryWrapper />
-        </CheckerProvider>
+        <Checker
+          {...args}
+          setEvaluationBody={setEvaluationBody}
+          isSigning={isSigning}
+          isSuccess={isSuccess}
+          isEvaluating={isEvaluating}
+          isError={isError}
+          isErrorSigning={isErrorSigning}
+          steps={steps}
+          setReviewBody={setReviewBody}
+          isReviewing={isReviewing}
+        />
       );
-    },
-  ],
-  parameters: {
-    // msw: {
-    //   handlers,
-    // },
+    };
+    return (
+      <CheckerProvider>
+        <StoryWrapper />
+      </CheckerProvider>
+    );
   },
 };
