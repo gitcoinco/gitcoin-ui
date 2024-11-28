@@ -1,7 +1,13 @@
 import { Address } from "viem";
 
-import { ApplicationStatus } from "@/components/Badges";
-
+export enum ApplicationStatus {
+  PENDING = "PENDING",
+  APPROVED = "APPROVED",
+  REJECTED = "REJECTED",
+  APPEAL = "APPEAL",
+  IN_REVIEW = "IN_REVIEW",
+  CANCELLED = "CANCELLED",
+}
 export enum RoundCategory {
   QuadraticFunding,
   Direct,

@@ -1,9 +1,9 @@
 import { Address } from "viem";
 
-import { ApplicationStatus, PoolType } from "@/components/Badges";
+import { PoolType } from "@/components/Badges";
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
-import { ReviewBody } from "~checker/pages/SubmitFinalEvaluationPage";
+import { ReviewBody, ApplicationStatus } from "~checker/pages/SubmitFinalEvaluationPage";
 import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
 import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";
 
@@ -26,7 +26,7 @@ export const useGetApplicationsFinalEvaluationPage = () => {
     applicationsToUpdate: [],
     currentApplications: Object.values(poolData.applications).map((app) => ({
       index: Number(app.id),
-      status: app.status as ApplicationStatus,
+      status: app.status === "APPROVED" ? ApplicationStatus.APPROVED : ApplicationStatus.REJECTED,
     })),
     strategy: poolData.applications[0]?.round.strategyName === PoolType.QuadraticFunding ? 0 : 1,
   };
