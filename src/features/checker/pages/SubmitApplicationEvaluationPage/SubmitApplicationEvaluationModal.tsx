@@ -6,13 +6,12 @@ import { Button } from "@/primitives/Button";
 import { Modal } from "@/primitives/Modal";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
 
-import { EVALUATION_STATUS } from "~checker/services/checker/api";
-import { EvaluationActionState } from "~checker/types";
+import { EvaluationActionState, EvaluationStatus } from "~checker/types";
 
 import { getButtonConfig } from "./utils";
 
 interface SubmitApplicationEvaluationModalProps {
-  evaluationStatus?: EVALUATION_STATUS;
+  evaluationStatus?: EvaluationStatus;
   onOpenChange: (isOpen: boolean) => void;
   isOpen: boolean;
   isSigning: boolean;
@@ -24,7 +23,7 @@ interface SubmitApplicationEvaluationModalProps {
 }
 
 export const SubmitApplicationEvaluationModal = ({
-  evaluationStatus = EVALUATION_STATUS.APPROVED,
+  evaluationStatus = EvaluationStatus.APPROVED,
   onOpenChange,
   isOpen,
   isSigning,
@@ -37,8 +36,8 @@ export const SubmitApplicationEvaluationModal = ({
   // Determine the modal title
   const modalTitle = useMemo(() => {
     return match(evaluationStatus)
-      .with(EVALUATION_STATUS.APPROVED, () => "Approve Application")
-      .with(EVALUATION_STATUS.REJECTED, () => "Reject Application")
+      .with(EvaluationStatus.APPROVED, () => "Approve Application")
+      .with(EvaluationStatus.REJECTED, () => "Reject Application")
       .otherwise(() => "Evaluate Application"); // Fallback title
   }, [evaluationStatus]);
 

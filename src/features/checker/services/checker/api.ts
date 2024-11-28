@@ -1,5 +1,4 @@
-import { EvaluationBody } from "~checker/types";
-
+import { EvaluationBody } from "../../types";
 import { CHECKER_ENDPOINT } from "./checkerClient";
 
 export interface SyncPoolBody {

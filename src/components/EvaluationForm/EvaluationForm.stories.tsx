@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import EvaluationForm from "./EvaluationForm";
+import { EvaluationForm } from "./EvaluationForm";
 
 const meta: Meta<typeof EvaluationForm> = {
   title: "Components/EvaluationForm",

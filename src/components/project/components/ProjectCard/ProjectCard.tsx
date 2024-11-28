@@ -8,11 +8,12 @@ import { Skeleton } from "@/ui-shadcn/skeleton";
 
 import { ProjectData } from "../../types";
 
-interface ProjectCardQueryProps {
+export type ProjectCardProps = ProjectData;
+export interface ProjectCardQueryProps {
   queryResult: UseQueryResult<ProjectData, Error>;
 }
 
-export function ProjectCard(props: ProjectData | ProjectCardQueryProps) {
+export function ProjectCard(props: ProjectCardProps | ProjectCardQueryProps) {
   return match(props)
     .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
       match(queryResult)

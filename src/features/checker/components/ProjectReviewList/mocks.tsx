@@ -1,4 +1,4 @@
-import { ProjectReview } from "./types";
+import { ProjectReview } from "../../types";
 
 export const mockPendingReview0: ProjectReview[] = [
   {

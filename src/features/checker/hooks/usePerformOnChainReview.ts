@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 
 import { ProgressStatus, getOnchainEvaluationProgressSteps } from "@/components/ProgressModal";
 
-import { ReviewBody } from "~checker/pages/SubmitFinalEvaluationPage";
+import { ReviewBody } from "../types";
 
 export const usePerformOnChainReview = () => {
   const [reviewBody, setReviewBody] = useState<ReviewBody | null>(null);

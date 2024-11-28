@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { tv } from "tailwind-variants";
 import { match, P } from "ts-pattern";
 
-import DefaultLogo from "@/assets/default_logo.png";
+import DefaultLogo from "@/assets/images/default_logo.png";
 import { Avatar as ShadCNAvatar, AvatarFallback, AvatarImage } from "@/ui-shadcn/avatar";
 
 export interface AvatarProps {

@@ -1,9 +1,8 @@
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 
-import { Evaluation } from "~checker/services/checker";
-
+import { Evaluation } from "../../types";
 import { ReviewDropdown } from "../ReviewDropdown";
 
 const reviewDropdownListVariants = tv({

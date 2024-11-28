@@ -1,4 +1,4 @@
-import { Evaluation } from "@/features/checker/services/checker";
+import { Evaluation } from "@/features/checker";
 
 export const checkerApplicationEvaluations: Evaluation[] = [
   {

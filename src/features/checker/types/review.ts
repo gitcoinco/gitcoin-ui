@@ -1,6 +1,6 @@
 import { Address } from "viem";
 
-import { ApplicationStatus } from "./application";
+import { ApplicationStatusType } from "./application";
 import { PoolCategory } from "./pool";
 
 export interface Review {
@@ -13,11 +13,11 @@ export interface ReviewBody {
   strategyAddress: Address;
   applicationsToUpdate: {
     index: number;
-    status: ApplicationStatus;
+    status: ApplicationStatusType;
   }[];
   currentApplications: {
     index: number;
-    status: ApplicationStatus;
+    status: ApplicationStatusType;
   }[];
   strategy?: PoolCategory;
 }

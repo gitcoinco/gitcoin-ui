@@ -15,7 +15,9 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, "./src/index.ts"),
         checker: resolve(__dirname, "./src/features/checker/index.ts"),
+        hooks: resolve(__dirname, "./src/hooks/index.ts"),
         icons: resolve(__dirname, "./src/assets/icons/index.ts"),
+        lib: resolve(__dirname, "./src/lib/index.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
       },
       name: "gitcoin-ui",

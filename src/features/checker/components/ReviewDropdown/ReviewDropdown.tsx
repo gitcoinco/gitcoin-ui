@@ -7,7 +7,7 @@ import { Accordion } from "@/primitives/Accordion";
 import { Badge } from "@/primitives/Badge";
 import { Icon, IconType } from "@/primitives/Icon";
 
-import { Evaluation } from "~checker/services/checker";
+import { Evaluation } from "../../types";
 
 const ReviewDropdownVariants = tv({
   slots: {

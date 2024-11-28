@@ -1,9 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { ProjectCardDataProps, ProjectCardProps } from "@/components/project/types/types";
-import { createQueryState } from "@/lib/tanstack/queryResults";
+import { createQueryState } from "@/lib";
 
-import { ProjectCard } from "./ProjectCard";
+import { ProjectCard, ProjectCardProps, ProjectCardQueryProps } from "./ProjectCard";
 
 const simpleProject = {
   id: "0x123456789",
@@ -31,7 +30,7 @@ export default {
   },
 } as Meta<typeof ProjectCard>;
 
-type Story = StoryObj<ProjectCardProps>;
+type Story = StoryObj<ProjectCardProps | ProjectCardQueryProps>;
 
 export const Default: Story = {
   args: {
@@ -47,7 +46,7 @@ export const Loading: Story = {
 
 export const Success: Story = {
   args: {
-    queryResult: createQueryState<ProjectCardDataProps>("success", {
+    queryResult: createQueryState<ProjectCardProps>("success", {
       ...simpleProject,
     }),
   },
@@ -55,6 +54,6 @@ export const Success: Story = {
 
 export const Error: Story = {
   args: {
-    queryResult: createQueryState<ProjectCardDataProps>("error", undefined),
+    queryResult: createQueryState<ProjectCardProps>("error", undefined),
   },
 };

@@ -1,4 +1,4 @@
-import { Review } from "../components/ProjectReviewList/types";
+import { Review } from "../types";
 
 export const getReviewsCount = (reviews: Review[]) => {
   const { nApproved, nRejected } = reviews.reduce(
