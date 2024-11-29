@@ -1,12 +1,12 @@
 export enum ApplicationStatus {
-  APPEAL,
-  APPROVED,
-  CANCELLED,
-  FRAUD,
-  IN_REVIEW,
-  PENDING,
-  RECEIVED,
-  REJECTED,
+  APPEAL = "APPEAL",
+  APPROVED = "APPROVED",
+  CANCELLED = "CANCELLED",
+  FRAUD = "FRAUD",
+  IN_REVIEW = "IN_REVIEW",
+  PENDING = "PENDING",
+  RECEIVED = "RECEIVED",
+  REJECTED = "REJECTED",
 }
 
 export type ApplicationStatusType = keyof typeof ApplicationStatus;
