@@ -113,58 +113,60 @@ export const SubmitFinalEvaluationPage = ({
         allocationStartDate={new Date()}
         allocationEndDate={new Date()}
       />
-      <div className="mx-auto flex max-w-[1440px]">
-        <div className="flex flex-col gap-6 px-20 pt-6">
-          <div className="flex flex-col gap-8">
-            <Button
-              value="Exit"
-              icon={<Icon type={IconType.X} className="fill-red-700" />}
-              className="flex h-8 w-fit justify-start gap-2 bg-red-50 p-4 text-red-700"
-            />
-            <StatCardGroup stats={statCardsProps || []} justify="center" />
-          </div>
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-4">
-              <div className="font-mono text-2xl font-medium leading-loose text-black">
-                Review applications
-              </div>
-              <div className="font-mono text-base font-normal leading-7 text-grey-900">
-                Evaluate projects here.
-              </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <div className="pb-1">
-                <div className="flex items-center justify-between pb-1">
-                  <div className="font-mono text-2xl font-medium leading-loose text-black">
-                    {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button value="Cancel" onClick={handleCancel} />
-                    <Button
-                      value={`Record (${numberOfOnchainEvaluations}) evaluations onchain`}
-                      disabled={Object.keys(projectEvaluations).length === 0}
-                      onClick={() => {
-                        setIsModalOpen(true);
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className="h-px bg-grey-300" />
-              </div>
+      <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
+        <div className="flex justify-start">
+          <Button
+            variant="secondry"
+            icon={<Icon type={IconType.CHEVRON_LEFT} />}
+            onClick={() =>
+              window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`)
+            }
+            value="back to round manager"
+          />
+        </div>
+        <StatCardGroup stats={statCardsProps || []} justify="center" />
 
-              <div>
-                {ReadyApplicationsToSubmit.length === 0 ? (
-                  <div className="font-mono text-base font-normal leading-7 text-grey-900">
-                    Evaluations that are ready to be submitted onchain will appear here once
-                    reviewed. Manager supports multiple reviewers.
-                  </div>
-                ) : (
-                  <ProjectEvaluationList
-                    projects={ReadyApplicationsToSubmit}
-                    action={handleUpdateFinalEvaluations}
+        <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-4">
+            <div className="font-mono text-2xl font-medium leading-loose text-black">
+              Review applications
+            </div>
+            <div className="font-mono text-base font-normal leading-7 text-grey-900">
+              Evaluate projects here.
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="pb-1">
+              <div className="flex items-center justify-between pb-1">
+                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                  {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
+                </div>
+                <div className="flex gap-2">
+                  <Button value="Cancel" onClick={handleCancel} />
+                  <Button
+                    value={`Record (${numberOfOnchainEvaluations}) evaluations onchain`}
+                    disabled={Object.keys(projectEvaluations).length === 0}
+                    onClick={() => {
+                      setIsModalOpen(true);
+                    }}
                   />
-                )}
+                </div>
               </div>
+              <div className="h-px bg-grey-300" />
+            </div>
+
+            <div>
+              {ReadyApplicationsToSubmit.length === 0 ? (
+                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                  Evaluations that are ready to be submitted onchain will appear here once reviewed.
+                  Manager supports multiple reviewers.
+                </div>
+              ) : (
+                <ProjectEvaluationList
+                  projects={ReadyApplicationsToSubmit}
+                  action={handleUpdateFinalEvaluations}
+                />
+              )}
             </div>
           </div>
         </div>

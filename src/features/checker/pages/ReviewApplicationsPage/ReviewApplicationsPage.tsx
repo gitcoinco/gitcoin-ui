@@ -43,7 +43,7 @@ export const ReviewApplicationsPage = () => {
         allocationStartDate={new Date()}
         allocationEndDate={new Date()}
       />
-      <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-20">
         <div className="flex justify-start">
           <Button
             variant="secondry"
