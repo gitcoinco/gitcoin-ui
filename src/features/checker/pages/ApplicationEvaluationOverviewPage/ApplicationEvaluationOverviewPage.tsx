@@ -1,7 +1,7 @@
 import { Hex } from "viem";
 
 import { PoolSummary, ProjectBanner } from "@/components";
-import { syncPool } from "@/mainAll";
+import { triggerLLM } from "@/mainAll";
 import { Button, Icon, IconType } from "@/primitives";
 
 import { EvaluationList } from "~checker/components";
@@ -44,9 +44,11 @@ export const ApplicationEvaluationOverviewPage = ({
   };
 
   const syncAndRefresh = async () => {
-    await syncPool({
+    await triggerLLM({
       chainId,
       alloPoolId: poolId,
+      alloApplicationId: applicationId,
+      signature: "0xdeadbeef",
     });
     dispatch(goToApplicationEvaluationOverviewAction({ projectId: applicationId }));
   };

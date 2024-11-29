@@ -7,6 +7,13 @@ export interface SyncPoolBody {
   alloPoolId: string;
 }
 
+export interface TriggerLLMBody {
+  chainId: number;
+  alloPoolId: string;
+  alloApplicationId: string;
+  signature: string;
+}
+
 export async function submitEvaluation(
   evaluationBody: EvaluationBody,
 ): Promise<{ evaluationId: string }> {
@@ -57,6 +64,32 @@ export async function syncPool(syncPoolBody: SyncPoolBody): Promise<boolean> {
     return true;
   } catch (error) {
     console.error("Error syncing pool:", error);
+    throw error;
+  }
+}
+
+export async function triggerLLM(triggerLLMBody: TriggerLLMBody): Promise<boolean> {
+  const url = `${CHECKER_ENDPOINT}/api/evaluate/llm`;
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...triggerLLMBody,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`Error: ${response.status} - ${errorData.message || "Unknown error"}`);
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Error triggering LLM:", error);
     throw error;
   }
 }
