@@ -18,6 +18,7 @@ export default defineConfig({
         hooks: resolve(__dirname, "./src/hooks/index.ts"),
         icons: resolve(__dirname, "./src/assets/icons/index.ts"),
         lib: resolve(__dirname, "./src/lib/index.ts"),
+        mainAll: resolve(__dirname, "./src/mainAll.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
       },
       name: "gitcoin-ui",
@@ -41,7 +42,24 @@ export default defineConfig({
     minify: false,
     target: "esnext",
   },
-  plugins: [react(), svgr(), dts({ rollupTypes: true }), cssInjectedByJsPlugin()],
+  plugins: [
+    react(),
+    svgr(),
+    dts({ rollupTypes: true }),
+    cssInjectedByJsPlugin({
+      styleId: "gitcoin-ui",
+      jsAssetsFilterFunction: function customJsAssetsfilterFunction(outputChunk) {
+        return (
+          outputChunk.fileName == "index.js" ||
+          outputChunk.fileName == "checker.js" ||
+          outputChunk.fileName == "hooks.js" ||
+          outputChunk.fileName == "icons.js" ||
+          outputChunk.fileName == "lib.js" ||
+          outputChunk.fileName == "mocks.js"
+        );
+      },
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
