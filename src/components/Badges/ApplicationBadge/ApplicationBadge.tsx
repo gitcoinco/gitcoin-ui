@@ -5,7 +5,7 @@ import { match } from "ts-pattern";
 
 import { Badge } from "@/primitives";
 
-export enum ApplicationStatus {
+export enum ApplicationBadgeStatus {
   Pending = "pending",
   Approved = "approved",
   Rejected = "rejected",
@@ -22,20 +22,20 @@ const ApplicationBadgeVariants = tv({
 });
 
 export interface ApplicationBadgeProps {
-  status: ApplicationStatus;
+  status: ApplicationBadgeStatus;
 }
 
 export const ApplicationBadge: React.FC<ApplicationBadgeProps> = (props) => {
   const { variant, text } = match(props)
-    .with({ status: ApplicationStatus.Pending }, () => ({
+    .with({ status: ApplicationBadgeStatus.Pending }, () => ({
       variant: ApplicationBadgeVariants({ variant: "pending" }),
       text: "Pending",
     }))
-    .with({ status: ApplicationStatus.Approved }, () => ({
+    .with({ status: ApplicationBadgeStatus.Approved }, () => ({
       variant: ApplicationBadgeVariants({ variant: "approved" }),
       text: "Approved",
     }))
-    .with({ status: ApplicationStatus.Rejected }, () => ({
+    .with({ status: ApplicationBadgeStatus.Rejected }, () => ({
       variant: ApplicationBadgeVariants({ variant: "rejected" }),
       text: "Rejected",
     }))

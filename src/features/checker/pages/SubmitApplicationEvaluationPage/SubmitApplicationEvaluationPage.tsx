@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Hex } from "viem";
 
-import { ApplicationBadge, ApplicationStatus } from "@/components/Badges";
+import { ApplicationBadge, ApplicationBadgeStatus } from "@/components/Badges";
 import { EvaluationForm } from "@/components/EvaluationForm/EvaluationForm";
 import { IconLabel } from "@/components/IconLabel";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
@@ -116,11 +116,11 @@ export const SubmitApplicationEvaluationPage = ({
             let status;
             // Determine the badge properties based on the status
             if (item.status === "REJECTED") {
-              status = ApplicationStatus.Rejected;
+              status = ApplicationBadgeStatus.Rejected;
             } else if (item.status === "APPROVED") {
-              status = ApplicationStatus.Approved;
+              status = ApplicationBadgeStatus.Approved;
             } else {
-              status = ApplicationStatus.Pending;
+              status = ApplicationBadgeStatus.Pending;
             }
 
             return <ApplicationBadge status={status} />;
