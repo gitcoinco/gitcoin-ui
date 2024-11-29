@@ -1,4 +1,5 @@
 import { EvaluationBody } from "../../types";
+import { ProjectApplicationForManager } from "../allo";
 import { CHECKER_ENDPOINT } from "./checkerClient";
 
 export interface SyncPoolBody {
@@ -56,6 +57,37 @@ export async function syncPool(syncPoolBody: SyncPoolBody): Promise<boolean> {
     return true;
   } catch (error) {
     console.error("Error syncing pool:", error);
+    throw error;
+  }
+}
+
+export async function verifyCredentials(
+  applicationMetadata: Partial<ProjectApplicationForManager>,
+): Promise<{ twitter: boolean; github: boolean }> {
+  const url = `${CHECKER_ENDPOINT}/api/passport/validate`;
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ application: applicationMetadata }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(`Error: ${response.status} - ${errorData.message || "Unknown error"}`);
+    }
+
+    const data = await response.json();
+    return {
+      twitter: data.provider.twitter?.isVerified || false,
+      github: data.provider.github?.isVerified || false,
+    };
+  } catch (error) {
+    console.error("Error verifying credentials:", error);
     throw error;
   }
 }
