@@ -41,11 +41,15 @@ export const BannerImage = ({
 }: BannerImageProps) => {
   const imageURL = useMemo(() => {
     return match({ ipfsCID, url })
-      .with({ ipfsCID: P.nullish, url: P.nullish }, () => defaultImage)
-      .with({ ipfsCID, url: P.string.length(0) }, ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`)
-      .with({ ipfsCID, url: P.nullish }, ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`)
-      .with({ ipfsCID: P.string.length(0), url }, ({ url }) => url)
-      .with({ ipfsCID: P.nullish, url }, ({ url }) => url)
+      .with(
+        { ipfsCID: P.when((cid) => !cid || typeof cid !== "string"), url: P.nullish },
+        () => defaultImage,
+      )
+      .with({ ipfsCID: P.when((cid) => !cid || typeof cid !== "string"), url }, ({ url }) => url)
+      .with(
+        { ipfsCID: P.when((cid) => typeof cid === "string" && cid.length > 0), url: P.nullish },
+        ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`,
+      )
       .with(
         { ipfsCID: P.string.minLength(1), url: P.string.minLength(1) },
         ({ ipfsCID }) => `${ipfsBaseURL}${ipfsCID}`,

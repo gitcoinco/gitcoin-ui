@@ -76,7 +76,13 @@ export const ApplicationEvaluationOverviewPage = ({
         </p>
         <div className="flex flex-col gap-8">
           <div className="px-16">
-            <EvaluationList evaluations={applicationEvaluations ?? []} />
+            {applicationEvaluations ? (
+              <EvaluationList evaluations={applicationEvaluations} />
+            ) : (
+              <p className="text-center text-lg">
+                No evaluations have been submitted for this project yet.
+              </p>
+            )}
           </div>
           <div className="flex items-center justify-center">
             <Button
