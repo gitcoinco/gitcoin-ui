@@ -80,10 +80,11 @@ export const SubmitFinalEvaluationPage = ({
   }, [steps]);
 
   useEffect(() => {
-    if (success) {
+    if (success && isModalOpen) {
       setReviewBody(null);
       setIsModalOpen(false);
       toast({ status: "success", description: "Your evaluations have been submitted" });
+      dispatch(goToReviewApplicationsAction());
     }
     if (error) {
       setReviewBody(null);
