@@ -1,23 +1,17 @@
-import { tv, type VariantProps } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 
-import { Evaluation } from "~checker/services/checker";
-
+import { Evaluation } from "../../types";
 import { ReviewDropdown } from "../ReviewDropdown";
 
 const reviewDropdownListVariants = tv({
   slots: {
     container: "flex flex-col gap-6",
   },
-  defaultVariants: {
-    // You can define default variants if needed
-  },
 });
 
-export type ReviewDropdownListVariants = VariantProps<typeof reviewDropdownListVariants>;
-
-interface ReviewDropdownListProps {
+export interface ReviewDropdownListProps {
   evaluations: Evaluation[];
 }
 

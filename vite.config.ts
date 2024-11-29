@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 import svgr from "vite-plugin-svgr";
-import wasm from "vite-plugin-wasm";
 
 import react from "@vitejs/plugin-react-swc";
 
@@ -13,9 +12,17 @@ import tailwindcss from "tailwindcss";
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "./src/index.ts"),
+      entry: {
+        index: resolve(__dirname, "./src/index.ts"),
+        checker: resolve(__dirname, "./src/features/checker/index.ts"),
+        hooks: resolve(__dirname, "./src/hooks/index.ts"),
+        icons: resolve(__dirname, "./src/assets/icons/index.ts"),
+        lib: resolve(__dirname, "./src/lib/index.ts"),
+        mainAll: resolve(__dirname, "./src/mainAll.ts"),
+        mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
+      },
       name: "gitcoin-ui",
-      fileName: (format, filename) => `${filename}.js`,
+      fileName: (format: any, filename: any) => `${filename}.js`,
       formats: ["es"],
     },
     rollupOptions: {
@@ -35,7 +42,25 @@ export default defineConfig({
     minify: false,
     target: "esnext",
   },
-  plugins: [react(), svgr(), dts({ rollupTypes: true }), cssInjectedByJsPlugin(), wasm()],
+  plugins: [
+    react(),
+    svgr(),
+    dts({ rollupTypes: true }),
+    cssInjectedByJsPlugin({
+      styleId: "gitcoin-ui",
+      jsAssetsFilterFunction: function customJsAssetsfilterFunction(outputChunk) {
+        return (
+          outputChunk.preliminaryFileName.includes("!~{") || // for storybook build
+          outputChunk.fileName == "index.js" ||
+          outputChunk.fileName == "checker.js" ||
+          outputChunk.fileName == "hooks.js" ||
+          outputChunk.fileName == "icons.js" ||
+          outputChunk.fileName == "lib.js" ||
+          outputChunk.fileName == "mocks.js"
+        );
+      },
+    }),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

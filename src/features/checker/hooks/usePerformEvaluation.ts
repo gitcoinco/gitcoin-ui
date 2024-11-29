@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { Hex } from "viem";
 
-import { submitEvaluation, EvaluationBody } from "~checker/services/checker/api";
+import { submitEvaluation } from "~checker/services/checker/api";
+
+import { EvaluationBody } from "../types";
 
 export const usePerformEvaluation = () => {
   const [evaluationBody, setEvaluationBody] = useState<EvaluationBody | null>(null);

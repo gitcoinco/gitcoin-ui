@@ -11,11 +11,3 @@ export interface Step {
   description: string;
   status: ProgressStatus;
 }
-
-export interface ProgressModalProps {
-  steps: Step[];
-  isOpen?: boolean;
-  onOpenChange?: (isOpen: boolean) => void;
-  heading?: string;
-  subheading?: string;
-}

@@ -6,13 +6,13 @@ import { setInitialStateAction, useCheckerDispatchContext } from "~checker/store
 
 import { usePoolData } from "./usePoolData";
 
-interface Props {
+export interface InitData {
   address: Hex;
   poolId: string;
   chainId: number;
 }
 
-export const useInitialize = ({ address, poolId, chainId }: Props) => {
+export const useInitialize = ({ address, poolId, chainId }: InitData) => {
   const dispatch = useCheckerDispatchContext();
 
   useEffect(() => {

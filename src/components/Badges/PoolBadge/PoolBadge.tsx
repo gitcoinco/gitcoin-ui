@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
 import { cn } from "@/lib/utils";
-import { Badge } from "@/primitives/Badge/Badge";
+import { Badge } from "@/primitives";
 
 export enum PoolStatus {
   PreRound = "PreRound",
@@ -18,7 +18,7 @@ export enum PoolType {
   DirectGrants = "allov2.DirectGrantsSimpleStrategy",
 }
 
-export const PoolBadgeVariants = tv({
+const PoolBadgeVariants = tv({
   variants: {
     variant: {
       "pre-round": "border border-green-400 bg-white text-green-400",
@@ -31,9 +31,19 @@ export const PoolBadgeVariants = tv({
   },
 });
 
-type PoolBadgeProps =
-  | ({ type: "poolStatus"; badge: PoolStatus } & { className?: string })
-  | ({ type: "poolType"; badge: PoolType } & { className?: string });
+export interface PoolStatusBadgeProps {
+  type: "poolStatus";
+  badge: PoolStatus;
+  className?: string;
+}
+
+export interface PoolTypeBadgeProps {
+  type: "poolType";
+  badge: PoolType;
+  className?: string;
+}
+
+export type PoolBadgeProps = PoolStatusBadgeProps | PoolTypeBadgeProps;
 
 export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
   const { variant, text } = match(props)

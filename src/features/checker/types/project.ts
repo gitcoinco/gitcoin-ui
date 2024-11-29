@@ -1,7 +1,6 @@
-export interface Review {
-  reviewer: `0x${string}`;
-  approved: boolean;
-}
+import { Review } from "./review";
+
+export type ProjectStatus = "pending" | "approved" | "rejected";
 
 export interface ProjectReview {
   id: string;

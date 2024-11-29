@@ -1,10 +1,10 @@
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
-import { ProjectStatus, EvaluationAction } from "./types";
+import { EvaluationAction, ProjectStatus } from "~checker/types";
 
 const commonButtonStyles = "h-[36px] w-[111px] text-[14px]/[20px]";
-
+// TODO instead of ts-pattern, use a more readable approach with tailwind compound variants
 export const variants = tv({
   slots: {
     approvePending: `${commonButtonStyles} border border-moss-500 bg-white text-black`,
@@ -14,12 +14,6 @@ export const variants = tv({
     approve: `${commonButtonStyles} border border-moss-500 bg-moss-50 text-moss-500`,
   },
 });
-
-export interface ProjectEvaluationActionProps {
-  onEvaluate: (projectId: string, action: EvaluationAction) => void;
-  projectId: string;
-  status: ProjectStatus;
-}
 
 // Utility function to get button properties based on status and action
 export const getButtonProps = (currentStatus: ProjectStatus, action: "approve" | "reject") =>

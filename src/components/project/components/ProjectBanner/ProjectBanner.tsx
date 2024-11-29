@@ -3,8 +3,7 @@ import * as React from "react";
 
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { Avatar } from "@/primitives/Avatar";
-import { BannerImage } from "@/primitives/BannerImage";
+import { Avatar, BannerImage } from "@/primitives";
 
 const bannerVariants = tv({
   slots: {

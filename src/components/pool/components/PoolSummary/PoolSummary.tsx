@@ -1,14 +1,11 @@
 import { tv } from "tailwind-variants";
 
-import { PoolBadge, PoolStatus, PoolType } from "@/components/Badges";
-import { IconLabel } from "@/components/IconLabel";
-import { getChainInfo } from "@/lib/icons/chains";
+import { IconLabel, PoolBadge, PoolStatus, PoolType } from "@/components";
+import { getChainInfo } from "@/lib";
 import { cn } from "@/lib/utils";
-import { Breadcrumb } from "@/primitives/Breadcrumb";
-import { Button } from "@/primitives/Button";
-import { Icon, IconType } from "@/primitives/Icon";
+import { Breadcrumb, Button, Icon, IconType } from "@/primitives";
 
-export const variants = tv({
+const variants = tv({
   variants: {
     default: "bg-grey-50 px-20 py-3",
   },

@@ -1,8 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { EvaluationAction } from "../../types";
 import { ProjectEvaluationAction } from "./ProjectEvaluationAction";
-import { EvaluationAction } from "./types";
 
 const meta = {
   title: "Features/Checker/Components/ProjectEvaluationAction",

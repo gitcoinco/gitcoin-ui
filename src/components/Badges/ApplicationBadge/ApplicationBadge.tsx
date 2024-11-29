@@ -3,15 +3,15 @@ import * as React from "react";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
-import { Badge } from "@/primitives/Badge/Badge";
+import { Badge } from "@/primitives";
 
-export enum ApplicationStatus {
+export enum ApplicationBadgeStatus {
   Pending = "pending",
   Approved = "approved",
   Rejected = "rejected",
 }
 
-export const ApplicationBadgeVariants = tv({
+const ApplicationBadgeVariants = tv({
   variants: {
     variant: {
       pending: "border-transparent bg-yellow-100 text-black",
@@ -21,21 +21,21 @@ export const ApplicationBadgeVariants = tv({
   },
 });
 
-interface ApplicationBadgeProps {
-  status: ApplicationStatus;
+export interface ApplicationBadgeProps {
+  status: ApplicationBadgeStatus;
 }
 
 export const ApplicationBadge: React.FC<ApplicationBadgeProps> = (props) => {
   const { variant, text } = match(props)
-    .with({ status: ApplicationStatus.Pending }, () => ({
+    .with({ status: ApplicationBadgeStatus.Pending }, () => ({
       variant: ApplicationBadgeVariants({ variant: "pending" }),
       text: "Pending",
     }))
-    .with({ status: ApplicationStatus.Approved }, () => ({
+    .with({ status: ApplicationBadgeStatus.Approved }, () => ({
       variant: ApplicationBadgeVariants({ variant: "approved" }),
       text: "Approved",
     }))
-    .with({ status: ApplicationStatus.Rejected }, () => ({
+    .with({ status: ApplicationBadgeStatus.Rejected }, () => ({
       variant: ApplicationBadgeVariants({ variant: "rejected" }),
       text: "Rejected",
     }))

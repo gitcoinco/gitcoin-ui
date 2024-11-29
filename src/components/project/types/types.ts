@@ -1,6 +1,6 @@
 import { UseQueryResult } from "@tanstack/react-query";
 
-export type ProjectCardDataProps = {
+export interface ProjectData {
   id: string;
   title: string;
   logoImg?: string;
@@ -8,10 +8,4 @@ export type ProjectCardDataProps = {
   description?: string;
   projectGithub?: string;
   projectTwitter?: string;
-};
-
-type QueryProps = {
-  queryResult: UseQueryResult<ProjectCardDataProps, Error>;
-};
-
-export type ProjectCardProps = ProjectCardDataProps | QueryProps;
+}

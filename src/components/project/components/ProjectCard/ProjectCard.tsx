@@ -1,13 +1,19 @@
 // Cards.tsx
+import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { ProjectCardDataProps, ProjectCardProps } from "@/components/project/types/types";
-import { Avatar } from "@/primitives/Avatar";
-import { BannerImage } from "@/primitives/BannerImage";
+import { Avatar, BannerImage } from "@/primitives";
 import { Card, CardContent } from "@/ui-shadcn/card";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
-export function ProjectCard(props: ProjectCardProps) {
+import { ProjectData } from "../../types";
+
+export type ProjectCardProps = ProjectData;
+export interface ProjectCardQueryProps {
+  queryResult: UseQueryResult<ProjectData, Error>;
+}
+
+export function ProjectCard(props: ProjectCardProps | ProjectCardQueryProps) {
   return match(props)
     .with({ queryResult: P.not(P.nullish) }, ({ queryResult }) =>
       match(queryResult)
@@ -16,10 +22,14 @@ export function ProjectCard(props: ProjectCardProps) {
         .with({ status: "success", data: P.select() }, (data) => <ProjectDataCard data={data} />)
         .otherwise(() => <ProjectErrorCard />),
     )
-    .otherwise(() => <ProjectDataCard data={props as ProjectCardDataProps} />);
+    .otherwise(() => <ProjectDataCard data={props as ProjectData} />);
 }
 
-export function ProjectDataCard({ data }: { data: ProjectCardDataProps }) {
+export interface ProjectDataCardProps {
+  data: ProjectData;
+}
+
+export function ProjectDataCard({ data }: ProjectDataCardProps) {
   return (
     <Card className="block max-w-sm overflow-hidden">
       <div className="relative">

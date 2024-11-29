@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 
+import { PoolCardProps, PoolCardQueryProps } from "@/components";
 import { PoolStatus, PoolType } from "@/components/Badges";
-import { PoolCardProps } from "@/components/pool/types/types";
-import { createQueryState } from "@/lib/tanstack/queryResults";
+import { createQueryState } from "@/lib";
 
 import { PoolCard } from "./PoolCard";
 
@@ -33,7 +33,7 @@ export default {
   },
 } as Meta<typeof PoolCard>;
 
-type Story = StoryObj<PoolCardProps>;
+type Story = StoryObj<PoolCardProps | PoolCardQueryProps>;
 
 export const Default: Story = {
   args: {

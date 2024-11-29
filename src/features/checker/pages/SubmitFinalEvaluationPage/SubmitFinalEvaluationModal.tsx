@@ -5,7 +5,7 @@ import { Button } from "@/primitives/Button";
 import { Modal } from "@/primitives/Modal";
 import { Dialog, DialogHeader, DialogTitle } from "@/ui-shadcn/dialog";
 
-interface SubmitFinalEvaluationModalProps {
+export interface SubmitFinalEvaluationModalProps {
   reviews: Record<string, boolean>;
   steps: Step[];
   onOpenChange: (isOpen: boolean) => void;

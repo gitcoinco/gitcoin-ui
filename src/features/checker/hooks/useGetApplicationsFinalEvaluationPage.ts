@@ -3,9 +3,10 @@ import { Address } from "viem";
 import { PoolType } from "@/components/Badges";
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
-import { ReviewBody, ApplicationStatus } from "~checker/pages/SubmitFinalEvaluationPage";
 import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
 import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";
+
+import { ApplicationStatusType, ReviewBody } from "../types";
 
 export const useGetApplicationsFinalEvaluationPage = () => {
   const { poolId, chainId, poolsData } = useCheckerContext();
@@ -26,7 +27,7 @@ export const useGetApplicationsFinalEvaluationPage = () => {
     applicationsToUpdate: [],
     currentApplications: Object.values(poolData.applications).map((app) => ({
       index: Number(app.id),
-      status: app.status as ApplicationStatus,
+      status: app.status as ApplicationStatusType,
     })),
     strategy: poolData.applications[0]?.round.strategyName === PoolType.QuadraticFunding ? 0 : 1,
   };

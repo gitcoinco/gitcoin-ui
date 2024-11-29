@@ -2,7 +2,7 @@ import { StatCardProps } from "@/primitives/StatCard";
 
 import { CheckerApplication } from "~checker/store";
 
-import { ProjectReview, Review } from "../components/ProjectReviewList/types";
+import { ProjectReview, Review } from "../types";
 
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {

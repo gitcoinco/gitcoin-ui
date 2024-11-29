@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { usePerformEvaluation, usePerformOnChainReview } from "~checker/hooks";
 import { CheckerProvider } from "~checker/store";
 
 import { Checker } from "./Checker";
-import { usePerformEvaluation, usePerformOnChainReview } from "./hooks";
 
 const meta = {
   title: "Features/Checker",

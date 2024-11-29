@@ -3,10 +3,10 @@ import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
+import { ProjectReview } from "~checker/types";
 import { getReviewsCount } from "~checker/utils/getReviewsCount";
 
 import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
-import { ProjectReview } from "./types";
 
 export interface ProjectReviewListProps {
   reviewer: `0x${string}`;

@@ -4,10 +4,11 @@ import { match } from "ts-pattern";
 
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
 import { getAddressLabel } from "@/lib/utils";
-import { IconType } from "@/primitives/Icon";
+import { Icon, IconType } from "@/primitives/Icon";
 
+import { IconLabelContainer } from "./IconLabelContainer";
 import { IconLabelProps } from "./types";
-import { getEvaluation, IconLabelContainer, getFormattedLink, RenderIcon } from "./utils";
+import { getEvaluation, getFormattedLink } from "./utils";
 import { variants } from "./variants";
 
 export const IconLabel: React.FC<IconLabelProps> = (props) => {
@@ -114,10 +115,7 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
             {formattedLink}
           </a>
           {isVerified && (
-            <RenderIcon
-              iconType={IconType.VERIFIEDBADGE}
-              iconVariant={icon({ type: "verifiedBadge" })}
-            />
+            <Icon type={IconType.VERIFIEDBADGE} className={icon({ type: "verifiedBadge" })} />
           )}
         </IconLabelContainer>
       );

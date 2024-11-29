@@ -1,7 +1,5 @@
-import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
-import { Button } from "@/primitives/Button";
-import { Icon, IconType } from "@/primitives/Icon";
-import { StatCardGroup } from "@/primitives/StatCardGroup";
+import { PoolSummary } from "@/components";
+import { Button, Icon, IconType, StatCardGroup } from "@/primitives";
 
 import { ProjectReviewList } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";

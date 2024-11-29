@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { ApplicationBadge, ApplicationStatus } from "./ApplicationBadge";
+import { ApplicationBadge, ApplicationBadgeStatus } from "./ApplicationBadge";
 
 const meta: Meta<typeof ApplicationBadge> = {
   title: "Components/ApplicationBadge",
@@ -14,12 +14,12 @@ export const PendingBadge: Story = {
   argTypes: {
     status: {
       control: "select",
-      options: Object.values(ApplicationStatus),
+      options: Object.values(ApplicationBadgeStatus),
       description: "The Application Status.",
     },
     // badge: {
     //   control: "select",
-    //   options: Object.values(ApplicationStatus),
+    //   options: Object.values(ApplicationBadgeStatus),
     //   description: "The application status",
     // },
     // Exclude the type from the controls
@@ -30,13 +30,13 @@ export const PendingBadge: Story = {
     // },
   },
   args: {
-    status: ApplicationStatus.Pending,
+    status: ApplicationBadgeStatus.Pending,
   },
 };
 
 export const ApprovedBadge: Story = {
   args: {
-    status: ApplicationStatus.Approved,
+    status: ApplicationBadgeStatus.Approved,
   },
   parameters: {
     docs: {
@@ -47,7 +47,7 @@ export const ApprovedBadge: Story = {
 
 export const RejectedBadge: Story = {
   args: {
-    status: ApplicationStatus.Rejected,
+    status: ApplicationBadgeStatus.Rejected,
   },
   parameters: {
     docs: {

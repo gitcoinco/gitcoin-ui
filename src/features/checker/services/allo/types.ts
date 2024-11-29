@@ -1,5 +1,7 @@
 import { Address } from "viem";
 
+import { ApplicationStatusType } from "~checker/types";
+
 export interface VerifiableCredential {
   "@context": string[];
   type: string[];
@@ -73,29 +75,19 @@ export interface BaseDonorValues {
   uniqueDonorsCount: number;
 }
 
-export type ApplicationStatus =
-  | "PENDING"
-  | "APPROVED"
-  | "IN_REVIEW"
-  | "REJECTED"
-  | "APPEAL"
-  | "FRAUD"
-  | "RECEIVED"
-  | "CANCELLED";
-
 export interface ProjectApplication extends BaseDonorValues {
   id: string;
   projectId: string;
   chainId: number;
   roundId: string;
-  status: ApplicationStatus;
+  status: ApplicationStatusType;
   metadataCid: string;
   metadata: ProjectApplicationMetadata;
   distributionTransaction: string | null;
 }
 
 interface StatusSnapshot {
-  status: ApplicationStatus;
+  status: ApplicationStatusType;
   updatedAtBlock: string;
   updatedAt: string;
 }
@@ -123,7 +115,7 @@ export interface PastApplication {
   id: string;
   roundId: string;
   statusSnapshots: StatusSnapshot[];
-  status: ApplicationStatus;
+  status: ApplicationStatusType;
   round: {
     roundMetadata: {
       name: string;

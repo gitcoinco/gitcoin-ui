@@ -6,12 +6,12 @@ import { Button } from "@/primitives/Button";
 import { Modal } from "@/primitives/Modal";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
 
-import { EVALUATION_STATUS } from "~checker/services/checker/api";
+import { EvaluationActionState, EvaluationStatus } from "~checker/types";
 
 import { getButtonConfig } from "./utils";
 
-type SubmitApplicationEvaluationModalProps = {
-  evaluationStatus?: EVALUATION_STATUS;
+interface SubmitApplicationEvaluationModalProps {
+  evaluationStatus?: EvaluationStatus;
   onOpenChange: (isOpen: boolean) => void;
   isOpen: boolean;
   isSigning: boolean;
@@ -20,18 +20,10 @@ type SubmitApplicationEvaluationModalProps = {
   isEvaluating: boolean;
   isError: boolean;
   onSave: () => void;
-};
-
-type ActionState =
-  | { status: "idle" }
-  | { status: "signing" }
-  | { status: "signingError" }
-  | { status: "evaluating" }
-  | { status: "evaluatingError" }
-  | { status: "success" };
+}
 
 export const SubmitApplicationEvaluationModal = ({
-  evaluationStatus = EVALUATION_STATUS.APPROVED,
+  evaluationStatus = EvaluationStatus.APPROVED,
   onOpenChange,
   isOpen,
   isSigning,
@@ -44,8 +36,8 @@ export const SubmitApplicationEvaluationModal = ({
   // Determine the modal title
   const modalTitle = useMemo(() => {
     return match(evaluationStatus)
-      .with(EVALUATION_STATUS.APPROVED, () => "Approve Application")
-      .with(EVALUATION_STATUS.REJECTED, () => "Reject Application")
+      .with(EvaluationStatus.APPROVED, () => "Approve Application")
+      .with(EvaluationStatus.REJECTED, () => "Reject Application")
       .otherwise(() => "Evaluate Application"); // Fallback title
   }, [evaluationStatus]);
 
@@ -53,8 +45,8 @@ export const SubmitApplicationEvaluationModal = ({
     "Make sure your evaluation is complete before saving. If you want to go back to edit, press cancel.";
 
   // Determine the current action state
-  const actionState: ActionState = useMemo(() => {
-    let status: ActionState["status"] = "idle";
+  const actionState: EvaluationActionState = useMemo(() => {
+    let status: EvaluationActionState["status"] = "idle";
     if (isSigning) {
       status = "signing";
     } else if (isErrorSigning) {

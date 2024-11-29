@@ -6,13 +6,15 @@ const ICON_WIDTH_WITHOUT_COUNTER = 28;
 const OVERLAP_WITH_COUNTER = 40;
 const OVERLAP_WITHOUT_COUNTER = 20;
 
+export interface ReviewIconGroupProps {
+  positiveReviews: number;
+  negativeReviews: number;
+}
+
 export const ReviewIconGroup = ({
   positiveReviews = 0,
   negativeReviews = 0,
-}: {
-  positiveReviews: number;
-  negativeReviews: number;
-}) => {
+}: ReviewIconGroupProps) => {
   const totalReviews = Math.max(0, positiveReviews) + Math.max(0, negativeReviews);
   const isMaxReviews = totalReviews > MAX_N_ICONS;
   const iconWidth = isMaxReviews ? ICON_WIDTH_WITH_COUNTER : ICON_WIDTH_WITHOUT_COUNTER;

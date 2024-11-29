@@ -13,7 +13,7 @@ const radioGroupList = tv({
 
 const { root } = radioGroupList();
 
-interface RadioGroupListProps {
+export interface RadioGroupListProps {
   groups: {
     id: string;
     heading: React.ReactNode;
@@ -24,7 +24,7 @@ interface RadioGroupListProps {
   className?: string;
 }
 
-const RadioGroupList: React.FC<RadioGroupListProps> = ({
+export const RadioGroupList: React.FC<RadioGroupListProps> = ({
   groups,
   onSelectionChange,
   className,
@@ -65,5 +65,3 @@ const RadioGroupList: React.FC<RadioGroupListProps> = ({
     </div>
   );
 };
-
-export default RadioGroupList;

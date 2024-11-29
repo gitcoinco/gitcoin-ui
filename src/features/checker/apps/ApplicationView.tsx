@@ -1,9 +1,8 @@
-import { CheckerProvider } from "~checker/store";
-
 import {
   ViewApplicationEvaluationsPage,
-  type ViewApplicationEvaluationsPageProps,
-} from "./pages/ViewApplicationEvaluationsPage/ViewApplicationEvaluationsPage";
+  ViewApplicationEvaluationsPageProps,
+} from "~checker/pages";
+import { CheckerProvider } from "~checker/store";
 
 export const ApplicationView: React.FC<ViewApplicationEvaluationsPageProps> = (props) => {
   return (

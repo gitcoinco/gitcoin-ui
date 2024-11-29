@@ -1,20 +1,14 @@
 // src/components/SubmitApplicationEvaluation/statusHandler.ts
 import { match } from "ts-pattern";
 
-export type ActionState =
-  | { status: "idle" }
-  | { status: "signing" }
-  | { status: "signingError" }
-  | { status: "evaluating" }
-  | { status: "evaluatingError" }
-  | { status: "success" };
+import { EvaluationActionState } from "../../types";
 
 export interface ButtonConfig {
   text: string;
   disabled: boolean;
 }
 
-export const getButtonConfig = (status: ActionState["status"]): ButtonConfig => {
+export const getButtonConfig = (status: EvaluationActionState["status"]): ButtonConfig => {
   return match(status)
     .with("idle", () => ({ text: "Save", disabled: false }))
     .with("signing", () => ({ text: "Signing...", disabled: true }))

@@ -1,12 +1,9 @@
 import React from "react";
 
-import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
-import { ProjectSummary } from "@/components/project/components/ProjectSummary/ProjectSummary";
+import { ProjectBanner, ProjectSummary } from "@/components";
 import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
-import { Badge } from "@/primitives/Badge/Badge";
-import { Button } from "@/primitives/Button";
-import { Icon, IconType } from "@/primitives/Icon";
+import { Badge, Button, Icon, IconType } from "@/primitives";
 
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations } from "~checker/hooks";
@@ -89,7 +86,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
           {capitalizeWord(data?.application.status)}
         </Badge>
       </div>
-      <ProjectSummary projectMetadata={project} application={data?.application}/>
+      <ProjectSummary projectMetadata={project} application={data?.application} />
       <div className="h-0.5 bg-[#EAEAEA]" />
       {data?.applicationEvaluations.length > 0 ? (
         <ReviewDropdownList evaluations={data?.applicationEvaluations} />

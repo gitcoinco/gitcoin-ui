@@ -1,10 +1,18 @@
 // ProgressModal.tsx
 import { Check, X } from "lucide-react";
 
-import { Modal } from "@/primitives/Modal";
+import { Modal } from "@/primitives";
 import { Dialog, DialogHeader, DialogTitle, DialogDescription } from "@/ui-shadcn/dialog";
 
-import { ProgressStatus, ProgressModalProps, Step } from "./types";
+import { ProgressStatus, Step } from "./types";
+
+export interface ProgressModalProps {
+  steps: Step[];
+  isOpen?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
+  heading?: string;
+  subheading?: string;
+}
 
 export const ProgressModal = ({
   isOpen,

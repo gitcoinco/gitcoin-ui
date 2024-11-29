@@ -1,9 +1,8 @@
 import { IconLabel } from "@/components/IconLabel";
 import { capitalizeWord, getAddressLabel } from "@/lib/utils";
-import { IconType } from "@/primitives/Icon";
-import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
+import { IconType, ListGrid, ListGridColumn } from "@/primitives";
 
-import { Evaluation } from "~checker/services/checker";
+import { Evaluation } from "../../types";
 
 export interface EvaluationListProps {
   evaluations: Evaluation[];

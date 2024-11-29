@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 
-import { ReviewIconGroup } from "./components/ReviewIconGroup";
+import { ReviewIconGroup, ReviewIconGroupProps } from "./components/ReviewIconGroup";
 
 const variants = tv({
   slots: {
@@ -13,9 +13,7 @@ const variants = tv({
   },
 });
 
-interface ReviewsCounterLabelProps {
-  positiveReviews?: number;
-  negativeReviews?: number;
+export interface ReviewsCounterLabelProps extends ReviewIconGroupProps {
   className?: string;
 }
 
