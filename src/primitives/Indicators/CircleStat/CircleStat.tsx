@@ -35,13 +35,13 @@ export const CircleStat: React.FC<CircleStatProps> = ({
   value,
   size = "medium",
   showPercentageSymbol = true,
-  thresholds = { low: 30, mid: 60 },
+  thresholds = { low: 40, mid: 60 },
   colors,
   className,
 }) => {
   const getColorVariant = () => {
     const _value = typeof value === "string" ? parseFloat(value) : value;
-    if (isNaN(_value) || _value <= thresholds.low) return "low";
+    if (isNaN(_value) || _value < thresholds.low) return "low";
     else if (_value < thresholds.mid) return "mid";
     else return "high";
   };
