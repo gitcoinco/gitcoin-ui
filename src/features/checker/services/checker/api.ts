@@ -62,7 +62,7 @@ export async function syncPool(syncPoolBody: SyncPoolBody): Promise<boolean> {
 }
 
 export async function verifyCredentials(
-  applicationMetadata: Partial<ProjectApplicationForManager>,
+  application: Partial<ProjectApplicationForManager>,
 ): Promise<{ twitter: boolean; github: boolean }> {
   const url = `${CHECKER_ENDPOINT}/api/passport/validate`;
 
@@ -73,7 +73,7 @@ export async function verifyCredentials(
         accept: "*/*",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ application: applicationMetadata }),
+      body: JSON.stringify({ application: application }),
     });
 
     if (!response.ok) {
