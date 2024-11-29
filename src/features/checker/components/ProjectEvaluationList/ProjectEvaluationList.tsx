@@ -1,3 +1,4 @@
+import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
@@ -31,7 +32,7 @@ export const ProjectEvaluationList = ({
             alt={item.name}
             className="aspect-square size-12 rounded-sm"
             onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-              event.currentTarget.src = "/images/grey-image.png";
+              event.currentTarget.src = DefaultLogo;
             }}
           />
           <span>{item.name}</span>
