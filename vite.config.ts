@@ -22,7 +22,7 @@ export default defineConfig({
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
       },
       name: "gitcoin-ui",
-      fileName: (format, filename) => `${filename}.js`,
+      fileName: (format: any, filename: any) => `${filename}.js`,
       formats: ["es"],
     },
     rollupOptions: {
@@ -50,6 +50,7 @@ export default defineConfig({
       styleId: "gitcoin-ui",
       jsAssetsFilterFunction: function customJsAssetsfilterFunction(outputChunk) {
         return (
+          outputChunk.preliminaryFileName.includes("!~{") || // for storybook build
           outputChunk.fileName == "index.js" ||
           outputChunk.fileName == "checker.js" ||
           outputChunk.fileName == "hooks.js" ||
