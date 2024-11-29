@@ -1,11 +1,13 @@
 import { Hex } from "viem";
 
 import { PoolSummary, ProjectBanner } from "@/components";
+import { syncPool } from "@/mainAll";
 import { Button, Icon, IconType } from "@/primitives";
 
 import { EvaluationList } from "~checker/components";
 import { useApplicationOverviewEvaluations, useInitialize } from "~checker/hooks";
 import {
+  goToApplicationEvaluationOverviewAction,
   goToReviewApplicationsAction,
   goToSubmitApplicationEvaluationAction,
   useCheckerDispatchContext,
@@ -39,6 +41,14 @@ export const ApplicationEvaluationOverviewPage = ({
 
   const goToReviewApplications = () => {
     dispatch(goToReviewApplicationsAction());
+  };
+
+  const syncAndRefresh = async () => {
+    await syncPool({
+      chainId,
+      alloPoolId: poolId,
+    });
+    dispatch(goToApplicationEvaluationOverviewAction({ projectId: applicationId }));
   };
 
   const project = application.metadata.application.project;
@@ -79,9 +89,14 @@ export const ApplicationEvaluationOverviewPage = ({
             {applicationEvaluations ? (
               <EvaluationList evaluations={applicationEvaluations} />
             ) : (
-              <p className="text-center text-lg">
-                No evaluations have been submitted for this project yet.
-              </p>
+              <div className="flex flex-col items-center gap-8">
+                <Button
+                  variant="outlined-success"
+                  value="Trigger AI evaluation"
+                  onClick={syncAndRefresh}
+                />
+                <p className="text-lg">No evaluations have been submitted for this project yet.</p>
+              </div>
             )}
           </div>
           <div className="flex items-center justify-center">
