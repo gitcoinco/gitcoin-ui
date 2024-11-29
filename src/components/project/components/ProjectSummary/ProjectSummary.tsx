@@ -4,6 +4,7 @@ import { IconLabel } from "@/components/IconLabel";
 // import { useCredentialverification } from "@/features/checker/hooks";
 import { ProjectApplicationForManager, ProjectMetadata } from "@/features/checker/services/allo";
 import { IconType } from "@/primitives/Icon";
+import { useCredentialVerification } from "@/hooks/useCredentialVerification";
 
 export interface ProjectSummaryProps {
   projectMetadata: ProjectMetadata;
@@ -20,7 +21,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
     lastUpdated.toString() !== "0" ? lastUpdated : createdAt,
   ).toLocaleString()}`;
 
-  // const { isTwitterVerified, isGithubVerified } = useCredentialverification(application);
+  const { isTwitterVerified, isGithubVerified } = useCredentialVerification(application);
 
   return (
     <div className="flex gap-16">
@@ -32,7 +33,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
             type="social"
             platform="twitter"
             link={`https://x.com/${projectTwitter}`}
-            isVerified={false}
+            isVerified={isTwitterVerified}
           />
         )}
       </div>
@@ -58,7 +59,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
             type="social"
             platform="github"
             link={`https://github.com/${projectGithub}`}
-            isVerified={false}
+            isVerified={isGithubVerified}
           />
         )}
       </div>
