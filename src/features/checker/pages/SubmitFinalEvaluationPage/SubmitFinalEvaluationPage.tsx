@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { match } from "ts-pattern";
 
 import { Step } from "@/components/ProgressModal";
@@ -79,9 +80,12 @@ export const SubmitFinalEvaluationPage = ({
     return [success, error];
   }, [steps]);
 
+  const queryClient = useQueryClient();
+
   useEffect(() => {
     if (success && isModalOpen) {
       setReviewBody(null);
+      queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId] }); // Invalidate the query
       setIsModalOpen(false);
       toast({ status: "success", description: "Your evaluations have been submitted" });
       dispatch(goToReviewApplicationsAction());
@@ -109,10 +113,10 @@ export const SubmitFinalEvaluationPage = ({
         poolId={poolId ?? "1"}
         strategyName={application?.round.strategyName ?? ""}
         name={application?.round.roundMetadata.name ?? ""}
-        registerStartDate={new Date()}
-        registerEndDate={new Date()}
-        allocationStartDate={new Date()}
-        allocationEndDate={new Date()}
+        registerStartDate={new Date(application?.round.applicationsStartTime ?? new Date())}
+        registerEndDate={new Date(application?.round.applicationsEndTime ?? new Date())}
+        allocationStartDate={new Date(application?.round.donationsStartTime ?? new Date())}
+        allocationEndDate={new Date(application?.round.donationsEndTime ?? new Date())}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
         <div className="flex justify-start">

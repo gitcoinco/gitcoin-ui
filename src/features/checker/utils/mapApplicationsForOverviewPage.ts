@@ -6,7 +6,10 @@ import { ProjectReview, Review } from "../types";
 
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {
-  categorizedReviews: Record<"INREVIEW" | "READY_TO_REVIEW", ProjectReview[]>;
+  categorizedReviews: Record<
+    "INREVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED",
+    ProjectReview[]
+  >;
   statCardsProps: StatCardProps[];
   application: CheckerApplication;
 }
@@ -21,9 +24,14 @@ export function categorizeProjectReviews(
   const applicationsArray = Object.values(applications);
 
   // Initialize the categorized reviews record
-  const categorizedReviews: Record<"INREVIEW" | "READY_TO_REVIEW", ProjectReview[]> = {
+  const categorizedReviews: Record<
+    "INREVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED",
+    ProjectReview[]
+  > = {
     INREVIEW: [],
     READY_TO_REVIEW: [],
+    APPROVED: [],
+    REJECTED: [],
   };
 
   // Initialize application counts
@@ -35,25 +43,23 @@ export function categorizeProjectReviews(
   };
 
   for (const application of applicationsArray) {
-    // Only consider applications that are PENDING
-    if (application.status !== "PENDING") {
-      // Update application counts based on status
-      switch (application.status) {
-        case "APPROVED":
-          applicationCounts.approved += 1;
-          break;
-        case "REJECTED":
-          applicationCounts.rejected += 1;
-          break;
-        default:
-          break;
-      }
-      applicationCounts.total += 1;
-      continue; // Skip non-PENDING applications
-    }
+    const reviewedApplicationStatus = application.status !== "PENDING";
 
-    // Update application counts for PENDING
-    applicationCounts.pending += 1;
+    // Only consider applications that are PENDING
+    // Update application counts based on status
+    switch (application.status) {
+      case "APPROVED":
+        applicationCounts.approved += 1;
+        break;
+      case "REJECTED":
+        applicationCounts.rejected += 1;
+        break;
+      case "PENDING":
+        applicationCounts.pending += 1;
+        break;
+      default:
+        continue;
+    }
     applicationCounts.total += 1;
 
     if (!application.evaluations) {
@@ -73,16 +79,19 @@ export function categorizeProjectReviews(
 
     // Determine the category based on the number of human evaluations
     const isReadyForReview = humanEvaluations.length >= 2;
-    const category: "INREVIEW" | "READY_TO_REVIEW" = isReadyForReview
-      ? "READY_TO_REVIEW"
-      : "INREVIEW";
+    const category: "INREVIEW" | "READY_TO_REVIEW" | "APPROVED" | "REJECTED" | "IGNORE" =
+      !reviewedApplicationStatus && isReadyForReview
+        ? "READY_TO_REVIEW"
+        : !reviewedApplicationStatus
+          ? "INREVIEW"
+          : application.status !== "PENDING"
+            ? application.status
+            : "IGNORE";
 
     // Map human evaluations to reviews
     const reviews: Review[] = humanEvaluations?.map((evaluation) => {
-      const isApproved = evaluation.evaluatorScore >= 50; // Assuming 50 as the approval threshold
-      const reviewerAddress: `0x${string}` = evaluation.evaluator.startsWith("0x")
-        ? (evaluation.evaluator as `0x${string}`)
-        : (`0x${evaluation.evaluator}` as `0x${string}`);
+      const isApproved = evaluation.evaluationStatus === "APPROVED"; // Assuming 50 as the approval threshold
+      const reviewerAddress = evaluation.evaluator as `0x${string}`;
       return {
         reviewer: reviewerAddress,
         approved: isApproved,
@@ -115,8 +124,7 @@ export function categorizeProjectReviews(
       scoreAverage, // Average score from all evaluations
     };
 
-    // Add the ProjectReview to the appropriate category
-    categorizedReviews[category].push(projectReview);
+    if (category !== "IGNORE") categorizedReviews[category].push(projectReview);
   }
 
   const statCardsProps: StatCardProps[] = [

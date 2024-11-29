@@ -50,10 +50,10 @@ export const ApplicationEvaluationOverviewPage = ({
         poolId={poolId}
         strategyName={application.round.strategyName}
         name={application.round.roundMetadata.name}
-        registerStartDate={new Date()}
-        registerEndDate={new Date()}
-        allocationStartDate={new Date()}
-        allocationEndDate={new Date()}
+        registerStartDate={new Date(application.round.applicationsStartTime)}
+        registerEndDate={new Date(application.round.applicationsEndTime)}
+        allocationStartDate={new Date(application.round.donationsStartTime)}
+        allocationEndDate={new Date(application.round.donationsEndTime)}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
         <div>

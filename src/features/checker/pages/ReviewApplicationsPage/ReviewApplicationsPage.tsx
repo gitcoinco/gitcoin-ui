@@ -6,6 +6,7 @@ import { useGetApplicationsReviewPage } from "~checker/hooks";
 import {
   goToApplicationEvaluationOverviewAction,
   goToSubmitFinalEvaluationAction,
+  goToSubmitApplicationEvaluationAction,
   useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
@@ -27,9 +28,19 @@ export const ReviewApplicationsPage = () => {
     dispatch(goToSubmitFinalEvaluationAction());
   };
 
+  const openRoundInManager = () => {
+    window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`, "_blank");
+  };
+
+  const openApplicationOnManager = (projectId: string) => {
+    dispatch(goToSubmitApplicationEvaluationAction({ projectId }));
+  };
   const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
 
   const PendingApplications = categorizedReviews?.INREVIEW || [];
+
+  const ApprovedApplications = categorizedReviews?.APPROVED || [];
+  const RejectedApplications = categorizedReviews?.REJECTED || [];
 
   return (
     <div className="flex flex-col gap-6 ">
@@ -38,19 +49,17 @@ export const ReviewApplicationsPage = () => {
         poolId={poolId}
         strategyName={application?.round.strategyName ?? ""}
         name={application?.round.roundMetadata.name ?? ""}
-        registerStartDate={new Date()}
-        registerEndDate={new Date()}
-        allocationStartDate={new Date()}
-        allocationEndDate={new Date()}
+        registerStartDate={new Date(application?.round.applicationsStartTime ?? new Date())}
+        registerEndDate={new Date(application?.round.applicationsEndTime ?? new Date())}
+        allocationStartDate={new Date(application?.round.donationsStartTime ?? new Date())}
+        allocationEndDate={new Date(application?.round.donationsEndTime ?? new Date())}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-20">
         <div className="flex justify-start">
           <Button
             variant="secondry"
             icon={<Icon type={IconType.CHEVRON_LEFT} />}
-            onClick={() =>
-              window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`)
-            }
+            onClick={openRoundInManager}
             value="back to round manager"
           />
         </div>
@@ -87,7 +96,7 @@ export const ReviewApplicationsPage = () => {
                 </div>
               ) : (
                 <ProjectReviewList
-                  reviewer={address || "0x"}
+                  reviewer={address}
                   projects={ReadyApplicationsToSubmit}
                   action={goToApplicationEvaluationOverview}
                 />
@@ -111,9 +120,61 @@ export const ReviewApplicationsPage = () => {
                 </div>
               ) : (
                 <ProjectReviewList
-                  reviewer={address || "0x"}
+                  reviewer={address}
                   projects={PendingApplications}
                   action={goToApplicationEvaluationOverview}
+                />
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="pb-1">
+              <div className="flex items-center justify-start pb-1">
+                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                  {`Approved applications (${ApprovedApplications.length})`}
+                </div>
+              </div>
+              <div className="h-px bg-[#c8cccc]" />
+            </div>
+
+            <div>
+              {ApprovedApplications.length === 0 ? (
+                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                  No approved applications.
+                </div>
+              ) : (
+                <ProjectReviewList
+                  reviewer={address}
+                  projects={ApprovedApplications}
+                  action={openApplicationOnManager}
+                  actionLabel="View project"
+                  keepAction
+                />
+              )}
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <div className="pb-1">
+              <div className="flex items-center justify-start pb-1">
+                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                  {`Rejected applications (${RejectedApplications.length})`}
+                </div>
+              </div>
+              <div className="h-px bg-[#c8cccc]" />
+            </div>
+
+            <div>
+              {RejectedApplications.length === 0 ? (
+                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                  No rejected applications.
+                </div>
+              ) : (
+                <ProjectReviewList
+                  reviewer={address}
+                  projects={RejectedApplications}
+                  action={openApplicationOnManager}
+                  actionLabel="View project"
+                  keepAction
                 />
               )}
             </div>

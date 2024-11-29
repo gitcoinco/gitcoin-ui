@@ -1,3 +1,5 @@
+import { Address } from "viem";
+
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { Button } from "@/primitives/Button";
@@ -10,12 +12,21 @@ import { getReviewsCount } from "~checker/utils/getReviewsCount";
 import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
 
 export interface ProjectReviewListProps {
-  reviewer: `0x${string}`;
   projects: ProjectReview[];
+
+  reviewer?: Address;
   action?: (projectId: string) => void;
+  actionLabel?: string;
+  keepAction?: boolean;
 }
 
-export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewListProps) => {
+export const ProjectReviewList = ({
+  reviewer,
+  projects,
+  action,
+  actionLabel,
+  keepAction,
+}: ProjectReviewListProps) => {
   const columns: ListGridColumn<ProjectReview>[] = [
     {
       header: "Project",
@@ -38,7 +49,7 @@ export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewL
     {
       header: "Date Submitted",
       key: "date",
-      width: "1fr",
+      width: "1.3fr",
       render: (item) => <IconLabel type="date" date={item.date} />,
     },
     {
@@ -53,17 +64,23 @@ export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewL
     {
       header: "AI Suggestion",
       key: "aiSuggestion",
-      width: "1fr",
-      render: (item) => <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />,
+      width: "0.9fr",
+      render: (item) => {
+        return item.aiSuggestion !== 0 ? (
+          <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
+        ) : (
+          <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
+        );
+      },
     },
     {
       header: "Score Average",
       key: "scoreAverage",
-      width: "1fr",
+      width: "0.8fr",
       position: "center",
       render: (item) => (
         <div className="flex items-center justify-center">
-          <CircleStat value={item.scoreAverage.toFixed(1)} />
+          <CircleStat value={item.scoreAverage.toFixed(0)} />
         </div>
       ),
     },
@@ -73,13 +90,13 @@ export const ProjectReviewList = ({ reviewer, projects, action }: ProjectReviewL
       width: "1fr",
       position: "center",
       render: (item) => {
-        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
+        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer) || !reviewer;
         return (
           <div className="flex items-center justify-center">
             <Button
               variant="outlined-secondary"
-              value="Evaluate project"
-              disabled={isReviewed}
+              value={actionLabel ?? "Evaluate project"}
+              disabled={keepAction ? false : isReviewed}
               onClick={() => {
                 if (action) {
                   action(item.id);

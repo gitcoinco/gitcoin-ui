@@ -1,6 +1,7 @@
 // src/components/SubmitApplicationEvaluation/SubmitApplicationEvaluationPage.tsx
 import { useEffect, useState } from "react";
 
+import { useQueryClient } from "@tanstack/react-query";
 import { Hex } from "viem";
 
 import { ApplicationBadge, ApplicationBadgeStatus } from "@/components/Badges";
@@ -65,10 +66,10 @@ export const SubmitApplicationEvaluationPage = ({
   const { application, evaluationQuestions } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
 
-  const [toastShowed, setToastShowed] = useState(false);
   const dispatch = useCheckerDispatchContext();
   const { data: pastApplications } = useGetPastApplications(chainId, poolId, applicationId);
   const { toast } = useToast();
+  const queryClient = useQueryClient();
 
   const showToast = () => {
     toast({
@@ -89,13 +90,15 @@ export const SubmitApplicationEvaluationPage = ({
   };
 
   useEffect(() => {
-    if ((isSuccess || isError) && !toastShowed) {
-      setToastShowed(true);
+    if ((isSuccess || isError) && isModalOpen) {
       setIsModalOpen(false);
       showToast();
       goToSubmitFinalEvaluation();
+      if (isSuccess) {
+        queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId] }); // Invalidate the query
+      }
     }
-  }, [isSuccess, isError, toastShowed]);
+  }, [isSuccess, isError]);
 
   if (!application || !evaluationQuestions) return null;
 
@@ -191,10 +194,10 @@ export const SubmitApplicationEvaluationPage = ({
         poolId={poolId}
         strategyName={application.round.strategyName}
         name={application.round.roundMetadata.name}
-        registerStartDate={new Date()}
-        registerEndDate={new Date()}
-        allocationStartDate={new Date()}
-        allocationEndDate={new Date()}
+        registerStartDate={new Date(application.round.applicationsStartTime)}
+        registerEndDate={new Date(application.round.applicationsEndTime)}
+        allocationStartDate={new Date(application.round.donationsStartTime)}
+        allocationEndDate={new Date(application.round.donationsEndTime)}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
         <SubmitApplicationEvaluationModal
