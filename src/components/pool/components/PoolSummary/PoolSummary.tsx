@@ -1,9 +1,10 @@
 import { tv } from "tailwind-variants";
 
-import { IconLabel, PoolBadge, PoolStatus, PoolType } from "@/components";
+import { IconLabel, PoolBadge } from "@/components";
 import { getChainInfo } from "@/lib";
 import { cn } from "@/lib/utils";
 import { Breadcrumb, Button, Icon, IconType } from "@/primitives";
+import { PoolStatus, PoolType } from "@/types";
 
 const variants = tv({
   variants: {

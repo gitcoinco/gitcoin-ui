@@ -5,18 +5,7 @@ import { match } from "ts-pattern";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/primitives";
-
-export enum PoolStatus {
-  PreRound = "PreRound",
-  RoundInProgress = "RoundInProgress",
-  ApplicationsInProgress = "ApplicationsInProgress",
-  FundingPending = "FundingPending",
-}
-
-export enum PoolType {
-  QuadraticFunding = "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
-  DirectGrants = "allov2.DirectGrantsSimpleStrategy",
-}
+import { PoolStatus, PoolType } from "@/types";
 
 const PoolBadgeVariants = tv({
   variants: {

@@ -1,12 +1,12 @@
 import { IconLabel, PoolBadge } from "@/components";
 import { getChainInfo } from "@/lib";
 import { modularRedirect } from "@/lib/utils";
-
-import { onClickProps, PoolData } from "../../types";
+import { PoolData } from "@/types";
+import { OnClickProps } from "@/types";
 
 export interface PoolDataCardProps {
   data: PoolData;
-  redirectProps?: onClickProps;
+  redirectProps?: OnClickProps;
 }
 
 export function PoolDataCard({ data, redirectProps }: PoolDataCardProps) {
