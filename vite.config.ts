@@ -20,6 +20,7 @@ export default defineConfig({
         lib: resolve(__dirname, "./src/lib/index.ts"),
         mainAll: resolve(__dirname, "./src/mainAll.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
+        types: resolve(__dirname, "./src/types/index.ts"),
       },
       name: "gitcoin-ui",
       fileName: (format: any, filename: any) => `${filename}.js`,
