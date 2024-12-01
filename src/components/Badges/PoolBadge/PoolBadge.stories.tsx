@@ -31,7 +31,8 @@ type Story = StoryObj<typeof PoolBadge>;
 
 export const Default: Story = {};
 
-export const TypePoolStatus: Story = {
+export const PoolStatusStory: Story = {
+  name: "Pool Status Badge",
   argTypes: {
     badge: {
       control: "select",
@@ -52,7 +53,8 @@ export const TypePoolStatus: Story = {
 };
 
 // Story for poolType
-export const TypePoolType: Story = {
+export const PoolTypeStory: Story = {
+  name: "Pool Type Badge",
   argTypes: {
     badge: {
       control: "select",

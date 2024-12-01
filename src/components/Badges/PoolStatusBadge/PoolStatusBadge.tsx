@@ -1,10 +1,11 @@
 import * as React from "react";
 
 import { tv } from "tailwind-variants";
+import { match, P } from "ts-pattern";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/primitives";
-import { PoolStatus } from "@/types";
+import { isPoolStatus, PoolStatus } from "@/types";
 
 const variants = tv({
   variants: {
@@ -17,12 +18,14 @@ const variants = tv({
   },
 });
 
-const statusBadgeTexts = {
+const badgeTexts = {
   [PoolStatus.PreRound]: "Pre round",
   [PoolStatus.RoundInProgress]: "Round in progress",
   [PoolStatus.ApplicationsInProgress]: "Applications in progress",
   [PoolStatus.FundingPending]: "Funding pending",
 };
+
+const invalidValueText = "Error: Invalid status";
 
 export interface PoolStatusBadgeProps {
   value?: PoolStatus;
@@ -30,11 +33,12 @@ export interface PoolStatusBadgeProps {
 }
 
 export const PoolStatusBadge: React.FC<PoolStatusBadgeProps> = ({ value, className }) => {
-  const statusVariant = variants({ value });
+  const variantClass = variants({ value });
 
-  return value ? (
-    <Badge className={cn(className, statusVariant)}>{statusBadgeTexts[value]}</Badge>
-  ) : (
-    <Badge skeleton className={className} size="md" />
-  );
+  return match({ value })
+    .with({ value: undefined }, () => <Badge skeleton className={className} size="md" />)
+    .with({ value: P.when(isPoolStatus) }, ({ value }) => (
+      <Badge className={cn(className, variantClass)}>{badgeTexts[value]}</Badge>
+    ))
+    .otherwise(() => <Badge variant="outlined-error">{invalidValueText}</Badge>);
 };

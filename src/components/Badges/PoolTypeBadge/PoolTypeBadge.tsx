@@ -1,10 +1,11 @@
 import * as React from "react";
 
 import { tv } from "tailwind-variants";
+import { match, P } from "ts-pattern";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/primitives";
-import { PoolType } from "@/types";
+import { isPoolType, PoolType } from "@/types";
 
 const variants = tv({
   base: "border-transparent",
@@ -21,17 +22,20 @@ export interface PoolTypeBadgeProps {
   className?: string;
 }
 
-const typeBadgeTexts = {
+const badgeTexts = {
   [PoolType.QuadraticFunding]: "Quadratic funding",
   [PoolType.DirectGrants]: "Direct grants",
 };
 
-export const PoolTypeBadge: React.FC<PoolTypeBadgeProps> = ({ value, className }) => {
-  const typeVariant = variants({ value });
+const invalidValueText = "Error: Invalid type";
 
-  return value ? (
-    <Badge className={cn(className, typeVariant)}>{typeBadgeTexts[value]}</Badge>
-  ) : (
-    <Badge skeleton className={className} size="md" />
-  );
+export const PoolTypeBadge: React.FC<PoolTypeBadgeProps> = ({ value, className }) => {
+  const variantClass = variants({ value });
+
+  return match({ value })
+    .with({ value: undefined }, () => <Badge skeleton className={className} size="md" />)
+    .with({ value: P.when(isPoolType) }, ({ value }) => (
+      <Badge className={cn(className, variantClass)}>{badgeTexts[value]}</Badge>
+    ))
+    .otherwise(() => <Badge variant="outlined-error">{invalidValueText}</Badge>);
 };

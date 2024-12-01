@@ -5,7 +5,7 @@ import { PoolStatus } from "@/types";
 import { PoolStatusBadge } from "./PoolStatusBadge";
 
 const meta: Meta<typeof PoolStatusBadge> = {
-  title: "Components/Badges/PoolStatusBadge",
+  title: "Components/Badges/PoolBadge/PoolStatusBadge",
   component: PoolStatusBadge,
   parameters: {
     toc: { disable: true },
