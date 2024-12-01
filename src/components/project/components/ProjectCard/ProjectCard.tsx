@@ -2,7 +2,7 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { Avatar, BannerImage } from "@/primitives";
+import { Avatar, BannerImage, Skeleton } from "@/primitives";
 import { Card, CardContent } from "@/ui-shadcn/card";
 
 import { ProjectData } from "../../types";
