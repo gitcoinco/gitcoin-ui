@@ -38,6 +38,11 @@
       "types": "./dist/mocks.d.ts",
       "import": "./dist/mocks.js",
       "require": "./dist/mocks.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js",
+      "require": "./dist/types.js"
     }
   },
   "scripts": {

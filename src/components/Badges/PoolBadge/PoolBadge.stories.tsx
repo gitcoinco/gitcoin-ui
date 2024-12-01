@@ -1,6 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { PoolBadge, PoolStatus, PoolType } from "./PoolBadge";
+import { PoolStatus, PoolType } from "@/types";
+
+import { PoolBadge } from "./PoolBadge";
 
 const meta: Meta<typeof PoolBadge> = {
   title: "Components/PoolBadge",

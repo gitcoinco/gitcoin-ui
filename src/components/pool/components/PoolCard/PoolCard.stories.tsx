@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { PoolCardProps, PoolCardQueryProps } from "@/components";
-import { PoolStatus, PoolType } from "@/components/Badges";
 import { createQueryState } from "@/lib";
+import { PoolStatus, PoolType } from "@/types";
 
 import { PoolCard } from "./PoolCard";
 

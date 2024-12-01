@@ -1,7 +1,7 @@
 import { Address } from "viem";
 
-import { PoolType } from "@/components/Badges";
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
+import { PoolType } from "@/types";
 
 import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
 import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";

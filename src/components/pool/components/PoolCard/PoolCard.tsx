@@ -1,16 +1,16 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
+import { OnClickProps, PoolData } from "@/types";
 import { Skeleton } from "@/ui-shadcn/skeleton";
 
-import { onClickProps, PoolData } from "../../types";
 import { PoolDataCard } from "./PoolDataCard";
 
-export interface PoolCardQueryProps extends onClickProps {
+export interface PoolCardQueryProps extends OnClickProps {
   queryResult: UseQueryResult<PoolData, Error>;
 }
 
-export interface PoolCardProps extends PoolData, onClickProps {}
+export interface PoolCardProps extends PoolData, OnClickProps {}
 
 export function PoolCard(props: PoolCardProps | PoolCardQueryProps) {
   return match(props)
