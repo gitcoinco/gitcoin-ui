@@ -4,7 +4,6 @@ import { match, P } from "ts-pattern";
 
 import { Avatar, BannerImage } from "@/primitives";
 import { Card, CardContent } from "@/ui-shadcn/card";
-import { Skeleton } from "@/ui-shadcn/skeleton";
 
 import { ProjectData } from "../../types";
 

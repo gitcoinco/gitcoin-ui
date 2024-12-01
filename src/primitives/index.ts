@@ -11,6 +11,7 @@ export * from "./Markdown";
 export * from "./Modal";
 export * from "./Navbar";
 export * from "./RadioGroup";
+export * from "./Skeleton";
 export * from "./StatCard";
 export * from "./StatCardGroup";
 export * from "./TextArea";
