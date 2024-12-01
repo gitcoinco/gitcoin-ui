@@ -5,18 +5,37 @@ import { PoolStatus, PoolType } from "@/types";
 import { PoolBadge } from "./PoolBadge";
 
 const meta: Meta<typeof PoolBadge> = {
-  title: "Components/PoolBadge",
+  title: "Components/Badges/PoolBadge",
   component: PoolBadge,
+  argTypes: {
+    badge: {
+      control: "select",
+      options: [...Object.values(PoolStatus), ...Object.values(PoolType), undefined],
+      description: "The specific badge value be it a PoolStatus or PoolType.",
+    },
+    // Exclude the type from the controls
+    type: {
+      control: "radio",
+      options: ["poolStatus", "poolType"],
+      description: "The type of badge to display.",
+    },
+  },
+  args: {
+    type: "poolStatus",
+    badge: PoolStatus.ApplicationsInProgress,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof PoolBadge>;
 
-export const PoolStatusBadge: Story = {
+export const Default: Story = {};
+
+export const TypePoolStatus: Story = {
   argTypes: {
     badge: {
       control: "select",
-      options: Object.values(PoolStatus),
+      options: [...Object.values(PoolStatus), undefined],
       description: "The specific badge value.",
     },
     // Exclude the type from the controls
@@ -33,11 +52,11 @@ export const PoolStatusBadge: Story = {
 };
 
 // Story for poolType
-export const PoolTypeBadge: Story = {
+export const TypePoolType: Story = {
   argTypes: {
     badge: {
       control: "select",
-      options: Object.values(PoolType),
+      options: [...Object.values(PoolType), undefined],
       description: "The specific badge value.",
     },
     type: {
@@ -52,74 +71,76 @@ export const PoolTypeBadge: Story = {
   },
 };
 
-export const PreRound: Story = {
+export const UndefinedPoolStatus: Story = {
+  argTypes: {
+    badge: {
+      control: "select",
+      options: [undefined],
+      description: "The specific badge value.",
+    },
+    type: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     type: "poolStatus",
-    badge: PoolStatus.PreRound,
-  },
-  parameters: {
-    docs: {
-      storyDescription: "Displays the `Pre Round` status badge.",
-    },
+    badge: undefined,
   },
 };
 
-export const RoundInProgress: Story = {
-  args: {
-    type: "poolStatus",
-    badge: PoolStatus.RoundInProgress,
-  },
-  parameters: {
-    docs: {
-      storyDescription: "Displays the `Round In Progress` status badge.",
+export const UndefinedPoolType: Story = {
+  argTypes: {
+    badge: {
+      control: "select",
+      options: [undefined],
+      description: "The specific badge value.",
+    },
+    type: {
+      table: {
+        disable: true,
+      },
     },
   },
-};
-
-export const ApplicationsInProgress: Story = {
-  args: {
-    type: "poolStatus",
-    badge: PoolStatus.ApplicationsInProgress,
-  },
-  parameters: {
-    docs: {
-      storyDescription: "Displays the `Applications In Progress` status badge.",
-    },
-  },
-};
-
-export const FundingPending: Story = {
-  args: {
-    type: "poolStatus",
-    badge: PoolStatus.FundingPending,
-  },
-  parameters: {
-    docs: {
-      storyDescription: "Displays the `Funding Pending` status badge.",
-    },
-  },
-};
-
-export const QuadraticFunding: Story = {
   args: {
     type: "poolType",
+    badge: undefined,
+  },
+};
+
+export const InvalidPoolStatus: Story = {
+  argTypes: {
+    badge: {
+      control: "select",
+      options: Object.values(PoolType),
+    },
+    type: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  args: {
+    type: "poolStatus",
     badge: PoolType.QuadraticFunding,
   },
-  parameters: {
-    docs: {
-      storyDescription: "Displays the `Quadratic Funding` type badge.",
-    },
-  },
 };
 
-export const DirectGrants: Story = {
+export const InvalidPoolType: Story = {
+  argTypes: {
+    badge: {
+      control: "select",
+      options: Object.values(PoolStatus),
+    },
+    type: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   args: {
     type: "poolType",
-    badge: PoolType.DirectGrants,
-  },
-  parameters: {
-    docs: {
-      storyDescription: "Displays the `Direct Grants` type badge.",
-    },
+    badge: PoolStatus.ApplicationsInProgress,
   },
 };
