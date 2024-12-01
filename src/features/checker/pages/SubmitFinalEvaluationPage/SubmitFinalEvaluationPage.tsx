@@ -111,7 +111,7 @@ export const SubmitFinalEvaluationPage = ({
       <PoolSummary
         chainId={chainId ?? 1}
         poolId={poolId ?? "1"}
-        strategyName={application?.round.strategyName ?? ""}
+        strategyName={application?.round.strategyName}
         name={application?.round.roundMetadata.name ?? ""}
         registerStartDate={new Date(application?.round.applicationsStartTime ?? new Date())}
         registerEndDate={new Date(application?.round.applicationsEndTime ?? new Date())}

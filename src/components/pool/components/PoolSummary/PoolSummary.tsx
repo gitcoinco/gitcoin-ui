@@ -16,7 +16,7 @@ export interface PoolSummaryProps {
   chainId: number;
   poolId: string;
   name: string;
-  strategyName: string;
+  strategyName?: string;
   registerStartDate: Date;
   registerEndDate: Date;
   allocationStartDate: Date;
