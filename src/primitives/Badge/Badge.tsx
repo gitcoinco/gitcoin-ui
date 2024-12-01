@@ -4,6 +4,8 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 import { cn } from "@/lib/utils";
 
+import { Skeleton } from "../Skeleton";
+
 export type BadgeVariants =
   | "info"
   | "success"
@@ -35,10 +37,11 @@ const badgeVariants = tv({
       "outlined-info": "border-2 border-yellow-100 bg-white",
       "outlined-success": "border-2 border-green-100 bg-white",
       "outlined-warning": "border-2 border-red-100 bg-white",
-      // "outlined-error": "border-2 border-red-300 bg-white",
+      "outlined-error": "border border-red-400 bg-white text-red-400",
       "outlined-success-strong": "border-2 border-green-300 bg-white",
       "outlined-warning-strong": "border-2 border-red-300 bg-white",
       "outlined-info-strong": "border-2 border-yellow-300 bg-white",
+      skeleton: "h-[22px] border-transparent bg-gray-200",
     },
     size: {
       xs: "min-w-[68px]",
@@ -56,11 +59,19 @@ export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {
   size?: keyof typeof badgeVariants.variants.size;
+  skeleton?: boolean;
 }
 
 const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
-  ({ className, variant = "info", size = "sm", ...props }, ref) => {
-    return <div className={cn(badgeVariants({ variant, size }), className)} ref={ref} {...props} />;
+  ({ className, variant = "info", size = "sm", skeleton = false, ...props }, ref) => {
+    return skeleton ? (
+      <Skeleton
+        className={cn(badgeVariants({ variant: "skeleton", size }), className)}
+        {...props}
+      />
+    ) : (
+      <div className={cn(badgeVariants({ variant, size }), className)} ref={ref} {...props} />
+    );
   },
 );
 
