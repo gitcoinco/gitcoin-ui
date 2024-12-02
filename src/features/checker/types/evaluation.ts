@@ -52,8 +52,8 @@ export interface EvaluationBody {
   alloPoolId: string;
   alloApplicationId: string;
   cid: string;
-  evaluator: string;
+  evaluator?: string;
   summaryInput: EvaluationSummaryInput;
   evaluationStatus: EvaluationStatus;
-  signature: Hex;
+  signature?: Hex;
 }

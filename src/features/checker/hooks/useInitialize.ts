@@ -7,7 +7,7 @@ import { setInitialStateAction, useCheckerDispatchContext } from "~checker/store
 import { usePoolData } from "./usePoolData";
 
 export interface InitData {
-  address: Hex;
+  address?: Hex;
   poolId: string;
   chainId: number;
 }

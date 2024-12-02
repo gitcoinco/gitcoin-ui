@@ -14,7 +14,7 @@ import {
 const canSubmitFinalEvaluation = true;
 
 export const ReviewApplicationsPage = () => {
-  const { categorizedReviews, statCardsProps, application } = useGetApplicationsReviewPage() || {};
+  const { categorizedReviews, statCardsProps, poolData } = useGetApplicationsReviewPage() || {};
   const dispatch = useCheckerDispatchContext();
   const { poolId, chainId, address } = useCheckerContext();
 
@@ -47,12 +47,13 @@ export const ReviewApplicationsPage = () => {
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
-        strategyName={application?.round.strategyName}
-        name={application?.round.roundMetadata.name ?? ""}
-        registerStartDate={new Date(application?.round.applicationsStartTime ?? new Date())}
-        registerEndDate={new Date(application?.round.applicationsEndTime ?? new Date())}
-        allocationStartDate={new Date(application?.round.donationsStartTime ?? new Date())}
-        allocationEndDate={new Date(application?.round.donationsEndTime ?? new Date())}
+        programId={poolData?.project.id as string}
+        strategyName={poolData?.strategyName}
+        name={poolData?.roundMetadata?.name}
+        registerStartDate={new Date(poolData?.applicationsStartTime ?? new Date())}
+        registerEndDate={new Date(poolData?.applicationsEndTime ?? new Date())}
+        allocationStartDate={new Date(poolData?.donationsStartTime ?? new Date())}
+        allocationEndDate={new Date(poolData?.donationsEndTime ?? new Date())}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-20">
         <div className="flex justify-start">
@@ -99,6 +100,7 @@ export const ReviewApplicationsPage = () => {
                   reviewer={address}
                   projects={ReadyApplicationsToSubmit}
                   action={goToApplicationEvaluationOverview}
+                  isPoolManager={poolData?.isPoolManager}
                 />
               )}
             </div>
@@ -123,6 +125,7 @@ export const ReviewApplicationsPage = () => {
                   reviewer={address}
                   projects={PendingApplications}
                   action={goToApplicationEvaluationOverview}
+                  isPoolManager={poolData?.isPoolManager}
                 />
               )}
             </div>

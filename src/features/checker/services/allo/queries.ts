@@ -16,19 +16,25 @@ export const applicationsForManagerQuery = gql`
       distributionTransaction
       statusSnapshots
       anchorAddress
-      round {
-        roundMetadata
-        strategyName
-        strategyAddress
-        applicationsStartTime
-        applicationsEndTime
-        donationsEndTime
-        donationsStartTime
-      }
       canonicalProject {
         roles {
           address
         }
+      }
+    }
+    round(chainId: $chainId, id: $roundId) {
+      roundMetadata
+      strategyName
+      strategyAddress
+      applicationsStartTime
+      applicationsEndTime
+      donationsEndTime
+      donationsStartTime
+      roles {
+        address
+      }
+      project {
+        id
       }
     }
   }
@@ -47,10 +53,6 @@ export const getApplicationByIdQuery = gql`
       distributionTransaction
       statusSnapshots
       anchorAddress
-      round {
-        strategyName
-        strategyAddress
-      }
       canonicalProject {
         roles {
           address

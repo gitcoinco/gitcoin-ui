@@ -5,7 +5,7 @@ import { CheckerPoolData } from "../types";
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
   payload: {
-    address: Hex;
+    address?: Hex;
     poolId: string;
     chainId: number;
   };

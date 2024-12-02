@@ -14,8 +14,6 @@ interface SubmitApplicationEvaluationModalProps {
   evaluationStatus?: EvaluationStatus;
   onOpenChange: (isOpen: boolean) => void;
   isOpen: boolean;
-  isSigning: boolean;
-  isErrorSigning: boolean;
   isSuccess: boolean;
   isEvaluating: boolean;
   isError: boolean;
@@ -26,8 +24,6 @@ export const SubmitApplicationEvaluationModal = ({
   evaluationStatus = EvaluationStatus.APPROVED,
   onOpenChange,
   isOpen,
-  isSigning,
-  isErrorSigning,
   isSuccess,
   isEvaluating,
   isError,
@@ -47,11 +43,7 @@ export const SubmitApplicationEvaluationModal = ({
   // Determine the current action state
   const actionState: EvaluationActionState = useMemo(() => {
     let status: EvaluationActionState["status"] = "idle";
-    if (isSigning) {
-      status = "signing";
-    } else if (isErrorSigning) {
-      status = "signingError";
-    } else if (isEvaluating) {
+    if (isEvaluating) {
       status = "evaluating";
     } else if (isError) {
       status = "evaluatingError";
@@ -59,7 +51,7 @@ export const SubmitApplicationEvaluationModal = ({
       status = "success";
     }
     return { status } as const;
-  }, [isSigning, isErrorSigning, isEvaluating, isError, isSuccess]);
+  }, [isEvaluating, isError, isSuccess]);
 
   // Define button configurations based on action state
   const { text: buttonText, disabled: isButtonDisabled } = getButtonConfig(actionState.status);
@@ -68,13 +60,13 @@ export const SubmitApplicationEvaluationModal = ({
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <Modal showCloseButton={false} className="max-w-[414px] p-6">
         <div className="flex flex-col items-center gap-6 text-start">
-          <DialogHeader className="flex max-w-[366px] flex-col gap-2">
+          <DialogHeader className="flex max-w-[366px] flex-col items-start gap-2 text-start">
             <DialogTitle className="text-[18px]/[28px] font-medium">{modalTitle}</DialogTitle>
             <DialogDescription className="text-[14px]/[20px] text-grey-900">
               {modalDescription}
             </DialogDescription>
           </DialogHeader>
-          <div className="flex justify-center gap-6">
+          <div className="flex items-center justify-center gap-6">
             <Button
               value="Cancel"
               className="bg-red-50 text-red-700"

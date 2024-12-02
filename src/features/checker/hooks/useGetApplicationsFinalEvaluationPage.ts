@@ -17,20 +17,18 @@ export const useGetApplicationsFinalEvaluationPage = () => {
 
   if (!poolData) return null;
 
-  const { categorizedReviews, statCardsProps, application } = categorizeProjectReviews(
-    poolData.applications,
-  );
+  const { categorizedReviews, statCardsProps } = categorizeProjectReviews(poolData.applications);
 
   const reviewBody: ReviewBody = {
     roundId: poolId as string,
-    strategyAddress: poolData.applications[0]?.round.strategyAddress as Address,
+    strategyAddress: poolData.strategyAddress as Address,
     applicationsToUpdate: [],
     currentApplications: Object.values(poolData.applications).map((app) => ({
       index: Number(app.id),
       status: app.status as ApplicationStatusType,
     })),
-    strategy: poolData.applications[0]?.round.strategyName === PoolType.QuadraticFunding ? 0 : 1,
+    strategy: poolData.strategyName === PoolType.QuadraticFunding ? 0 : 1,
   };
 
-  return { categorizedReviews, statCardsProps, application, reviewBody };
+  return { categorizedReviews, statCardsProps, reviewBody, poolData };
 };

@@ -30,34 +30,24 @@ export const usePerformEvaluation = () => {
 
   // Evaluation mutation
   const evaluationMutation = useMutation({
-    mutationFn: async (data: EvaluationBody & { signature: Hex }) => {
-      return await submitEvaluation(data);
+    mutationFn: async (data: EvaluationBody) => {
+      const signature = await signingMutation.mutateAsync();
+      await submitEvaluation({ ...data, signature, evaluator: "0x" });
+      setEvaluationBody(null);
     },
   });
 
   // Trigger the signing mutation when evaluationBody is set
   useEffect(() => {
     if (evaluationBody) {
-      signingMutation.mutate();
+      evaluationMutation.mutate(evaluationBody);
     }
   }, [evaluationBody]);
 
-  // Trigger the evaluation mutation when signing is successful
-  useEffect(() => {
-    if (signingMutation.isSuccess && evaluationBody) {
-      const signature = signingMutation.data;
-      evaluationMutation.mutate({ ...evaluationBody, signature });
-    }
-  }, [signingMutation.isSuccess, evaluationBody]);
-
   return {
     setEvaluationBody: handleSetEvaluationBody,
-    isSigning: signingMutation.isPending,
-    isErrorSigning: signingMutation.isError,
     isEvaluating: evaluationMutation.isPending,
     isError: evaluationMutation.isError,
     isSuccess: evaluationMutation.isSuccess,
-    data: evaluationMutation.data,
-    error: evaluationMutation.error,
   };
 };

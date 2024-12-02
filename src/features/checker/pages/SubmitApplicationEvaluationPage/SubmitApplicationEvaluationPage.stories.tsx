@@ -48,13 +48,10 @@ export const Default: Story = {
     applicationId: "17",
   },
   render: (args) => {
-    const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
-      usePerformEvaluation();
+    const { setEvaluationBody, isSuccess, isEvaluating, isError } = usePerformEvaluation();
     return (
       <SubmitApplicationEvaluationPage
         setEvaluationBody={setEvaluationBody}
-        isSigning={isSigning}
-        isErrorSigning={isErrorSigning}
         isSuccess={isSuccess}
         isEvaluating={isEvaluating}
         isError={isError}
