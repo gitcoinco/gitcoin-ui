@@ -10,6 +10,7 @@ import { ProjectReview } from "~checker/types";
 import { getReviewsCount } from "~checker/utils/getReviewsCount";
 
 import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
+import { addressFrom } from "@/lib";
 
 export interface ProjectReviewListProps {
   projects: ProjectReview[];
@@ -65,11 +66,11 @@ export const ProjectReviewList = ({
       header: "AI Suggestion",
       key: "aiSuggestion",
       width: "0.9fr",
-      render: (item) => {
-        return item.aiSuggestion !== 0 ? (
-          <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
-        ) : (
+      render: (item) => { // addressFrom(1) === ai evaluator 
+        return item.reviews.some(review => review.reviewer === addressFrom(1)) ? (
           <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
+        ) : (
+          <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
         );
       },
     },
