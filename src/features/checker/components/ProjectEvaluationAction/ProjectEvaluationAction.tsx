@@ -14,12 +14,14 @@ export interface ProjectEvaluationActionProps {
   onEvaluate: (projectId: string, action: EvaluationAction) => void;
   projectId: string;
   status: ProjectStatus;
+  disabled?: boolean;
 }
 
 export const ProjectEvaluationAction = ({
   onEvaluate,
   projectId,
   status,
+  disabled,
 }: ProjectEvaluationActionProps) => {
   const [currentStatus, setCurrentStatus] = useState(status);
 
@@ -27,8 +29,8 @@ export const ProjectEvaluationAction = ({
     setCurrentStatus(status);
   }, [status]);
 
-  const approveProps = getButtonProps(currentStatus, "approve");
-  const rejectProps = getButtonProps(currentStatus, "reject");
+  const approveProps = getButtonProps(currentStatus, "approve", disabled);
+  const rejectProps = getButtonProps(currentStatus, "reject", disabled);
 
   return (
     <div className="flex gap-2">
@@ -39,6 +41,7 @@ export const ProjectEvaluationAction = ({
         value="Reject"
         className={cn(baseButtonStyles, rejectProps.className)}
         icon={<Icon type={IconType.X} className={cn("size-5", rejectProps.iconFillClass)} />}
+        disabled={disabled}
       />
       <Button
         onClick={() =>
@@ -47,6 +50,7 @@ export const ProjectEvaluationAction = ({
         value="Approve"
         className={cn(baseButtonStyles, approveProps.className)}
         icon={<Icon type={IconType.CHECK} className={cn("size-5", approveProps.iconFillClass)} />}
+        disabled={disabled}
       />
     </div>
   );

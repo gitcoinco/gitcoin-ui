@@ -15,7 +15,8 @@ const variants = tv({
 export interface PoolSummaryProps {
   chainId: number;
   poolId: string;
-  name: string;
+  programId: string;
+  name?: string;
   strategyName?: string;
   registerStartDate: Date;
   registerEndDate: Date;
@@ -44,8 +45,10 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
 
   const breadcrumbItems = [
     { label: "My Programs", href: "https://manager.gitcoin.co/#/" },
-    // TODO: Fix href for Program Details
-    { label: "Program Details", href: "https://manager.gitcoin.co/#/1" },
+    {
+      label: "Program Details",
+      href: `https://manager.gitcoin.co/#/chain/${pool.chainId}/program/${pool.programId}`,
+    },
     {
       label: "Round Details",
       href: `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`,
@@ -64,7 +67,7 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             iconVariant="size-6"
             iconType={chainInfo.icon}
             type="default"
-            label={pool.name}
+            label={pool.name ?? ""}
           />
           <IconLabel
             type="roundPeriod"

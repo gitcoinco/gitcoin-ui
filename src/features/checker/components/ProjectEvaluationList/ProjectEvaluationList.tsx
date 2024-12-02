@@ -13,18 +13,20 @@ export interface ProjectEvaluationListProps {
   evaluationStatus?: ProjectStatus;
   projects: ProjectReview[];
   action: (projectId: string, action: EvaluationAction) => void;
+  isPoolManager?: boolean;
 }
 
 export const ProjectEvaluationList = ({
   evaluationStatus = "pending",
   projects,
   action,
+  isPoolManager,
 }: ProjectEvaluationListProps) => {
   const columns: ListGridColumn<ProjectReview>[] = [
     {
       header: "Project",
       key: "project",
-      width: "2fr",
+      width: "1.6fr",
       render: (item) => (
         <div className="flex items-center gap-4">
           <img
@@ -42,13 +44,13 @@ export const ProjectEvaluationList = ({
     {
       header: "Date Submitted",
       key: "date",
-      width: "1fr",
+      width: "1.3fr",
       render: (item) => <IconLabel type="date" date={item.date} />,
     },
     {
       header: "Reviews",
       key: "reviews",
-      width: "1fr",
+      width: "1.5fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
         return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
@@ -63,7 +65,7 @@ export const ProjectEvaluationList = ({
     {
       header: "Score Average",
       key: "scoreAverage",
-      width: "1fr",
+      width: "0.8fr",
       position: "center",
       render: (item) => (
         <div className="flex items-center justify-center">
@@ -74,7 +76,7 @@ export const ProjectEvaluationList = ({
     {
       header: "Action",
       key: "action",
-      width: "2fr",
+      width: "1.8fr",
       position: "center",
       render: (item) => {
         return (
@@ -83,6 +85,7 @@ export const ProjectEvaluationList = ({
               onEvaluate={action}
               projectId={item.id}
               status={evaluationStatus}
+              disabled={!isPoolManager}
             />
           </div>
         );

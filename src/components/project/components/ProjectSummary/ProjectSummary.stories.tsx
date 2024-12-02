@@ -28,6 +28,7 @@ export const Default: Story = {
       credentials: {},
       owners: [],
     },
-    application: applicationsForManagers[0] as unknown as Partial<ProjectApplicationForManager>,
+    application: applicationsForManagers.data
+      .applications[0] as unknown as Partial<ProjectApplicationForManager>,
   },
 };
