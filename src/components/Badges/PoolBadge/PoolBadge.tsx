@@ -1,69 +1,26 @@
 import * as React from "react";
 
-import { tv } from "tailwind-variants";
-import { match } from "ts-pattern";
+import { match, P } from "ts-pattern";
 
-import { cn } from "@/lib/utils";
 import { Badge } from "@/primitives";
-import { PoolStatus, PoolType } from "@/types";
+import { isPoolStatus, isPoolType, PoolStatus, PoolType } from "@/types";
 
-const PoolBadgeVariants = tv({
-  variants: {
-    variant: {
-      "pre-round": "border border-green-400 bg-white text-green-400",
-      "round-in-progress": "border-transparent bg-green-200 text-black",
-      "applications-in-progress": "border-transparent bg-blue-100",
-      "funding-pending": "border border-red-400 bg-white text-red-400",
-      "quadratic-funding": "border-transparent bg-green-100",
-      "direct-grants": "border-transparent bg-yellow-100",
-    },
-  },
-});
+import { PoolStatusBadge } from "../PoolStatusBadge";
+import { PoolTypeBadge } from "../PoolTypeBadge";
 
-export interface PoolStatusBadgeProps {
-  type: "poolStatus";
-  badge: PoolStatus;
+export interface PoolBadgeProps {
+  type: "poolStatus" | "poolType";
+  badge?: PoolStatus | PoolType;
   className?: string;
 }
 
-export interface PoolTypeBadgeProps {
-  type: "poolType";
-  badge: PoolType;
-  className?: string;
-}
-
-export type PoolBadgeProps = PoolStatusBadgeProps | PoolTypeBadgeProps;
-
-export const PoolBadge: React.FC<PoolBadgeProps> = (props) => {
-  const { variant, text } = match(props)
-    .with({ type: "poolStatus", badge: PoolStatus.PreRound }, () => ({
-      variant: PoolBadgeVariants({ variant: "pre-round" }),
-      text: "Pre round",
-    }))
-    .with({ type: "poolStatus", badge: PoolStatus.RoundInProgress }, () => ({
-      variant: PoolBadgeVariants({ variant: "round-in-progress" }),
-      text: "Round in progress",
-    }))
-    .with({ type: "poolStatus", badge: PoolStatus.ApplicationsInProgress }, () => ({
-      variant: PoolBadgeVariants({ variant: "applications-in-progress" }),
-      text: "Applications in progress",
-    }))
-    .with({ type: "poolStatus", badge: PoolStatus.FundingPending }, () => ({
-      variant: PoolBadgeVariants({ variant: "funding-pending" }),
-      text: "Funding pending",
-    }))
-    .with({ type: "poolType", badge: PoolType.QuadraticFunding }, () => ({
-      variant: PoolBadgeVariants({ variant: "quadratic-funding" }),
-      text: "Quadratic funding",
-    }))
-    .with({ type: "poolType", badge: PoolType.DirectGrants }, () => ({
-      variant: PoolBadgeVariants({ variant: "direct-grants" }),
-      text: "Direct grants",
-    }))
-    .otherwise(() => ({
-      variant: "border border-red-400 bg-white text-red-400",
-      text: "Error: Invalid badge type",
-    }));
-
-  return <Badge className={cn(props.className, variant)}>{text}</Badge>;
+export const PoolBadge: React.FC<PoolBadgeProps> = ({ type, badge, className }) => {
+  return match({ type, badge })
+    .with({ type: "poolStatus", badge: P.optional(P.when(isPoolStatus)) }, () => (
+      <PoolStatusBadge className={className} value={badge as PoolStatus} />
+    ))
+    .with({ type: "poolType", badge: P.optional(P.when(isPoolType)) }, () => (
+      <PoolTypeBadge className={className} value={badge as PoolType} />
+    ))
+    .otherwise(() => <Badge variant="outlined-error">Error: Invalid badge type</Badge>);
 };
