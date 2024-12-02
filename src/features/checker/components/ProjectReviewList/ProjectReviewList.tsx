@@ -68,9 +68,9 @@ export const ProjectReviewList = ({
       width: "0.9fr",
       render: (item) => { // addressFrom(1) === ai evaluator 
         return item.reviews.some(review => review.reviewer === addressFrom(1)) ? (
-          <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
-        ) : (
           <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
+        ) : (
+          <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
         );
       },
     },
