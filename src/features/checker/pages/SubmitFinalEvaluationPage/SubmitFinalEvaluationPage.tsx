@@ -118,10 +118,10 @@ export const SubmitFinalEvaluationPage = ({
         programId={poolData?.project.id as string}
         strategyName={poolData?.strategyName}
         name={poolData?.roundMetadata.name}
-        registerStartDate={new Date(poolData?.applicationsStartTime ?? new Date())}
-        registerEndDate={new Date(poolData?.applicationsEndTime ?? new Date())}
-        allocationStartDate={new Date(poolData?.donationsStartTime ?? new Date())}
-        allocationEndDate={new Date(poolData?.donationsEndTime ?? new Date())}
+        applicationsStartTime={poolData?.applicationsStartTime}
+        applicationsEndTime={poolData?.applicationsEndTime}
+        donationsStartTime={poolData?.donationsStartTime}
+        donationsEndTime={poolData?.donationsEndTime}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
         <div className="flex justify-start">

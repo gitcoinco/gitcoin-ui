@@ -18,10 +18,10 @@ export interface PoolSummaryProps {
   programId: string;
   name?: string;
   strategyName?: string;
-  registerStartDate: Date;
-  registerEndDate: Date;
-  allocationStartDate: Date;
-  allocationEndDate: Date;
+  applicationsStartTime?: string;
+  applicationsEndTime?: string;
+  donationsStartTime?: string;
+  donationsEndTime?: string;
 }
 
 export const PoolSummary = (pool: PoolSummaryProps) => {
@@ -31,11 +31,22 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
 
   const now = new Date();
 
-  if (now >= pool.registerStartDate && now <= pool.registerEndDate) {
+  const registerStartDate = pool.applicationsStartTime
+    ? new Date(pool.applicationsStartTime)
+    : new Date();
+  const registerEndDate = pool.applicationsEndTime
+    ? new Date(pool.applicationsEndTime)
+    : new Date();
+  const allocationStartDate = pool.donationsStartTime
+    ? new Date(pool.donationsStartTime)
+    : new Date();
+  const allocationEndDate = pool.donationsEndTime ? new Date(pool.donationsEndTime) : new Date();
+
+  if (now >= registerStartDate && now <= registerEndDate) {
     poolStatus = PoolStatus.ApplicationsInProgress;
-  } else if (now > pool.registerEndDate && now <= pool.allocationStartDate) {
+  } else if (now > registerEndDate && now <= allocationStartDate) {
     poolStatus = PoolStatus.FundingPending;
-  } else if (now > pool.allocationStartDate && now <= pool.allocationEndDate) {
+  } else if (now > allocationStartDate && now <= allocationEndDate) {
     poolStatus = PoolStatus.RoundInProgress;
   } else {
     poolStatus = PoolStatus.PreRound;
@@ -67,12 +78,12 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             iconVariant="size-6"
             iconType={chainInfo.icon}
             type="default"
-            label={pool.name ?? ""}
+            label={pool.name ?? `Round ${pool.poolId}`}
           />
           <IconLabel
             type="roundPeriod"
-            startDate={pool.registerStartDate}
-            endDate={pool.registerEndDate}
+            startDate={allocationStartDate}
+            endDate={allocationEndDate}
           />
         </div>
       </div>
