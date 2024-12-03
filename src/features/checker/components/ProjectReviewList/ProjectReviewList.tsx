@@ -92,7 +92,7 @@ export const ProjectReviewList = ({
       width: "1fr",
       position: "center",
       render: (item) => {
-        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer) || !reviewer;
+        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
         return (
           <div className="flex items-center justify-center">
             <Button

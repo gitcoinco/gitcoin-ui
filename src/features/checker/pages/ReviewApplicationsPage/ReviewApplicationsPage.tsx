@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { PoolSummary } from "@/components";
 import { Button, Icon, IconType, StatCardGroup } from "@/primitives";
 
@@ -15,8 +17,22 @@ const canSubmitFinalEvaluation = true;
 
 export const ReviewApplicationsPage = () => {
   const { categorizedReviews, statCardsProps, poolData } = useGetApplicationsReviewPage() || {};
-  const dispatch = useCheckerDispatchContext();
   const { poolId, chainId, address } = useCheckerContext();
+  const {
+    ReadyApplicationsToSubmit,
+    PendingApplications,
+    ApprovedApplications,
+    RejectedApplications,
+  } = useMemo(() => {
+    return {
+      ReadyApplicationsToSubmit: categorizedReviews?.READY_TO_REVIEW || [],
+      PendingApplications: categorizedReviews?.INREVIEW || [],
+      ApprovedApplications: categorizedReviews?.APPROVED || [],
+      RejectedApplications: categorizedReviews?.REJECTED || [],
+    };
+  }, [categorizedReviews, poolData]);
+
+  const dispatch = useCheckerDispatchContext();
 
   if (!poolId || !chainId) return null;
 
@@ -35,12 +51,6 @@ export const ReviewApplicationsPage = () => {
   const openApplicationOnManager = (projectId: string) => {
     dispatch(goToSubmitApplicationEvaluationAction({ projectId }));
   };
-  const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
-
-  const PendingApplications = categorizedReviews?.INREVIEW || [];
-
-  const ApprovedApplications = categorizedReviews?.APPROVED || [];
-  const RejectedApplications = categorizedReviews?.REJECTED || [];
 
   return (
     <div className="flex flex-col gap-6 ">

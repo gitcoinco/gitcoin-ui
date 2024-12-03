@@ -15,7 +15,7 @@ export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;
   poolId: string;
   applicationId: string;
-  address?: Hex;
+  address: Hex;
 }
 
 export const ApplicationEvaluationOverviewPage = ({

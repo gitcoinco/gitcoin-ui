@@ -46,6 +46,7 @@ export const Default: Story = {
     chainId: 42161,
     poolId: "609",
     applicationId: "17",
+    address: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
   },
   render: (args) => {
     const { setEvaluationBody, isSuccess, isEvaluating, isError } = usePerformEvaluation();
@@ -58,6 +59,7 @@ export const Default: Story = {
         applicationId={args.applicationId}
         chainId={args.chainId}
         poolId={args.poolId}
+        address={args.address}
       />
     );
   },

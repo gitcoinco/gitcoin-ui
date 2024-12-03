@@ -35,7 +35,7 @@ export interface SubmitApplicationEvaluationPageProps {
   chainId: number;
   poolId: string;
   applicationId: string;
-  address?: Hex;
+  address: Hex;
   setEvaluationBody: (data: EvaluationBody) => void;
   isSuccess: boolean;
   isEvaluating: boolean;

@@ -19,7 +19,7 @@ import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
 export const usePoolData = (): { poolData: CheckerPoolData | null; refetch: () => void } => {
   const { poolsData, poolId, chainId, address } = useCheckerContext();
   const dispatch = useCheckerDispatchContext();
-  const enabled = !!poolId && !!chainId;
+  const enabled = !!poolId && !!chainId && !!address;
 
   const poolUUID = generatePoolUUID(poolId, chainId);
 

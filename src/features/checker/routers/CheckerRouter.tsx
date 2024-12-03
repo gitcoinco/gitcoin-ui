@@ -52,6 +52,7 @@ export const CheckerRouter = ({
           chainId={chainId}
           poolId={poolId}
           applicationId={projectId}
+          address={address}
         />
       ),
     )
@@ -67,6 +68,7 @@ export const CheckerRouter = ({
             applicationId={projectId}
             chainId={chainId}
             poolId={poolId}
+            address={address}
           />
         );
       },
