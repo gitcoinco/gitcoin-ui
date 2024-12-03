@@ -95,17 +95,6 @@ interface StatusSnapshot {
 export interface ProjectApplicationForManager extends ProjectApplication {
   anchorAddress: Address;
   statusSnapshots: StatusSnapshot[];
-  round: {
-    strategyName: string;
-    strategyAddress: string;
-    roundMetadata: {
-      name: string;
-    };
-    applicationsStartTime: string;
-    applicationsEndTime: string;
-    donationsEndTime: string;
-    donationsStartTime: string;
-  };
   canonicalProject: {
     roles: { address: Address }[];
   };

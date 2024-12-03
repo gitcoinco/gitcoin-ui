@@ -9,7 +9,7 @@ const meta = {
   title: "Features/Checker",
   component: Checker,
   args: {
-    address: "0x1234567890123456789012345678901234567890",
+    address: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
     poolId: "597",
     chainId: 11155111,
   },
@@ -23,19 +23,16 @@ export const Default: Story = {
   render(args) {
     // New StoryWrapper component
     const StoryWrapper = () => {
-      const { setEvaluationBody, isSigning, isSuccess, isEvaluating, isError, isErrorSigning } =
-        usePerformEvaluation();
+      const { setEvaluationBody, isSuccess, isEvaluating, isError } = usePerformEvaluation();
       const { steps, setReviewBody, isReviewing } = usePerformOnChainReview();
 
       return (
         <Checker
           {...args}
           setEvaluationBody={setEvaluationBody}
-          isSigning={isSigning}
           isSuccess={isSuccess}
           isEvaluating={isEvaluating}
           isError={isError}
-          isErrorSigning={isErrorSigning}
           steps={steps}
           setReviewBody={setReviewBody}
           isReviewing={isReviewing}

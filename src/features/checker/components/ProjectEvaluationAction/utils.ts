@@ -16,8 +16,16 @@ export const variants = tv({
 });
 
 // Utility function to get button properties based on status and action
-export const getButtonProps = (currentStatus: ProjectStatus, action: "approve" | "reject") =>
-  match({ status: currentStatus, action })
+export const getButtonProps = (
+  currentStatus: ProjectStatus,
+  action: "approve" | "reject",
+  disabled?: boolean,
+) =>
+  match({ status: currentStatus, action, disabled })
+    .with({ disabled: true }, () => ({
+      className: variants.slots.disabled,
+      iconFillClass: "fill-grey-500",
+    }))
     .with({ status: "pending", action: "approve" }, () => ({
       className: variants.slots.approvePending,
       iconFillClass: "fill-moss-500",

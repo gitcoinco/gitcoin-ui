@@ -16,6 +16,7 @@ export interface ProjectReviewListProps {
   projects: ProjectReview[];
 
   reviewer?: Address;
+  isPoolManager?: boolean;
   action?: (projectId: string) => void;
   actionLabel?: string;
   keepAction?: boolean;
@@ -23,6 +24,7 @@ export interface ProjectReviewListProps {
 
 export const ProjectReviewList = ({
   reviewer,
+  isPoolManager,
   projects,
   action,
   actionLabel,
@@ -32,7 +34,7 @@ export const ProjectReviewList = ({
     {
       header: "Project",
       key: "project",
-      width: "2fr",
+      width: "1.8fr",
       render: (item) => (
         <div className="flex items-center gap-4">
           <img
@@ -56,7 +58,7 @@ export const ProjectReviewList = ({
     {
       header: "Reviews",
       key: "reviews",
-      width: "1fr",
+      width: "1.2fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
         return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
@@ -91,13 +93,13 @@ export const ProjectReviewList = ({
       width: "1fr",
       position: "center",
       render: (item) => {
-        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer) || !reviewer;
+        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
         return (
           <div className="flex items-center justify-center">
             <Button
               variant="outlined-secondary"
               value={actionLabel ?? "Evaluate project"}
-              disabled={keepAction ? false : isReviewed}
+              disabled={keepAction ? false : !isPoolManager || isReviewed}
               onClick={() => {
                 if (action) {
                   action(item.id);

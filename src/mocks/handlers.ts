@@ -21,11 +21,7 @@ export const taskListHandlerWithError = http.get(
 );
 
 export const applicationForManagerHandler = graphql.query("getApplicationsForManager", () => {
-  return HttpResponse.json({
-    data: {
-      applications: applicationsForManagers,
-    },
-  });
+  return HttpResponse.json(applicationsForManagers);
 });
 
 export const checkerPoolDataHandler = graphql.query("getCheckerPoolData", () => {

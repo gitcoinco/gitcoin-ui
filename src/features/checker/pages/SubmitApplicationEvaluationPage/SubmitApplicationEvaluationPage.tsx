@@ -35,10 +35,8 @@ export interface SubmitApplicationEvaluationPageProps {
   chainId: number;
   poolId: string;
   applicationId: string;
-  address?: Hex;
+  address: Hex;
   setEvaluationBody: (data: EvaluationBody) => void;
-  isSigning: boolean;
-  isErrorSigning: boolean;
   isSuccess: boolean;
   isEvaluating: boolean;
   isError: boolean;
@@ -50,20 +48,18 @@ export const SubmitApplicationEvaluationPage = ({
   applicationId,
   address,
   setEvaluationBody,
-  isSigning,
-  isErrorSigning,
   isSuccess,
   isEvaluating,
   isError,
 }: SubmitApplicationEvaluationPageProps) => {
-  useInitialize({ address: address ?? "0x", poolId, chainId });
+  useInitialize({ address, poolId, chainId });
 
   const [evaluationStatus, setEvaluationStatus] = useState<EvaluationStatus>(
     EvaluationStatus.UNCERTAIN,
   );
   const [evaluationBody, setLocalEvaluationBody] = useState<EvaluationBody | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { application, evaluationQuestions } =
+  const { application, evaluationQuestions, poolData } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
 
   const dispatch = useCheckerDispatchContext();
@@ -91,11 +87,11 @@ export const SubmitApplicationEvaluationPage = ({
 
   useEffect(() => {
     if ((isSuccess || isError) && isModalOpen) {
-      setIsModalOpen(false);
       showToast();
+      setIsModalOpen(false);
       goToSubmitFinalEvaluation();
       if (isSuccess) {
-        queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId] }); // Invalidate the query
+        queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId, address] }); // Invalidate the query
       }
     }
   }, [isSuccess, isError]);
@@ -170,13 +166,12 @@ export const SubmitApplicationEvaluationPage = ({
       alloPoolId: poolId,
       alloApplicationId: applicationId,
       cid: application.metadataCid,
-      evaluator: address ?? "0xGitcoinShips!",
+      evaluator: address,
       summaryInput: {
         questions: data,
         summary: feedback,
       },
       evaluationStatus: evaluationType,
-      signature: "0x",
     });
     setIsModalOpen(true);
   };
@@ -192,20 +187,19 @@ export const SubmitApplicationEvaluationPage = ({
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
-        strategyName={application.round.strategyName}
-        name={application.round.roundMetadata.name}
-        registerStartDate={new Date(application.round.applicationsStartTime)}
-        registerEndDate={new Date(application.round.applicationsEndTime)}
-        allocationStartDate={new Date(application.round.donationsStartTime)}
-        allocationEndDate={new Date(application.round.donationsEndTime)}
+        programId={poolData?.project.id as string}
+        strategyName={poolData?.strategyName}
+        name={poolData?.roundMetadata?.name}
+        applicationsStartTime={poolData?.applicationsStartTime}
+        applicationsEndTime={poolData?.applicationsEndTime}
+        donationsStartTime={poolData?.donationsStartTime}
+        donationsEndTime={poolData?.donationsEndTime}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
         <SubmitApplicationEvaluationModal
           evaluationStatus={evaluationStatus}
           isOpen={isModalOpen}
           onOpenChange={setIsModalOpen}
-          isSigning={isSigning}
-          isErrorSigning={isErrorSigning}
           isSuccess={isSuccess}
           isEvaluating={isEvaluating}
           isError={isError}

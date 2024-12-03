@@ -32,12 +32,12 @@ export const SubmitFinalEvaluationPage = ({
   setReviewBody,
   isReviewing,
 }: SubmitFinalEvaluationPageProps) => {
-  const { categorizedReviews, statCardsProps, application, reviewBody } =
+  const { categorizedReviews, statCardsProps, reviewBody, poolData } =
     useGetApplicationsFinalEvaluationPage() || {};
   const [projectEvaluations, setProjectEvaluations] = useState<Record<string, boolean>>({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useCheckerDispatchContext();
-  const { poolId, chainId } = useCheckerContext();
+  const { poolId, chainId, address } = useCheckerContext();
   const { toast } = useToast();
 
   const handleUpdateFinalEvaluations = (projectId: string, action: EvaluationAction) => {
@@ -85,7 +85,7 @@ export const SubmitFinalEvaluationPage = ({
   useEffect(() => {
     if (success && isModalOpen) {
       setReviewBody(null);
-      queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId] }); // Invalidate the query
+      queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId, address] }); // Invalidate the query
       setIsModalOpen(false);
       toast({ status: "success", description: "Your evaluations have been submitted" });
       dispatch(goToReviewApplicationsAction());
@@ -104,19 +104,24 @@ export const SubmitFinalEvaluationPage = ({
     dispatch(goToReviewApplicationsAction());
   };
 
+  const isPoolManager = useMemo(() => {
+    return poolData?.isPoolManager;
+  }, [poolData]);
+
   const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
 
   return (
     <div className="flex flex-col gap-6">
       <PoolSummary
-        chainId={chainId ?? 1}
-        poolId={poolId ?? "1"}
-        strategyName={application?.round.strategyName}
-        name={application?.round.roundMetadata.name ?? ""}
-        registerStartDate={new Date(application?.round.applicationsStartTime ?? new Date())}
-        registerEndDate={new Date(application?.round.applicationsEndTime ?? new Date())}
-        allocationStartDate={new Date(application?.round.donationsStartTime ?? new Date())}
-        allocationEndDate={new Date(application?.round.donationsEndTime ?? new Date())}
+        chainId={chainId as number}
+        poolId={poolId as string}
+        programId={poolData?.project.id as string}
+        strategyName={poolData?.strategyName}
+        name={poolData?.roundMetadata.name}
+        applicationsStartTime={poolData?.applicationsStartTime}
+        applicationsEndTime={poolData?.applicationsEndTime}
+        donationsStartTime={poolData?.donationsStartTime}
+        donationsEndTime={poolData?.donationsEndTime}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
         <div className="flex justify-start">
@@ -170,6 +175,7 @@ export const SubmitFinalEvaluationPage = ({
                 <ProjectEvaluationList
                   projects={ReadyApplicationsToSubmit}
                   action={handleUpdateFinalEvaluations}
+                  isPoolManager={isPoolManager}
                 />
               )}
             </div>

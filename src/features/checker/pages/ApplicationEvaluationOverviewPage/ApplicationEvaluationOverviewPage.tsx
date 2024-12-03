@@ -1,13 +1,11 @@
 import { Hex } from "viem";
 
 import { PoolSummary, ProjectBanner } from "@/components";
-import { triggerLLM } from "@/mainAll";
 import { Button, Icon, IconType } from "@/primitives";
 
 import { EvaluationList } from "~checker/components";
 import { useApplicationOverviewEvaluations, useInitialize } from "~checker/hooks";
 import {
-  goToApplicationEvaluationOverviewAction,
   goToReviewApplicationsAction,
   goToSubmitApplicationEvaluationAction,
   useCheckerDispatchContext,
@@ -17,7 +15,7 @@ export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;
   poolId: string;
   applicationId: string;
-  address?: Hex;
+  address: Hex;
 }
 
 export const ApplicationEvaluationOverviewPage = ({
@@ -26,9 +24,9 @@ export const ApplicationEvaluationOverviewPage = ({
   applicationId,
   address,
 }: ApplicationEvaluationOverviewPageProps) => {
-  useInitialize({ address: address ?? "0x", poolId, chainId });
+  useInitialize({ address, poolId, chainId });
 
-  const { application, applicationEvaluations } =
+  const { application, applicationEvaluations, poolData } =
     useApplicationOverviewEvaluations({ applicationId }) || {};
 
   if (!application) return null;
@@ -43,16 +41,6 @@ export const ApplicationEvaluationOverviewPage = ({
     dispatch(goToReviewApplicationsAction());
   };
 
-  const syncAndRefresh = async () => {
-    await triggerLLM({
-      chainId,
-      alloPoolId: poolId,
-      alloApplicationId: applicationId,
-      signature: "0xdeadbeef",
-    });
-    dispatch(goToApplicationEvaluationOverviewAction({ projectId: applicationId }));
-  };
-
   const project = application.metadata.application.project;
 
   return (
@@ -60,12 +48,13 @@ export const ApplicationEvaluationOverviewPage = ({
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
-        strategyName={application.round.strategyName}
-        name={application.round.roundMetadata.name}
-        registerStartDate={new Date(application.round.applicationsStartTime)}
-        registerEndDate={new Date(application.round.applicationsEndTime)}
-        allocationStartDate={new Date(application.round.donationsStartTime)}
-        allocationEndDate={new Date(application.round.donationsEndTime)}
+        programId={poolData?.project.id as string}
+        strategyName={poolData?.strategyName}
+        name={poolData?.roundMetadata.name}
+        applicationsStartTime={poolData?.applicationsStartTime}
+        applicationsEndTime={poolData?.applicationsEndTime}
+        donationsStartTime={poolData?.donationsStartTime}
+        donationsEndTime={poolData?.donationsEndTime}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-4 px-20">
         <div>
@@ -88,18 +77,7 @@ export const ApplicationEvaluationOverviewPage = ({
         </p>
         <div className="flex flex-col gap-8">
           <div className="px-16">
-            {applicationEvaluations ? (
-              <EvaluationList evaluations={applicationEvaluations} />
-            ) : (
-              <div className="flex flex-col items-center gap-8">
-                <Button
-                  variant="outlined-success"
-                  value="Trigger AI evaluation"
-                  onClick={syncAndRefresh}
-                />
-                <p className="text-lg">No evaluations have been submitted for this project yet.</p>
-              </div>
-            )}
+            <EvaluationList evaluations={applicationEvaluations ?? []} />
           </div>
           <div className="flex items-center justify-center">
             <Button

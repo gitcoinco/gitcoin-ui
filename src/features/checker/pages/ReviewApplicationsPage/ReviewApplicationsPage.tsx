@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { PoolSummary } from "@/components";
 import { Button, Icon, IconType, StatCardGroup } from "@/primitives";
 
@@ -14,9 +16,23 @@ import {
 const canSubmitFinalEvaluation = true;
 
 export const ReviewApplicationsPage = () => {
-  const { categorizedReviews, statCardsProps, application } = useGetApplicationsReviewPage() || {};
-  const dispatch = useCheckerDispatchContext();
+  const { categorizedReviews, statCardsProps, poolData } = useGetApplicationsReviewPage() || {};
   const { poolId, chainId, address } = useCheckerContext();
+  const {
+    ReadyApplicationsToSubmit,
+    PendingApplications,
+    ApprovedApplications,
+    RejectedApplications,
+  } = useMemo(() => {
+    return {
+      ReadyApplicationsToSubmit: categorizedReviews?.READY_TO_REVIEW || [],
+      PendingApplications: categorizedReviews?.INREVIEW || [],
+      ApprovedApplications: categorizedReviews?.APPROVED || [],
+      RejectedApplications: categorizedReviews?.REJECTED || [],
+    };
+  }, [categorizedReviews, poolData]);
+
+  const dispatch = useCheckerDispatchContext();
 
   if (!poolId || !chainId) return null;
 
@@ -35,24 +51,19 @@ export const ReviewApplicationsPage = () => {
   const openApplicationOnManager = (projectId: string) => {
     dispatch(goToSubmitApplicationEvaluationAction({ projectId }));
   };
-  const ReadyApplicationsToSubmit = categorizedReviews?.READY_TO_REVIEW || [];
-
-  const PendingApplications = categorizedReviews?.INREVIEW || [];
-
-  const ApprovedApplications = categorizedReviews?.APPROVED || [];
-  const RejectedApplications = categorizedReviews?.REJECTED || [];
 
   return (
     <div className="flex flex-col gap-6 ">
       <PoolSummary
         chainId={chainId}
         poolId={poolId}
-        strategyName={application?.round.strategyName}
-        name={application?.round.roundMetadata.name ?? ""}
-        registerStartDate={new Date(application?.round.applicationsStartTime ?? new Date())}
-        registerEndDate={new Date(application?.round.applicationsEndTime ?? new Date())}
-        allocationStartDate={new Date(application?.round.donationsStartTime ?? new Date())}
-        allocationEndDate={new Date(application?.round.donationsEndTime ?? new Date())}
+        programId={poolData?.project.id as string}
+        strategyName={poolData?.strategyName}
+        name={poolData?.roundMetadata?.name}
+        applicationsStartTime={poolData?.applicationsStartTime}
+        applicationsEndTime={poolData?.applicationsEndTime}
+        donationsStartTime={poolData?.donationsStartTime}
+        donationsEndTime={poolData?.donationsEndTime}
       />
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-20">
         <div className="flex justify-start">
@@ -99,6 +110,7 @@ export const ReviewApplicationsPage = () => {
                   reviewer={address}
                   projects={ReadyApplicationsToSubmit}
                   action={goToApplicationEvaluationOverview}
+                  isPoolManager={poolData?.isPoolManager}
                 />
               )}
             </div>
@@ -123,6 +135,7 @@ export const ReviewApplicationsPage = () => {
                   reviewer={address}
                   projects={PendingApplications}
                   action={goToApplicationEvaluationOverview}
+                  isPoolManager={poolData?.isPoolManager}
                 />
               )}
             </div>

@@ -7,11 +7,32 @@ export interface CheckerApplication extends ProjectApplicationForManager, Checke
   lastFetchedAt?: Date;
 }
 
-export interface CheckerPoolData {
+export interface PoolInfo {
+  roundName: string;
+  roundMetadata: {
+    name: string;
+  };
+  project: {
+    id: string;
+  };
+  roles: {
+    address: string;
+  }[];
+  strategyAddress: string;
+  strategyName: string;
+  applicationsStartTime: string;
+  applicationsEndTime: string;
+  donationsEndTime: string;
+  donationsStartTime: string;
+  programId: string;
+}
+
+export interface CheckerPoolData extends PoolInfo {
   chainId: number;
   poolId: string;
   applications: Record<string, CheckerApplication>;
   evaluationQuestions: CheckerApiEvaluationQuestion[];
+  isPoolManager: boolean;
   lastFetchedAt: Date;
   isLoading?: boolean;
   isFetching?: boolean;

@@ -11,11 +11,9 @@ export interface CheckerProps {
   poolId: string;
   chainId: number;
   setEvaluationBody: (body: EvaluationBody) => void;
-  isSigning: boolean;
   isSuccess: boolean;
   isEvaluating: boolean;
   isError: boolean;
-  isErrorSigning: boolean;
   steps: Step[];
   setReviewBody: (reviewBody: ReviewBody | null) => void;
   isReviewing: boolean;

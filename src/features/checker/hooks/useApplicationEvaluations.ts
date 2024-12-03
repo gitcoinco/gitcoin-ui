@@ -15,5 +15,6 @@ export const useApplicationOverviewEvaluations = ({ applicationId }: { applicati
     application: poolData.applications[applicationId],
     applicationEvaluations: poolData.applications[applicationId].evaluations,
     evaluationQuestions: poolData.evaluationQuestions,
+    poolData,
   };
 };

@@ -19,11 +19,9 @@ export interface CheckerRouterProps {
   poolId: string;
   chainId: number;
   setEvaluationBody: (body: EvaluationBody) => void;
-  isSigning: boolean;
   isSuccess: boolean;
   isEvaluating: boolean;
   isError: boolean;
-  isErrorSigning: boolean;
   steps: Step[];
   setReviewBody: (reviewBody: ReviewBody | null) => void;
   isReviewing: boolean;
@@ -34,11 +32,9 @@ export const CheckerRouter = ({
   poolId,
   chainId,
   setEvaluationBody,
-  isSigning,
   isSuccess,
   isEvaluating,
   isError,
-  isErrorSigning,
   steps,
   setReviewBody,
   isReviewing,
@@ -56,6 +52,7 @@ export const CheckerRouter = ({
           chainId={chainId}
           poolId={poolId}
           applicationId={projectId}
+          address={address}
         />
       ),
     )
@@ -65,14 +62,13 @@ export const CheckerRouter = ({
         return (
           <SubmitApplicationEvaluationPage
             setEvaluationBody={setEvaluationBody}
-            isSigning={isSigning}
-            isErrorSigning={isErrorSigning}
             isSuccess={isSuccess}
             isEvaluating={isEvaluating}
             isError={isError}
             applicationId={projectId}
             chainId={chainId}
             poolId={poolId}
+            address={address}
           />
         );
       },

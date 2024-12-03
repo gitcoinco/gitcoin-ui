@@ -15,12 +15,13 @@ const variants = tv({
 export interface PoolSummaryProps {
   chainId: number;
   poolId: string;
-  name: string;
+  programId: string;
+  name?: string;
   strategyName?: string;
-  registerStartDate: Date;
-  registerEndDate: Date;
-  allocationStartDate: Date;
-  allocationEndDate: Date;
+  applicationsStartTime?: string;
+  applicationsEndTime?: string;
+  donationsStartTime?: string;
+  donationsEndTime?: string;
 }
 
 export const PoolSummary = (pool: PoolSummaryProps) => {
@@ -30,11 +31,22 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
 
   const now = new Date();
 
-  if (now >= pool.registerStartDate && now <= pool.registerEndDate) {
+  const registerStartDate = pool.applicationsStartTime
+    ? new Date(pool.applicationsStartTime)
+    : new Date();
+  const registerEndDate = pool.applicationsEndTime
+    ? new Date(pool.applicationsEndTime)
+    : new Date();
+  const allocationStartDate = pool.donationsStartTime
+    ? new Date(pool.donationsStartTime)
+    : new Date();
+  const allocationEndDate = pool.donationsEndTime ? new Date(pool.donationsEndTime) : new Date();
+
+  if (now >= registerStartDate && now <= registerEndDate) {
     poolStatus = PoolStatus.ApplicationsInProgress;
-  } else if (now > pool.registerEndDate && now <= pool.allocationStartDate) {
+  } else if (now > registerEndDate && now <= allocationStartDate) {
     poolStatus = PoolStatus.FundingPending;
-  } else if (now > pool.allocationStartDate && now <= pool.allocationEndDate) {
+  } else if (now > allocationStartDate && now <= allocationEndDate) {
     poolStatus = PoolStatus.RoundInProgress;
   } else {
     poolStatus = PoolStatus.PreRound;
@@ -44,8 +56,10 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
 
   const breadcrumbItems = [
     { label: "My Programs", href: "https://manager.gitcoin.co/#/" },
-    // TODO: Fix href for Program Details
-    { label: "Program Details", href: "https://manager.gitcoin.co/#/1" },
+    {
+      label: "Program Details",
+      href: `https://manager.gitcoin.co/#/chain/${pool.chainId}/program/${pool.programId}`,
+    },
     {
       label: "Round Details",
       href: `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`,
@@ -64,12 +78,12 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             iconVariant="size-6"
             iconType={chainInfo.icon}
             type="default"
-            label={pool.name}
+            label={pool.name ?? `Round ${pool.poolId}`}
           />
           <IconLabel
             type="roundPeriod"
-            startDate={pool.registerStartDate}
-            endDate={pool.registerEndDate}
+            startDate={allocationStartDate}
+            endDate={allocationEndDate}
           />
         </div>
       </div>

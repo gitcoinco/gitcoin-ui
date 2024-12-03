@@ -16,6 +16,7 @@ export const useInitialize = ({ address, poolId, chainId }: InitData) => {
   const dispatch = useCheckerDispatchContext();
 
   useEffect(() => {
+    if (!address || !poolId || !chainId) return;
     dispatch(setInitialStateAction({ address, poolId, chainId }));
   }, [address, poolId, chainId]);
 

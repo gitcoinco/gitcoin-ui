@@ -1,3 +1,5 @@
+import { PoolInfo } from "~checker/store/types";
+
 import { executeQuery } from "./alloClient";
 import {
   applicationsForManagerQuery,
@@ -9,13 +11,16 @@ import { PastApplication, ProjectApplication, ProjectApplicationForManager } fro
 export async function getApplicationsFromIndexer(
   chainId?: number,
   roundId?: string,
-): Promise<ProjectApplicationForManager[]> {
+): Promise<{ applications: ProjectApplicationForManager[]; roundData: PoolInfo }> {
   try {
     const response = await executeQuery(applicationsForManagerQuery, {
       chainId,
       roundId,
     });
-    return response.applications as ProjectApplicationForManager[];
+    return {
+      applications: response.applications as ProjectApplicationForManager[],
+      roundData: response.round as PoolInfo,
+    };
   } catch (e) {
     throw new Error(`Failed to fetch applications data. with error: ${e}`);
   }
