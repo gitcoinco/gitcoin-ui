@@ -1,6 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { match, P } from "ts-pattern";
+import { Hex } from "viem";
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -54,3 +56,8 @@ export function capitalizeWord(word: string): string {
   if (!word) return word;
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }
+
+export const addressFrom = (index: number): Hex => {
+  const address = index.toString(16).padStart(40, "0");
+  return `0x${address}`;
+};

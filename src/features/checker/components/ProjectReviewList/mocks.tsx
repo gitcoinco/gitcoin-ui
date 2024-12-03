@@ -1,3 +1,4 @@
+import { addressFrom } from "@/lib";
 import { ProjectReview } from "../../types";
 
 export const mockPendingReview0: ProjectReview[] = [
@@ -37,11 +38,11 @@ export const mockReadyToSubmit0: ProjectReview[] = [
     date: new Date(2024, 5, 3, 15, 0, 0),
     avatarUrl: "",
     reviews: [
-      { approved: true, reviewer: "0xJohnDoe" },
+      { approved: true, reviewer: addressFrom(1) },
       { approved: false, reviewer: "0xJaneDoe" },
       { approved: true, reviewer: "0xJoneDoe" },
     ],
-    aiSuggestion: 72,
+    aiSuggestion: 0,
     scoreAverage: 88,
   },
   {
