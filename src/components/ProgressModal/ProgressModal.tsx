@@ -70,7 +70,7 @@ function ModalStep({
         </span>
         <span className="ml-4 flex min-w-0 flex-col">
           <span
-            className={`font-mono text-[14px]/[16px] font-semibold uppercase tracking-wide ${nameColor}`}
+            className={`font-sans text-[14px]/[16px] font-semibold uppercase tracking-wide ${nameColor}`}
           >
             {step.name}
           </span>
