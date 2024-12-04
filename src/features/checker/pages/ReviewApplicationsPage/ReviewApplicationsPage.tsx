@@ -48,10 +48,6 @@ export const ReviewApplicationsPage = () => {
     window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`, "_blank");
   };
 
-  const openApplicationOnManager = (projectId: string) => {
-    dispatch(goToSubmitApplicationEvaluationAction({ projectId }));
-  };
-
   return (
     <div className="flex flex-col gap-6 ">
       <PoolSummary
@@ -159,8 +155,8 @@ export const ReviewApplicationsPage = () => {
                 <ProjectReviewList
                   reviewer={address}
                   projects={ApprovedApplications}
-                  action={openApplicationOnManager}
-                  actionLabel="View project"
+                  action={goToApplicationEvaluationOverview}
+                  actionLabel="View evaluations"
                   keepAction
                 />
               )}
@@ -185,8 +181,8 @@ export const ReviewApplicationsPage = () => {
                 <ProjectReviewList
                   reviewer={address}
                   projects={RejectedApplications}
-                  action={openApplicationOnManager}
-                  actionLabel="View project"
+                  action={goToApplicationEvaluationOverview}
+                  actionLabel="View evaluations"
                   keepAction
                 />
               )}

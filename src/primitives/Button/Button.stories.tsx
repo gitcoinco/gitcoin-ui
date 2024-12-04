@@ -20,6 +20,7 @@ const meta: Meta<typeof Button> = {
           "secondary",
           "error",
           "success",
+          "subtle",
           "outlined-error",
           "outlined-success",
           "outlined-primary",
@@ -152,6 +153,10 @@ export const OutlinedFilled: Story = {
       {
         variant: "outlined-success-filled",
         value: "Outlined Success Filled",
+      },
+      {
+        variant: "subtle",
+        value: "Subtle",
       },
     ];
 

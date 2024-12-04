@@ -79,14 +79,16 @@ export const ApplicationEvaluationOverviewPage = ({
           <div className="px-16">
             <EvaluationList evaluations={applicationEvaluations ?? []} />
           </div>
-          <div className="flex items-center justify-center">
-            <Button
-              variant="primary"
-              value="Perform evaluation"
-              className="w-44"
-              onClick={goToSubmitApplicationEvaluation}
-            />
-          </div>
+          {poolData?.isPoolManager && (
+            <div className="flex items-center justify-center">
+              <Button
+                variant="primary"
+                value="Perform evaluation"
+                className="w-44"
+                onClick={goToSubmitApplicationEvaluation}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

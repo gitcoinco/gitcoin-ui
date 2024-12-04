@@ -5,8 +5,9 @@ export const colors: Colors = {
   black: "#000000",
   white: "#ffffff",
   neutral: {
+    "25": "#F6F6F6",
     "50": "#F7F7F7",
-    "100": "#EBEBEBE",
+    "100": "#EBEBEB",
     "600": "#979998",
   },
   moss: {
