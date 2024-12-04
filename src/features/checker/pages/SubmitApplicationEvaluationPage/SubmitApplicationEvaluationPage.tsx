@@ -21,11 +21,7 @@ import { Markdown } from "@/primitives/Markdown/Markdown";
 import { useGetPastApplications, useInitialize } from "~checker/hooks";
 import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
 import { PastApplication } from "~checker/services/allo";
-import {
-  goToApplicationEvaluationOverviewAction,
-  goToSubmitFinalEvaluationAction,
-  useCheckerDispatchContext,
-} from "~checker/store";
+import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
 import { EvaluationStatus, EvaluationBody } from "~checker/types";
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
@@ -81,15 +77,11 @@ export const SubmitApplicationEvaluationPage = ({
     dispatch(goToApplicationEvaluationOverviewAction({ projectId: applicationId }));
   };
 
-  const goToSubmitFinalEvaluation = () => {
-    dispatch(goToSubmitFinalEvaluationAction());
-  };
-
   useEffect(() => {
     if ((isSuccess || isError) && isModalOpen) {
       showToast();
       setIsModalOpen(false);
-      goToSubmitFinalEvaluation();
+      goToApplicationEvaluationOverview();
       if (isSuccess) {
         queryClient.invalidateQueries({ queryKey: ["poolData", chainId, poolId, address] }); // Invalidate the query
       }
