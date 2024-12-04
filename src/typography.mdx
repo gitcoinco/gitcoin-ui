@@ -4,8 +4,9 @@ import { Meta, Typeset } from "@storybook/blocks";
 
 export const typography = {
   type: {
-    primary: "DM Sans, sans-serif",
-    secondary: "DM Mono, monospace",
+    primary: "Modern Era",
+    secondary: "DM Sans, sans-serif",
+    mono: "DM Mono, monospace",
   },
   weight: {
     thin: 100,
@@ -39,6 +40,29 @@ export const sampleText = "The quick brown fox jumps over the lazy dog.";
 
 # Typography
 
+**Font:** Modern Era
+
+**Weights:** 300(light), 700(bold)
+
+**Example:** 300(light)
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.s1),
+    Number(typography.size.s2),
+    Number(typography.size.s3),
+    Number(typography.size.m1),
+    Number(typography.size.m2),
+    Number(typography.size.m3),
+    Number(typography.size.l1),
+    Number(typography.size.l2),
+    Number(typography.size.l3),
+  ]}
+  fontWeight={typography.weight.light}
+  sampleText={sampleText}
+  fontFamily={typography.type.primary}
+/>
+
 **Font:** DM Sans
 
 **Weights:** 100(thin), 200(extra-light), 300(light), 400(regular), 500(medium), 600(semi-bold), 700(bold), 800(extra-bold), 900(black)
@@ -59,7 +83,7 @@ export const sampleText = "The quick brown fox jumps over the lazy dog.";
   ]}
   fontWeight={typography.weight.regular}
   sampleText={sampleText}
-  fontFamily={typography.type.primary}
+  fontFamily={typography.type.secondary}
 />
 
 **Font:** DM Mono
@@ -82,5 +106,5 @@ export const sampleText = "The quick brown fox jumps over the lazy dog.";
   ]}
   fontWeight={typography.weight.regular}
   sampleText={sampleText}
-  fontFamily={typography.type.secondary}
+  fontFamily={typography.type.mono}
 />
