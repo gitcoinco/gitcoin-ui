@@ -1,8 +1,7 @@
+import { ProjectReview, Review, addressFrom } from "@/mainAll";
 import { StatCardProps } from "@/primitives/StatCard";
 
 import { CheckerApplication } from "~checker/store";
-
-import { ProjectReview, Review } from "../types";
 
 // Define the structure of the function's return type
 interface ProjectReviewsResultByCategory {
@@ -14,7 +13,7 @@ interface ProjectReviewsResultByCategory {
 }
 
 // Define the AI evaluator address
-const AI_EVALUATOR_ADDRESS = "0x0000000000000000000000000000000000000001" as const;
+const AI_EVALUATOR_ADDRESS = addressFrom(1);
 
 // Utility function to categorize project reviews and calculate application counts
 export function categorizeProjectReviews(
@@ -68,7 +67,7 @@ export function categorizeProjectReviews(
     // Separate evaluations into AI and non-AI
     const aiEvaluations =
       application.evaluations?.filter(
-        (evaluation) => evaluation.evaluator.toLowerCase() === AI_EVALUATOR_ADDRESS.toLowerCase(),
+        (evaluation) => evaluation.evaluator === AI_EVALUATOR_ADDRESS,
       ) ?? [];
 
     const humanEvaluations =
@@ -106,7 +105,7 @@ export function categorizeProjectReviews(
     // Calculate AI suggestion score (average AI evaluator scores)
     const aiTotalScore =
       aiEvaluations?.reduce((sum, evaluation) => sum + evaluation.evaluatorScore, 0) ?? 0;
-    const aiSuggestion = aiEvaluations.length > 0 ? aiTotalScore / aiEvaluations.length : 0;
+    const aiSuggestion = aiEvaluations.length > 0 ? aiTotalScore / aiEvaluations.length : -1;
 
     const projectData = application.metadata.application.project;
 

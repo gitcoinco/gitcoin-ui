@@ -8,7 +8,6 @@ import { useGetApplicationsReviewPage } from "~checker/hooks";
 import {
   goToApplicationEvaluationOverviewAction,
   goToSubmitFinalEvaluationAction,
-  goToSubmitApplicationEvaluationAction,
   useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
@@ -48,6 +47,12 @@ export const ReviewApplicationsPage = () => {
     window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`, "_blank");
   };
 
+  const openCheckerApplicationEvaluations = (projectId: string) => {
+    window.open(
+      `https://beta.checker.gitcoin.co/view/application/${chainId}/${poolId}/${projectId}`,
+      "_blank",
+    );
+  };
   return (
     <div className="flex flex-col gap-6 ">
       <PoolSummary
@@ -155,7 +160,7 @@ export const ReviewApplicationsPage = () => {
                 <ProjectReviewList
                   reviewer={address}
                   projects={ApprovedApplications}
-                  action={goToApplicationEvaluationOverview}
+                  action={openCheckerApplicationEvaluations}
                   actionLabel="View evaluations"
                   keepAction
                 />
@@ -181,7 +186,7 @@ export const ReviewApplicationsPage = () => {
                 <ProjectReviewList
                   reviewer={address}
                   projects={RejectedApplications}
-                  action={goToApplicationEvaluationOverview}
+                  action={openCheckerApplicationEvaluations}
                   actionLabel="View evaluations"
                   keepAction
                 />
