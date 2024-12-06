@@ -11,21 +11,30 @@ const navbarVariants = tv({
     base: "top-0 flex h-[64px] w-full shrink-0 flex-col items-center justify-center gap-2 p-[10px_80px]",
     container: "flex w-full items-center justify-between",
     leftSection: "flex items-center gap-4",
-    logo: "h-10 max-w-12",
     divider: "h-4 border-r border-grey-700",
-    text: "text-lg font-semibold",
+    text: "font-mono text-lg",
     rightSection: "flex items-center",
   },
 });
 
-export interface NavbarProps {
-  primaryLogo?: string | React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  secondaryLogo?: string | React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  showDivider?: boolean;
+interface LogoProps {
+  link?: string;
+  img?: string | React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  size?: string;
+  color?: string;
+}
+
+interface TextProps {
   text: string;
-  primaryLogoLink?: string;
-  secondaryLogoLink?: string;
-  textLink?: string;
+  link?: string;
+  className?: string;
+}
+
+export interface NavbarProps {
+  primaryLogo?: LogoProps;
+  secondaryLogo?: LogoProps;
+  showDivider?: boolean;
+  text: TextProps;
   children?: React.ReactNode;
 }
 
@@ -34,46 +43,46 @@ export const Navbar = ({
   secondaryLogo,
   showDivider = true,
   text,
-  primaryLogoLink,
-  secondaryLogoLink,
-  textLink,
   children,
 }: NavbarProps) => {
-  const {
-    base,
-    container,
-    leftSection,
-    logo,
-    divider,
-    text: textStyle,
-    rightSection,
-  } = navbarVariants();
+  const { base, container, leftSection, divider, text: textStyle, rightSection } = navbarVariants();
 
-  const renderLogo = (
-    img: string | React.FunctionComponent<React.SVGAttributes<SVGElement>> | undefined,
-  ) => {
+  const renderLogo = ({ link, img, size = "h-10 max-w-12", color = "black" }: LogoProps) => {
+    const logoClasses = `${size} text-${color}`;
+
     if (!img) {
-      return <img src={defaultLogo} alt="Default Logo" className={logo()} />;
+      return <img src={defaultLogo} alt="Default Logo" className={logoClasses} />;
     }
 
     if (typeof img === "string") {
-      return <img src={img} alt="Logo" className={logo()} />;
+      return <img src={img} alt="Logo" className={logoClasses} />;
     }
 
     const LogoComponent = img;
-    return <LogoComponent className={logo()} />;
+    return (
+      <a href={link || "#"}>
+        <LogoComponent className={logoClasses} />
+      </a>
+    );
+  };
+
+  const renderText = ({ text, link, className = "" }: TextProps) => {
+    const textClasses = `${textStyle()} ${className}`;
+    return (
+      <a href={link || "#"} className={textClasses}>
+        {text}
+      </a>
+    );
   };
 
   return (
     <nav className={base()}>
       <div className={container()}>
         <div className={leftSection()}>
-          <a href={primaryLogoLink || "#"}>{renderLogo(primaryLogo)}</a>
+          {renderLogo(primaryLogo || {})}
           {showDivider && <div className={divider()}></div>}
-          {secondaryLogo && <a href={secondaryLogoLink || "#"}>{renderLogo(secondaryLogo)}</a>}
-          <a href={textLink || "#"} className={textStyle()}>
-            {text}
-          </a>
+          {secondaryLogo && renderLogo(secondaryLogo)}
+          {renderText(text)}
         </div>
         <div className={rightSection()}>{children}</div>
       </div>
