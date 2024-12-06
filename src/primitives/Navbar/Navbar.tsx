@@ -51,9 +51,7 @@ export const Navbar = ({
     const logoClasses = `${size} text-${color}`;
 
     if (!img) {
-      return (
-        <img src={defaultLogo} alt="Default Logo" className={logoClasses} />
-      );
+      return <img src={defaultLogo} alt="Default Logo" className={logoClasses} />;
     }
 
     if (typeof img === "string") {
