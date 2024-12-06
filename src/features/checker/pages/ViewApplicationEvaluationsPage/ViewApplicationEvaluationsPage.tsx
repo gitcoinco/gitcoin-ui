@@ -69,7 +69,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
             <Button
               value="View public page"
               variant="none"
-              className=" h-[38px] w-40 rounded-lg border-none bg-white font-mono text-black"
+              className="h-[38px] w-40 bg-white"
               onClick={() => {
                 window.open(
                   `https://explorer.gitcoin.co/#/round/${chainId}/${poolId}/${applicationId}`,

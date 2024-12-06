@@ -2,15 +2,13 @@ import { Address } from "viem";
 
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
+import { ReviewsCounterLabel } from "@/mainAll";
 import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
 import { ProjectReview } from "~checker/types";
 import { getReviewsCount } from "~checker/utils/getReviewsCount";
-
-import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
-import { addressFrom } from "@/lib";
 
 export interface ProjectReviewListProps {
   projects: ProjectReview[];
@@ -68,8 +66,8 @@ export const ProjectReviewList = ({
       header: "AI Suggestion",
       key: "aiSuggestion",
       width: "0.9fr",
-      render: (item) => { // addressFrom(1) === ai evaluator 
-        return item.reviews.some(review => review.reviewer === addressFrom(1)) ? (
+      render: (item) => {
+        return item.aiSuggestion >= 0 ? (
           <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
         ) : (
           <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
@@ -94,12 +92,14 @@ export const ProjectReviewList = ({
       position: "center",
       render: (item) => {
         const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
+        const isDisabled = !keepAction && (!isPoolManager || isReviewed);
+        const defaultActionLabel = isReviewed ? "View evaluation" : "Evaluate project";
         return (
           <div className="flex items-center justify-center">
             <Button
-              variant="outlined-secondary"
-              value={actionLabel ?? "Evaluate project"}
-              disabled={keepAction ? false : !isPoolManager || isReviewed}
+              variant={isDisabled ? "disabled" : "subtle"}
+              value={actionLabel ?? defaultActionLabel}
+              disabled={!isPoolManager && !keepAction}
               onClick={() => {
                 if (action) {
                   action(item.id);

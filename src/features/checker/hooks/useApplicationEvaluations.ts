@@ -11,10 +11,14 @@ export const useApplicationOverviewEvaluations = ({ applicationId }: { applicati
 
   if (!poolData) return null;
 
+  const application = poolData.applications[applicationId];
+  const applicationEvaluations = application?.evaluations ?? [];
+  const evaluationQuestions = poolData.evaluationQuestions;
+
   return {
-    application: poolData.applications[applicationId],
-    applicationEvaluations: poolData.applications[applicationId].evaluations,
-    evaluationQuestions: poolData.evaluationQuestions,
+    application,
+    applicationEvaluations,
+    evaluationQuestions,
     poolData,
   };
 };

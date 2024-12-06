@@ -75,18 +75,20 @@ export const ApplicationEvaluationOverviewPage = ({
         <p className="leading-9 text-grey-900">
           Evaluate this project and see how others have evaluated this project.
         </p>
-        <div className="flex flex-col gap-8">
+        <div className="mb-64 flex flex-col gap-8">
           <div className="px-16">
             <EvaluationList evaluations={applicationEvaluations ?? []} />
           </div>
-          <div className="flex items-center justify-center">
-            <Button
-              variant="primary"
-              value="Perform evaluation"
-              className="w-44"
-              onClick={goToSubmitApplicationEvaluation}
-            />
-          </div>
+          {poolData?.isPoolManager && (
+            <div className="flex items-center justify-center">
+              <Button
+                variant="primary"
+                value="Perform evaluation"
+                className="w-44"
+                onClick={goToSubmitApplicationEvaluation}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

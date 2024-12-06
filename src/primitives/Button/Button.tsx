@@ -16,6 +16,7 @@ export type ButtonVariants =
   | "outlined-secondary"
   | "outlined-disabled"
   | "disabled"
+  | "subtle"
   | undefined;
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -30,6 +31,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 
 export type ButtonSizes = "default" | "sm" | "md" | "lg" | "icon" | undefined;
 
+// eslint-disable-next-line tailwindcss/no-custom-classname
 const buttonVariants = tv({
   base: "inline-flex h-[32px] items-center justify-center gap-2 whitespace-nowrap rounded-[8px] px-[12px] py-[8px] font-mono text-[14px] font-medium leading-[16px] ring-offset-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-neutral-950",
   variants: {
@@ -37,6 +39,7 @@ const buttonVariants = tv({
       primary: "border-brand bg-brand text-white",
       secondary: "border-neutral-100 bg-neutral-100 text-black",
       grey: "border-neutral-300 bg-neutral-300 text-black",
+      subtle: "bg-neutral-25 text-black",
       error: "border-red-50 bg-red-50 text-red-700",
       success: "border-moss-50 bg-moss-50 text-moss-700",
       "outlined-error": "border-2 border-red-700 text-red-900",

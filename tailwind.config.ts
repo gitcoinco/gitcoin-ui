@@ -31,6 +31,7 @@ export default withTV({
       fontFamily: {
         mono: ["DM Mono", "serif"],
         sans: ["DM Sans", "sans-serif"],
+        "modern-era": ["Modern Era", "sans-serif"],
       },
       borderRadius: {
         "3.5": "14px",

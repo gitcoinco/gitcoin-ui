@@ -8,7 +8,6 @@ import { useGetApplicationsReviewPage } from "~checker/hooks";
 import {
   goToApplicationEvaluationOverviewAction,
   goToSubmitFinalEvaluationAction,
-  goToSubmitApplicationEvaluationAction,
   useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
@@ -48,10 +47,12 @@ export const ReviewApplicationsPage = () => {
     window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`, "_blank");
   };
 
-  const openApplicationOnManager = (projectId: string) => {
-    dispatch(goToSubmitApplicationEvaluationAction({ projectId }));
+  const openCheckerApplicationEvaluations = (projectId: string) => {
+    window.open(
+      `https://beta.checker.gitcoin.co/view/application/${chainId}/${poolId}/${projectId}`,
+      "_blank",
+    );
   };
-
   return (
     <div className="flex flex-col gap-6 ">
       <PoolSummary
@@ -77,17 +78,17 @@ export const ReviewApplicationsPage = () => {
         <StatCardGroup stats={statCardsProps || []} justify="center" />
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <div className="font-mono text-2xl font-medium leading-loose text-black">
+            <div className="font-sans text-2xl font-medium leading-loose text-black">
               Review applications
             </div>
-            <div className="font-mono text-base font-normal leading-7 text-grey-900">
+            <div className="font-sans text-base font-normal leading-7 text-grey-900">
               Evaluate projects here.
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-between pb-1">
-                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                <div className="font-sans text-2xl font-medium leading-loose text-black">
                   {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
                 </div>
                 <Button
@@ -101,7 +102,7 @@ export const ReviewApplicationsPage = () => {
 
             <div>
               {ReadyApplicationsToSubmit.length === 0 ? (
-                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                <div className="font-sans text-base font-normal leading-7 text-grey-900">
                   Evaluations that are ready to be submitted onchain will appear here once reviewed.
                   Manager supports multiple reviewers.
                 </div>
@@ -118,7 +119,7 @@ export const ReviewApplicationsPage = () => {
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-start pb-1">
-                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                <div className="font-sans text-2xl font-medium leading-loose text-black">
                   {`In Review (${PendingApplications.length})`}
                 </div>
               </div>
@@ -127,7 +128,7 @@ export const ReviewApplicationsPage = () => {
 
             <div>
               {PendingApplications.length === 0 ? (
-                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                <div className="font-sans text-base font-normal leading-7 text-grey-900">
                   No applications are currently in review.
                 </div>
               ) : (
@@ -159,8 +160,8 @@ export const ReviewApplicationsPage = () => {
                 <ProjectReviewList
                   reviewer={address}
                   projects={ApprovedApplications}
-                  action={openApplicationOnManager}
-                  actionLabel="View project"
+                  action={openCheckerApplicationEvaluations}
+                  actionLabel="View evaluations"
                   keepAction
                 />
               )}
@@ -185,8 +186,8 @@ export const ReviewApplicationsPage = () => {
                 <ProjectReviewList
                   reviewer={address}
                   projects={RejectedApplications}
-                  action={openApplicationOnManager}
-                  actionLabel="View project"
+                  action={openCheckerApplicationEvaluations}
+                  actionLabel="View evaluations"
                   keepAction
                 />
               )}
