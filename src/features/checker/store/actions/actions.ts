@@ -5,6 +5,7 @@ import {
   GoToSubmitFinalEvaluationAction,
   SetInitialStateAction,
   SetPoolDataAction,
+  SetRouteHistoryAction,
 } from "./types";
 
 export const setInitialStateAction = (
@@ -38,5 +39,12 @@ export const goToSubmitFinalEvaluationAction = (): GoToSubmitFinalEvaluationActi
 
 export const setPoolDataAction = (payload: SetPoolDataAction["payload"]): SetPoolDataAction => ({
   type: "SET_POOL_DATA",
+  payload,
+});
+
+export const setRouteHistoryAction = (
+  payload: SetRouteHistoryAction["payload"],
+): SetRouteHistoryAction => ({
+  type: "SET_ROUTE_HISTORY",
   payload,
 });
