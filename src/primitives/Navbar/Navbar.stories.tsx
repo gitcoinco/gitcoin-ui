@@ -12,26 +12,22 @@ const meta = {
   title: "Primitives/Navbar",
   component: Navbar,
   args: {
-    text: "My Navbar",
+    text: {
+      text: "My Navbar",
+    },
   },
   argTypes: {
     primaryLogo: {
-      control: "text",
+      control: "object",
     },
     secondaryLogo: {
-      control: "text",
+      control: "object",
     },
-    primaryLogoLink: {
-      control: "text",
-    },
-    secondaryLogoLink: {
-      control: "text",
-    },
-    textLink: {
-      control: "text",
+    showDivider: {
+      control: "boolean",
     },
     text: {
-      control: "text",
+      control: "object",
     },
     children: {
       control: "text",
@@ -45,36 +41,77 @@ type Story = StoryObj<typeof Navbar>;
 
 export const Default: Story = {
   args: {
-    primaryLogoLink: "#",
-    secondaryLogo: CheckerIcon,
-    secondaryLogoLink: "#",
-    textLink: "#",
+    primaryLogo: {
+      link: "#",
+    },
+    text: {
+      text: "My Navbar",
+      link: "#",
+    },
   },
 };
 
 export const WithSecondaryLogo: Story = {
   args: {
-    primaryLogoLink: "#",
-    secondaryLogo: DefaultLogo,
-    secondaryLogoLink: "#",
-    textLink: "#",
+    primaryLogo: {
+      link: "#",
+    },
+    secondaryLogo: {
+      img: DefaultLogo,
+      link: "#",
+    },
+    text: {
+      text: "My Navbar",
+      link: "#",
+    },
   },
 };
 
 export const WithCustomTextAndWithoutDivider: Story = {
   args: {
-    primaryLogoLink: "#",
-    text: "Custom Navbar",
-    textLink: "#",
+    primaryLogo: {
+      link: "#",
+    },
+    text: {
+      text: "Custom Navbar",
+      link: "#",
+    },
     showDivider: false,
   },
 };
 
 export const WithChildren: Story = {
   args: {
-    secondaryLogo: DefaultLogo,
-    secondaryLogoLink: "#",
-    textLink: "#",
+    secondaryLogo: {
+      img: DefaultLogo,
+      link: "#",
+    },
+    text: {
+      text: "My Navbar",
+      link: "#",
+    },
     children: <Button value="Connect Wallet" />,
+  },
+};
+
+export const WithCustomSizeAndColor: Story = {
+  args: {
+    primaryLogo: {
+      img: DefaultLogo,
+      link: "#",
+      size: "h-16 w-16",
+      color: "blue-500",
+    },
+    secondaryLogo: {
+      img: CheckerIcon,
+      link: "#",
+      size: "w-8",
+      color: "moss-500",
+    },
+    text: {
+      text: "Custom Size and Color Navbar",
+      link: "#",
+      className: "text-xl text-purple-700",
+    },
   },
 };
