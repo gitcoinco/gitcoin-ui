@@ -106,7 +106,7 @@ export const WithCustomSizeAndColor: Story = {
       img: CheckerIcon,
       link: "#",
       size: "w-8",
-      color: "moss-500",
+      color: "#d30000",
     },
     text: {
       text: "Custom Size and Color Navbar",
