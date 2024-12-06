@@ -67,7 +67,7 @@ export const ProjectReviewList = ({
       key: "aiSuggestion",
       width: "0.9fr",
       render: (item) => {
-        return item.aiSuggestion > 0 ? (
+        return item.aiSuggestion >= 0 ? (
           <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
         ) : (
           <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
