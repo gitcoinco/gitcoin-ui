@@ -11,7 +11,7 @@ const navbarVariants = tv({
     base: "top-0 flex h-[64px] w-full shrink-0 flex-col items-center justify-center gap-2 p-[10px_80px]",
     container: "flex w-full items-center justify-between",
     leftSection: "flex items-center gap-4",
-    divider: "h-4 border-r border-grey-700",
+    divider: "h-4 border-r-1.5 border-grey-700",
     text: "font-mono text-lg",
     rightSection: "flex items-center",
   },
@@ -60,7 +60,7 @@ export const Navbar = ({
 
     const LogoComponent = img;
     return (
-      <a href={link || "#"}>
+      <a href={link || "#"} style={{ color: color }}>
         <LogoComponent className={logoClasses} />
       </a>
     );
@@ -81,8 +81,10 @@ export const Navbar = ({
         <div className={leftSection()}>
           {renderLogo(primaryLogo || {})}
           {showDivider && <div className={divider()}></div>}
-          {secondaryLogo && renderLogo(secondaryLogo)}
-          {renderText(text)}
+          <div className="flex items-center gap-2">
+            {secondaryLogo && renderLogo(secondaryLogo)}
+            {renderText(text)}
+          </div>
         </div>
         <div className={rightSection()}>{children}</div>
       </div>

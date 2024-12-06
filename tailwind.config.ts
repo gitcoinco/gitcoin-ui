@@ -2,13 +2,19 @@ import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
+
+
 import { colors } from "./src/tokens/colors";
+
 
 export default withTV({
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
     extend: {
+      borderWidth: {
+        "1.5": "1.5px",
+      },
       height: {
         "18": "4.5rem",
       },
