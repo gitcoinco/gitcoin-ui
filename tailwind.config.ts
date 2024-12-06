@@ -5,6 +5,7 @@ import tailwindcssAnimate from "tailwindcss-animate";
 import { colors } from "./src/tokens/colors";
 
 export default withTV({
+  mode: "jit",
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
