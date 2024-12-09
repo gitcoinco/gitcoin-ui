@@ -35,7 +35,8 @@ export const colors: Colors = {
   neutral: {
     "25": "#F6F6F6",
     "50": "#F7F7F7",
-    "100": "#EBEBEB",
+    "100": "#E5E5E5",
+    "200": "#E6E6E6",
     "600": "#979998",
   },
   moss: {
@@ -63,6 +64,7 @@ export const colors: Colors = {
     "300": "#ADDB7B",
     "400": "#00433B",
     "500": "#7ABF39",
+    "600": "#65a30d",
     "700": "#426A21",
     "900": "#30491E",
   },
@@ -95,6 +97,7 @@ export const colors: Colors = {
   },
   orange: {
     "300": "#FF9776",
+    "400": "#DE3714",
     "600": "#A2401F",
   },
 };

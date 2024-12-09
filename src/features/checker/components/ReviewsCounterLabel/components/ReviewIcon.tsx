@@ -16,9 +16,9 @@ const iconVariants = tv({
   },
   variants: {
     status: {
-      approved: { icon: "fill-green-600" },
+      approved: { icon: "fill-green-500" },
       rejected: { icon: "fill-red-500" },
-      pending: { icon: "fill-yellow-200" },
+      pending: { icon: "fill-yellow-300" },
     },
     withCounter: {
       true: { container: "flex h-7 w-14 items-center gap-1 rounded-3.5 px-1.5 py-1" },

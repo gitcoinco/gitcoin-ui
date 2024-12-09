@@ -20,6 +20,7 @@ const variants = tv({
 export interface PoolTypeBadgeProps {
   value?: PoolType;
   className?: string;
+  isLoading?: boolean;
 }
 
 const badgeTexts = {
@@ -29,11 +30,11 @@ const badgeTexts = {
 
 const invalidValueText = "Error: Invalid type";
 
-export const PoolTypeBadge: React.FC<PoolTypeBadgeProps> = ({ value, className }) => {
+export const PoolTypeBadge: React.FC<PoolTypeBadgeProps> = ({ value, className, isLoading }) => {
   const variantClass = variants({ value });
 
-  return match({ value })
-    .with({ value: undefined }, () => <Badge skeleton className={className} size="md" />)
+  return match({ value, isLoading })
+    .with({ isLoading: true }, () => <Badge skeleton className={className} size="md" />)
     .with({ value: P.when(isPoolType) }, ({ value }) => (
       <Badge className={cn(className, variantClass)}>{badgeTexts[value]}</Badge>
     ))

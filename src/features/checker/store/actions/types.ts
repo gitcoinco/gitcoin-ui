@@ -1,6 +1,6 @@
 import { Hex } from "viem";
 
-import { CheckerPoolData } from "../types";
+import { CheckerPoolData, CheckerPoolFetchState } from "../types";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
@@ -38,10 +38,16 @@ export interface SetPoolDataAction {
   payload: CheckerPoolData;
 }
 
+export interface SetPoolFetchStateAction {
+  type: "SET_POOL_DATA_FETCH_STATE";
+  payload: CheckerPoolFetchState;
+}
+
 export type CheckerAction =
   | SetInitialStateAction
   | SetPoolDataAction
   | GoToReviewApplicationsAction
   | GoToApplicationEvaluationOverviewAction
   | GoToSubmitApplicationEvaluationAction
-  | GoToSubmitFinalEvaluationAction;
+  | GoToSubmitFinalEvaluationAction
+  | SetPoolFetchStateAction;

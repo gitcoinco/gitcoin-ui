@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const variants = tv({
   slots: {
-    container: "flex flex-wrap  items-center",
+    container: "flex flex-wrap items-center",
     icon: "size-5",
     text: "text-[16px]/[24px]",
   },
@@ -13,7 +13,7 @@ export const variants = tv({
       },
       "ai-evaluation-a": {
         container: "gap-1",
-        icon: "fill-green-600",
+        icon: "fill-green-500",
       },
       "ai-evaluation-u": {
         container: "gap-1",
@@ -22,6 +22,10 @@ export const variants = tv({
       "ai-evaluation-r": {
         container: "gap-1",
         icon: "fill-red-700",
+      },
+      loading: {
+        container: "gap-1",
+        icon: "animate-pulse fill-neutral-200",
       },
       date: {
         container: "gap-2",

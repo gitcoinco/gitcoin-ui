@@ -6,3 +6,4 @@ export * from "./ProjectReviewList";
 export * from "./ReviewDropdown";
 export * from "./ReviewDropdownList";
 export * from "./ReviewsCounterLabel";
+export * from "./ApplicationsSection";

@@ -2,7 +2,7 @@ import { IconLabel } from "@/components/IconLabel";
 import { capitalizeWord, getAddressLabel } from "@/lib/utils";
 import { IconType, ListGrid, ListGridColumn } from "@/primitives";
 
-import { Evaluation } from "../../types";
+import { Evaluation } from "~checker/types";
 
 export interface EvaluationListProps {
   evaluations: Evaluation[];

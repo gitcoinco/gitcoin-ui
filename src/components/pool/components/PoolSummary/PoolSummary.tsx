@@ -13,6 +13,7 @@ const variants = tv({
 });
 
 export interface PoolSummaryProps {
+  isLoading?: boolean;
   chainId: number;
   poolId: string;
   programId: string;
@@ -68,28 +69,31 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   return (
     <div className={cn(variants.variants.default, "grid grid-cols-2")}>
       <div className="flex flex-col items-start justify-start gap-4">
-        <Breadcrumb items={breadcrumbItems} />
+        <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
         <div className="flex flex-col gap-2">
           <div>
-            <PoolBadge type="poolType" badge={poolType} />
+            <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
           </div>
           <IconLabel
             textVariant="text-[36px]/[39px]"
             iconVariant="size-6"
             iconType={chainInfo.icon}
             type="default"
-            label={pool.name ?? `Round ${pool.poolId}`}
+            label={pool.name}
+            isLoading={pool.isLoading}
+            laodingSkeletonClassName="h-10 w-72 rounded-lg"
           />
           <IconLabel
             type="roundPeriod"
             startDate={allocationStartDate}
             endDate={allocationEndDate}
+            isLoading={pool.isLoading}
           />
         </div>
       </div>
       <div className="flex flex-col items-end justify-between">
         <div className="flex items-end">
-          <PoolBadge type="poolStatus" badge={poolStatus} />
+          <PoolBadge type="poolStatus" badge={poolStatus} isLoading={pool?.isLoading} />
         </div>
         <div className="flex items-end gap-6">
           <Button

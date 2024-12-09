@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { match, P } from "ts-pattern";
 import { Hex } from "viem";
 
@@ -42,6 +44,11 @@ export const CheckerRouter = ({
   useInitialize({ address, poolId, chainId });
 
   const { route } = useCheckerContext();
+
+  // When route changes scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [route]);
 
   return match(route)
     .with({ id: CheckerRoute.ReviewApplications }, () => <ReviewApplicationsPage />)
