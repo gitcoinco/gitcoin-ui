@@ -90,13 +90,13 @@ export const Playground: Story = {
     iconType: IconType.ETH,
     label: "Default Label",
     percent: 77, // Default for evaluation
-    date: new Date(), // Default for date
+    date: new Date("2024-12-09T19:22:56.413Z"), // Default for date
     prefix: "Applied on: ", // Default for dateWithPrefix
     address: "0xE307051C410e970b861CC55CBFD5Acc7BB477750", // Default for address
     link: "https://github.com/user", // Default for social
     isVerified: false, // Default for social
-    startDate: new Date(), // Default for period
-    endDate: new Date(), // Default for period
+    startDate: new Date("2024-12-09T19:22:56.413Z"), // Default for period
+    endDate: new Date("2024-12-10T19:23:30.678Z"), // Default for period
   },
 };
 
@@ -132,7 +132,7 @@ export const AIEvaluation: Story = {
 export const DateLabel: Story = {
   args: {
     type: "date",
-    date: new Date(),
+    date: new Date("2024-12-10T19:23:30.678Z"),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -145,8 +145,8 @@ export const DateLabel: Story = {
 export const Period: Story = {
   args: {
     type: "period",
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: new Date("2024-12-09T19:22:56.413Z"),
+    endDate: new Date("2024-12-10T19:23:30.678Z"),
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
@@ -161,7 +161,7 @@ export const Period: Story = {
 export const DateWithPrefix: Story = {
   args: {
     type: "dateWithPrefix",
-    date: new Date(),
+    date: new Date("2024-12-10T19:23:30.678Z"),
     prefix: "Applied on:",
   },
   play: async ({ canvasElement }) => {
