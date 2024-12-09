@@ -23,7 +23,7 @@ export type BadgeVariants =
   | undefined;
 
 const badgeVariants = tv({
-  base: "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[20px] px-[12px] py-[2px] font-mono text-[12px] font-normal leading-[18px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-neutral-950",
+  base: "focus-visible:ring-neutral-950 dark:ring-offset-neutral-950 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[20px] px-[12px] py-[2px] font-mono text-[12px] font-normal leading-[18px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none",
   variants: {
     variant: {
       info: "border-transparent bg-yellow-100",
@@ -37,11 +37,11 @@ const badgeVariants = tv({
       "outlined-info": "border-2 border-yellow-100 bg-white",
       "outlined-success": "border-2 border-green-100 bg-white",
       "outlined-warning": "border-2 border-red-100 bg-white",
-      "outlined-error": "border border-red-400 bg-white text-red-400",
+      "outlined-error": "border border-red-900 bg-white text-red-900",
       "outlined-success-strong": "border-2 border-green-300 bg-white",
       "outlined-warning-strong": "border-2 border-red-300 bg-white",
       "outlined-info-strong": "border-2 border-yellow-300 bg-white",
-      skeleton: "h-[22px] border-transparent bg-gray-200",
+      skeleton: "border-transparent bg-gray-200 h-[22px]",
     },
     size: {
       xs: "min-w-[68px]",

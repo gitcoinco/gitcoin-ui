@@ -1,9 +1,37 @@
-import { Colors } from "./types";
+import { Colors, ColorSet } from "./types";
+
+const black = "#000000";
+
+const white = "#ffffff";
+
+const grey: ColorSet = {
+  "50": "#F7F7F7",
+  "100": "#ECEDED",
+  "300": "#C8CCCC",
+  "500": "#959C9C",
+  "700": "#555555",
+  "900": "#4B5050",
+};
 
 export const colors: Colors = {
+  text: {
+    primary: black,
+    secondary: grey["900"],
+    tertiary: grey["500"],
+    white,
+  },
+  background: {
+    primary: white,
+    secondary: grey["50"],
+    tertiary: grey["100"],
+  },
+  border: {
+    primary: grey["100"],
+  },
+
   brand: "#307168",
-  black: "#000000",
-  white: "#ffffff",
+  black,
+  white,
   neutral: {
     "25": "#F6F6F6",
     "50": "#F7F7F7",
@@ -18,14 +46,7 @@ export const colors: Colors = {
     "700": "#22635A",
     "900": "#1E443F",
   },
-  grey: {
-    "50": "#F7F7F7",
-    "100": "#ECEDED",
-    "300": "#C8CCCC",
-    "500": "#959C9C",
-    "700": "#555555",
-    "900": "#4B5050",
-  },
+  grey,
   blue: {
     "50": "#F2F9FD",
     "100": "#E4F0FA",
@@ -49,7 +70,6 @@ export const colors: Colors = {
     "50": "#FEF5F2",
     "100": "#FFE8E1",
     "300": "#FFB7A0",
-    "400": "#DE3714",
     "500": "#F56A3E",
     "700": "#BE3F17",
     "900": "#82331A",
@@ -75,5 +95,6 @@ export const colors: Colors = {
   },
   orange: {
     "300": "#FF9776",
+    "600": "#A2401F",
   },
 };
