@@ -2,15 +2,13 @@ import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
-
-
 import { colors } from "./src/tokens/colors";
-
 
 export default withTV({
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
+    colors: colors,
     extend: {
       borderWidth: {
         "1.5": "1.5px",
@@ -45,7 +43,6 @@ export default withTV({
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      colors: colors,
       keyframes: {
         "accordion-down": {
           from: {

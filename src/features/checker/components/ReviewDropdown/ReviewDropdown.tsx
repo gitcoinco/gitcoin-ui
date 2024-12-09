@@ -11,10 +11,10 @@ import { Evaluation } from "../../types";
 
 const ReviewDropdownVariants = tv({
   slots: {
-    header: "flex w-full items-center justify-between gap-4 py-8 pr-2",
+    header: "flex w-full items-center justify-between gap-4 py-4 pr-2",
     headerLeft: "flex flex-1 items-center gap-4",
     headerRight: "flex items-center justify-end gap-4",
-    content: "flex w-full flex-col gap-6 p-8",
+    content: "flex w-full flex-col gap-6 px-12 py-4",
     textRow: "space-x-1 text-left",
     status: "text-grey-500",
     reviewTitle: "font-sans text-xl text-black",
@@ -55,7 +55,7 @@ export const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
   return (
     <Accordion
       border="md"
-      padding="md"
+      padding="lg"
       variant={accordionVariant}
       header={<ReviewDropdownHeader evaluation={evaluation} index={index} />}
       content={<ReviewDropdownContent evaluation={evaluation} />}
@@ -165,7 +165,7 @@ const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation })
           key={index}
           className="flex items-start gap-2 font-sans text-base font-normal leading-7 text-black"
         >
-          <span className="mt-1 shrink-0">{getIcon(evaluation.answer)}</span>
+          <span className="mt-0.5 shrink-0">{getIcon(evaluation.answer)}</span>
           <p className="grow">{evaluation.evaluationQuestion?.question}</p>
         </div>
       ))}
@@ -175,16 +175,16 @@ const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation })
 
 const getIcon = (value: string) => {
   const iconMap = {
-    APPROVED: IconType.SOLID_CHECK,
-    REJECTED: IconType.SOLID_X,
-    YES: IconType.SOLID_CHECK,
-    NO: IconType.SOLID_X,
-    UNCERTAIN: IconType.SOLID_QUESTION_MARK_CIRCLE,
+    APPROVED: [IconType.SOLID_CHECK, "fill-brand"],
+    REJECTED: [IconType.SOLID_X, "fill-orange-600"],
+    YES: [IconType.SOLID_CHECK, "fill-brand"],
+    NO: [IconType.SOLID_X, "fill-orange-600"],
+    UNCERTAIN: [IconType.SOLID_QUESTION_MARK_CIRCLE, "fill-yellow-300"],
   };
 
-  const iconType = Object.keys(iconMap).includes(value)
+  const [iconType, iconColor] = Object.keys(iconMap).includes(value)
     ? iconMap[value as keyof typeof iconMap]
-    : IconType.SOLID_QUESTION_MARK_CIRCLE;
+    : [IconType.SOLID_QUESTION_MARK_CIRCLE, "fill-yellow-300"];
 
-  return <Icon className="my-0.5" type={iconType} />;
+  return <Icon className={`my-0.5 ${iconColor}`} type={iconType as IconType} />;
 };

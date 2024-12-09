@@ -13,7 +13,7 @@ const variants = tv({
       [PoolStatus.PreRound]: "border border-green-400 bg-white text-green-400",
       [PoolStatus.RoundInProgress]: "border-transparent bg-green-200 text-black",
       [PoolStatus.ApplicationsInProgress]: "border-transparent bg-blue-100",
-      [PoolStatus.FundingPending]: "border border-red-400 bg-white text-red-400",
+      [PoolStatus.FundingPending]: "border border-red-900 bg-white text-red-900",
     },
   },
 });

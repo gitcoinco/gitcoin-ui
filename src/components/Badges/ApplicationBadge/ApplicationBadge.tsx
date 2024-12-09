@@ -41,7 +41,7 @@ export const ApplicationBadge: React.FC<ApplicationBadgeProps> = (props) => {
     }))
 
     .otherwise(() => ({
-      variant: "border border-red-400 bg-white text-red-400",
+      variant: "border border-red-900 bg-white text-red-900",
       text: "Error: Invalid Application Status",
     }));
 
