@@ -4,6 +4,7 @@ import { match } from "ts-pattern";
 
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
 import { getAddressLabel } from "@/lib/utils";
+import { Skeleton } from "@/primitives";
 import { Icon, IconType } from "@/primitives/Icon";
 
 import { IconLabelContainer } from "./IconLabelContainer";
@@ -11,12 +12,16 @@ import { IconLabelProps } from "./types";
 import { getEvaluation, getFormattedLink } from "./utils";
 import { variants } from "./variants";
 
-export const IconLabel: React.FC<IconLabelProps> = (props) => {
+export const IconLabel: React.FC<
+  IconLabelProps & {
+    isLoading?: boolean;
+  }
+> = (props) => {
   const { text, icon } = variants();
 
   return match(props)
-    .with({ type: "ai-evaluation" }, ({ percent = 0, className }) => {
-      const { message, variant } = getEvaluation(percent) as keyof typeof icon;
+    .with({ type: "ai-evaluation" }, ({ percent = 0, className, isLoading }) => {
+      const { message, variant } = getEvaluation(percent, isLoading) as keyof typeof icon;
 
       return (
         <IconLabelContainer
@@ -25,67 +30,102 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
           iconType={IconType.SPARKLES}
           iconVariant={icon({ type: variant })}
         >
-          <span className={text()}>{message}</span>
+          {match(isLoading)
+            .with(true, () => <Skeleton className="h-6 w-24 rounded-lg" />)
+            .otherwise(() => (
+              <span className={text()}>{message}</span>
+            ))}
         </IconLabelContainer>
       );
     })
 
-    .with({ type: "date" }, ({ date = new Date(), className }) => (
+    .with({ type: "date" }, ({ date = new Date(), className, isLoading }) => (
       <IconLabelContainer
         type="date"
         className={className}
         iconType={IconType.CLOCK}
-        iconVariant={icon({ type: "date" })}
+        iconVariant={icon({ type: isLoading ? "loading" : "date" })}
       >
-        <span className={text()}>{formatDate(date, DateFormat.FullDate24Hour)}</span>
+        {match(isLoading)
+          .with(true, () => <Skeleton className="h-6 w-40 rounded-lg" />)
+          .otherwise(() => (
+            <span className={text()}>{formatDate(date, DateFormat.FullDate24Hour)}</span>
+          ))}
       </IconLabelContainer>
     ))
-    .with({ type: "period" }, ({ startDate = new Date(), endDate = new Date(), className }) => (
-      <IconLabelContainer
-        type="period"
-        className={className}
-        iconType={IconType.CALENDAR}
-        iconVariant={icon({ type: "dateWithPrefix" })}
-      >
-        <span className={text({ type: "dateWithPrefix" })}>{`${formatDate(
-          startDate,
-          DateFormat.ShortMonthDayYear,
-        )} - ${formatDate(endDate, DateFormat.ShortMonthDayYear)}`}</span>
-      </IconLabelContainer>
-    ))
-    .with({ type: "roundPeriod" }, ({ startDate = new Date(), endDate = undefined, className }) => (
-      <IconLabelContainer
-        type="period"
-        className={className}
-        iconType={IconType.CLOCK}
-        iconVariant={icon({ type: "roundPeriod" })}
-      >
-        <span className={text({ type: "roundPeriod" })}>{`Review period: ${formatDate(
-          startDate,
-          DateFormat.ShortMonthDayYear24HourUTC,
-        )} - ${
-          endDate
-            ? formatDate(endDate, DateFormat.ShortMonthDayYear24HourUTC)
-            : "No end date (open round)"
-        }`}</span>
-      </IconLabelContainer>
-    ))
-    .with({ type: "dateWithPrefix" }, ({ date = new Date(), prefix, className }) => (
+    .with(
+      { type: "period" },
+      ({ startDate = new Date(), endDate = new Date(), className, isLoading }) => (
+        <IconLabelContainer
+          type="period"
+          className={className}
+          iconType={IconType.CALENDAR}
+          iconVariant={icon({ type: isLoading ? "loading" : "dateWithPrefix" })}
+        >
+          {match(isLoading)
+            .with(true, () => <Skeleton className="h-6 w-102 rounded-lg" />)
+            .otherwise(() => (
+              <span className={text()}>{`${formatDate(
+                startDate,
+                DateFormat.ShortMonthDayYear,
+              )} - ${formatDate(endDate, DateFormat.ShortMonthDayYear)}`}</span>
+            ))}
+        </IconLabelContainer>
+      ),
+    )
+    .with(
+      { type: "roundPeriod" },
+      ({ startDate = new Date(), endDate = undefined, className, isLoading }) => (
+        <IconLabelContainer
+          type="period"
+          className={className}
+          iconType={IconType.CLOCK}
+          iconVariant={icon({ type: isLoading ? "loading" : "roundPeriod" })}
+        >
+          {match(isLoading)
+            .with(true, () => (
+              <div className="flex items-center gap-1">
+                <span className={text({ type: "roundPeriod" })}>{`Review period:`}</span>
+                <Skeleton className="h-6 w-72 rounded-lg" />
+              </div>
+            ))
+            .otherwise(() => (
+              <span className={text({ type: "roundPeriod" })}>{`Review period: ${formatDate(
+                startDate,
+                DateFormat.ShortMonthDayYear24HourUTC,
+              )} - ${
+                endDate
+                  ? formatDate(endDate, DateFormat.ShortMonthDayYear24HourUTC)
+                  : "No end date (open round)"
+              }`}</span>
+            ))}
+        </IconLabelContainer>
+      ),
+    )
+    .with({ type: "dateWithPrefix" }, ({ date = new Date(), prefix, className, isLoading }) => (
       <IconLabelContainer
         type="date"
         className={className}
         iconType={IconType.CALENDAR}
-        iconVariant={icon({ type: "dateWithPrefix" })}
+        iconVariant={icon({ type: isLoading ? "loading" : "dateWithPrefix" })}
       >
-        <span className={text({ type: "dateWithPrefix" })}>{`${prefix} ${formatDate(
-          date,
-          DateFormat.FullDate12Hour,
-        )}`}</span>
+        {match(isLoading)
+          .with(true, () => (
+            <div className="flex items-center gap-1">
+              <span className={text({ type: "roundPeriod" })}>{prefix}</span>
+              <Skeleton className="h-6 w-52 rounded-lg" />
+            </div>
+          ))
+          .otherwise(() => (
+            <span className={text({ type: "dateWithPrefix" })}>{`${prefix} ${formatDate(
+              date,
+              DateFormat.FullDate12Hour,
+            )}`}</span>
+          ))}
       </IconLabelContainer>
     ))
     .with({ type: "address" }, ({ address, ens, className }) => {
       const label = getAddressLabel(ens, address);
-
       return (
         <IconLabelContainer
           type="default"
@@ -97,7 +137,7 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
         </IconLabelContainer>
       );
     })
-    .with({ type: "social" }, ({ platform, link, isVerified = false, className }) => {
+    .with({ type: "social" }, ({ platform, link, isVerified = false, className, isLoading }) => {
       const formattedLink = getFormattedLink(platform, link);
       const iconType = match(platform)
         .with("github", () => IconType.GITHUB)
@@ -111,25 +151,44 @@ export const IconLabel: React.FC<IconLabelProps> = (props) => {
           iconType={iconType}
           iconVariant={icon({ type: "default" })}
         >
-          <a href={link} target="_blank" rel="noreferrer" className={text({ type: "social" })}>
-            {formattedLink}
-          </a>
+          {match(isLoading)
+            .with(true, () => <Skeleton className="h-6 w-32 rounded-lg" />)
+            .otherwise(() => (
+              <a href={link} target="_blank" rel="noreferrer" className={text({ type: "social" })}>
+                {formattedLink}
+              </a>
+            ))}
           {isVerified && (
             <Icon type={IconType.VERIFIEDBADGE} className={icon({ type: "verifiedBadge" })} />
           )}
         </IconLabelContainer>
       );
     })
-    .with({ type: "default" }, ({ iconType, label, className, iconVariant, textVariant }) => (
-      <IconLabelContainer
-        type="default"
-        className={className}
-        iconType={iconType}
-        iconVariant={iconVariant ?? icon({ type: "default" })}
-      >
-        <span className={textVariant ?? text({ type: "default" })}>{label}</span>
-      </IconLabelContainer>
-    ))
+    .with(
+      { type: "default" },
+      ({
+        iconType,
+        label,
+        className,
+        iconVariant,
+        textVariant,
+        laodingSkeletonClassName,
+        isLoading,
+      }) => (
+        <IconLabelContainer
+          type="default"
+          className={className}
+          iconType={isLoading ? undefined : iconType}
+          iconVariant={iconVariant ?? icon({ type: "default" })}
+        >
+          {match(isLoading)
+            .with(true, () => <Skeleton className={laodingSkeletonClassName} />)
+            .otherwise(() => (
+              <span className={textVariant ?? text({ type: "default" })}>{label}</span>
+            ))}
+        </IconLabelContainer>
+      ),
+    )
     .otherwise(() => (
       <IconLabelContainer
         type="default"

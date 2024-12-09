@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
 import { PoolSummary } from "@/components";
-import { Button, Icon, IconType, StatCardGroup } from "@/primitives";
+import { ApplicationsSection } from "@/mainAll";
+import { Button, Icon, IconType, StatCardGroup, StatCardProps } from "@/primitives";
 
-import { ProjectReviewList } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
 import {
   goToApplicationEvaluationOverviewAction,
@@ -12,28 +12,29 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 
-const canSubmitFinalEvaluation = true;
-
 export const ReviewApplicationsPage = () => {
-  const { categorizedReviews, statCardsProps, poolData } = useGetApplicationsReviewPage() || {};
-  const { poolId, chainId, address } = useCheckerContext();
+  const { categorizedReviews, statCardsProps, poolData, poolFetchState } =
+    useGetApplicationsReviewPage() || {};
+  const { poolId, chainId } = useCheckerContext();
   const {
     ReadyApplicationsToSubmit,
     PendingApplications,
     ApprovedApplications,
     RejectedApplications,
+    isLoading,
   } = useMemo(() => {
     return {
       ReadyApplicationsToSubmit: categorizedReviews?.READY_TO_REVIEW || [],
       PendingApplications: categorizedReviews?.INREVIEW || [],
       ApprovedApplications: categorizedReviews?.APPROVED || [],
       RejectedApplications: categorizedReviews?.REJECTED || [],
+      isLoading: poolFetchState?.isLoading,
     };
-  }, [categorizedReviews, poolData]);
+  }, [categorizedReviews, poolData, poolFetchState]);
 
   const dispatch = useCheckerDispatchContext();
 
-  if (!poolId || !chainId) return null;
+  if (!poolId || !chainId || isLoading === undefined) return null;
 
   const goToApplicationEvaluationOverview = (projectId: string) => {
     dispatch(goToApplicationEvaluationOverviewAction({ projectId }));
@@ -44,7 +45,7 @@ export const ReviewApplicationsPage = () => {
   };
 
   const openRoundInManager = () => {
-    window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`, "_blank");
+    window.open(`https://manager.gitcoin.co/#/chain/${chainId}/rounds/${poolId}`, "_blank");
   };
 
   const openCheckerApplicationEvaluations = (projectId: string) => {
@@ -53,9 +54,11 @@ export const ReviewApplicationsPage = () => {
       "_blank",
     );
   };
+
   return (
     <div className="flex flex-col gap-6 ">
       <PoolSummary
+        isLoading={isLoading}
         chainId={chainId}
         poolId={poolId}
         programId={poolData?.project.id as string}
@@ -75,7 +78,7 @@ export const ReviewApplicationsPage = () => {
             value="back to round manager"
           />
         </div>
-        <StatCardGroup stats={statCardsProps || []} justify="center" />
+        <StatCardGroup stats={statCardsProps as StatCardProps[]} justify="center" />
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <div className="font-sans text-2xl font-medium leading-loose text-black">
@@ -85,114 +88,48 @@ export const ReviewApplicationsPage = () => {
               Evaluate projects here.
             </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="pb-1">
-              <div className="flex items-center justify-between pb-1">
-                <div className="font-sans text-2xl font-medium leading-loose text-black">
-                  {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
-                </div>
-                <Button
-                  value="Submit final evaluation"
-                  disabled={!canSubmitFinalEvaluation}
-                  onClick={goToSubmitFinalEvaluation}
-                />
-              </div>
-              <div className="h-px bg-grey-300" />
-            </div>
-
-            <div>
-              {ReadyApplicationsToSubmit.length === 0 ? (
-                <div className="font-sans text-base font-normal leading-7 text-grey-900">
-                  Evaluations that are ready to be submitted onchain will appear here once reviewed.
-                  Manager supports multiple reviewers.
-                </div>
-              ) : (
-                <ProjectReviewList
-                  reviewer={address}
-                  projects={ReadyApplicationsToSubmit}
-                  action={goToApplicationEvaluationOverview}
-                  isPoolManager={poolData?.isPoolManager}
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <div className="pb-1">
-              <div className="flex items-center justify-start pb-1">
-                <div className="font-sans text-2xl font-medium leading-loose text-black">
-                  {`In Review (${PendingApplications.length})`}
-                </div>
-              </div>
-              <div className="h-px bg-[#c8cccc]" />
-            </div>
-
-            <div>
-              {PendingApplications.length === 0 ? (
-                <div className="font-sans text-base font-normal leading-7 text-grey-900">
-                  No applications are currently in review.
-                </div>
-              ) : (
-                <ProjectReviewList
-                  reviewer={address}
-                  projects={PendingApplications}
-                  action={goToApplicationEvaluationOverview}
-                  isPoolManager={poolData?.isPoolManager}
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <div className="pb-1">
-              <div className="flex items-center justify-start pb-1">
-                <div className="font-mono text-2xl font-medium leading-loose text-black">
-                  {`Approved applications (${ApprovedApplications.length})`}
-                </div>
-              </div>
-              <div className="h-px bg-[#c8cccc]" />
-            </div>
-
-            <div>
-              {ApprovedApplications.length === 0 ? (
-                <div className="font-mono text-base font-normal leading-7 text-grey-900">
-                  No approved applications.
-                </div>
-              ) : (
-                <ProjectReviewList
-                  reviewer={address}
-                  projects={ApprovedApplications}
-                  action={openCheckerApplicationEvaluations}
-                  actionLabel="View evaluations"
-                  keepAction
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <div className="pb-1">
-              <div className="flex items-center justify-start pb-1">
-                <div className="font-mono text-2xl font-medium leading-loose text-black">
-                  {`Rejected applications (${RejectedApplications.length})`}
-                </div>
-              </div>
-              <div className="h-px bg-[#c8cccc]" />
-            </div>
-
-            <div>
-              {RejectedApplications.length === 0 ? (
-                <div className="font-mono text-base font-normal leading-7 text-grey-900">
-                  No rejected applications.
-                </div>
-              ) : (
-                <ProjectReviewList
-                  reviewer={address}
-                  projects={RejectedApplications}
-                  action={openCheckerApplicationEvaluations}
-                  actionLabel="View evaluations"
-                  keepAction
-                />
-              )}
-            </div>
-          </div>
+          <ApplicationsSection
+            label="Ready to submit"
+            zeroApplicationsLabel="Evaluations that are ready to be submitted onchain will appear here once reviewed."
+            count={ReadyApplicationsToSubmit.length}
+            isLoading={isLoading}
+            applications={ReadyApplicationsToSubmit}
+            action={goToApplicationEvaluationOverview}
+            isPoolManager={poolData?.isPoolManager}
+            isReadyToSubmit
+            goToSubmitFinalEvaluation={goToSubmitFinalEvaluation}
+          />
+          <ApplicationsSection
+            label="In Review"
+            zeroApplicationsLabel="No applications are currently in review."
+            count={PendingApplications.length}
+            isLoading={isLoading}
+            applications={PendingApplications}
+            action={goToApplicationEvaluationOverview}
+            isPoolManager={poolData?.isPoolManager}
+          />
+          <ApplicationsSection
+            label="Approved applications"
+            zeroApplicationsLabel="No approved applications."
+            count={ApprovedApplications.length}
+            isLoading={isLoading}
+            applications={ApprovedApplications}
+            action={openCheckerApplicationEvaluations}
+            isPoolManager={poolData?.isPoolManager}
+            keepAction
+            actionLabel="View evaluations"
+          />
+          <ApplicationsSection
+            label="Rejected applications"
+            zeroApplicationsLabel="No rejected applications."
+            count={RejectedApplications.length}
+            isLoading={isLoading}
+            applications={RejectedApplications}
+            action={openCheckerApplicationEvaluations}
+            isPoolManager={poolData?.isPoolManager}
+            actionLabel="View evaluations"
+            keepAction
+          />
         </div>
       </div>
     </div>

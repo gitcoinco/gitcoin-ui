@@ -41,7 +41,7 @@ const badgeVariants = tv({
       "outlined-success-strong": "border-2 border-green-300 bg-white",
       "outlined-warning-strong": "border-2 border-red-300 bg-white",
       "outlined-info-strong": "border-2 border-yellow-300 bg-white",
-      skeleton: "border-transparent bg-gray-200 h-[22px]",
+      skeleton: "border-transparent h-[22px] bg-neutral-200",
     },
     size: {
       xs: "min-w-[68px]",

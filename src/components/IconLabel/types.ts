@@ -51,10 +51,11 @@ export interface SocialProps {
 export interface DefaultProps {
   type: "default";
   iconType: IconType;
-  label: string;
+  label?: string;
   iconVariant?: string;
   textVariant?: string;
   className?: string;
+  laodingSkeletonClassName?: string;
 }
 
 export type IconLabelProps =
