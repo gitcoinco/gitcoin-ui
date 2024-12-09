@@ -5,6 +5,7 @@ import {
   GoToSubmitFinalEvaluationAction,
   SetInitialStateAction,
   SetPoolDataAction,
+  SetPoolFetchStateAction,
 } from "./types";
 
 export const setInitialStateAction = (
@@ -38,5 +39,12 @@ export const goToSubmitFinalEvaluationAction = (): GoToSubmitFinalEvaluationActi
 
 export const setPoolDataAction = (payload: SetPoolDataAction["payload"]): SetPoolDataAction => ({
   type: "SET_POOL_DATA",
+  payload,
+});
+
+export const setPoolFetchStateAction = (
+  payload: SetPoolFetchStateAction["payload"],
+): SetPoolFetchStateAction => ({
+  type: "SET_POOL_DATA_FETCH_STATE",
   payload,
 });

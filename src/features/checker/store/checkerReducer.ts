@@ -10,6 +10,18 @@ export const checkerReducer = (
   switch (action.type) {
     case "SET_INITIAL_STATE":
       return { ...state, ...action.payload };
+    case "SET_POOL_DATA_FETCH_STATE": {
+      const { poolId, chainId } = action.payload;
+      const poolUUID = generatePoolUUID(poolId, chainId);
+      if (!poolUUID) return state;
+      return {
+        ...state,
+        poolsFetchState: {
+          ...state.poolsFetchState,
+          [poolUUID]: action.payload,
+        },
+      };
+    }
     case "GO_TO_REVIEW_APPLICATIONS":
       return { ...state, route: { id: CheckerRoute.ReviewApplications } };
     case "GO_TO_APPLICATION_EVALUATION_OVERVIEW":
