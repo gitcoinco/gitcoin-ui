@@ -36,12 +36,17 @@ export const Toaster = () => {
           {toasts.map((toast) => {
             const ToastIcon = match(toast.status)
               .with("success", () => (
-                <Icon type={IconType.SOLID_CHECK} className="size-5 rounded-full" />
+                <Icon type={IconType.SOLID_CHECK} className="size-5 rounded-full fill-brand" />
               ))
-              .with("error", () => <Icon type={IconType.SOLID_X} className="size-5 rounded-full" />)
-              // .with("info", () => (
-              //   <Icon type={IconType.SOLID_INFO} className="size-5 rounded-full" />
-              // ))
+              .with("error", () => (
+                <Icon type={IconType.SOLID_X} className="size-5 rounded-full fill-red-700" />
+              ))
+              .with("info", () => (
+                <Icon
+                  type={IconType.EXCLAMATION_CIRCLE}
+                  className="size-5 rounded-full fill-yellow-300"
+                />
+              ))
               // .with("warning", () => (
               //   <Icon type={IconType.SOLID_WARNING} className="size-5 rounded-full" />
               // ))
