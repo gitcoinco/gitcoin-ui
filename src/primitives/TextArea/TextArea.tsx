@@ -30,7 +30,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ className, size, heading, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-2">
-        {heading && <div className="font-sans text-[16px] font-bold leading-[24px]">{heading}</div>}
+        {heading && (
+          <div className="font-ui-sans text-[16px] font-bold leading-[24px]">{heading}</div>
+        )}
         <textarea className={cn(textareaVariants({ size }), className)} ref={ref} {...props} />
       </div>
     );

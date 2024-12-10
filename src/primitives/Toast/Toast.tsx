@@ -154,7 +154,7 @@ interface ToastDescriptionProps
     VariantProps<typeof toastDescriptionVariants> {}
 
 export const toastDescriptionVariants = tv({
-  base: "w-[288px] font-mono text-base font-normal leading-6",
+  base: "w-[288px] font-ui-mono text-base font-normal leading-6",
   variants: {
     size: {
       small: "text-sm",

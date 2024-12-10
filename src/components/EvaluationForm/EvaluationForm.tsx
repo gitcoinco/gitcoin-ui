@@ -10,7 +10,7 @@ const formVariants = tv({
 });
 
 const headingStyles =
-  "font-sans text-[24px] font-500 leading-[32px] tracking-[-0.006em] text-left bg-white";
+  "font-ui-sans text-[24px] font-500 leading-[32px] tracking-[-0.006em] text-left bg-white";
 
 export interface EvaluationFormProps {
   onSubmit: (data: {

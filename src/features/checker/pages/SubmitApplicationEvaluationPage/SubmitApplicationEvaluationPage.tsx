@@ -263,10 +263,10 @@ export const SubmitApplicationEvaluationPage = ({
                     }
                     return (
                       <div key={index} className="flex flex-col gap-2">
-                        <span className="font-sans text-[16px]/[24px] font-bold">
+                        <span className="font-ui-sans text-[16px]/[24px] font-bold">
                           {answer.question}
                         </span>
-                        <span className="font-sans text-[16px]/[24px] font-normal">
+                        <span className="font-ui-sans text-[16px]/[24px] font-normal">
                           <Markdown>{answer.answer}</Markdown>
                         </span>
                       </div>
@@ -309,7 +309,7 @@ export const SubmitApplicationEvaluationPage = ({
             />
           </div>
 
-          <div className="rounded-[20px] border border-gray-100 p-5">
+          <div className="border-gray-100 rounded-[20px] border p-5">
             <EvaluationForm groups={groups} onSubmit={handleSubmit} />
           </div>
         </div>

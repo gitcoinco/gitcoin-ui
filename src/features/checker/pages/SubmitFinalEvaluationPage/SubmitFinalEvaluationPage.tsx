@@ -138,17 +138,17 @@ export const SubmitFinalEvaluationPage = ({
 
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <div className="font-sans text-2xl font-medium leading-loose text-black">
+            <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
               Review applications
             </div>
-            <div className="font-sans text-base font-normal leading-7 text-grey-900">
+            <div className="font-ui-sans text-base font-normal leading-7 text-grey-900">
               Evaluate projects here.
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-between pb-1">
-                <div className="font-sans text-2xl font-medium leading-loose text-black">
+                <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
                   {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
                 </div>
                 <div className="flex gap-2">
@@ -167,7 +167,7 @@ export const SubmitFinalEvaluationPage = ({
 
             <div>
               {ReadyApplicationsToSubmit.length === 0 ? (
-                <div className="font-sans text-base font-normal leading-7 text-grey-900">
+                <div className="font-ui-sans text-base font-normal leading-7 text-grey-900">
                   Evaluations that are ready to be submitted onchain will appear here once reviewed.
                   Manager supports multiple reviewers.
                 </div>

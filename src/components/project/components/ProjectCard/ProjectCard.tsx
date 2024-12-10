@@ -38,8 +38,8 @@ export function ProjectDataCard({ data }: ProjectDataCardProps) {
         </div>
       </div>
       <CardContent className="pt-12">
-        <h2 className="mb-2 font-sans text-2xl font-bold">{data.title}</h2>
-        <p className="text-grey-400 line-clamp-4 font-sans">{data.description}</p>
+        <h2 className="mb-2 font-ui-sans text-2xl font-bold">{data.title}</h2>
+        <p className="text-grey-400 line-clamp-4 font-ui-sans">{data.description}</p>
       </CardContent>
     </Card>
   );
@@ -49,7 +49,7 @@ export function LoadingCard() {
   return (
     <Card className="block max-w-sm overflow-hidden" role="presentation">
       <div className="relative">
-        <Skeleton className="h-[120px] w-full rounded-md bg-neutral-300" />
+        <Skeleton className="bg-neutral-300 h-[120px] w-full rounded-md" />
       </div>
       <CardContent className="pt-12 text-center">
         <Skeleton className="mb-2 h-10 w-full rounded-md" />

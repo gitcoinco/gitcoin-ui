@@ -23,7 +23,7 @@ export type BadgeVariants =
   | undefined;
 
 const badgeVariants = tv({
-  base: "focus-visible:ring-neutral-950 dark:ring-offset-neutral-950 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[20px] px-[12px] py-[2px] font-mono text-[12px] font-normal leading-[18px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none",
+  base: "focus-visible:ring-neutral-950 dark:ring-offset-neutral-950 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[20px] px-[12px] py-[2px] font-ui-mono text-[12px] font-normal leading-[18px] text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none",
   variants: {
     variant: {
       info: "border-transparent bg-yellow-100",
