@@ -8,27 +8,27 @@ interface AIEvaluationProps {
 
 interface DateProps {
   type: "date";
-  date?: Date;
+  date: Date;
   className?: string;
 }
 
 interface PeriodProps {
   type: "period";
-  startDate?: Date;
-  endDate?: Date;
+  startDate: Date;
+  endDate: Date;
   className?: string;
 }
 
 interface RoundPeriodProps {
   type: "roundPeriod";
-  startDate?: Date;
+  startDate: Date;
   endDate?: Date;
   className?: string;
 }
 
 interface DateWithPrefixProps {
   type: "dateWithPrefix";
-  date?: Date;
+  date: Date;
   prefix: string;
   className?: string;
 }

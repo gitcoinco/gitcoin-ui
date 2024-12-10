@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-
-
 import { IconLabel } from "@/components/IconLabel";
 
 import { IconType } from "../Icon";
@@ -98,7 +96,11 @@ export const coolProject: Story = {
             />
           </div>
           <div className="flex flex-col gap-4">
-            <IconLabel type="dateWithPrefix" prefix="Applied on:" date={new Date()} />
+            <IconLabel
+              type="dateWithPrefix"
+              prefix="Applied on:"
+              date={new Date("2024-12-10T08:25:41.371Z")}
+            />
             <IconLabel type="social" platform="github" link={"https://twitter.com/user"} />
           </div>
         </div>

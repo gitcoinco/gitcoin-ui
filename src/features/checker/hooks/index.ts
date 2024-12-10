@@ -1,5 +1,5 @@
-export * from "./useApplication";
 export * from "./useApplicationEvaluations";
+export * from "./useApplicationOverviewEvaluations";
 export * from "./useGetApplicationsFinalEvaluationPage";
 export * from "./useGetApplicationsReviewPage";
 export * from "./useGetPastApplications";

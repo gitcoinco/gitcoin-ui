@@ -132,7 +132,7 @@ export const skeletonColumns = getProjectReviewListColumns({}).map((col) => {
   if (col.key === "date") {
     return {
       ...col,
-      render: () => <IconLabel type="date" isLoading />,
+      render: () => <IconLabel type="date" isLoading date={new Date()} />,
     };
   }
   if (col.key === "reviews") {
