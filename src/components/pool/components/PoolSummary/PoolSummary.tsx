@@ -3,6 +3,7 @@ import { tv } from "tailwind-variants";
 import { IconLabel, PoolBadge } from "@/components";
 import { getChainInfo } from "@/lib";
 import { cn } from "@/lib/utils";
+import { getManagerUrl, getBuilderUrl, getExplorerUrl, useToast } from "@/mainAll";
 import { Breadcrumb, Button, Icon, IconType } from "@/primitives";
 import { PoolStatus, PoolType } from "@/types";
 
@@ -26,7 +27,13 @@ export interface PoolSummaryProps {
 }
 
 export const PoolSummary = (pool: PoolSummaryProps) => {
+  const { toast } = useToast();
   const chainInfo = getChainInfo(pool.chainId);
+
+  const managerUrl = getManagerUrl(pool.chainId);
+  const builderUrl = getBuilderUrl(pool.chainId);
+  const explorerUrl = getExplorerUrl(pool.chainId);
+
   let poolStatus: PoolStatus;
   const poolType = pool.strategyName as PoolType;
 
@@ -52,18 +59,18 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   } else {
     poolStatus = PoolStatus.PreRound;
   }
-  const applyLink = `https://builder.gitcoin.co/#/chains/${pool.chainId}/round/${pool.poolId}/apply`;
-  const explorerLink = `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`;
-
+  const applyLink = `${builderUrl}/#/chains/${pool.chainId}/rounds/${pool.poolId}/apply`;
+  const explorerLink = `${explorerUrl}/#/round/${pool.chainId}/${pool.poolId}`;
+  const managetProgramLink = `${managerUrl}/#/chain/${pool.chainId}/program/${pool.programId}`;
   const breadcrumbItems = [
-    { label: "My Programs", href: "https://manager.gitcoin.co/#/" },
+    { label: "My Programs", href: managerUrl },
     {
       label: "Program Details",
-      href: `https://manager.gitcoin.co/#/chain/${pool.chainId}/program/${pool.programId}`,
+      href: managetProgramLink,
     },
     {
       label: "Round Details",
-      href: `https://explorer.gitcoin.co/#/round/${pool.chainId}/${pool.poolId}`,
+      href: explorerLink,
     },
   ];
   return (
@@ -100,7 +107,19 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             icon={<Icon type={IconType.LINK} />}
             className="border-gray-100 bg-white text-black shadow-sm"
             value="Round application"
-            onClick={() => window.open(applyLink, "_blank")}
+            onClick={() => {
+              navigator.clipboard.writeText(applyLink).then(
+                () => {
+                  toast({
+                    status: "success",
+                    description: "Successfully copied to clipboard",
+                  });
+                },
+                (err) => {
+                  console.error("Failed to copy: ", err);
+                },
+              );
+            }}
           />
           <Button
             icon={<Icon type={IconType.EXPLORER} />}

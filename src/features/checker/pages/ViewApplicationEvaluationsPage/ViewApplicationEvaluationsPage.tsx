@@ -3,6 +3,7 @@ import React from "react";
 import { ProjectBanner, ProjectSummary } from "@/components";
 import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
+import { getExplorerUrl } from "@/mainAll";
 import { Badge, Button, Icon, IconType } from "@/primitives";
 
 import { ReviewDropdownList } from "~checker/components";
@@ -72,7 +73,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
               className="h-[38px] w-40 bg-white"
               onClick={() => {
                 window.open(
-                  `https://explorer.gitcoin.co/#/round/${chainId}/${poolId}/${applicationId}`,
+                  `${getExplorerUrl(chainId)}/#/round/${chainId}/${poolId}/${applicationId}`,
                   "_blank",
                 );
               }}

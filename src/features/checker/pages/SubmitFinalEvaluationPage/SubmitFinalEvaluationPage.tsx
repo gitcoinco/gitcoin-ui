@@ -6,6 +6,7 @@ import { match } from "ts-pattern";
 import { Step } from "@/components/ProgressModal";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { useToast } from "@/hooks/use-toast";
+import { getManagerUrl } from "@/mainAll";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
@@ -129,7 +130,7 @@ export const SubmitFinalEvaluationPage = ({
             variant="secondry"
             icon={<Icon type={IconType.CHEVRON_LEFT} />}
             onClick={() =>
-              window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`)
+              window.open(`${getManagerUrl(chainId as number)}/#/chain/${chainId}/round/${poolId}`)
             }
             value="back to round manager"
           />
