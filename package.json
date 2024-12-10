@@ -133,6 +133,7 @@
     ]
   },
   "dependencies": {
+    "@gitcoin/gitcoin-chain-data": "^1.0.43",
     "@heroicons/react": "1.0.6",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.1",

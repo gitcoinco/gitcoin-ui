@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@gitcoin/gitcoin-chain-data':
+        specifier: ^1.0.43
+        version: 1.0.43(typescript@5.4.2)(zod@3.23.8)
       '@heroicons/react':
         specifier: 1.0.6
         version: 1.0.6(react@18.3.1)
@@ -904,6 +907,12 @@ packages:
 
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+
+  '@gitcoin/gitcoin-chain-data@1.0.43':
+    resolution: {integrity: sha512-Qgoybs3t2AEHyvW2EqUsaR/1FNdD/dbQjg847U4Bs+SY/KIM4fzKo0e5RCVMFP0gHntP5JSQv+UVV19E7VgCAg==}
+    engines: {node: '>=16.15.0', npm: '>=8.5.5'}
+    peerDependencies:
+      typescript: ^5.0.0
 
   '@gitcoinco/passport-sdk-types@0.2.0':
     resolution: {integrity: sha512-qS7P4atgeAEfI6VlGcoXr10E6SsKAlHiPNfSyr25HJpnNomi7J0Yy6krscUPiPsn1eCKOFQeC8uDqTdiXXMGLw==}
@@ -7326,6 +7335,15 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
 
   '@floating-ui/utils@0.2.8': {}
+
+  '@gitcoin/gitcoin-chain-data@1.0.43(typescript@5.4.2)(zod@3.23.8)':
+    dependencies:
+      typescript: 5.4.2
+      viem: 2.21.52(typescript@5.4.2)(zod@3.23.8)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+      - zod
 
   '@gitcoinco/passport-sdk-types@0.2.0': {}
 
