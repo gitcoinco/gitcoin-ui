@@ -2,8 +2,11 @@ import React from "react";
 
 import { match } from "ts-pattern";
 
-import { ProjectReview, ProjectReviewList, useCheckerContext } from "@/mainAll";
 import { Button, Skeleton } from "@/primitives";
+
+import { ProjectReviewList } from "~checker/components";
+import { useCheckerContext } from "~checker/store";
+import { ProjectReview } from "~checker/types";
 
 export interface SectionCountHeadingProps {
   label: string;
