@@ -9,6 +9,7 @@
     "dist"
   ],
   "exports": {
+    "./styles.css": "./dist/style.css",
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
