@@ -6,7 +6,6 @@ import { match } from "ts-pattern";
 import { Step } from "@/components/ProgressModal";
 import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
 import { useToast } from "@/hooks/use-toast";
-import { getManagerUrl } from "@/mainAll";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
@@ -19,6 +18,7 @@ import {
   useCheckerContext,
 } from "~checker/store";
 import { EvaluationAction, ReviewBody } from "~checker/types";
+import { getManagerUrl } from "~checker/utils";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
 

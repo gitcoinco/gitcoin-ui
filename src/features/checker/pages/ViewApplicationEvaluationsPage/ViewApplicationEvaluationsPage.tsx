@@ -3,11 +3,11 @@ import React from "react";
 import { ProjectBanner, ProjectSummary } from "@/components";
 import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
-import { getExplorerUrl } from "@/mainAll";
 import { Badge, Button, Icon, IconType } from "@/primitives";
 
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations } from "~checker/hooks";
+import { getExplorerUrl } from "~checker/utils";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;
