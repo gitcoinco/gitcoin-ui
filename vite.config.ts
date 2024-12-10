@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "vite-plugin-dts";
 import svgr from "vite-plugin-svgr";
 
@@ -43,25 +42,7 @@ export default defineConfig({
     minify: false,
     target: "esnext",
   },
-  plugins: [
-    react(),
-    svgr(),
-    dts({ rollupTypes: true }),
-    cssInjectedByJsPlugin({
-      styleId: "gitcoin-ui",
-      jsAssetsFilterFunction: function customJsAssetsfilterFunction(outputChunk) {
-        return (
-          outputChunk.preliminaryFileName.includes("!~{") || // for storybook build
-          outputChunk.fileName == "index.js" ||
-          outputChunk.fileName == "checker.js" ||
-          outputChunk.fileName == "hooks.js" ||
-          outputChunk.fileName == "icons.js" ||
-          outputChunk.fileName == "lib.js" ||
-          outputChunk.fileName == "mocks.js"
-        );
-      },
-    }),
-  ],
+  plugins: [react(), svgr(), dts({ rollupTypes: true })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
