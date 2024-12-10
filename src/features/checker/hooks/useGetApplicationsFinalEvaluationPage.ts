@@ -1,13 +1,11 @@
 import { Address } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
-import { DefaultStatCardsProps } from "@/mainAll";
 import { PoolType } from "@/types";
 
-import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
-import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";
-
-import { ApplicationStatusType, ReviewBody } from "../types";
+import { DefaultStatCardsProps } from "~checker/constants";
+import { ApplicationStatusType, ReviewBody } from "~checker/types";
+import { categorizeProjectReviews, generatePoolUUID } from "~checker/utils";
 
 export const useGetApplicationsFinalEvaluationPage = () => {
   const { poolId, chainId, poolsData, poolsFetchState } = useCheckerContext();

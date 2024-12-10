@@ -2,19 +2,18 @@ import { useEffect } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 
-import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
-import { isPoolManager, setPoolFetchStateAction, syncPool, SyncPoolBody } from "@/mainAll";
-
 import { getApplicationsFromIndexer } from "~checker/services/allo";
-import { getCheckerPoolData } from "~checker/services/checker";
+import { getCheckerPoolData, syncPool, SyncPoolBody } from "~checker/services/checker";
 import {
   CheckerApplication,
   CheckerPoolData,
   PoolInfo,
   setPoolDataAction,
+  setPoolFetchStateAction,
+  useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
-import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
+import { generatePoolUUID, isPoolManager } from "~checker/utils";
 
 export const usePoolData = (): { poolData: CheckerPoolData | null; refetch: () => void } => {
   const { poolsData, poolId, chainId, address } = useCheckerContext();

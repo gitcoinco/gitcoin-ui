@@ -1,8 +1,7 @@
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
-import { DefaultStatCardsProps } from "@/mainAll";
 
-import { generatePoolUUID } from "~checker/utils/generatePoolUUID";
-import { categorizeProjectReviews } from "~checker/utils/mapApplicationsForOverviewPage";
+import { DefaultStatCardsProps } from "~checker/constants";
+import { categorizeProjectReviews, generatePoolUUID } from "~checker/utils";
 
 export const useGetApplicationsReviewPage = () => {
   const { poolId, chainId, poolsData, poolsFetchState } = useCheckerContext();

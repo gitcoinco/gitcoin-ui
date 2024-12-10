@@ -5,13 +5,14 @@ import { Address } from "viem";
 
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
-import { ReviewsCounterLabel, Skeleton } from "@/mainAll";
+import { Skeleton } from "@/primitives";
 import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGridColumn } from "@/primitives/ListGrid";
 
+import { ReviewsCounterLabel } from "~checker/components";
 import { ProjectReview } from "~checker/types";
-import { getReviewsCount } from "~checker/utils/getReviewsCount";
+import { getReviewsCount } from "~checker/utils";
 
 interface GetColumnsParams {
   reviewer?: Address;

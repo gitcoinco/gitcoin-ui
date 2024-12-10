@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 
 import { PoolSummary } from "@/components";
-import { ApplicationsSection } from "@/mainAll";
 import { Button, Icon, IconType, StatCardGroup, StatCardProps } from "@/primitives";
 
+import { ApplicationsSection } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
 import {
   goToApplicationEvaluationOverviewAction,
