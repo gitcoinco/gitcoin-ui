@@ -37,15 +37,15 @@ export const SectionCountHeading: React.FC<SectionCountHeadingProps> = ({
   return match(isLoading)
     .with(true, () => (
       <div className="flex items-center gap-1">
-        <div className="font-sans text-2xl font-medium leading-loose text-black">
+        <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
           {`${label} (`}
         </div>
         <Skeleton className="h-6 w-5 rounded" />
-        <div className="font-sans text-2xl font-medium leading-loose text-black">{")"}</div>
+        <div className="font-ui-sans text-2xl font-medium leading-loose text-black">{")"}</div>
       </div>
     ))
     .otherwise(() => (
-      <div className="font-sans text-2xl font-medium leading-loose text-black">
+      <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
         {`${label} (${count})`}
       </div>
     ));

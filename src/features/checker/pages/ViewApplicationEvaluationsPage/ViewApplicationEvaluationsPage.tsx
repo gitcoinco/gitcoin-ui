@@ -7,6 +7,7 @@ import { Badge, Button, Icon, IconType } from "@/primitives";
 
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations } from "~checker/hooks";
+import { getExplorerUrl } from "~checker/utils";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;
@@ -72,7 +73,7 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
               className="h-[38px] w-40 bg-white"
               onClick={() => {
                 window.open(
-                  `https://explorer.gitcoin.co/#/round/${chainId}/${poolId}/${applicationId}`,
+                  `${getExplorerUrl(chainId)}/#/round/${chainId}/${poolId}/${applicationId}`,
                   "_blank",
                 );
               }}

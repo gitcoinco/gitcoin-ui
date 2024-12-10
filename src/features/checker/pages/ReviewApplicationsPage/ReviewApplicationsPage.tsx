@@ -11,6 +11,7 @@ import {
   useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
+import { getManagerUrl } from "~checker/utils";
 
 export const ReviewApplicationsPage = () => {
   const { categorizedReviews, statCardsProps, poolData, poolFetchState } =
@@ -45,7 +46,7 @@ export const ReviewApplicationsPage = () => {
   };
 
   const openRoundInManager = () => {
-    window.open(`https://manager.gitcoin.co/#/chain/${chainId}/rounds/${poolId}`, "_blank");
+    window.open(`${getManagerUrl(chainId)}/#/chain/${chainId}/round/${poolId}`, "_blank");
   };
 
   const openCheckerApplicationEvaluations = (projectId: string) => {

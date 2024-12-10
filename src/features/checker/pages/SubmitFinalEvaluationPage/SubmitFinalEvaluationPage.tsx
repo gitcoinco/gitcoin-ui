@@ -18,6 +18,7 @@ import {
   useCheckerContext,
 } from "~checker/store";
 import { EvaluationAction, ReviewBody } from "~checker/types";
+import { getManagerUrl } from "~checker/utils";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
 
@@ -129,7 +130,7 @@ export const SubmitFinalEvaluationPage = ({
             variant="secondry"
             icon={<Icon type={IconType.CHEVRON_LEFT} />}
             onClick={() =>
-              window.open(`https://manager.gitcoin.co/#/chain/${chainId}/round/${poolId}`)
+              window.open(`${getManagerUrl(chainId as number)}/#/chain/${chainId}/round/${poolId}`)
             }
             value="back to round manager"
           />
