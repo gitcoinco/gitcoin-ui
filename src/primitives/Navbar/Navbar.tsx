@@ -2,9 +2,7 @@ import * as React from "react";
 
 import { tv } from "tailwind-variants";
 
-import { GitcoinLogo } from "@/assets";
-
-const defaultLogo = GitcoinLogo;
+import { NavbarLogo, NavbarLogoProps, NavbarTitle, NavbarTitleProps } from "./components";
 
 const navbarVariants = tv({
   slots: {
@@ -12,29 +10,15 @@ const navbarVariants = tv({
     container: "flex w-full items-center justify-between",
     leftSection: "flex items-center gap-4",
     divider: "h-4 border-r-1.5 border-grey-700",
-    text: "font-ui-mono text-lg",
     rightSection: "flex items-center",
   },
 });
 
-interface LogoProps {
-  link?: string;
-  img?: string | React.FunctionComponent<React.SVGAttributes<SVGElement>>;
-  size?: string;
-  color?: string;
-}
-
-interface TextProps {
-  text: string;
-  link?: string;
-  className?: string;
-}
-
 export interface NavbarProps {
-  primaryLogo?: LogoProps;
-  secondaryLogo?: LogoProps;
+  primaryLogo?: NavbarLogoProps;
+  secondaryLogo?: NavbarLogoProps;
   showDivider?: boolean;
-  text: TextProps;
+  text: NavbarTitleProps;
   children?: React.ReactNode;
 }
 
@@ -45,45 +29,17 @@ export const Navbar = ({
   text,
   children,
 }: NavbarProps) => {
-  const { base, container, leftSection, divider, text: textStyle, rightSection } = navbarVariants();
-
-  const renderLogo = ({ link, img, size = "h-10 max-w-12", color = "black" }: LogoProps) => {
-    const logoClasses = `${size} text-${color}`;
-
-    if (!img) {
-      return <img src={defaultLogo} alt="Default Logo" className={logoClasses} />;
-    }
-
-    if (typeof img === "string") {
-      return <img src={img} alt="Logo" className={logoClasses} />;
-    }
-
-    const LogoComponent = img;
-    return (
-      <a href={link || "#"} style={{ color: color }}>
-        <LogoComponent className={logoClasses} />
-      </a>
-    );
-  };
-
-  const renderText = ({ text, link, className = "" }: TextProps) => {
-    const textClasses = `${textStyle()} ${className}`;
-    return (
-      <a href={link || "#"} className={textClasses}>
-        {text}
-      </a>
-    );
-  };
+  const { base, container, leftSection, divider, rightSection } = navbarVariants();
 
   return (
     <nav className={base()}>
       <div className={container()}>
         <div className={leftSection()}>
-          {renderLogo(primaryLogo || {})}
-          {showDivider && <div className={divider()}></div>}
+          <NavbarLogo {...primaryLogo} />
+          {showDivider && <div className={divider()} />}
           <div className="flex items-center gap-2">
-            {secondaryLogo && renderLogo(secondaryLogo)}
-            {renderText(text)}
+            {secondaryLogo && <NavbarLogo {...secondaryLogo} />}
+            <NavbarTitle {...text} />
           </div>
         </div>
         <div className={rightSection()}>{children}</div>
