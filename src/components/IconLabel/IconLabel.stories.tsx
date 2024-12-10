@@ -7,6 +7,8 @@ import { IconType } from "@/primitives/Icon";
 
 import { IconLabel } from "./IconLabel";
 
+const mockDate1 = new Date("2024-12-09T19:22:56.413Z");
+const mockDate2 = new Date("2024-12-10T19:23:30.678Z");
 // Define metadata for the IconLabel component
 const meta: Meta<typeof IconLabel> = {
   component: IconLabel,
@@ -32,7 +34,7 @@ const meta: Meta<typeof IconLabel> = {
       control: {
         type: "date",
       },
-      if: { arg: "type", eq: "date" },
+      if: { arg: "type", exists: true },
     },
     prefix: {
       control: "text",
@@ -89,14 +91,14 @@ export const Playground: Story = {
   args: {
     iconType: IconType.ETH,
     label: "Default Label",
-    percent: 77, // Default for evaluation
-    date: new Date(), // Default for date
-    prefix: "Applied on: ", // Default for dateWithPrefix
-    address: "0xE307051C410e970b861CC55CBFD5Acc7BB477750", // Default for address
-    link: "https://github.com/user", // Default for social
-    isVerified: false, // Default for social
-    startDate: new Date(), // Default for period
-    endDate: new Date(), // Default for period
+    percent: 77,
+    date: mockDate1,
+    prefix: "Applied on: ",
+    address: "0xE307051C410e970b861CC55CBFD5Acc7BB477750",
+    link: "https://github.com/user",
+    isVerified: false,
+    startDate: mockDate1,
+    endDate: mockDate2,
   },
 };
 
@@ -132,11 +134,11 @@ export const AIEvaluation: Story = {
 export const DateLabel: Story = {
   args: {
     type: "date",
-    date: new Date(),
+    date: mockDate1,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const formattedDate = formatDate(new Date(), DateFormat.FullDate24Hour);
+    const formattedDate = formatDate(mockDate1, DateFormat.FullDate24Hour);
     const dateText = await canvas.findByText(formattedDate);
     expect(dateText).toBeInTheDocument();
   },
@@ -145,13 +147,13 @@ export const DateLabel: Story = {
 export const Period: Story = {
   args: {
     type: "period",
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: mockDate1,
+    endDate: mockDate2,
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const formattedStartDate = formatDate(new Date(), DateFormat.ShortMonthDayYear);
-    const formattedEndDate = formatDate(new Date(), DateFormat.ShortMonthDayYear);
+    const formattedStartDate = formatDate(mockDate1, DateFormat.ShortMonthDayYear);
+    const formattedEndDate = formatDate(mockDate2, DateFormat.ShortMonthDayYear);
     const dateText = await canvas.findByText(`${formattedStartDate} - ${formattedEndDate}`);
     expect(dateText).toBeInTheDocument();
   },
@@ -161,12 +163,12 @@ export const Period: Story = {
 export const DateWithPrefix: Story = {
   args: {
     type: "dateWithPrefix",
-    date: new Date(),
+    date: mockDate1,
     prefix: "Applied on:",
   },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const formattedDate = formatDate(new Date(), DateFormat.FullDate12Hour);
+    const formattedDate = formatDate(mockDate1, DateFormat.FullDate12Hour);
     const dateText = await canvas.findByText(`Applied on: ${formattedDate}`);
     expect(dateText).toBeInTheDocument();
   },

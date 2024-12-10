@@ -11,18 +11,28 @@ import {
 
 export interface BreadcrumbProps {
   items: { label: string; href: string }[];
+  isLoading?: boolean; // Add isLoading prop
 }
 
-export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items }) => {
+export const Breadcrumb: React.FC<BreadcrumbProps> = ({ items, isLoading = false }) => {
   return (
     <ShadcnBreadcrumb>
       <BreadcrumbList>
         {items.map((item, index) => (
           <React.Fragment key={item.href}>
             <BreadcrumbItem>
-              <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+              <BreadcrumbLink
+                href={isLoading ? undefined : item.href} // Disable link when loading
+                className={`${isLoading ? "animate-pulse " : ""}`} // Apply styles when loading
+              >
+                {item.label}
+              </BreadcrumbLink>
             </BreadcrumbItem>
-            {index < items.length - 1 && <BreadcrumbSeparator className="fill-black" />}
+            {index < items.length - 1 && (
+              <BreadcrumbSeparator
+                className={`${isLoading ? "animate-pulse" : "fill-black"}`} // Apply styles when loading
+              />
+            )}
           </React.Fragment>
         ))}
       </BreadcrumbList>

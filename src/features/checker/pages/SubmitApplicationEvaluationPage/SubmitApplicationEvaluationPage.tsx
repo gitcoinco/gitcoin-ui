@@ -18,8 +18,11 @@ import { Icon, IconType } from "@/primitives/Icon";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown/Markdown";
 
-import { useGetPastApplications, useInitialize } from "~checker/hooks";
-import { useApplicationOverviewEvaluations } from "~checker/hooks/useApplicationEvaluations";
+import {
+  useGetPastApplications,
+  useInitialize,
+  useApplicationOverviewEvaluations,
+} from "~checker/hooks";
 import { PastApplication } from "~checker/services/allo";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
 import { EvaluationStatus, EvaluationBody } from "~checker/types";

@@ -33,10 +33,15 @@ export interface CheckerPoolData extends PoolInfo {
   applications: Record<string, CheckerApplication>;
   evaluationQuestions: CheckerApiEvaluationQuestion[];
   isPoolManager: boolean;
+}
+
+export interface CheckerPoolFetchState {
+  chainId: number;
+  poolId: string;
   lastFetchedAt: Date;
-  isLoading?: boolean;
-  isFetching?: boolean;
-  isError?: boolean;
+  isLoading: boolean;
+  isFetching: boolean;
+  isError: boolean;
   error: Error | null;
 }
 
@@ -50,6 +55,7 @@ export enum CheckerRoute {
 
 export interface CheckerContextType {
   poolsData: Record<string, CheckerPoolData>;
+  poolsFetchState: Record<string, CheckerPoolFetchState>;
   poolId?: string;
   chainId?: number;
   address?: Hex;

@@ -1,18 +1,15 @@
+import { match } from "ts-pattern";
 import { Address } from "viem";
 
-import { DefaultLogo } from "@/assets";
-import { IconLabel } from "@/components/IconLabel";
-import { ReviewsCounterLabel } from "@/mainAll";
-import { Button } from "@/primitives/Button";
-import { CircleStat } from "@/primitives/Indicators";
-import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
+import { ListGrid } from "@/primitives/ListGrid";
 
 import { ProjectReview } from "~checker/types";
-import { getReviewsCount } from "~checker/utils/getReviewsCount";
+
+import { getProjectReviewListColumns, skeletonColumns, skeletonData } from "./utils";
 
 export interface ProjectReviewListProps {
   projects: ProjectReview[];
-
+  isLoading?: boolean;
   reviewer?: Address;
   isPoolManager?: boolean;
   action?: (projectId: string) => void;
@@ -20,103 +17,37 @@ export interface ProjectReviewListProps {
   keepAction?: boolean;
 }
 
+const getRowKey = (item: ProjectReview) => item.id.toString();
+
 export const ProjectReviewList = ({
   reviewer,
   isPoolManager,
+  isLoading,
   projects,
   action,
   actionLabel,
   keepAction,
 }: ProjectReviewListProps) => {
-  const columns: ListGridColumn<ProjectReview>[] = [
-    {
-      header: "Project",
-      key: "project",
-      width: "1.8fr",
-      render: (item) => (
-        <div className="flex items-center gap-4">
-          <img
-            src={item.avatarUrl}
-            alt={item.name}
-            className="aspect-square size-12 rounded-sm"
-            onError={(event: React.SyntheticEvent<HTMLImageElement, Event>) => {
-              event.currentTarget.src = DefaultLogo;
-            }}
-          />
-          <span>{item.name}</span>
-        </div>
-      ),
-    },
-    {
-      header: "Date Submitted",
-      key: "date",
-      width: "1.3fr",
-      render: (item) => <IconLabel type="date" date={item.date} />,
-    },
-    {
-      header: "Reviews",
-      key: "reviews",
-      width: "1.2fr",
-      render: (item) => {
-        const { nApproved, nRejected } = getReviewsCount(item.reviews);
-        return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
-      },
-    },
-    {
-      header: "AI Suggestion",
-      key: "aiSuggestion",
-      width: "0.9fr",
-      render: (item) => {
-        return item.aiSuggestion >= 0 ? (
-          <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
-        ) : (
-          <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
-        );
-      },
-    },
-    {
-      header: "Score Average",
-      key: "scoreAverage",
-      width: "0.8fr",
-      position: "center",
-      render: (item) => (
-        <div className="flex items-center justify-center">
-          <CircleStat value={item.scoreAverage.toFixed(0)} />
-        </div>
-      ),
-    },
-    {
-      header: "Action",
-      key: "action",
-      width: "1fr",
-      position: "center",
-      render: (item) => {
-        const isReviewed = item.reviews.some((review) => review.reviewer === reviewer);
-        const isDisabled = !keepAction && (!isPoolManager || isReviewed);
-        const defaultActionLabel = isReviewed ? "View evaluation" : "Evaluate project";
-        return (
-          <div className="flex items-center justify-center">
-            <Button
-              variant={isDisabled ? "disabled" : "subtle"}
-              value={actionLabel ?? defaultActionLabel}
-              disabled={!isPoolManager && !keepAction}
-              onClick={() => {
-                if (action) {
-                  action(item.id);
-                }
-              }}
-            />
-          </div>
-        );
-      },
-    },
-  ];
-  return (
-    <ListGrid
-      data={projects}
-      columns={columns}
-      rowClassName="h-[72px]"
-      getRowKey={(item: ProjectReview) => item.id.toString()}
-    />
-  );
+  const columns = getProjectReviewListColumns({
+    reviewer,
+    isPoolManager,
+    action,
+    actionLabel,
+    keepAction,
+  });
+
+  return match(isLoading)
+    .with(true, () => (
+      <div className="max-w-screen-xl">
+        <ListGrid
+          data={skeletonData}
+          columns={skeletonColumns}
+          getRowKey={getRowKey}
+          rowClassName="h-[72px]"
+        />
+      </div>
+    ))
+    .otherwise(() => (
+      <ListGrid data={projects} columns={columns} rowClassName="h-[72px]" getRowKey={getRowKey} />
+    ));
 };

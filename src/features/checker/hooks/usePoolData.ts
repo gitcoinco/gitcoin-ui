@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
-import { isPoolManager, syncPool, SyncPoolBody } from "@/mainAll";
+import { isPoolManager, setPoolFetchStateAction, syncPool, SyncPoolBody } from "@/mainAll";
 
 import { getApplicationsFromIndexer } from "~checker/services/allo";
 import { getCheckerPoolData } from "~checker/services/checker";
@@ -54,6 +54,22 @@ export const usePoolData = (): { poolData: CheckerPoolData | null; refetch: () =
   });
 
   useEffect(() => {
+    if (poolId && chainId) {
+      dispatch(
+        setPoolFetchStateAction({
+          poolId,
+          chainId,
+          lastFetchedAt: new Date(),
+          isLoading: isLoading,
+          isFetching,
+          isError,
+          error,
+        }),
+      );
+    }
+  }, [poolId, chainId, isLoading, isFetching, isError, error]);
+
+  useEffect(() => {
     if (data && poolId && chainId && address) {
       const managers = data.roundData.roles.map((role) => role.address.toLowerCase());
       dispatch(
@@ -63,11 +79,6 @@ export const usePoolData = (): { poolData: CheckerPoolData | null; refetch: () =
           isPoolManager: isPoolManager(address, managers),
           applications: data.applications,
           evaluationQuestions: data.evaluationQuestions,
-          lastFetchedAt: new Date(),
-          isLoading,
-          isFetching,
-          isError,
-          error,
           ...(data.roundData as PoolInfo),
         }),
       );

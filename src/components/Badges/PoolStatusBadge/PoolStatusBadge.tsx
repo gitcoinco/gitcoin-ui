@@ -11,9 +11,9 @@ const variants = tv({
   variants: {
     value: {
       [PoolStatus.PreRound]: "border border-green-400 bg-white text-green-400",
-      [PoolStatus.RoundInProgress]: "border-transparent bg-green-200 text-black",
-      [PoolStatus.ApplicationsInProgress]: "border-transparent bg-blue-100",
-      [PoolStatus.FundingPending]: "border border-red-900 bg-white text-red-900",
+      [PoolStatus.RoundInProgress]: "bg-green-200 text-black",
+      [PoolStatus.ApplicationsInProgress]: "bg-blue-100",
+      [PoolStatus.FundingPending]: "border border-orange-400 bg-white text-orange-400",
     },
   },
 });
@@ -30,13 +30,18 @@ const invalidValueText = "Error: Invalid status";
 export interface PoolStatusBadgeProps {
   value?: PoolStatus;
   className?: string;
+  isLoading?: boolean;
 }
 
-export const PoolStatusBadge: React.FC<PoolStatusBadgeProps> = ({ value, className }) => {
+export const PoolStatusBadge: React.FC<PoolStatusBadgeProps> = ({
+  value,
+  className,
+  isLoading,
+}) => {
   const variantClass = variants({ value });
 
-  return match({ value })
-    .with({ value: undefined }, () => <Badge skeleton className={className} size="md" />)
+  return match({ value, isLoading })
+    .with({ isLoading: true }, () => <Badge skeleton className={className} size="md" />)
     .with({ value: P.when(isPoolStatus) }, ({ value }) => (
       <Badge className={cn(className, variantClass)}>{badgeTexts[value]}</Badge>
     ))

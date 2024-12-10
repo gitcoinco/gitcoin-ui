@@ -10,10 +10,10 @@ const meta: Meta<PoolSummaryProps> = {
     name: "Beta Round",
     poolId: "1",
     strategyName: "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
-    applicationsStartTime: new Date().toISOString(),
-    applicationsEndTime: new Date(Date.now() + 86400000).toISOString(),
-    donationsStartTime: new Date().toISOString(),
-    donationsEndTime: new Date().toISOString(),
+    applicationsStartTime: "2024-12-09T19:22:56.413Z",
+    applicationsEndTime: "2024-12-10T19:23:30.678Z",
+    donationsStartTime: "2024-12-09T19:22:56.413Z",
+    donationsEndTime: "2024-12-09T19:22:56.413Z",
   },
 } satisfies Meta;
 

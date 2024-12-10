@@ -1,6 +1,9 @@
 import { match } from "ts-pattern";
 
-export function getEvaluation(percent: number) {
+export function getEvaluation(percent: number, isLoading?: boolean) {
+  if (isLoading) {
+    return { message: "", variant: "loading" };
+  }
   percent = Math.min(Math.max(percent, 0), 100);
   if (percent >= 60) {
     return { message: `Approve (${percent}%)`, variant: "ai-evaluation-a" };
