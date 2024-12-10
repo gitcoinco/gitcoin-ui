@@ -61,12 +61,12 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
   }
   const applyLink = `${builderUrl}/#/chains/${pool.chainId}/rounds/${pool.poolId}/apply`;
   const explorerLink = `${explorerUrl}/#/round/${pool.chainId}/${pool.poolId}`;
-  const managetProgramLink = `${managerUrl}/#/chain/${pool.chainId}/program/${pool.programId}`;
+  const managerProgramLink = `${managerUrl}/#/chain/${pool.chainId}/program/${pool.programId}`;
   const breadcrumbItems = [
     { label: "My Programs", href: managerUrl },
     {
       label: "Program Details",
-      href: managetProgramLink,
+      href: managerProgramLink,
     },
     {
       label: "Round Details",
