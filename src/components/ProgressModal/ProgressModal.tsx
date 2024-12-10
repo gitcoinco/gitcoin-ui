@@ -70,7 +70,7 @@ function ModalStep({
         </span>
         <span className="ml-4 flex min-w-0 flex-col">
           <span
-            className={`font-sans text-[14px]/[16px] font-semibold uppercase tracking-wide ${nameColor}`}
+            className={`font-ui-sans text-[14px]/[16px] font-semibold uppercase tracking-wide ${nameColor}`}
           >
             {step.name}
           </span>
@@ -122,7 +122,7 @@ function getStepAttributes(
         ),
         line: !isLastStep ? (
           <div
-            className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-neutral-200"
+            className="bg-neutral-200 absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5"
             aria-hidden="true"
           />
         ) : null,
@@ -138,7 +138,7 @@ function getStepAttributes(
         ),
         line: !isLastStep ? (
           <div
-            className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-neutral-200"
+            className="bg-neutral-200 absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5"
             aria-hidden="true"
           />
         ) : null,
@@ -155,7 +155,7 @@ function getStepAttributes(
         ),
         line: !isLastStep ? (
           <div
-            className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-neutral-200"
+            className="bg-neutral-200 absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5"
             aria-hidden="true"
           />
         ) : null,

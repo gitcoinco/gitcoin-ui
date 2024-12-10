@@ -12,8 +12,8 @@ const listGridVariants = tv({
   variants: {
     variant: {
       default: {
-        header: "font-sans text-base font-bold text-black",
-        row: "font-sans text-base font-normal text-black",
+        header: "font-ui-sans text-base font-bold text-black",
+        row: "font-ui-sans text-base font-normal text-black",
       },
     },
     position: {

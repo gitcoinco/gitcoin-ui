@@ -12,7 +12,7 @@ interface CircleStatProps {
 }
 
 const circleStat = tv({
-  base: "flex items-center justify-center rounded-full text-center font-sans font-normal",
+  base: "flex items-center justify-center rounded-full text-center font-ui-sans font-normal",
   variants: {
     size: {
       small: "size-8 text-xs",

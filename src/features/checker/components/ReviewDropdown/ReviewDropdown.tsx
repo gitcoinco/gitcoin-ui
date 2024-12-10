@@ -17,8 +17,8 @@ const ReviewDropdownVariants = tv({
     content: "flex w-full flex-col gap-6 px-12 py-4",
     textRow: "space-x-1 text-left",
     status: "text-grey-500",
-    reviewTitle: "font-sans text-xl text-black",
-    evaluatorTitle: "absolute my-1 font-sans text-sm font-normal text-grey-900",
+    reviewTitle: "font-ui-sans text-xl text-black",
+    evaluatorTitle: "absolute my-1 font-ui-sans text-sm font-normal text-grey-900",
     reviewDate: "text-base font-normal text-black",
   },
   defaultVariants: {},
@@ -163,7 +163,7 @@ const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation })
       {evaluation.evaluationAnswers.map((evaluation, index) => (
         <div
           key={index}
-          className="flex items-start gap-2 font-sans text-base font-normal leading-7 text-black"
+          className="flex items-start gap-2 font-ui-sans text-base font-normal leading-7 text-black"
         >
           <span className="mt-0.5 shrink-0">{getIcon(evaluation.answer)}</span>
           <p className="grow">{evaluation.evaluationQuestion?.question}</p>

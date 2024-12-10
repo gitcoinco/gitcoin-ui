@@ -81,10 +81,10 @@ export const ReviewApplicationsPage = () => {
         <StatCardGroup stats={statCardsProps as StatCardProps[]} justify="center" />
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <div className="font-sans text-2xl font-medium leading-loose text-black">
+            <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
               Review applications
             </div>
-            <div className="font-sans text-base font-normal leading-7 text-grey-900">
+            <div className="font-ui-sans text-base font-normal leading-7 text-grey-900">
               Evaluate projects here.
             </div>
           </div>

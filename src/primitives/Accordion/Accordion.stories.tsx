@@ -75,7 +75,7 @@ export const coolProject: Story = {
     ),
     content: (
       <div className="flex flex-col gap-4">
-        <span className="font-sans text-[16px]/[24px] font-normal">
+        <span className="font-ui-sans text-[16px]/[24px] font-normal">
           An onchain project that is very cool. Did I mention that it was cool?
         </span>
         <div className="flex flex-wrap items-start gap-10">
