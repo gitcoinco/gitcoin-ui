@@ -33,7 +33,7 @@ export type ButtonSizes = "default" | "sm" | "md" | "lg" | "icon" | undefined;
 
 // eslint-disable-next-line tailwindcss/no-custom-classname
 const buttonVariants = tv({
-  base: "inline-flex h-[32px] items-center justify-center gap-2 whitespace-nowrap rounded-[8px] px-[12px] py-[8px] font-mono text-[14px] font-medium leading-[16px] ring-offset-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none dark:ring-offset-neutral-950",
+  base: "focus-visible:ring-neutral-950 dark:ring-offset-neutral-950 inline-flex h-[32px] items-center justify-center gap-2 whitespace-nowrap rounded-[8px] px-[12px] py-[8px] font-ui-mono text-[14px] font-medium leading-[16px] ring-offset-white transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none",
   variants: {
     variant: {
       primary: "border-brand bg-brand text-white",
@@ -101,7 +101,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {icon && iconPosition === "left" && <span>{icon}</span>}
-        {value && <span className={"font-mono"}>{value}</span>}
+        {value && <span className={"font-ui-mono"}>{value}</span>}
         {icon && iconPosition === "right" && <span>{icon}</span>}
       </Comp>
     );

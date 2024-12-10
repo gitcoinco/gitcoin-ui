@@ -12,7 +12,7 @@ const navbarVariants = tv({
     container: "flex w-full items-center justify-between",
     leftSection: "flex items-center gap-4",
     divider: "h-4 border-r-1.5 border-grey-700",
-    text: "font-mono text-lg",
+    text: "font-ui-mono text-lg",
     rightSection: "flex items-center",
   },
 });

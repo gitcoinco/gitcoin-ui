@@ -33,8 +33,8 @@ export default withTV({
           "0px 24px 94px 0px rgba(0, 0, 0, 0.17), 0px 7.235px 28.338px 0px rgba(0, 0, 0, 0.11), 0px 3.005px 11.77px 0px rgba(0, 0, 0, 0.09), 0px 1.087px 4.257px 0px rgba(0, 0, 0, 0.06)",
       },
       fontFamily: {
-        mono: ["DM Mono", "serif"],
-        sans: ["DM Sans", "sans-serif"],
+        "ui-mono": ["DM Mono", "serif"],
+        "ui-sans": ["DM Sans", "sans-serif"],
       },
       borderRadius: {
         "3.5": "14px",

@@ -78,17 +78,17 @@ export const ReviewApplicationsPage = () => {
         <StatCardGroup stats={statCardsProps || []} justify="center" />
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <div className="font-sans text-2xl font-medium leading-loose text-black">
+            <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
               Review applications
             </div>
-            <div className="font-sans text-base font-normal leading-7 text-grey-900">
+            <div className="font-ui-sans text-base font-normal leading-7 text-grey-900">
               Evaluate projects here.
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-between pb-1">
-                <div className="font-sans text-2xl font-medium leading-loose text-black">
+                <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
                   {`Ready to submit (${ReadyApplicationsToSubmit.length})`}
                 </div>
                 <Button
@@ -102,7 +102,7 @@ export const ReviewApplicationsPage = () => {
 
             <div>
               {ReadyApplicationsToSubmit.length === 0 ? (
-                <div className="font-sans text-base font-normal leading-7 text-grey-900">
+                <div className="font-ui-sans text-base font-normal leading-7 text-grey-900">
                   Evaluations that are ready to be submitted onchain will appear here once reviewed.
                   Manager supports multiple reviewers.
                 </div>
@@ -119,7 +119,7 @@ export const ReviewApplicationsPage = () => {
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-start pb-1">
-                <div className="font-sans text-2xl font-medium leading-loose text-black">
+                <div className="font-ui-sans text-2xl font-medium leading-loose text-black">
                   {`In Review (${PendingApplications.length})`}
                 </div>
               </div>
@@ -128,7 +128,7 @@ export const ReviewApplicationsPage = () => {
 
             <div>
               {PendingApplications.length === 0 ? (
-                <div className="font-sans text-base font-normal leading-7 text-grey-900">
+                <div className="font-ui-sans text-base font-normal leading-7 text-grey-900">
                   No applications are currently in review.
                 </div>
               ) : (
@@ -144,7 +144,7 @@ export const ReviewApplicationsPage = () => {
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-start pb-1">
-                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                <div className="font-ui-mono text-2xl font-medium leading-loose text-black">
                   {`Approved applications (${ApprovedApplications.length})`}
                 </div>
               </div>
@@ -153,7 +153,7 @@ export const ReviewApplicationsPage = () => {
 
             <div>
               {ApprovedApplications.length === 0 ? (
-                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                <div className="font-ui-mono text-base font-normal leading-7 text-grey-900">
                   No approved applications.
                 </div>
               ) : (
@@ -170,7 +170,7 @@ export const ReviewApplicationsPage = () => {
           <div className="flex flex-col gap-2">
             <div className="pb-1">
               <div className="flex items-center justify-start pb-1">
-                <div className="font-mono text-2xl font-medium leading-loose text-black">
+                <div className="font-ui-mono text-2xl font-medium leading-loose text-black">
                   {`Rejected applications (${RejectedApplications.length})`}
                 </div>
               </div>
@@ -179,7 +179,7 @@ export const ReviewApplicationsPage = () => {
 
             <div>
               {RejectedApplications.length === 0 ? (
-                <div className="font-mono text-base font-normal leading-7 text-grey-900">
+                <div className="font-ui-mono text-base font-normal leading-7 text-grey-900">
                   No rejected applications.
                 </div>
               ) : (
