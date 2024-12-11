@@ -7,6 +7,7 @@ const white = "#ffffff";
 const grey: ColorSet = {
   "50": "#F7F7F7",
   "100": "#ECEDED",
+  "200": "#EAEAEA",
   "300": "#C8CCCC",
   "500": "#959C9C",
   "700": "#555555",
