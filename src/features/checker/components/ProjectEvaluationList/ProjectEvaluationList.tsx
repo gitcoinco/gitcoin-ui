@@ -7,7 +7,7 @@ import { EvaluationAction, ProjectReview, ProjectStatus } from "~checker/types";
 import { getReviewsCount } from "~checker/utils/getReviewsCount";
 
 import { ProjectEvaluationAction } from "../ProjectEvaluationAction";
-import { ReviewsCounterLabel } from "../ReviewsCounterLabel";
+import { ReviewsCounterLabelWithTooltip } from "../ReviewsCounterLabel";
 
 export interface ProjectEvaluationListProps {
   evaluationStatus?: ProjectStatus;
@@ -26,7 +26,7 @@ export const ProjectEvaluationList = ({
     {
       header: "Project",
       key: "project",
-      width: "1.6fr",
+      width: "1.5fr",
       render: (item) => (
         <div className="flex items-center gap-4">
           <img
@@ -44,28 +44,36 @@ export const ProjectEvaluationList = ({
     {
       header: "Date Submitted",
       key: "date",
-      width: "1.3fr",
+      width: "1.6fr",
       render: (item) => <IconLabel type="date" date={item.date} />,
     },
     {
       header: "Reviews",
       key: "reviews",
-      width: "1.5fr",
+      width: "1fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
-        return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
+        return (
+          <ReviewsCounterLabelWithTooltip positiveReviews={nApproved} negativeReviews={nRejected} />
+        );
       },
     },
     {
       header: "AI Suggestion",
       key: "aiSuggestion",
-      width: "1fr",
-      render: (item) => <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />,
+      width: "1.1fr",
+      render: (item) => {
+        return item.aiSuggestion >= 0 ? (
+          <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
+        ) : (
+          <ReviewsCounterLabelWithTooltip negativeReviews={0} positiveReviews={0} />
+        );
+      },
     },
     {
       header: "Score Average",
       key: "scoreAverage",
-      width: "0.8fr",
+      width: "1fr",
       position: "center",
       render: (item) => (
         <div className="flex items-center justify-center">
@@ -76,7 +84,7 @@ export const ProjectEvaluationList = ({
     {
       header: "Action",
       key: "action",
-      width: "1.8fr",
+      width: "1.9fr",
       position: "center",
       render: (item) => {
         return (

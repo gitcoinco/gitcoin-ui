@@ -9,14 +9,16 @@ const OVERLAP_WITHOUT_COUNTER = 20;
 export interface ReviewIconGroupProps {
   positiveReviews: number;
   negativeReviews: number;
+  maxNIcons?: number;
 }
 
 export const ReviewIconGroup = ({
   positiveReviews = 0,
   negativeReviews = 0,
+  maxNIcons = MAX_N_ICONS,
 }: ReviewIconGroupProps) => {
   const totalReviews = Math.max(0, positiveReviews) + Math.max(0, negativeReviews);
-  const isMaxReviews = totalReviews > MAX_N_ICONS;
+  const isMaxReviews = totalReviews > maxNIcons;
   const iconWidth = isMaxReviews ? ICON_WIDTH_WITH_COUNTER : ICON_WIDTH_WITHOUT_COUNTER;
   const overlap = isMaxReviews ? OVERLAP_WITH_COUNTER : OVERLAP_WITHOUT_COUNTER;
   const overlapToDiscount = iconWidth - overlap;
