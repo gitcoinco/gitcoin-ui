@@ -1,12 +1,16 @@
 import React from "react";
 
 import { ProjectBanner, ProjectSummary } from "@/components";
+import {
+  ApplicationSummary,
+  SummaryAccordians,
+} from "@/components/project/components/ApplicationSummary/ApplicationSummary";
 import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
 import { Badge, Button, Icon, IconType } from "@/primitives";
 
 import { ReviewDropdownList } from "~checker/components";
-import { useApplicationEvaluations } from "~checker/hooks";
+import { useApplicationEvaluations, useGetPastApplications } from "~checker/hooks";
 import { getExplorerUrl } from "~checker/utils";
 
 export interface ViewApplicationEvaluationsPageProps {
@@ -22,6 +26,8 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
 }) => {
   const { toast } = useToast();
   const { data, isLoading, error } = useApplicationEvaluations(chainId, poolId, applicationId);
+
+  const { data: pastApplications } = useGetPastApplications(chainId, poolId, applicationId);
 
   if (isLoading) return;
   if (error) return <div>Error loading evaluations</div>;
@@ -81,22 +87,34 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
           </div>
         </div>
       </div>
-      <div className="h-0.5 bg-[#EAEAEA]" />
+      <div className="h-0.5 bg-grey-200" />
       <div className="flex gap-2">
         <Badge className="font-semibold" variant={reviewStatusBadgeVariant}>
           {capitalizeWord(data?.application.status)}
         </Badge>
       </div>
-      <ProjectSummary projectMetadata={project} application={data?.application} />
-      <div className="h-0.5 bg-[#EAEAEA]" />
-      {data?.applicationEvaluations.length > 0 ? (
-        <ReviewDropdownList evaluations={data?.applicationEvaluations} />
-      ) : (
-        <div className="leading-7">
-          This application is still pending evaluation submission. Check back here soon for your
-          results!
+      <div className="flex flex-col gap-6">
+        <ProjectSummary projectMetadata={project} application={data?.application} />
+
+        <ApplicationSummary
+          project={project}
+          application={data.application}
+          pastApplications={pastApplications || []}
+          hideAccordians={[SummaryAccordians.project]}
+        />
+
+        <div>
+          <div className="h-0.5 bg-grey-200" />
+          {data?.applicationEvaluations.length > 0 ? (
+            <ReviewDropdownList evaluations={data?.applicationEvaluations} />
+          ) : (
+            <div className="leading-7">
+              This application is still pending evaluation submission. Check back here soon for your
+              results!
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };
