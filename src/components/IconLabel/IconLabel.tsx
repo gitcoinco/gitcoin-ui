@@ -31,7 +31,7 @@ export const IconLabel: React.FC<
           iconVariant={icon({ type: variant })}
         >
           {match(isLoading)
-            .with(true, () => <Skeleton className="h-6 w-24 rounded-lg" />)
+            .with(true, () => <Skeleton className="h-6 w-28 rounded-lg" />)
             .otherwise(() => (
               <span className={text()}>{message}</span>
             ))}
@@ -107,7 +107,7 @@ export const IconLabel: React.FC<
           .with(true, () => (
             <div className="flex items-center gap-1">
               <span className={text({ type: "roundPeriod" })}>{prefix}</span>
-              <Skeleton className="h-6 w-52 rounded-lg" />
+              <Skeleton className="h-6 w-56 rounded-lg" />
             </div>
           ))
           .otherwise(() => (

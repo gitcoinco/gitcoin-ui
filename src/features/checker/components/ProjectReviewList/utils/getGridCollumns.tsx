@@ -10,7 +10,7 @@ import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGridColumn } from "@/primitives/ListGrid";
 
-import { ReviewsCounterLabel } from "~checker/components";
+import { ReviewsCounterLabelWithTooltip } from "~checker/components";
 import { ProjectReview } from "~checker/types";
 import { getReviewsCount } from "~checker/utils";
 
@@ -51,27 +51,29 @@ export function getProjectReviewListColumns({
     {
       header: "Date Submitted",
       key: "date",
-      width: "1.14fr",
+      width: "1.34fr",
       render: (item) => <IconLabel type="date" date={item.date} />,
     },
     {
       header: "Reviews",
       key: "reviews",
-      width: "1.04fr",
+      width: "0.74fr",
       render: (item) => {
         const { nApproved, nRejected } = getReviewsCount(item.reviews);
-        return <ReviewsCounterLabel positiveReviews={nApproved} negativeReviews={nRejected} />;
+        return (
+          <ReviewsCounterLabelWithTooltip positiveReviews={nApproved} negativeReviews={nRejected} />
+        );
       },
     },
     {
       header: "AI Suggestion",
       key: "aiSuggestion",
-      width: "0.8fr",
+      width: "0.9fr",
       render: (item) => {
         return item.aiSuggestion >= 0 ? (
           <IconLabel type="ai-evaluation" percent={item.aiSuggestion} />
         ) : (
-          <ReviewsCounterLabel negativeReviews={0} positiveReviews={0} />
+          <ReviewsCounterLabelWithTooltip negativeReviews={0} positiveReviews={0} />
         );
       },
     },
@@ -125,7 +127,7 @@ export const skeletonColumns = getProjectReviewListColumns({}).map((col) => {
       render: () => (
         <div className="flex items-center gap-4">
           <Skeleton className="size-12 rounded-lg" />
-          <Skeleton className="h-6 w-52 rounded-lg" />
+          <Skeleton className="h-6 w-44 rounded-lg" />
         </div>
       ),
     };
@@ -139,7 +141,7 @@ export const skeletonColumns = getProjectReviewListColumns({}).map((col) => {
   if (col.key === "reviews") {
     return {
       ...col,
-      render: () => <Skeleton className="h-6 w-52 rounded-lg" />,
+      render: () => <Skeleton className="h-6 w-32 rounded-lg" />,
     };
   }
   if (col.key === "aiSuggestion") {
