@@ -35,12 +35,12 @@ const accordionVariants = tv({
         content: "",
       },
       sm: {
-        item: "rounded-lg border border-neutral-100",
-        content: "border-t border-neutral-100",
+        item: "rounded-lg border border-grey-100",
+        content: "border-t border-grey-100",
       },
       md: {
-        item: "rounded-lg border-2 border-neutral-200",
-        content: "border-t-2 border-neutral-200",
+        item: "rounded-lg border-2 border-grey-100",
+        content: "border-t-2 border-grey-100",
       },
     },
     padding: {

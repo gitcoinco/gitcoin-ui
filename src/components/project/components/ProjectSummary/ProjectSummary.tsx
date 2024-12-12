@@ -40,7 +40,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
       <div className="flex flex-col gap-4">
         {createdAt && (
           <IconLabel
-            className="text-grey-700"
+            className="text-grey-900"
             type="default"
             iconType={IconType.CALENDAR}
             label={appliedOnLabel}
@@ -48,7 +48,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
         )}
         {(createdAt || lastUpdated) && (
           <IconLabel
-            className="text-grey-700"
+            className="text-grey-900"
             type="default"
             iconType={IconType.CALENDAR}
             label={lastEditedLabel}

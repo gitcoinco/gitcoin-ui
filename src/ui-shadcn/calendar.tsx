@@ -31,22 +31,22 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         ),
         month_grid: "w-full border-collapse space-y-1",
         weekdays: "flex",
-        weekday: "text-neutral-500 rounded-md w-9 font-normal text-[0.8rem] dark:text-neutral-400",
+        weekday: "text-grey-900 rounded-md w-9 font-normal text-[0.8rem] dark:text-grey-500",
         week: "flex w-full mt-2",
-        day: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-neutral-100/50 [&:has([aria-selected])]:bg-neutral-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20 dark:[&:has([aria-selected].day-outside)]:bg-neutral-800/50 dark:[&:has([aria-selected])]:bg-neutral-800",
+        day: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-grey-100/50 [&:has([aria-selected])]:bg-grey-100 first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20 dark:[&:has([aria-selected].day-outside)]:bg-black/50 dark:[&:has([aria-selected])]:bg-black",
         day_button: cn(
           buttonVariants({ variant: "outlined-secondary" }),
           "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
         ),
         range_end: "day-range-end",
         selected:
-          "bg-neutral-900 text-neutral-50 hover:bg-neutral-900 hover:text-neutral-50 focus:bg-neutral-900 focus:text-neutral-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50 dark:hover:text-neutral-900 dark:focus:bg-neutral-50 dark:focus:text-neutral-900",
-        today: "bg-neutral-100 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-50",
+          "bg-black text-grey-50 hover:bg-black hover:text-grey-50 focus:bg-black focus:text-grey-50 dark:bg-grey-50 dark:text-black dark:hover:bg-grey-50 dark:hover:text-black dark:focus:bg-grey-50 dark:focus:text-black",
+        today: "bg-grey-100 text-black dark:bg-black dark:text-grey-50",
         outside:
-          "day-outside text-neutral-500 opacity-50 aria-selected:bg-neutral-100/50 aria-selected:text-neutral-500 aria-selected:opacity-30 dark:text-neutral-400 dark:aria-selected:bg-neutral-800/50 dark:aria-selected:text-neutral-400",
-        disabled: "text-neutral-500 opacity-50 dark:text-neutral-400",
+          "day-outside text-grey-900 opacity-50 aria-selected:bg-grey-100/50 aria-selected:text-grey-900 aria-selected:opacity-30 dark:text-grey-500 dark:aria-selected:bg-black/50 dark:aria-selected:text-grey-500",
+        disabled: "text-grey-900 opacity-50 dark:text-grey-500",
         range_middle:
-          "aria-selected:bg-neutral-100 aria-selected:text-neutral-900 dark:aria-selected:bg-neutral-800 dark:aria-selected:text-neutral-50",
+          "aria-selected:bg-grey-100 aria-selected:text-black dark:aria-selected:bg-black dark:aria-selected:text-grey-50",
         hidden: "invisible",
         ...classNames,
       }}

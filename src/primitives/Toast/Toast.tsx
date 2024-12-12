@@ -47,12 +47,12 @@ const ToastViewport = React.forwardRef<
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName;
 
 export const toastVariants = tv({
-  base: "dark:border-neutral-800  pointer-events-auto flex items-center overflow-hidden rounded-3xl p-6 shadow-lg  transition-all data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full data-[state=open]:sm:slide-in-from-bottom-full",
+  base: "pointer-events-auto  flex items-center overflow-hidden rounded-3xl p-6 shadow-lg transition-all  data-[swipe=cancel]:translate-x-0 data-[swipe=end]:translate-x-[var(--radix-toast-swipe-end-x)] data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=move]:transition-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[swipe=end]:animate-out data-[state=closed]:fade-out-80 data-[state=closed]:slide-out-to-right-full data-[state=open]:slide-in-from-top-full dark:border-black data-[state=open]:sm:slide-in-from-bottom-full",
   variants: {
     variant: {
       default:
-        "border-neutral-200 text-neutral-950 dark:border-neutral-800 dark:bg-neutral-950 bg-white shadow-toast dark:text-neutral-50",
-      destructive: "border-red-500 bg-red-500 text-neutral-50 dark:border-red-900 dark:bg-red-900",
+        "border-grey-100 bg-white text-black shadow-toast dark:border-black dark:bg-black dark:text-grey-50",
+      destructive: "border-red-500 bg-red-500 text-grey-50 dark:border-red-900 dark:bg-red-900",
     },
     size: {
       small: "h-18 w-96 gap-6 p-2 text-sm",
@@ -97,7 +97,7 @@ const ToastAction = React.forwardRef<
   <ToastPrimitives.Action
     ref={ref}
     className={cn(
-      "border-neutral-200 bg-transparent focus:ring-neutral-950 dark:border-neutral-800 dark:ring-offset-neutral-950 dark:hover:bg-neutral-800 dark:focus:ring-neutral-300 dark:group-[.destructive]:border-neutral-800/40 inline-flex h-8 shrink-0 items-center justify-center rounded-md border px-3 text-sm font-medium ring-offset-white transition-colors hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-neutral-100/40 group-[.destructive]:hover:border-red-500/30 group-[.destructive]:hover:bg-red-500 group-[.destructive]:hover:text-neutral-50 group-[.destructive]:focus:ring-red-500 dark:group-[.destructive]:hover:border-red-900/30 dark:group-[.destructive]:hover:bg-red-900 dark:group-[.destructive]:hover:text-neutral-50 dark:group-[.destructive]:focus:ring-red-900",
+      "inline-flex h-8 shrink-0 items-center justify-center rounded-md border border-grey-100 bg-transparent px-3 text-sm font-medium ring-offset-white transition-colors hover:bg-grey-100 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group-[.destructive]:border-grey-100/40 group-[.destructive]:hover:border-red-500/30 group-[.destructive]:hover:bg-red-500 group-[.destructive]:hover:text-grey-50 group-[.destructive]:focus:ring-red-500 dark:border-black dark:ring-offset-black dark:hover:bg-black dark:focus:ring-grey-100 dark:group-[.destructive]:border-black/40 dark:group-[.destructive]:hover:border-red-900/30 dark:group-[.destructive]:hover:bg-red-900 dark:group-[.destructive]:hover:text-grey-50 dark:group-[.destructive]:focus:ring-red-900",
       className,
     )}
     {...props}
@@ -110,7 +110,7 @@ export const toastCloseVariants = tv({
   variants: {
     variant: {
       default:
-        "text-neutral-950/50 hover:text-neutral-950 group-[.destructive]:focus:ring-offset-red-600 absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-900 dark:text-neutral-50/50 dark:hover:text-neutral-50",
+        "group-[.destructive]:focus:ring-offset-red-600 absolute right-2 top-2 rounded-md p-1 text-black/50 opacity-0 transition-opacity hover:text-black focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-900 dark:text-grey-50/50 dark:hover:text-grey-50",
       alwaysVisible: "opacity-100",
       destructive: "text-red-300 hover:text-red-50 focus:text-red-50",
     },

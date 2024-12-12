@@ -1,7 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-
-
 import { Badge, BadgeVariants } from "./Badge";
 
 const meta: Meta<typeof Badge> = {
@@ -103,6 +101,10 @@ export const StrongBadges: Story = {
       {
         variant: "warning-strong",
         children: "Warning Strong",
+      },
+      {
+        variant: "error-strong",
+        children: "Error Strong",
       },
     ];
 

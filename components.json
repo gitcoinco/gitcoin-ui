@@ -6,7 +6,7 @@
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "src/index.css",
-    "baseColor": "neutral",
+    "baseColor": "grey",
     "cssVariables": false
   },
   "aliases": {

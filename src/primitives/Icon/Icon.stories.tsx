@@ -24,7 +24,7 @@ export const Default: Story = {};
 
 export const WithThemeColor: Story = {
   args: {
-    className: "fill-grey-400",
+    className: "fill-grey-500",
   },
 };
 
