@@ -26,7 +26,7 @@ export const ProgressModal = ({
       <Modal className="w-[450px] flex-col gap-8 rounded-2xl p-8">
         <DialogHeader className="flex  flex-col gap-1">
           <DialogTitle className="text-base font-semibold text-black">{heading}</DialogTitle>
-          <DialogDescription className="text-[14px]/[24px] text-grey-700">
+          <DialogDescription className="text-[14px]/[24px] text-grey-900">
             {subheading}
           </DialogDescription>
         </DialogHeader>
@@ -95,7 +95,7 @@ function getStepAttributes(
       return {
         icon: (
           <span
-            className="relative z-10 flex size-8 items-center justify-center rounded-full bg-brand"
+            className="relative z-10 flex size-8 items-center justify-center rounded-full bg-moss-700"
             data-testid="complete-icon"
           >
             <Check className="size-5 text-white" aria-hidden="true" />
@@ -103,7 +103,7 @@ function getStepAttributes(
         ),
         line: !isLastStep ? (
           <div
-            className="absolute inset-y-4 left-4 z-10 -ml-px  h-full w-0.5 bg-brand"
+            className="absolute inset-y-4 left-4 z-10 -ml-px  h-full w-0.5 bg-moss-700"
             aria-hidden="true"
           />
         ) : null,
@@ -113,16 +113,16 @@ function getStepAttributes(
     case ProgressStatus.IN_PROGRESS:
       return {
         icon: (
-          <span className="relative z-20 flex size-8 items-center justify-center rounded-full border-2 border-grey-700 bg-white">
+          <span className="relative z-20 flex size-8 items-center justify-center rounded-full border-2 border-grey-900 bg-white">
             <span
-              className="animate-pulse-scale size-2.5 rounded-full bg-grey-700"
+              className="animate-pulse-scale size-2.5 rounded-full bg-grey-900"
               data-testid="current-icon"
             />
           </span>
         ),
         line: !isLastStep ? (
           <div
-            className="bg-neutral-200 absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5"
+            className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-grey-100"
             aria-hidden="true"
           />
         ) : null,
@@ -132,35 +132,35 @@ function getStepAttributes(
     case ProgressStatus.IS_ERROR:
       return {
         icon: (
-          <span className="relative z-10 flex size-8 items-center justify-center rounded-full border-2 border-pink-500 bg-white">
-            <X className="size-5 text-pink-500" data-testid="error-icon" />
+          <span className="relative z-10 flex size-8 items-center justify-center rounded-full border-2 border-red-700 bg-white">
+            <X className="size-5 text-red-700" data-testid="error-icon" />
           </span>
         ),
         line: !isLastStep ? (
           <div
-            className="bg-neutral-200 absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5"
+            className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-grey-100"
             aria-hidden="true"
           />
         ) : null,
-        nameColor: "text-grey-700",
-        descriptionColor: "text-grey-700",
+        nameColor: "text-grey-900",
+        descriptionColor: "text-grey-900",
       };
     case ProgressStatus.NOT_STARTED:
       return {
         icon: (
           <span
-            className="relative z-10 flex size-8 items-center justify-center rounded-full border-2 border-neutral-600 bg-white"
+            className="relative z-10 flex size-8 items-center justify-center rounded-full border-2 border-grey-500 bg-white"
             data-testid="upcoming-icon"
           ></span>
         ),
         line: !isLastStep ? (
           <div
-            className="bg-neutral-200 absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5"
+            className="absolute left-4 top-4 -ml-px mt-0.5 h-full w-0.5 bg-grey-100"
             aria-hidden="true"
           />
         ) : null,
-        nameColor: "text-grey-700",
-        descriptionColor: "text-grey-700",
+        nameColor: "text-grey-900",
+        descriptionColor: "text-grey-900",
       };
     default:
       return {

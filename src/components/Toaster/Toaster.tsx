@@ -36,7 +36,7 @@ export const Toaster = () => {
           {toasts.map((toast) => {
             const ToastIcon = match(toast.status)
               .with("success", () => (
-                <Icon type={IconType.SOLID_CHECK} className="size-5 rounded-full fill-brand" />
+                <Icon type={IconType.SOLID_CHECK} className="size-5 rounded-full fill-moss-700" />
               ))
               .with("error", () => (
                 <Icon type={IconType.SOLID_X} className="size-5 rounded-full fill-red-700" />

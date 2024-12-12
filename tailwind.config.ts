@@ -8,7 +8,7 @@ export default withTV({
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   darkMode: ["class", "[data-mode='dark']"],
   theme: {
-    colors: colors,
+    colors,
     extend: {
       borderWidth: {
         "1.5": "1.5px",

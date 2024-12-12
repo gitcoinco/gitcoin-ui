@@ -25,22 +25,22 @@ export const variants = tv({
       },
       loading: {
         container: "gap-1",
-        icon: "animate-pulse fill-neutral-200",
+        icon: "animate-pulse fill-grey-100",
       },
       date: {
         container: "gap-2",
       },
       dateWithPrefix: { text: "text-grey-900" },
       social: {
-        text: "text-green-brand hover:underline",
+        text: "text-moss-900 hover:underline",
       },
       period: {
         container: "gap-2",
       },
       roundPeriod: {
         container: "gap-2",
-        text: "text-[14px]/[17px] text-grey-700",
-        icon: "size-4 fill-grey-700",
+        text: "text-[14px]/[17px] text-grey-900",
+        icon: "size-4 fill-grey-900",
       },
 
       verifiedBadge: {

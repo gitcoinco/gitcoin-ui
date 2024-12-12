@@ -170,7 +170,7 @@ export const SubmitApplicationEvaluationPage = ({
           avatarPosition="left"
         />
         <h1 className="text-3xl font-medium leading-9">Evaluate {project.title}</h1>
-        <div className="h-0.5 bg-grey-200" />
+        <div className="h-0.5 bg-grey-100" />
         <div className="flex gap-2">
           <ApplicationSummary
             project={project}

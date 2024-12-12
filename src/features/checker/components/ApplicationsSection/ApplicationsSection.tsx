@@ -89,7 +89,7 @@ export const ApplicationsSection: React.FC<ApplicationsSectionProps> = ({
         ) : (
           <div className="flex items-center justify-start pb-1">{heading}</div>
         )}
-        <div className="h-px bg-[#c8cccc]" />
+        <div className="h-px bg-grey-300" />
       </div>
 
       <div>

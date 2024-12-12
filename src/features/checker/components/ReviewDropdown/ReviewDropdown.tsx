@@ -175,10 +175,10 @@ const EvaluationAnswers: React.FC<ReviewDropdownContentProps> = ({ evaluation })
 
 const getIcon = (value: string) => {
   const iconMap = {
-    APPROVED: [IconType.SOLID_CHECK, "fill-brand"],
-    REJECTED: [IconType.SOLID_X, "fill-orange-600"],
-    YES: [IconType.SOLID_CHECK, "fill-brand"],
-    NO: [IconType.SOLID_X, "fill-orange-600"],
+    APPROVED: [IconType.SOLID_CHECK, "fill-moss-700"],
+    REJECTED: [IconType.SOLID_X, "fill-red-900"],
+    YES: [IconType.SOLID_CHECK, "fill-moss-700"],
+    NO: [IconType.SOLID_X, "fill-red-900"],
     UNCERTAIN: [IconType.SOLID_QUESTION_MARK_CIRCLE, "fill-yellow-300"],
   };
 
