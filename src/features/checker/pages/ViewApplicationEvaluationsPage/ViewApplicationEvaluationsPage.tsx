@@ -81,14 +81,14 @@ export const ViewApplicationEvaluationsPage: React.FC<ViewApplicationEvaluations
           </div>
         </div>
       </div>
-      <div className="h-0.5 bg-[#EAEAEA]" />
+      <div className="h-0.5 bg-grey-100" />
       <div className="flex gap-2">
         <Badge className="font-semibold" variant={reviewStatusBadgeVariant}>
           {capitalizeWord(data?.application.status)}
         </Badge>
       </div>
       <ProjectSummary projectMetadata={project} application={data?.application} />
-      <div className="h-0.5 bg-[#EAEAEA]" />
+      <div className="h-0.5 bg-grey-100" />
       {data?.applicationEvaluations.length > 0 ? (
         <ReviewDropdownList evaluations={data?.applicationEvaluations} />
       ) : (

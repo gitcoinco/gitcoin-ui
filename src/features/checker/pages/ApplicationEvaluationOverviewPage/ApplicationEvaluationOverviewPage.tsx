@@ -71,7 +71,7 @@ export const ApplicationEvaluationOverviewPage = ({
           avatarPosition="left"
         />
         <h1 className="text-3xl font-medium leading-9">{project.title}</h1>
-        <div className="h-0.5 bg-[#EAEAEA]" />
+        <div className="h-0.5 bg-grey-100" />
         <p className="leading-9 text-grey-900">
           Evaluate this project and see how others have evaluated this project.
         </p>

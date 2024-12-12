@@ -107,7 +107,7 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
         <div className="flex items-end gap-6">
           <Button
             icon={<Icon type={IconType.LINK} />}
-            className="border-gray-100 bg-white text-black shadow-sm"
+            className="border-grey-100 bg-white text-black shadow-sm"
             value="Round application"
             onClick={() => {
               navigator.clipboard.writeText(applyLink).then(
@@ -125,7 +125,7 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
           />
           <Button
             icon={<Icon type={IconType.EXPLORER} />}
-            className="border-gray-100 bg-white text-black shadow-sm"
+            className="border-grey-100 bg-white text-black shadow-sm"
             value="View round"
             onClick={() => window.open(explorerLink, "_blank")}
           />

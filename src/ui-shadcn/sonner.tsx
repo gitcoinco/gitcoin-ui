@@ -13,12 +13,12 @@ const Toaster = ({ ...props }: ToasterProps) => {
       toastOptions={{
         classNames: {
           toast:
-            "group toast group-[.toaster]:bg-white group-[.toaster]:text-neutral-950 group-[.toaster]:border-neutral-200 group-[.toaster]:shadow-lg dark:group-[.toaster]:bg-neutral-950 dark:group-[.toaster]:text-neutral-50 dark:group-[.toaster]:border-neutral-800",
-          description: "group-[.toast]:text-neutral-500 dark:group-[.toast]:text-neutral-400",
+            "group toast group-[.toaster]:bg-white group-[.toaster]:text-black group-[.toaster]:border-grey-100 group-[.toaster]:shadow-lg dark:group-[.toaster]:bg-black dark:group-[.toaster]:text-grey-50 dark:group-[.toaster]:border-black",
+          description: "group-[.toast]:text-grey-900 dark:group-[.toast]:text-grey-500",
           actionButton:
-            "group-[.toast]:bg-neutral-900 group-[.toast]:text-neutral-50 dark:group-[.toast]:bg-neutral-50 dark:group-[.toast]:text-neutral-900",
+            "group-[.toast]:bg-black group-[.toast]:text-grey-50 dark:group-[.toast]:bg-grey-50 dark:group-[.toast]:text-black",
           cancelButton:
-            "group-[.toast]:bg-neutral-100 group-[.toast]:text-neutral-500 dark:group-[.toast]:bg-neutral-800 dark:group-[.toast]:text-neutral-400",
+            "group-[.toast]:bg-grey-100 group-[.toast]:text-grey-900 dark:group-[.toast]:bg-black dark:group-[.toast]:text-grey-500",
         },
       }}
       {...props}

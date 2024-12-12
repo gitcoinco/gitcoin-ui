@@ -3,8 +3,8 @@ import * as React from "react";
 import { IconLabel } from "@/components/IconLabel";
 // import { useCredentialverification } from "@/features/checker/hooks";
 import { ProjectApplicationForManager, ProjectMetadata } from "@/features/checker/services/allo";
-import { IconType } from "@/primitives/Icon";
 import { useCredentialVerification } from "@/hooks/useCredentialVerification";
+import { IconType } from "@/primitives/Icon";
 
 export interface ProjectSummaryProps {
   projectMetadata: ProjectMetadata;
@@ -40,7 +40,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
       <div className="flex flex-col gap-4">
         {createdAt && (
           <IconLabel
-            className="text-gray-700"
+            className="text-grey-900"
             type="default"
             iconType={IconType.CALENDAR}
             label={appliedOnLabel}
@@ -48,7 +48,7 @@ export const ProjectSummary: React.FC<ProjectSummaryProps> = ({ projectMetadata,
         )}
         {(createdAt || lastUpdated) && (
           <IconLabel
-            className="text-gray-700"
+            className="text-grey-900"
             type="default"
             iconType={IconType.CALENDAR}
             label={lastEditedLabel}

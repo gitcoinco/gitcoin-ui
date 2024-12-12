@@ -96,7 +96,7 @@ export const WithStringHeading: Story = {
 export const WithCustomHeading: Story = {
   args: {
     buttonsPerRow: 2,
-    heading: <h2 className="text-xl font-extrabold text-blue-600">Select an Option</h2>,
+    heading: <h2 className="text-xl font-extrabold text-blue-500">Select an Option</h2>,
   },
   render: (args) => (
     <RadioGroup {...args}>

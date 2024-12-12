@@ -216,7 +216,7 @@ export const SubmitApplicationEvaluationPage = ({
           avatarPosition="left"
         />
         <h1 className="text-3xl font-medium leading-9">Evaluate {project.title}</h1>
-        <div className="h-0.5 bg-[#EAEAEA]" />
+        <div className="h-0.5 bg-grey-100" />
         <div className="flex gap-2">
           <div className="flex w-full max-w-[600px] flex-col gap-4">
             <Accordion
@@ -312,7 +312,7 @@ export const SubmitApplicationEvaluationPage = ({
             />
           </div>
 
-          <div className="border-gray-100 rounded-[20px] border p-5">
+          <div className="rounded-[20px] border border-grey-100 p-5">
             <EvaluationForm groups={groups} onSubmit={handleSubmit} />
           </div>
         </div>
