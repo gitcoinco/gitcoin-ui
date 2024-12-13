@@ -137,3 +137,25 @@ body {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+.background-grid-green {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, rgba(213, 242, 234, 1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(213, 242, 234, 1) 1px, transparent 1px);
+  background-size: 160px 120px; /* Adjust grid spacing */
+}
+
+.background-grid-purple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(to right, rgba(235, 234, 253, 1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(235, 234, 253, 1) 1px, transparent 1px);
+  background-size: 155px 120px; /* Adjust grid spacing */
+}
