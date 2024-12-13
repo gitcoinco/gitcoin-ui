@@ -20,6 +20,11 @@
       "import": "./dist/checker.js",
       "require": "./dist/checker.js"
     },
+    "./retrofunding": {
+      "types": "./dist/retrofunding.d.ts",
+      "import": "./dist/retrofunding.js",
+      "require": "./dist/retrofunding.js"
+    },
     "./hooks": {
       "types": "./dist/hooks.d.ts",
       "import": "./dist/hooks.js",
