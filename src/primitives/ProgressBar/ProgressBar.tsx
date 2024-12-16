@@ -2,8 +2,8 @@ import { Progress, ProgressVariants } from "@/ui-shadcn/progress";
 
 export interface ProgressBarProps {
   value: number;
-  className: string;
-  variant: ProgressVariants;
+  className?: string;
+  variant?: ProgressVariants;
 }
 
 export const ProgressBar = ({ value, className, variant }: ProgressBarProps) => {

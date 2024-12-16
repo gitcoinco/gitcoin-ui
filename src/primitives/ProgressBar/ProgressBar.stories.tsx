@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { ProgressBar } from "./ProgressBar";
 
+// Adjust the path as needed
+
 const meta = {
   title: "Primitives/ProgressBar",
   component: ProgressBar,
