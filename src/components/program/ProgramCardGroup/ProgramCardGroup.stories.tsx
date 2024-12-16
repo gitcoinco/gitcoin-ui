@@ -1,6 +1,9 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { ProgramCardGroup } from "./ProgramCardGroup";
+
+const onProgramClick = action("Program clicked!");
 
 const programs = [
   {
@@ -9,6 +12,7 @@ const programs = [
     title: "Gitcoin Grants Stack",
     operatorsCount: 2,
     roundsCount: 10,
+    onClick: () => onProgramClick(),
   },
   {
     id: "0x3456",
@@ -16,6 +20,7 @@ const programs = [
     title: "Allo Protocol",
     operatorsCount: 4,
     roundsCount: 2,
+    onClick: () => onProgramClick(),
   },
 ];
 
@@ -91,6 +96,7 @@ export const withFourCard: Story = {
         title: "Pump Fun",
         operatorsCount: 4,
         roundsCount: 2,
+        onClick: () => onProgramClick(),
       },
     ],
   },
@@ -106,6 +112,7 @@ export const withFiveCard: Story = {
         title: "Pump Fun",
         operatorsCount: 4,
         roundsCount: 2,
+        onClick: () => onProgramClick(),
       },
       {
         id: "0x3456",
@@ -113,6 +120,7 @@ export const withFiveCard: Story = {
         title: "Eigen Protocol",
         operatorsCount: 4,
         roundsCount: 2,
+        onClick: () => onProgramClick(),
       },
     ],
   },
