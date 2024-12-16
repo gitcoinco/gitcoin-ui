@@ -1,8 +1,11 @@
+import { action } from "@storybook/addon-actions";
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { PoolStatus, PoolType } from "@/types";
 
 import { PoolCardGroup } from "./PoolCardGroup";
+
+const onProgramClick = action("Pool Clicked!");
 
 const pools = [
   {
@@ -18,6 +21,7 @@ const pools = [
     operatorsCount: 10,
     logoImg:
       "https://cdn.prod.website-files.com/6433c5d029c6bb75f3f00bd5/66f47dd26d8ec8d0e48a22d0_gitcoin-profile.png",
+    onClick: () => onProgramClick,
   },
   {
     roundName: "Uniswap",
@@ -31,6 +35,7 @@ const pools = [
     votingEndDate: new Date("2024-12-10T19:23:30.678Z"),
     operatorsCount: 5,
     logoImg: "https://thegivingblock.com/wp-content/uploads/2021/07/Uniswap-Logo.png",
+    onClick: () => onProgramClick,
   },
 ];
 

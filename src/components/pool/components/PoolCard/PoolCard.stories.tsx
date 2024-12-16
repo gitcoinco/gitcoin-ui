@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { PoolCardProps, PoolCardQueryProps } from "@/components";
@@ -5,6 +6,8 @@ import { createQueryState } from "@/lib";
 import { PoolStatus, PoolType } from "@/types";
 
 import { PoolCard } from "./PoolCard";
+
+const onProgramClick = action("Pool Clicked!");
 
 const simpleRound = {
   roundName: "Grants Round Defi",
@@ -19,7 +22,7 @@ const simpleRound = {
   operatorsCount: 10,
   logoImg:
     "https://cdn.prod.website-files.com/6433c5d029c6bb75f3f00bd5/66f47dd26d8ec8d0e48a22d0_gitcoin-profile.png",
-  onClick: () => alert("Pool Clicked"),
+  onClick: () => onProgramClick,
 };
 
 export default {
