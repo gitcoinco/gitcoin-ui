@@ -51,7 +51,7 @@ export interface SocialProps {
 
 export interface DefaultProps {
   type: "default";
-  iconType: IconType | HeroiconsType;
+  iconType: IconType;
   label?: string;
   iconVariant?: string;
   textVariant?: string;

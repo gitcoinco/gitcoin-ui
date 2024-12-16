@@ -1,10 +1,9 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { HeroiconsType } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";
-import { Badge, Skeleton } from "@/primitives";
+import { Badge, IconType, Skeleton } from "@/primitives";
 import { Card, CardContent } from "@/ui-shadcn/card";
 
 export interface ProgramCardProps {
@@ -42,7 +41,7 @@ export function ProgramDataCard({ data }: ProgramDataCardProps) {
         <h2 className="mb-2 font-ui-sans text-2xl font-bold">{data.title}</h2>
         <IconLabel
           type="default"
-          iconType={HeroiconsType.USER_GROUP}
+          iconType={IconType.USER_GROUP}
           label={`${data.operatorsCount} operators`}
         />
         <div>

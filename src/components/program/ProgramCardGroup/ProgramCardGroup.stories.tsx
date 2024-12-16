@@ -83,7 +83,16 @@ export const withJustifyEvenly: Story = {
 
 export const withFourCard: Story = {
   args: {
-    programs: [...programs, { label: "Total applications", value: "100" }],
+    programs: [
+      ...programs,
+      {
+        id: "0x3456",
+        chainId: 1,
+        title: "Pump Fun",
+        operatorsCount: 4,
+        roundsCount: 2,
+      },
+    ],
   },
 };
 
@@ -91,8 +100,20 @@ export const withFiveCard: Story = {
   args: {
     programs: [
       ...programs,
-      { label: "Total applications", value: "100" },
-      { label: "Review Pending", value: "40" },
+      {
+        id: "0x3456",
+        chainId: 1,
+        title: "Pump Fun",
+        operatorsCount: 4,
+        roundsCount: 2,
+      },
+      {
+        id: "0x3456",
+        chainId: 1,
+        title: "Eigen Protocol",
+        operatorsCount: 4,
+        roundsCount: 2,
+      },
     ],
   },
 };
