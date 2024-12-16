@@ -19,6 +19,7 @@ export const isPoolType = (value: string): value is PoolType =>
   Object.values(PoolType).includes(value as PoolType);
 
 export interface PoolData {
+  banner?: string;
   roundName: string;
   roundId: string;
   chainId: number;

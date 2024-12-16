@@ -12,6 +12,7 @@ export interface ProgramCardProps {
   title: string;
   operatorsCount: number;
   roundsCount: number;
+  onClick?: () => void;
 }
 export interface ProgramCardQueryProps {
   queryResult: UseQueryResult<ProgramCardProps, Error>;
@@ -36,7 +37,10 @@ export interface ProgramDataCardProps {
 export function ProgramDataCard({ data }: ProgramDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
   return (
-    <Card className="block min-w-[304px] max-w-sm overflow-hidden border-grey-300 bg-grey-50">
+    <Card
+      className="block min-w-[304px] max-w-sm overflow-hidden border-grey-300 bg-grey-50"
+      onClick={data.onClick}
+    >
       <CardContent className="flex flex-col gap-3 p-6">
         <h2 className="mb-2 font-ui-sans text-2xl font-bold">{data.title}</h2>
         <IconLabel

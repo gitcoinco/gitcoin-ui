@@ -10,6 +10,7 @@ const program: ProgramCardProps = {
   title: "Gitcoin Grants Stack",
   operatorsCount: 2,
   roundsCount: 10,
+  onClick: () => alert("Program clicked!"),
 };
 
 export default {
