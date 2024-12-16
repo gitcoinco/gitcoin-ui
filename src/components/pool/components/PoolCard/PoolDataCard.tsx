@@ -1,37 +1,52 @@
 import { IconLabel, PoolBadge } from "@/components";
 import { getChainInfo } from "@/lib";
-import { modularRedirect } from "@/lib/utils";
+import { IconType } from "@/primitives";
 import { PoolData } from "@/types";
-import { OnClickProps } from "@/types";
 
 export interface PoolDataCardProps {
   data: PoolData;
-  redirectProps?: OnClickProps;
 }
 
-export function PoolDataCard({ data, redirectProps }: PoolDataCardProps) {
+export function PoolDataCard({ data }: PoolDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
   return (
     <div
-      className="grid w-full cursor-pointer grid-cols-2 items-center rounded-lg border p-3 max-[450px]:grid-cols-1"
-      onClick={() =>
-        modularRedirect(
-          redirectProps?.redirectLink,
-          redirectProps?.redirect,
-          data.chainId.toString(),
-          data.roundId,
-        )
-      }
+      onClick={data.onClick}
+      className="inline-flex h-60 w-full items-center justify-between rounded-2xl border border-grey-100 p-6"
     >
-      <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
-        <span>{data.roundName}</span>
-        <PoolBadge badge={data.poolType} type="poolType" />
-        <IconLabel type="period" startDate={data.startDate} endDate={data.endDate} />
-        <IconLabel type="default" label={name} iconType={icon} />
+      <div className="flex items-center justify-start gap-6">
+        <img className="relative h-48 rounded-2xl" src={data.logoImg} />
+        <div className="inline-flex w-[482px] flex-col items-start justify-start gap-3">
+          <div className="self-stretch text-2xl font-medium">{data.roundName}</div>
+          <IconLabel
+            type="default"
+            iconType={IconType.USER_GROUP}
+            label={`${data.operatorsCount} operators`}
+          />
+          <div className="inline-flex items-center justify-start gap-4 text-grey-900">
+            <div className="flex items-center justify-start gap-2">
+              <IconLabel
+                type="period"
+                startDate={data.applicationStartDate}
+                endDate={data.applicationEndDate}
+              />
+            </div>
+            <div className="text-[16px]/[24px] font-medium leading-7">Applications</div>
+          </div>
+          <div className="inline-flex items-center justify-start gap-4 text-grey-900">
+            <div className="flex items-center justify-start gap-2">
+              <IconLabel
+                type="period"
+                startDate={data.votingStartDate}
+                endDate={data.votingEndDate}
+              />
+            </div>
+            <div className="text-[16px]/[24px] font-medium leading-7">Voting</div>
+          </div>
+          <IconLabel type="default" label={name} iconType={icon} />
+        </div>
       </div>
-      <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        <PoolBadge badge={data.poolStatus} type="poolStatus" />
-      </div>
+      <PoolBadge badge={data.poolType} type="poolType" />
     </div>
   );
 }

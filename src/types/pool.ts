@@ -24,9 +24,14 @@ export interface PoolData {
   roundId: string;
   chainId: number;
   poolType: PoolType;
-  startDate: Date;
-  endDate: Date;
+  applicationStartDate: Date;
+  applicationEndDate: Date;
+  votingStartDate: Date;
+  votingEndDate: Date;
   poolStatus: PoolStatus;
+  operatorsCount: number;
+  logoImg?: string;
+  onClick?: () => void;
 }
 
 // Type guard for PoolData
