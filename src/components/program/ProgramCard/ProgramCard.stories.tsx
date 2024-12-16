@@ -1,8 +1,11 @@
+import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { createQueryState } from "@/lib";
 
 import { ProgramCard, ProgramCardProps, ProgramCardQueryProps } from "./ProgramCard";
+
+const onProgramClick = action("Program clicked!");
 
 const program: ProgramCardProps = {
   id: "0x123456789",
@@ -10,7 +13,7 @@ const program: ProgramCardProps = {
   title: "Gitcoin Grants Stack",
   operatorsCount: 2,
   roundsCount: 10,
-  onClick: () => alert("Program clicked!"),
+  onClick: () => onProgramClick(),
 };
 
 export default {
