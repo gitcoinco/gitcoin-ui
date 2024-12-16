@@ -2,15 +2,15 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
 import { Skeleton } from "@/primitives";
-import { OnClickProps, PoolData } from "@/types";
+import { PoolData } from "@/types";
 
 import { PoolDataCard } from "./PoolDataCard";
 
-export interface PoolCardQueryProps extends OnClickProps {
+export interface PoolCardQueryProps {
   queryResult: UseQueryResult<PoolData, Error>;
 }
 
-export interface PoolCardProps extends PoolData, OnClickProps {}
+export type PoolCardProps = PoolData;
 
 export function PoolCard(props: PoolCardProps | PoolCardQueryProps) {
   return match(props)
@@ -18,25 +18,24 @@ export function PoolCard(props: PoolCardProps | PoolCardQueryProps) {
       match(queryResult)
         .with({ status: "error", error: P.select() }, (error) => <PoolErrorCard error={error} />)
         .with({ status: "pending" }, () => <LoadingCard />)
-        .with({ status: "success", data: P.select() }, (data) => (
-          <PoolDataCard data={data} redirectProps={props} />
-        ))
+        .with({ status: "success", data: P.select() }, (data) => <PoolDataCard data={data} />)
         .otherwise(() => <PoolErrorCard />),
     )
-    .otherwise(() => <PoolDataCard data={props as PoolData} redirectProps={props} />);
+    .otherwise(() => <PoolDataCard data={props as PoolData} />);
 }
 
 function LoadingCard() {
   return (
-    <div className="grid w-full grid-cols-2 items-center rounded-lg border p-3 max-[450px]:grid-cols-1">
-      <div className="flex flex-col items-start gap-4 max-[450px]:items-center">
-        <Skeleton className="h-5 w-1/2 rounded-md" />
-        <Skeleton className="h-5 w-1/2 rounded-md" />
-        <Skeleton className="h-5 w-1/2 rounded-md" />
-        <Skeleton className="h-5 w-1/2 rounded-md" />
-      </div>
-      <div className="flex w-full flex-col items-end max-[450px]:items-center max-[450px]:pt-4">
-        <Skeleton className="h-5 w-2/4 rounded-md" />
+    <div className="inline-flex h-60 items-center justify-between rounded-2xl border border-grey-100 p-6">
+      <div className="flex items-center justify-start gap-6">
+        <Skeleton className="relative h-40 w-[184px] rounded-2xl" />
+        <div className="inline-flex w-[620px] flex-col items-start justify-start gap-3">
+          <Skeleton className="h-6 w-3/4 rounded-md" />
+          <Skeleton className="h-4 w-1/4 rounded-md" />
+          <Skeleton className="h-4 w-1/2 rounded-md" />
+          <Skeleton className="h-4 w-1/2 rounded-md" />
+          <Skeleton className="h-4 w-1/4 rounded-md" />
+        </div>
       </div>
     </div>
   );

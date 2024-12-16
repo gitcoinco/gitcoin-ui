@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
 import { PoolCardProps, PoolCardQueryProps } from "@/components";
@@ -6,16 +7,22 @@ import { PoolStatus, PoolType } from "@/types";
 
 import { PoolCard } from "./PoolCard";
 
+const onProgramClick = action("Pool Clicked!");
+
 const simpleRound = {
-  roundName: "Round Card",
+  roundName: "Grants Round Defi",
   roundId: "90",
   chainId: 8453,
   poolType: PoolType.QuadraticFunding,
-  startDate: new Date("2024-12-09T19:22:56.413Z"),
-  endDate: new Date("2024-12-10T19:23:30.678Z"),
   poolStatus: PoolStatus.ApplicationsInProgress,
-  redirectLink: "https://explorer.gitcoin.co/#/round/{chainId}/{roundId}",
-  redirect: true,
+  applicationStartDate: new Date("2024-12-08T19:22:56.413Z"),
+  applicationEndDate: new Date("2024-12-09T19:23:30.678Z"),
+  votingStartDate: new Date("2024-12-09T19:22:56.413Z"),
+  votingEndDate: new Date("2024-12-10T19:23:30.678Z"),
+  operatorsCount: 10,
+  logoImg:
+    "https://cdn.prod.website-files.com/6433c5d029c6bb75f3f00bd5/66f47dd26d8ec8d0e48a22d0_gitcoin-profile.png",
+  onClick: () => onProgramClick,
 };
 
 export default {
@@ -27,8 +34,11 @@ export default {
     chainId: { control: "number" },
     poolType: { control: "select", options: Object.values(PoolType) },
     poolStatus: { control: "select", options: Object.values(PoolStatus) },
-    startDate: { control: "date" },
-    endDate: { control: "date" },
+    applicationStartDate: { control: "date" },
+    applicationEndDate: { control: "date" },
+    votingStartDate: { control: "date" },
+    votingEndDate: { control: "date" },
+    operatorsCount: { control: "number" },
     queryResult: { table: { disable: true } }, // Hide queryResult from controls
   },
 } as Meta<typeof PoolCard>;

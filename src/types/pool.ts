@@ -19,14 +19,18 @@ export const isPoolType = (value: string): value is PoolType =>
   Object.values(PoolType).includes(value as PoolType);
 
 export interface PoolData {
-  banner?: string;
   roundName: string;
   roundId: string;
   chainId: number;
   poolType: PoolType;
-  startDate: Date;
-  endDate: Date;
+  applicationStartDate: Date;
+  applicationEndDate: Date;
+  votingStartDate: Date;
+  votingEndDate: Date;
   poolStatus: PoolStatus;
+  operatorsCount: number;
+  logoImg?: string;
+  onClick?: () => void;
 }
 
 // Type guard for PoolData
