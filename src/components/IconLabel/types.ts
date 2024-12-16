@@ -1,3 +1,4 @@
+import { HeroiconsType } from "@/assets";
 import { IconType } from "@/primitives/Icon";
 
 interface AIEvaluationProps {
@@ -50,7 +51,7 @@ export interface SocialProps {
 
 export interface DefaultProps {
   type: "default";
-  iconType: IconType;
+  iconType: IconType | HeroiconsType;
   label?: string;
   iconVariant?: string;
   textVariant?: string;

@@ -1,5 +1,3 @@
-import { UseQueryResult } from "@tanstack/react-query";
-
 export interface ProjectData {
   id: string;
   title: string;

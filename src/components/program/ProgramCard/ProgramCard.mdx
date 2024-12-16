@@ -1,0 +1,26 @@
+import { Meta, Title, Primary, Stories, Controls, Story } from "@storybook/blocks";
+
+import { ProgramCard } from "./ProgramCard";
+import * as ProgramCardStories from "./ProgramCard.stories";
+
+# ProgramCard
+
+<Meta of={ProgramCardStories} />
+
+The ProgramCard component renders a Gitcoin Program in a card Format. These can be used to share on social media or to render in a list.
+
+This component provides a Loading and an Error State.
+
+This component natively supports a Tanstack Query for a single Program, and will appropriately display Loading, Error, and Success states.
+
+# Example
+
+<Story of={ProgramCardStories.Default} />
+
+# Controls
+
+<Controls />
+
+# Other variations
+
+<Stories />
