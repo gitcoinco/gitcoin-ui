@@ -38,11 +38,11 @@ export function ProgramDataCard({ data }: ProgramDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
   return (
     <Card
-      className="block min-w-[304px] max-w-sm overflow-hidden border-grey-300 bg-grey-50"
+      className="block w-[304px] overflow-hidden border-grey-300 bg-grey-50"
       onClick={data.onClick}
     >
       <CardContent className="flex flex-col gap-3 p-6">
-        <h2 className="mb-2 font-ui-sans text-2xl font-bold">{data.title}</h2>
+        <h2 className="truncate font-ui-sans text-2xl font-bold">{data.title}</h2>
         <IconLabel
           type="default"
           iconType={IconType.USER_GROUP}
@@ -61,12 +61,12 @@ export function ProgramDataCard({ data }: ProgramDataCardProps) {
 
 export function LoadingCard() {
   return (
-    <Card className="block max-w-sm overflow-hidden" role="presentation">
+    <Card className="flex h-[189px] w-[304px] flex-col  overflow-hidden" role="presentation">
       <CardContent className="flex flex-col gap-3 p-6">
-        <Skeleton className="h-10 w-full rounded-md" />
-        <Skeleton className="h-4 w-full rounded-md" />
-        <Skeleton className="h-3 w-full rounded-md" />
-        <Skeleton className="h-3 w-full rounded-md" />
+        <Skeleton className="h-[32px] w-full rounded-md" />
+        <Skeleton className="h-6 w-1/2 rounded-md" />
+        <Skeleton className="h-6 w-1/3 rounded-md" />
+        <Skeleton className="h-6 w-1/2 rounded-md" />
       </CardContent>
     </Card>
   );
