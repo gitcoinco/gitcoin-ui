@@ -1,7 +1,7 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { Skeleton } from "@/primitives";
+import { Badge, Skeleton } from "@/primitives";
 import { PoolData } from "@/types";
 
 import { PoolDataCard } from "./PoolDataCard";
@@ -26,17 +26,18 @@ export function PoolCard(props: PoolCardProps | PoolCardQueryProps) {
 
 function LoadingCard() {
   return (
-    <div className="inline-flex h-60 items-center justify-between rounded-2xl border border-grey-100 p-6">
+    <div className="inline-flex h-60 w-full items-center justify-between rounded-2xl border border-grey-100 p-6">
       <div className="flex items-center justify-start gap-6">
-        <Skeleton className="relative h-40 w-[184px] rounded-2xl" />
-        <div className="inline-flex w-[620px] flex-col items-start justify-start gap-3">
-          <Skeleton className="h-6 w-3/4 rounded-md" />
-          <Skeleton className="h-4 w-1/4 rounded-md" />
-          <Skeleton className="h-4 w-1/2 rounded-md" />
-          <Skeleton className="h-4 w-1/2 rounded-md" />
-          <Skeleton className="h-4 w-1/4 rounded-md" />
+        <Skeleton className="relative size-48 rounded-2xl" />
+        <div className="inline-flex flex-col items-start justify-start gap-3">
+          <Skeleton className="h-8 w-72 rounded-md" />
+          <Skeleton className="h-6 w-36 rounded-md" />
+          <Skeleton className="h-6 w-72 rounded-md" />
+          <Skeleton className="h-6 w-64 rounded-md" />
+          <Skeleton className="h-6 w-28 rounded-md" />
         </div>
       </div>
+      <Badge skeleton size="md" />
     </div>
   );
 }
