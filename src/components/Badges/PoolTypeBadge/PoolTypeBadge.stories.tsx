@@ -48,6 +48,17 @@ export const DirectGrants: Story = {
   },
 };
 
+export const Retrofunding: Story = {
+  args: {
+    value: PoolType.Retrofunding,
+  },
+  parameters: {
+    docs: {
+      storyDescription: "Displays the `Retrofunding` type badge.",
+    },
+  },
+};
+
 export const Undefined: Story = {
   args: {
     value: undefined,
