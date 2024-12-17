@@ -12,6 +12,7 @@ export const isPoolStatus = (value: string): value is PoolStatus =>
 export enum PoolType {
   QuadraticFunding = "allov2.DonationVotingMerkleDistributionDirectTransferStrategy",
   DirectGrants = "allov2.DirectGrantsSimpleStrategy",
+  Retrofunding = "allov2.RetroFundingStrategy",
 }
 
 // Type guard for PoolType
@@ -23,9 +24,14 @@ export interface PoolData {
   roundId: string;
   chainId: number;
   poolType: PoolType;
-  startDate: Date;
-  endDate: Date;
+  applicationStartDate: Date;
+  applicationEndDate: Date;
+  votingStartDate: Date;
+  votingEndDate: Date;
   poolStatus: PoolStatus;
+  operatorsCount: number;
+  logoImg?: string;
+  onClick?: () => void;
 }
 
 // Type guard for PoolData

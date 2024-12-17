@@ -14,6 +14,7 @@ import {
   QuestionMarkCircleIcon as SolidQuestionMarkCircleIcon,
   SparklesIcon,
   StarIcon,
+  UserGroupIcon,
   XCircleIcon as XSolidIcon,
   XIcon,
 } from "@heroicons/react/solid";
@@ -33,6 +34,7 @@ enum HeroiconsType {
   SOLID_X = "solid-x",
   SPARKLES = "sparkles",
   STAR = "star",
+  USER_GROUP = "user-group",
   X = "x",
 }
 
@@ -50,6 +52,7 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   "solid-check": CheckSolidIcon,
   sparkles: SparklesIcon,
   star: StarIcon,
+  "user-group": UserGroupIcon,
   "solid-x": XSolidIcon,
   x: XIcon,
 };
@@ -73,6 +76,7 @@ export {
   SolidQuestionMarkCircleIcon,
   SparklesIcon,
   StarIcon,
+  UserGroupIcon,
   XSolidIcon,
   XIcon,
 };

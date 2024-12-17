@@ -13,6 +13,7 @@ const variants = tv({
     value: {
       [PoolType.QuadraticFunding]: "bg-legacy-green-100",
       [PoolType.DirectGrants]: "bg-legacy-yellow-100",
+      [PoolType.Retrofunding]: "border border-blue-700 bg-white text-blue-700",
     },
   },
 });
@@ -26,6 +27,7 @@ export interface PoolTypeBadgeProps {
 const badgeTexts = {
   [PoolType.QuadraticFunding]: "Quadratic funding",
   [PoolType.DirectGrants]: "Direct grants",
+  [PoolType.Retrofunding]: "Retrofunding",
 };
 
 const invalidValueText = "Error: Invalid type";

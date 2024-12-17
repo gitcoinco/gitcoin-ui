@@ -23,6 +23,7 @@ export enum IconType {
   SOLID_X = "solid-x",
   SPARKLES = "sparkles",
   STAR = "star",
+  USER_GROUP = "user-group",
   X = "x",
   // Social Media
   TWITTER = "twitter",
