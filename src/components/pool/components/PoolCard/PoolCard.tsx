@@ -1,7 +1,7 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { Skeleton } from "@/primitives";
+import { Badge, Skeleton } from "@/primitives";
 import { PoolData } from "@/types";
 
 import { PoolDataCard } from "./PoolDataCard";
@@ -37,6 +37,7 @@ function LoadingCard() {
           <Skeleton className="h-4 w-1/4 rounded-md" />
         </div>
       </div>
+      <Badge skeleton size="md" />
     </div>
   );
 }

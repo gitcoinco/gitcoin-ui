@@ -15,7 +15,7 @@ export function PoolDataCard({ data }: PoolDataCardProps) {
       className="inline-flex h-60 w-full items-center justify-between rounded-2xl border border-grey-100 p-6"
     >
       <div className="flex items-center justify-start gap-6">
-        <img className="relative h-48 rounded-2xl" src={data.logoImg} />
+        <img className="relative size-48 rounded-2xl" src={data.logoImg} />
         <div className="inline-flex w-[482px] flex-col items-start justify-start gap-3">
           <div className="self-stretch text-2xl font-medium">{data.roundName}</div>
           <IconLabel
