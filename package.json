@@ -52,7 +52,7 @@
     "build": "tsc && vite build",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write --ignore-unknown .",
-    "preview": "vite preview",
+    "preview": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky",
