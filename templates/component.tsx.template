@@ -1,0 +1,35 @@
+import * as React from 'react';
+import { tv } from 'tailwind-variants';
+import { cn } from "@/lib/utils";
+
+const {{componentName}}Variants = tv({
+  slots: {
+    base: "flex flex-col items-start justify-center gap-4 rounded-lg border border-grey-200 bg-white px-6 py-4",
+    content: "flex w-full items-start justify-between",
+  },
+  variants: {
+    variant: {
+      primary: "bg-blue-500 text-white",
+      secondary: "bg-grey-200 text-grey-900",
+    },
+  },
+});
+
+export interface {{componentName}}Props {
+  value: string;
+  variant?: 'primary' | 'secondary';
+  className?: string;
+}
+
+export const {{componentName}}: React.FC<{{componentName}}Props> = ({ value, variant = 'primary', className }) => {
+  // Get the slots and variants from the tv function
+  const { base, content } = {{componentName}}Variants({ variant });
+
+  return (
+    <div className={cn(className, base())}>
+      <div className={content()}>
+        {value}
+      </div>
+    </div>
+  );
+};
