@@ -1,16 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { VerticalTab } from "./VerticalTab";
+import { Icon, IconType } from "../Icon";
+import { VerticalTabs } from "./VerticalTab";
 
 const tabs = [
   {
-    triggerContent: (
-      <div className="flex flex-col gap-2 text-left">
-        <div className="text-base font-normal leading-7">Applications</div>
-        <div className="text-sm font-normal leading-normal">Review and approve applications</div>
-      </div>
-    ),
-    triggerValue: "applications",
+    tabTitle: "Applications",
+    tabSubtitle: "Review and approve applications",
+    tabIcon: <Icon type={IconType.DOCUMENT_DUPLICATE} />,
+    tabKey: "applications",
     tabContent: (
       <div className="inline-flex h-60 flex-col justify-start gap-6 rounded-3xl bg-[#f7f7f7] p-6">
         <div className="text-2xl font-medium leading-loose text-black">Applications</div>
@@ -21,16 +19,26 @@ const tabs = [
     ),
   },
   {
-    triggerContent: (
-      <div className="flex flex-col gap-2 text-left">
-        <div className="text-base font-normal leading-7">Voters</div>
-        <div className="text-sm font-normal leading-normal">Configure voter settings</div>
-      </div>
-    ),
-    triggerValue: "signup",
+    tabTitle: "Voters",
+    tabSubtitle: "Configure voter settings",
+    tabIcon: <Icon type={IconType.USERS} />,
+    tabKey: "signup",
     tabContent: (
       <div className="inline-flex h-60 flex-col justify-start gap-6 rounded-3xl bg-[#f7f7f7] p-6">
         <div className="text-2xl font-medium leading-loose text-black">Voters</div>
+        <div className="text-base font-normal leading-7 text-grey-900">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+      </div>
+    ),
+  },
+  {
+    tabTitle: "Custom",
+    tabSubtitle: "Example without icon",
+    tabKey: "custom",
+    tabContent: (
+      <div className="inline-flex h-60 flex-col justify-start gap-6 rounded-3xl bg-[#f7f7f7] p-6">
+        <div className="text-2xl font-medium leading-loose text-black">Custom</div>
         <div className="text-base font-normal leading-7 text-grey-900">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
@@ -41,18 +49,56 @@ const tabs = [
 
 const meta = {
   title: "Primitives/VerticalTab",
-  component: VerticalTab,
+  component: VerticalTabs,
   args: {
     tabs,
   },
-} satisfies Meta<typeof VerticalTab>;
+  argTypes: {
+    withIcons: {
+      control: {
+        type: "boolean",
+        defaultValue: false,
+      },
+    },
+    listClassName: {
+      control: {
+        type: "text",
+        defaultValue: "",
+      },
+    },
+  },
+} satisfies Meta<typeof VerticalTabs>;
 
 export default meta;
 
-type Story = StoryObj<typeof VerticalTab>;
+type Story = StoryObj<typeof VerticalTabs>;
 
 export const Default: Story = {
   args: {
     tabs,
+    withIcons: false,
+  },
+};
+
+export const WithIcons: Story = {
+  args: {
+    tabs,
+    withIcons: true,
+  },
+};
+
+export const WithCustomListWidth: Story = {
+  args: {
+    tabs,
+    withIcons: true,
+    listClassName: "w-[302px]",
+  },
+};
+
+export const WithCustomContentWidth: Story = {
+  args: {
+    tabs,
+    withIcons: true,
+    contentClassName: "mt-3",
   },
 };
