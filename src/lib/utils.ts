@@ -26,7 +26,7 @@ export const modularRedirect = (
     link = link.replace("{roundId}", roundId);
   }
   if (redirect) {
-    window.open(link, "_blank");
+    window.open(link, "_blank", "noopener,noreferrer");
   } else {
     window.location.href = link;
   }
