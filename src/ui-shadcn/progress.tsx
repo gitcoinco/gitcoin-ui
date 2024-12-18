@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { tv } from "tailwind-variants";
 
-export type ProgressVariants = "default" | "green";
+export type ProgressVariants = "default" | "green" | "green-md";
 
 const progressVariants = tv({
   slots: {
@@ -17,7 +17,11 @@ const progressVariants = tv({
         indicator: "bg-black dark:bg-grey-50",
       },
       green: {
-        root: "bg-grey-100",
+        root: " bg-grey-100",
+        indicator: "bg-moss-700",
+      },
+      "green-md": {
+        root: "w-[228px] bg-grey-100",
         indicator: "bg-moss-700",
       },
     },
@@ -30,7 +34,7 @@ const progressVariants = tv({
 const Progress = React.forwardRef<
   React.ElementRef<typeof ProgressPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & {
-    variant?: "default" | "green";
+    variant?: "default" | "green" | "green-md";
   }
 >(({ className, value, variant = "default", ...props }, ref) => {
   const { root, indicator } = progressVariants({ variant });
