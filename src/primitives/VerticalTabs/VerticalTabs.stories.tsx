@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Icon, IconType } from "../Icon";
-import { VerticalTabs } from "./VerticalTab";
+import { VerticalTabs } from "./VerticalTabs";
 
 const tabs = [
   {
@@ -48,7 +48,7 @@ const tabs = [
 ];
 
 const meta = {
-  title: "Primitives/VerticalTab",
+  title: "Primitives/VerticalTabs",
   component: VerticalTabs,
   args: {
     tabs,
