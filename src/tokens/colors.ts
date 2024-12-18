@@ -67,7 +67,42 @@ const purple: ColorSet = {
   "900": "#40268C",
 };
 
-export const colors: Colors = {
+export const grantsStackDesignSystem: Colors = {
+  "legacy-grey": {
+    "50": "#F7F7F7",
+    "100": "#EBEBEB",
+    "200": "#CACBCB",
+    "300": "#979998",
+    "400": "#555555",
+    "500": "#000000",
+  },
+  "legacy-green": {
+    "100": "#ADEDE5",
+    "200": "#5CC8BB",
+    "300": "#47A095",
+    "400": "#00433B",
+  },
+  "legacy-orange": {
+    "100": "#FFD9CD",
+    "200": "#F68561",
+    "300": "#FC551E",
+    "400": "#DE3714",
+  },
+  "legacy-yellow": {
+    "100": "#FFEFBE",
+    "200": "#FEEB45",
+    "300": "#FBC624",
+  },
+  "legacy-blue": {
+    "100": "#D3EDFE",
+    "200": "#15B8DC",
+    "300": "#5F94BC",
+    "400": "#4881AD",
+    "500": "#3C6C90",
+  },
+};
+
+export const grantsStackUIKit: Colors = {
   text: {
     primary: black,
     secondary: grey["900"],
@@ -94,4 +129,9 @@ export const colors: Colors = {
   red,
   yellow,
   purple,
+};
+
+export const colors: Colors = {
+  ...grantsStackDesignSystem,
+  ...grantsStackUIKit,
 };

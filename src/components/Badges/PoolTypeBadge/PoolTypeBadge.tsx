@@ -11,8 +11,8 @@ const variants = tv({
   base: "border-transparent",
   variants: {
     value: {
-      [PoolType.QuadraticFunding]: "bg-green-100",
-      [PoolType.DirectGrants]: "bg-yellow-100",
+      [PoolType.QuadraticFunding]: "bg-legacy-green-100",
+      [PoolType.DirectGrants]: "bg-legacy-yellow-100",
       [PoolType.Retrofunding]: "border border-blue-700 bg-white text-blue-700",
     },
   },

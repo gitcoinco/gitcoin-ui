@@ -19,13 +19,10 @@
 - <span style="color: #C8CCCC;">["#C8CCCC"]</span> -> Grey 300: <span style="color: #C8CCCC;">#C8CCCC</span>
 - <span style="color: #EAEAEA;">["#EAEAEA"]</span> -> Grey 100: <span style="color: #ECEDED;">#ECEDED</span>
 - Orange 300: <span style="color: #FF9776;">#FF9776</span> -> Red 500: <span style="color: #F56A3E;">#F56A3E</span>
-- Orange 400: <span style="color: #DE3714;">#DE3714</span> -> Red 500: <span style="color: #F56A3E;">#F56A3E</span>
 - Orange 600: <span style="color: #A2401F;">#A2401F</span> -> Red 900: <span style="color: #82331A;">#82331A</span>
 - Pink 500: <span style="color: #D44D6E;">#D44D6E</span> -> Red 700: <span style="color: #BE3F17;">#BE3F17</span>
 - Brand: <span style="color: #307168;">#307168</span> -> Moss 700: <span style="color: #22635A;">#22635A</span>
 - Green Brand: <span style="color: #185B52;">#185B52</span> -> Moss 900: <span style="color: #1E443F;">#1E443F</span>
-- Green 200: <span style="color: #47A095;">#47A095</span> -> Moss 500: <span style="color: #329A88;">#329A88</span>
-- Green 400: <span style="color: #00433B;">#00433B</span> -> Moss 900: <span style="color: #1E443F;">#1E443F</span>
 - transparent -> "transparent"
 - current -> "currentColor"
 
@@ -80,8 +77,6 @@
 ### Orange
 
 - bg-orange-300 -> Badge,
-- text-orange-400 -> PoolStatusBadge,
-- border-orange-400 -> PoolStatusBadge,
 - fill-orange-600 -> ReviewDropdown,
 
 ### Green
@@ -91,14 +86,6 @@
 - border-brand -> Button,
 - fill-brand -> ReviewDropdown, Toaster,
 - text-green-brand -> IconLabel
-- bg-green-200 -> PoolStatusBadge,
-- text-green-400 -> PoolStatusBadge,
-- border-green-400 -> PoolStatusBadge,
-
-### Transparent
-
-- bg-transparent -> toggle, input, command, chart, calendar, Toast,
-- border-transparent -> switch, scroll-area, Badge, PoolTypeBadge, ApplicationBadge,
 
 ### Current
 
