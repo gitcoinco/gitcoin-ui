@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/ui-shadcn/tabs";
 const variants = tv({
   slots: {
     tabs: "flex gap-6",
-    tabsList: "flex flex-col gap-4",
+    tabsList: "flex flex-col gap-4 bg-transparent",
     tabsTrigger:
       "w-full justify-start rounded-lg p-2 text-text-primary data-[state=active]:bg-background-secondary",
     tabsContentContainer: "flex-1",
