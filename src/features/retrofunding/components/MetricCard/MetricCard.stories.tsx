@@ -1,6 +1,6 @@
 import { StoryObj, Meta } from "@storybook/react";
 
-import { Button, Icon, IconType } from "@/primitives";
+import { Button } from "@/primitives";
 
 import { MetricCard } from "./MetricCard";
 
@@ -14,52 +14,48 @@ type Story = StoryObj<typeof MetricCard>;
 export const Default: Story = {
   render: () => (
     <MetricCard
-      heading="Metric here"
-      paragraph="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      button={
-        <Button
-          icon={<Icon className="size-4" type={IconType.PLUS} />}
-          iconPosition="left"
-          variant="grey"
-          value="Add metric"
-        />
-      }
-      bottomSection={<div>Read more</div>}
+      title="Metric here"
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
+      action="addMetric"
+      onClick={() => alert("Button clicked!")}
+      onReadMore={() => alert("Read more clicked!")}
     />
   ),
 };
 
-export const WithDifferentButton: Story = {
+export const AddToBallot: Story = {
   render: () => (
-   <div className="flex flex-col gap-4">
-     <MetricCard
-      heading="Metric here"
-      paragraph="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      button={
-        <Button
-          icon={<Icon className="size-4" type={IconType.PLUS} />}
-          iconPosition="left"
-          variant="light-purple"
-          value="Add to ballot"
-          onClick={() => alert("Button clicked!")}
-        />
-      }
-      bottomSection={<div>Read more</div>}
+    <MetricCard
+      title="Metric here"
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
+      action="addToBallot"
+      onClick={() => alert("Button clicked!")}
+      onReadMore={() => alert("Read more clicked!")}
     />
-     <MetricCard
-      heading="Metric here"
-      paragraph="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      button={
-        <Button
-          icon={<Icon className="size-4" type={IconType.CHECK} />}
-          iconPosition="left"
-          variant="light-green"
-          value="Added to ballot"
-          onClick={() => alert("Button clicked!")}
-        />
-      }
-      bottomSection={<div>Read more</div>}
+  ),
+};
+
+export const AddedToBallot: Story = {
+  render: () => (
+    <MetricCard
+      title="Metric here"
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
+      action="addedToBallot"
+      onClick={() => alert("Button clicked!")}
+      onReadMore={() => alert("Read more clicked!")}
     />
-    </div>
+  ),
+};
+
+export const WithCustomButton: Story = {
+  render: () => (
+    <MetricCard
+      title="Metric here"
+      description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
+      action="addMetric"
+      onClick={() => alert("Custom button clicked!")}
+      onReadMore={() => alert("Read more clicked!")}
+      customButton={<Button variant="error" value="Custom Button" onClick={() => alert("Custom button action")} />}
+    />
   ),
 };

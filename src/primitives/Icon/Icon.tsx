@@ -16,6 +16,7 @@ export enum IconType {
   CLOCK = "clock",
   EXCLAMATION_CIRCLE = "exclamation-circle",
   LINK = "link",
+  PLUS = "plus",
   GLOBE = "globe",
   INFORMATION_CIRCLE = "informationCircle",
   SOLID_CHECK = "solid-check",
@@ -41,7 +42,6 @@ export enum IconType {
   SHINE = "shine",
   USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
-  PLUS = "plus",
 }
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   type: IconType;
