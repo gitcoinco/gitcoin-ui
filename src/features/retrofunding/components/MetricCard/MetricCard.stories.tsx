@@ -16,7 +16,7 @@ export const Default: Story = {
     <MetricCard
       title="Metric here"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      action="addMetric"
+      variant="addMetric"
       onClick={() => alert("Button clicked!")}
       onReadMore={() => alert("Read more clicked!")}
     />
@@ -28,7 +28,7 @@ export const AddToBallot: Story = {
     <MetricCard
       title="Metric here"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      action="addToBallot"
+      variant="addToBallot"
       onClick={() => alert("Button clicked!")}
       onReadMore={() => alert("Read more clicked!")}
     />
@@ -40,7 +40,7 @@ export const AddedToBallot: Story = {
     <MetricCard
       title="Metric here"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      action="addedToBallot"
+      variant="addedToBallot"
       onClick={() => alert("Button clicked!")}
       onReadMore={() => alert("Read more clicked!")}
     />
@@ -52,10 +52,10 @@ export const WithCustomButton: Story = {
     <MetricCard
       title="Metric here"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
-      action="addMetric"
+      variant="addMetric"
       onClick={() => alert("Custom button clicked!")}
       onReadMore={() => alert("Read more clicked!")}
-      customButton={<Button variant="error" value="Custom Button" onClick={() => alert("Custom button action")} />}
+      customButton={<Button variant="error" value="Custom Button" onClick={() => alert("Custom button variant")} />}
     />
   ),
 };

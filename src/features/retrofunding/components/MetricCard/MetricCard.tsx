@@ -20,7 +20,7 @@ const metricCardVariants = tv({
 export interface MetricCardProps {
   title: string;
   description: string;
-  action?: "addMetric" | "addToBallot" | "addedToBallot";
+  variant?: "addMetric" | "addToBallot" | "addedToBallot";
   onClick: () => void;
   onReadMore: () => void;
   customButton?: React.ReactNode;
@@ -30,7 +30,7 @@ export interface MetricCardProps {
 export const MetricCard: React.FC<MetricCardProps> = ({
   title,
   description,
-  action = "addMetric",
+  variant = "addMetric",
   onClick,
   onReadMore,
   customButton,
@@ -55,7 +55,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
     let buttonIcon: React.ReactNode = null;
     let buttonVariant = "secondary";
 
-    switch (action) {
+    switch (variant) {
       case "addMetric":
         buttonText = "Add metric";
         buttonIcon = <Icon className="size-4" type={IconType.PLUS} />;
@@ -93,8 +93,6 @@ export const MetricCard: React.FC<MetricCardProps> = ({
         </div>
         <div className={buttonContainer()}>{renderButton()}</div>
       </div>
-
-      {/* Bottom Left Section */}
       <div className={bottomLeftSection()} onClick={onReadMore}>
         Read more
       </div>
