@@ -41,6 +41,7 @@ export enum IconType {
   SHINE = "shine",
   USER = "user",
   VERIFIEDBADGE = "verifiedBadge",
+  PLUS = "plus",
 }
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   type: IconType;

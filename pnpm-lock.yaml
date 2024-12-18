@@ -103,7 +103,11 @@ importers:
         version: 8.3.5(storybook@8.4.7(prettier@3.1.0))
       '@tanstack/react-query':
         specifier: ^5.59.15
+<<<<<<< HEAD
         version: 5.62.8(react@18.3.1)
+=======
+        version: 5.62.7(react@18.3.1)
+>>>>>>> 600a5c4 (Add Metric Card)
       '@uiw/react-markdown-preview':
         specifier: ^5.1.3
         version: 5.1.3(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -151,7 +155,11 @@ importers:
         version: 1.7.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-variants:
         specifier: ^0.2.1
+<<<<<<< HEAD
         version: 0.2.1(tailwindcss@3.4.17)
+=======
+        version: 0.2.1(tailwindcss@3.4.16)
+>>>>>>> 600a5c4 (Add Metric Card)
       ts-pattern:
         specifier: ^5.5.0
         version: 5.6.0
@@ -163,7 +171,11 @@ importers:
         version: 2.21.55(typescript@5.4.2)(zod@3.24.1)
       vite-plugin-svgr:
         specifier: ^4.2.0
+<<<<<<< HEAD
         version: 4.3.0(rollup@4.28.1)(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
+=======
+        version: 4.3.0(rollup@4.28.1)(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2))
+>>>>>>> 600a5c4 (Add Metric Card)
       zod:
         specifier: ^3.23.8
         version: 3.24.1
@@ -196,12 +208,18 @@ importers:
         specifier: ^8.4.4
         version: 8.4.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.7(prettier@3.1.0))
       '@storybook/builder-vite':
+<<<<<<< HEAD
         specifier: ^8.4.7
         version: 8.4.7(storybook@8.4.7(prettier@3.1.0))(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
+=======
+        specifier: ^8.4.4
+        version: 8.4.7(storybook@8.4.7(prettier@3.1.0))(vite@5.4.11(@types/node@22.10.2))
+>>>>>>> 600a5c4 (Add Metric Card)
       '@storybook/manager-api':
         specifier: ^8.4.4
         version: 8.4.7(storybook@8.4.7(prettier@3.1.0))
       '@storybook/react':
+<<<<<<< HEAD
         specifier: ^8.4.7
         version: 8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)
       '@storybook/react-vite':
@@ -209,6 +227,15 @@ importers:
         version: 8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.28.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
       '@storybook/test':
         specifier: ^8.4.7
+=======
+        specifier: ^8.4.4
+        version: 8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)
+      '@storybook/react-vite':
+        specifier: ^8.4.4
+        version: 8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.28.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2))
+      '@storybook/test':
+        specifier: ^8.4.4
+>>>>>>> 600a5c4 (Add Metric Card)
         version: 8.4.7(storybook@8.4.7(prettier@3.1.0))
       '@storybook/test-runner':
         specifier: ^0.19.1
@@ -227,6 +254,7 @@ importers:
         version: 18.3.5(@types/react@18.3.17)
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.10.0
+<<<<<<< HEAD
         version: 8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2))(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       '@typescript-eslint/parser':
         specifier: ^8.10.0
@@ -237,6 +265,18 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.1
         version: 3.7.2(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
+=======
+        version: 8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@typescript-eslint/parser':
+        specifier: ^8.10.0
+        version: 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.2
+        version: 4.3.4(vite@5.4.11(@types/node@22.10.2))
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.7.1
+        version: 3.7.2(vite@5.4.11(@types/node@22.10.2))
+>>>>>>> 600a5c4 (Add Metric Card)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
@@ -254,6 +294,7 @@ importers:
         version: 9.1.0
       eslint:
         specifier: ^9.11.1
+<<<<<<< HEAD
         version: 9.17.0(jiti@1.21.7)
       eslint-config-prettier:
         specifier: ^9.1.0
@@ -261,6 +302,15 @@ importers:
       eslint-plugin-tailwindcss:
         specifier: ^3.17.5
         version: 3.17.5(tailwindcss@3.4.17)
+=======
+        version: 9.17.0(jiti@1.21.6)
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.0(eslint@9.17.0(jiti@1.21.6))
+      eslint-plugin-tailwindcss:
+        specifier: ^3.17.5
+        version: 3.17.5(tailwindcss@3.4.16)
+>>>>>>> 600a5c4 (Add Metric Card)
       globals:
         specifier: ^15.9.0
         version: 15.13.0
@@ -304,22 +354,34 @@ importers:
         specifier: ^24.2.0
         version: 24.2.0(typescript@5.4.2)
       storybook:
+<<<<<<< HEAD
         specifier: ^8.4.7
+=======
+        specifier: ^8.4.4
+>>>>>>> 600a5c4 (Add Metric Card)
         version: 8.4.7(prettier@3.1.0)
       tailwind-merge:
         specifier: ^2.5.4
         version: 2.5.5
       tailwindcss:
         specifier: ^3.4.14
+<<<<<<< HEAD
         version: 3.4.17
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+=======
+        version: 3.4.16
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.16)
+>>>>>>> 600a5c4 (Add Metric Card)
       typescript:
         specifier: 5.4.2
         version: 5.4.2
       typescript-eslint:
         specifier: ^8.10.0
+<<<<<<< HEAD
         version: 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       vite:
         specifier: ^6.0.3
@@ -327,6 +389,15 @@ importers:
       vite-plugin-dts:
         specifier: ^4.3.0
         version: 4.3.0(@types/node@22.10.2)(rollup@4.28.1)(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
+=======
+        version: 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      vite:
+        specifier: ^5.4.8
+        version: 5.4.11(@types/node@22.10.2)
+      vite-plugin-dts:
+        specifier: ^4.3.0
+        version: 4.3.0(@types/node@22.10.2)(rollup@4.28.1)(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2))
+>>>>>>> 600a5c4 (Add Metric Card)
       vitest:
         specifier: ^2.1.3
         version: 2.1.8(@types/node@22.10.2)(msw@2.7.0(@types/node@22.10.2)(typescript@5.4.2))
@@ -2520,11 +2591,19 @@ packages:
   '@swc/types@0.1.17':
     resolution: {integrity: sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==}
 
+<<<<<<< HEAD
   '@tanstack/query-core@5.62.8':
     resolution: {integrity: sha512-4fV31vDsUyvNGrKIOUNPrZztoyL187bThnoQOvAXEVlZbSiuPONpfx53634MKKdvsDir5NyOGm80ShFaoHS/mw==}
 
   '@tanstack/react-query@5.62.8':
     resolution: {integrity: sha512-8TUstKxF/fysHonZsWg/hnlDVgasTdHx6Q+f1/s/oPKJBJbKUWPZEHwLTMOZgrZuroLMiqYKJ9w69Abm8mWP0Q==}
+=======
+  '@tanstack/query-core@5.62.7':
+    resolution: {integrity: sha512-fgpfmwatsrUal6V+8EC2cxZIQVl9xvL7qYa03gsdsCy985UTUlS4N+/3hCzwR0PclYDqisca2AqR1BVgJGpUDA==}
+
+  '@tanstack/react-query@5.62.7':
+    resolution: {integrity: sha512-+xCtP4UAFDTlRTYyEjLx0sRtWyr5GIk7TZjZwBu4YaNahi3Rt2oMyRqfpfVrtwsqY2sayP4iXVCwmC+ZqqFmuw==}
+>>>>>>> 600a5c4 (Add Metric Card)
     peerDependencies:
       react: ^18 || ^19
 
@@ -6286,8 +6365,13 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
+<<<<<<< HEAD
   tailwindcss@3.4.17:
     resolution: {integrity: sha512-w33E2aCvSDP0tW9RZuNXadXlkHXqFzSkQew/aIa2i/Sj8fThxwovwlXHSPXTbAHwEIhBFXAedUhP2tueAKP8Og==}
+=======
+  tailwindcss@3.4.16:
+    resolution: {integrity: sha512-TI4Cyx7gDiZ6r44ewaJmt0o6BrMCT5aK5e0rmJ/G9Xq3w7CX/5VXl/zIPEJZFUK5VEqwByyhqNPycPlvcK4ZNw==}
+>>>>>>> 600a5c4 (Add Metric Card)
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -6644,6 +6728,7 @@ packages:
       terser:
         optional: true
 
+<<<<<<< HEAD
   vite@6.0.3:
     resolution: {integrity: sha512-Cmuo5P0ENTN6HxLSo6IHsjCLn/81Vgrp81oaiFFMRa8gGDj5xEjIcEpf2ZymZtZR8oU0P2JX5WuUp/rlXcHkAw==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -6689,6 +6774,13 @@ packages:
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
+=======
+  vitest@2.1.8:
+    resolution: {integrity: sha512-1vBKTZskHw/aosXqQUlVWWlGUxSJR8YtiyZDJAFeW2kPAeX6S3Sool0mjspO+kXLuxVWlEDDowBAeqeAQefqLQ==}
+    engines: {node: ^18.0.0 || >=20.0.0}
+    hasBin: true
+    peerDependencies:
+>>>>>>> 600a5c4 (Add Metric Card)
       '@edge-runtime/vm': '*'
       '@types/node': ^18.0.0 || >=20.0.0
       '@vitest/browser': 2.1.8
@@ -7309,9 +7401,15 @@ snapshots:
   '@esbuild/win32-x64@0.24.0':
     optional: true
 
+<<<<<<< HEAD
   '@eslint-community/eslint-utils@4.4.1(eslint@9.17.0(jiti@1.21.7))':
     dependencies:
       eslint: 9.17.0(jiti@1.21.7)
+=======
+  '@eslint-community/eslint-utils@4.4.1(eslint@9.17.0(jiti@1.21.6))':
+    dependencies:
+      eslint: 9.17.0(jiti@1.21.6)
+>>>>>>> 600a5c4 (Add Metric Card)
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.1': {}
@@ -7620,11 +7718,19 @@ snapshots:
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
+<<<<<<< HEAD
   '@joshwooding/vite-plugin-react-docgen-typescript@0.4.2(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))':
     dependencies:
       magic-string: 0.27.0
       react-docgen-typescript: 2.2.2(typescript@5.4.2)
       vite: 6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)
+=======
+  '@joshwooding/vite-plugin-react-docgen-typescript@0.4.2(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2))':
+    dependencies:
+      magic-string: 0.27.0
+      react-docgen-typescript: 2.2.2(typescript@5.4.2)
+      vite: 5.4.11(@types/node@22.10.2)
+>>>>>>> 600a5c4 (Add Metric Card)
     optionalDependencies:
       typescript: 5.4.2
 
@@ -8940,13 +9046,21 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
+<<<<<<< HEAD
   '@storybook/builder-vite@8.4.7(storybook@8.4.7(prettier@3.1.0))(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))':
+=======
+  '@storybook/builder-vite@8.4.7(storybook@8.4.7(prettier@3.1.0))(vite@5.4.11(@types/node@22.10.2))':
+>>>>>>> 600a5c4 (Add Metric Card)
     dependencies:
       '@storybook/csf-plugin': 8.4.7(storybook@8.4.7(prettier@3.1.0))
       browser-assert: 1.2.1
       storybook: 8.4.7(prettier@3.1.0)
       ts-dedent: 2.2.0
+<<<<<<< HEAD
       vite: 6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)
+=======
+      vite: 5.4.11(@types/node@22.10.2)
+>>>>>>> 600a5c4 (Add Metric Card)
 
   '@storybook/components@8.4.7(storybook@8.4.7(prettier@3.1.0))':
     dependencies:
@@ -9016,11 +9130,19 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.4.7(prettier@3.1.0)
 
+<<<<<<< HEAD
   '@storybook/react-vite@8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.28.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))':
     dependencies:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.4.2(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
       '@rollup/pluginutils': 5.1.4(rollup@4.28.1)
       '@storybook/builder-vite': 8.4.7(storybook@8.4.7(prettier@3.1.0))(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))
+=======
+  '@storybook/react-vite@8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.28.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2))':
+    dependencies:
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.4.2(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2))
+      '@rollup/pluginutils': 5.1.4(rollup@4.28.1)
+      '@storybook/builder-vite': 8.4.7(storybook@8.4.7(prettier@3.1.0))(vite@5.4.11(@types/node@22.10.2))
+>>>>>>> 600a5c4 (Add Metric Card)
       '@storybook/react': 8.4.7(@storybook/test@8.4.7(storybook@8.4.7(prettier@3.1.0)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.7(prettier@3.1.0))(typescript@5.4.2)
       find-up: 5.0.0
       magic-string: 0.30.17
@@ -9030,7 +9152,11 @@ snapshots:
       resolve: 1.22.9
       storybook: 8.4.7(prettier@3.1.0)
       tsconfig-paths: 4.2.0
+<<<<<<< HEAD
       vite: 6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)
+=======
+      vite: 5.4.11(@types/node@22.10.2)
+>>>>>>> 600a5c4 (Add Metric Card)
     transitivePeerDependencies:
       - '@storybook/test'
       - rollup
@@ -9231,11 +9357,19 @@ snapshots:
     dependencies:
       '@swc/counter': 0.1.3
 
+<<<<<<< HEAD
   '@tanstack/query-core@5.62.8': {}
 
   '@tanstack/react-query@5.62.8(react@18.3.1)':
     dependencies:
       '@tanstack/query-core': 5.62.8
+=======
+  '@tanstack/query-core@5.62.7': {}
+
+  '@tanstack/react-query@5.62.7(react@18.3.1)':
+    dependencies:
+      '@tanstack/query-core': 5.62.7
+>>>>>>> 600a5c4 (Add Metric Card)
       react: 18.3.1
 
   '@testing-library/dom@10.4.0':
@@ -9417,6 +9551,7 @@ snapshots:
     dependencies:
       '@types/yargs-parser': 21.0.3
 
+<<<<<<< HEAD
   '@typescript-eslint/eslint-plugin@8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2))(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
@@ -9426,6 +9561,17 @@ snapshots:
       '@typescript-eslint/utils': 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       '@typescript-eslint/visitor-keys': 8.18.1
       eslint: 9.17.0(jiti@1.21.7)
+=======
+  '@typescript-eslint/eslint-plugin@8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)':
+    dependencies:
+      '@eslint-community/regexpp': 4.12.1
+      '@typescript-eslint/parser': 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@typescript-eslint/scope-manager': 8.18.1
+      '@typescript-eslint/type-utils': 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@typescript-eslint/utils': 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@typescript-eslint/visitor-keys': 8.18.1
+      eslint: 9.17.0(jiti@1.21.6)
+>>>>>>> 600a5c4 (Add Metric Card)
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
@@ -9434,14 +9580,22 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+<<<<<<< HEAD
   '@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)':
+=======
+  '@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)':
+>>>>>>> 600a5c4 (Add Metric Card)
     dependencies:
       '@typescript-eslint/scope-manager': 8.18.1
       '@typescript-eslint/types': 8.18.1
       '@typescript-eslint/typescript-estree': 8.18.1(typescript@5.4.2)
       '@typescript-eslint/visitor-keys': 8.18.1
       debug: 4.4.0
+<<<<<<< HEAD
       eslint: 9.17.0(jiti@1.21.7)
+=======
+      eslint: 9.17.0(jiti@1.21.6)
+>>>>>>> 600a5c4 (Add Metric Card)
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -9451,12 +9605,21 @@ snapshots:
       '@typescript-eslint/types': 8.18.1
       '@typescript-eslint/visitor-keys': 8.18.1
 
+<<<<<<< HEAD
   '@typescript-eslint/type-utils@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)':
     dependencies:
       '@typescript-eslint/typescript-estree': 8.18.1(typescript@5.4.2)
       '@typescript-eslint/utils': 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       debug: 4.4.0
       eslint: 9.17.0(jiti@1.21.7)
+=======
+  '@typescript-eslint/type-utils@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)':
+    dependencies:
+      '@typescript-eslint/typescript-estree': 8.18.1(typescript@5.4.2)
+      '@typescript-eslint/utils': 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      debug: 4.4.0
+      eslint: 9.17.0(jiti@1.21.6)
+>>>>>>> 600a5c4 (Add Metric Card)
       ts-api-utils: 1.4.3(typescript@5.4.2)
       typescript: 5.4.2
     transitivePeerDependencies:
@@ -9478,6 +9641,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+<<<<<<< HEAD
   '@typescript-eslint/utils@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.17.0(jiti@1.21.7))
@@ -9485,6 +9649,15 @@ snapshots:
       '@typescript-eslint/types': 8.18.1
       '@typescript-eslint/typescript-estree': 8.18.1(typescript@5.4.2)
       eslint: 9.17.0(jiti@1.21.7)
+=======
+  '@typescript-eslint/utils@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)':
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.17.0(jiti@1.21.6))
+      '@typescript-eslint/scope-manager': 8.18.1
+      '@typescript-eslint/types': 8.18.1
+      '@typescript-eslint/typescript-estree': 8.18.1(typescript@5.4.2)
+      eslint: 9.17.0(jiti@1.21.6)
+>>>>>>> 600a5c4 (Add Metric Card)
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -9519,6 +9692,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.1': {}
 
+<<<<<<< HEAD
   '@vitejs/plugin-react-swc@3.7.2(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))':
     dependencies:
       '@swc/core': 1.10.1
@@ -9527,13 +9701,27 @@ snapshots:
       - '@swc/helpers'
 
   '@vitejs/plugin-react@4.3.4(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))':
+=======
+  '@vitejs/plugin-react-swc@3.7.2(vite@5.4.11(@types/node@22.10.2))':
+    dependencies:
+      '@swc/core': 1.10.1
+      vite: 5.4.11(@types/node@22.10.2)
+    transitivePeerDependencies:
+      - '@swc/helpers'
+
+  '@vitejs/plugin-react@4.3.4(vite@5.4.11(@types/node@22.10.2))':
+>>>>>>> 600a5c4 (Add Metric Card)
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
+<<<<<<< HEAD
       vite: 6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)
+=======
+      vite: 5.4.11(@types/node@22.10.2)
+>>>>>>> 600a5c4 (Add Metric Card)
     transitivePeerDependencies:
       - supports-color
 
@@ -10504,6 +10692,7 @@ snapshots:
 
   escape-string-regexp@5.0.0: {}
 
+<<<<<<< HEAD
   eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.7)):
     dependencies:
       eslint: 9.17.0(jiti@1.21.7)
@@ -10513,6 +10702,17 @@ snapshots:
       fast-glob: 3.3.2
       postcss: 8.4.49
       tailwindcss: 3.4.17
+=======
+  eslint-config-prettier@9.1.0(eslint@9.17.0(jiti@1.21.6)):
+    dependencies:
+      eslint: 9.17.0(jiti@1.21.6)
+
+  eslint-plugin-tailwindcss@3.17.5(tailwindcss@3.4.16):
+    dependencies:
+      fast-glob: 3.3.2
+      postcss: 8.4.49
+      tailwindcss: 3.4.16
+>>>>>>> 600a5c4 (Add Metric Card)
 
   eslint-scope@8.2.0:
     dependencies:
@@ -10523,9 +10723,15 @@ snapshots:
 
   eslint-visitor-keys@4.2.0: {}
 
+<<<<<<< HEAD
   eslint@9.17.0(jiti@1.21.7):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.17.0(jiti@1.21.7))
+=======
+  eslint@9.17.0(jiti@1.21.6):
+    dependencies:
+      '@eslint-community/eslint-utils': 4.4.1(eslint@9.17.0(jiti@1.21.6))
+>>>>>>> 600a5c4 (Add Metric Card)
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.19.1
       '@eslint/core': 0.9.1
@@ -13603,6 +13809,7 @@ snapshots:
 
   tailwind-merge@2.5.5: {}
 
+<<<<<<< HEAD
   tailwind-variants@0.2.1(tailwindcss@3.4.17):
     dependencies:
       tailwind-merge: 2.5.5
@@ -13613,6 +13820,18 @@ snapshots:
       tailwindcss: 3.4.17
 
   tailwindcss@3.4.17:
+=======
+  tailwind-variants@0.2.1(tailwindcss@3.4.16):
+    dependencies:
+      tailwind-merge: 2.5.5
+      tailwindcss: 3.4.16
+
+  tailwindcss-animate@1.0.7(tailwindcss@3.4.16):
+    dependencies:
+      tailwindcss: 3.4.16
+
+  tailwindcss@3.4.16:
+>>>>>>> 600a5c4 (Add Metric Card)
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -13622,7 +13841,11 @@ snapshots:
       fast-glob: 3.3.2
       glob-parent: 6.0.2
       is-glob: 4.0.3
+<<<<<<< HEAD
       jiti: 1.21.7
+=======
+      jiti: 1.21.6
+>>>>>>> 600a5c4 (Add Metric Card)
       lilconfig: 3.1.3
       micromatch: 4.0.8
       normalize-path: 3.0.0
@@ -13746,12 +13969,21 @@ snapshots:
     dependencies:
       is-typedarray: 1.0.0
 
+<<<<<<< HEAD
   typescript-eslint@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2):
     dependencies:
       '@typescript-eslint/eslint-plugin': 8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2))(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       '@typescript-eslint/parser': 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       '@typescript-eslint/utils': 8.18.1(eslint@9.17.0(jiti@1.21.7))(typescript@5.4.2)
       eslint: 9.17.0(jiti@1.21.7)
+=======
+  typescript-eslint@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2):
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 8.18.1(@typescript-eslint/parser@8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2))(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@typescript-eslint/parser': 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      '@typescript-eslint/utils': 8.18.1(eslint@9.17.0(jiti@1.21.6))(typescript@5.4.2)
+      eslint: 9.17.0(jiti@1.21.6)
+>>>>>>> 600a5c4 (Add Metric Card)
       typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
@@ -13967,7 +14199,11 @@ snapshots:
       - supports-color
       - terser
 
+<<<<<<< HEAD
   vite-plugin-dts@4.3.0(@types/node@22.10.2)(rollup@4.28.1)(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)):
+=======
+  vite-plugin-dts@4.3.0(@types/node@22.10.2)(rollup@4.28.1)(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2)):
+>>>>>>> 600a5c4 (Add Metric Card)
     dependencies:
       '@microsoft/api-extractor': 7.48.1(@types/node@22.10.2)
       '@rollup/pluginutils': 5.1.4(rollup@4.28.1)
@@ -13980,18 +14216,30 @@ snapshots:
       magic-string: 0.30.17
       typescript: 5.4.2
     optionalDependencies:
+<<<<<<< HEAD
       vite: 6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)
+=======
+      vite: 5.4.11(@types/node@22.10.2)
+>>>>>>> 600a5c4 (Add Metric Card)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
       - supports-color
 
+<<<<<<< HEAD
   vite-plugin-svgr@4.3.0(rollup@4.28.1)(typescript@5.4.2)(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)):
+=======
+  vite-plugin-svgr@4.3.0(rollup@4.28.1)(typescript@5.4.2)(vite@5.4.11(@types/node@22.10.2)):
+>>>>>>> 600a5c4 (Add Metric Card)
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.28.1)
       '@svgr/core': 8.1.0(typescript@5.4.2)
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.4.2))
+<<<<<<< HEAD
       vite: 6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1)
+=======
+      vite: 5.4.11(@types/node@22.10.2)
+>>>>>>> 600a5c4 (Add Metric Card)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -14006,6 +14254,7 @@ snapshots:
       '@types/node': 22.10.2
       fsevents: 2.3.3
 
+<<<<<<< HEAD
   vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1):
     dependencies:
       esbuild: 0.24.0
@@ -14019,6 +14268,10 @@ snapshots:
 
   vitest@2.1.8(@types/node@22.10.2)(msw@2.7.0(@types/node@22.10.2)(typescript@5.4.2)):
     dependencies:
+=======
+  vitest@2.1.8(@types/node@22.10.2)(msw@2.7.0(@types/node@22.10.2)(typescript@5.4.2)):
+    dependencies:
+>>>>>>> 600a5c4 (Add Metric Card)
       '@vitest/expect': 2.1.8
       '@vitest/mocker': 2.1.8(msw@2.7.0(@types/node@22.10.2)(typescript@5.4.2))(vite@5.4.11(@types/node@22.10.2))
       '@vitest/pretty-format': 2.1.8

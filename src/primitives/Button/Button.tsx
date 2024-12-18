@@ -8,15 +8,20 @@ import { cn } from "@/lib/utils";
 export type ButtonVariants =
   | "primary"
   | "secondary"
+  | "grey"
+  | "subtle"
   | "error"
   | "success"
   | "outlined-error"
   | "outlined-success"
   | "outlined-primary"
   | "outlined-secondary"
-  | "outlined-disabled"
   | "disabled"
-  | "subtle"
+  | "outlined-disabled"
+  | "outlined-error-filled"
+  | "outlined-success-filled"
+  | "light-purple"
+  | "light-green"
   | undefined;
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -37,7 +42,7 @@ const buttonVariants = tv({
   variants: {
     variant: {
       primary: "border-moss-700 bg-moss-700 text-white",
-      secondary: "border-grey-100 bg-grey-100 text-black",
+      secondary: "border-grey-50 bg-grey-50 text-black",
       grey: "border-grey-100 bg-grey-100 text-black",
       subtle: "bg-grey-50 text-black",
       error: "border-red-50 bg-red-50 text-red-700",
@@ -50,6 +55,8 @@ const buttonVariants = tv({
       "outlined-disabled": "border-2 border-grey-500 bg-white text-grey-500",
       "outlined-error-filled": "border-2 border-red-700 bg-red-50 text-red-900",
       "outlined-success-filled": "border-2 border-moss-500 bg-moss-50 text-moss-700",
+      "light-purple": "border-purple-100 bg-purple-100 text-text-primary",
+      "light-green": "border-moss-100 bg-moss-100 text-text-primary",
     },
     size: {
       sm: "h-[24px] px-[8px] py-[6px]",
