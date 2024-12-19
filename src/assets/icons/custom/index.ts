@@ -19,6 +19,7 @@ const customIconComponents: Record<CustomIconType, React.FC<React.SVGProps<SVGSV
   user: UserIcon,
   verifiedBadge: VerifiedBadgeIcon,
 };
+
 const customIcons = Object.keys(customIconComponents).sort((a, b) =>
   a.localeCompare(b),
 ) as CustomIconType[];

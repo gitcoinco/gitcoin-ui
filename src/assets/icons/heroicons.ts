@@ -17,6 +17,7 @@ import {
   UserGroupIcon,
   XCircleIcon as XSolidIcon,
   XIcon,
+  PlusIcon,
 } from "@heroicons/react/solid";
 
 enum HeroiconsType {
@@ -27,6 +28,7 @@ enum HeroiconsType {
   CLOCK = "clock",
   EXCLAMATION_CIRCLE = "exclamation-circle",
   LINK = "link",
+  PLUS = "plus",
   GLOBE = "globe",
   INFORMATION_CIRCLE = "informationCircle",
   SOLID_CHECK = "solid-check",
@@ -48,6 +50,7 @@ const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGE
   informationCircle: InformationCircleIcon,
   globe: GlobeIcon,
   link: LinkIcon,
+  plus: PlusIcon,
   questionMarkCircle: SolidQuestionMarkCircleIcon,
   "solid-check": CheckSolidIcon,
   sparkles: SparklesIcon,
@@ -73,6 +76,7 @@ export {
   InformationCircleIcon,
   GlobeIcon,
   LinkIcon,
+  PlusIcon,
   SolidQuestionMarkCircleIcon,
   SparklesIcon,
   StarIcon,
