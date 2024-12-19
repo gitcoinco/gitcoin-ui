@@ -2,11 +2,12 @@ import { Meta, StoryObj } from "@storybook/react";
 
 import { FileUpload } from "./FileUpload";
 
-export default {
+const meta: Meta<typeof FileUpload> = {
   title: "Primitives/FileUpload",
   component: FileUpload,
-} as Meta<typeof FileUpload>;
+};
 
+export default meta;
 export const Default: StoryObj<any> = {
   decorators: [(Story) => <Story />],
   render: (args) => {
