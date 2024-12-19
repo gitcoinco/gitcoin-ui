@@ -10,7 +10,7 @@ export const ProgressBar = ({ value, className, variant }: ProgressBarProps) => 
   return (
     <div className="flex flex-col gap-2">
       <Progress value={value} className={className} variant={variant} />
-      <p className="text-sm">{value}% complete</p>
+      <p className="text-sm">{value.toFixed(0)}% complete</p>
     </div>
   );
 };
