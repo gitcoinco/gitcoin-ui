@@ -36,6 +36,10 @@ export default withTV({
         "ui-mono": ["DM Mono", "serif"],
         "ui-sans": ["DM Sans", "sans-serif"],
       },
+      fontSize: {
+        p: ["1rem", { lineHeight: "1.75rem", fontWeight: "400", letterSpacing: undefined }],
+        body: ["0.875rem", { lineHeight: "1.5rem", fontWeight: "400", letterSpacing: undefined }],
+      },
       borderRadius: {
         "3.5": "14px",
         lg: "var(--radius)",
