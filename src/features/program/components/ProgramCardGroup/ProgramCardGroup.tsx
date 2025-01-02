@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-import { ProgramCard, ProgramCardProps } from "@/components/program/ProgramCard";
+import { ProgramCard, ProgramCardProps } from "../ProgramCard";
 
 export type JustifyVariants =
   | "normal"

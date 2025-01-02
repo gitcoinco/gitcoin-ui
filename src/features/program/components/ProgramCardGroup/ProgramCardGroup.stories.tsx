@@ -25,7 +25,7 @@ const programs = [
 ];
 
 const meta = {
-  title: "Components/program/ProgramCardGroup",
+  title: "Features/Program/ProgramCardGroup",
   component: ProgramCardGroup,
   args: {
     programs,

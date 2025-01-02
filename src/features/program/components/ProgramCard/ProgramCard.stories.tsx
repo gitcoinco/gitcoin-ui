@@ -17,7 +17,7 @@ const program: ProgramCardProps = {
 };
 
 export default {
-  title: "Components/program/ProgramCard",
+  title: "Features/Program/ProgramCard",
   component: ProgramCard,
   argTypes: {
     id: { control: "text" },
