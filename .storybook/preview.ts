@@ -17,7 +17,18 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ["Welcome", "Features", "Components", "Primitives", "Shadcn", "Styles", "*"],
+        method: "alphabetical",
+        order: [
+          "Welcome",
+          "Styles",
+          "Features",
+          ["Checker", "Retrofunding", "Application", "*"],
+          "Components",
+          "Primitives",
+          "Shadcn",
+          "*",
+        ],
+        locales: "en-US",
       },
     },
     msw: {
