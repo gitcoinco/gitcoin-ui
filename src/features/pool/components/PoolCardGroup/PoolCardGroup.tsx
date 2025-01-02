@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-import { PoolCard, PoolCardProps } from "@/components/pool/components";
+import { PoolCard, PoolCardProps } from "../PoolCard";
 
 export type JustifyVariants =
   | "normal"

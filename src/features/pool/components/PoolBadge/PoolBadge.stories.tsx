@@ -5,7 +5,7 @@ import { PoolStatus, PoolType } from "@/types";
 import { PoolBadge } from "./PoolBadge";
 
 const meta: Meta<typeof PoolBadge> = {
-  title: "Components/Badges/PoolBadge",
+  title: "Features/Pool/PoolBadge",
   component: PoolBadge,
   argTypes: {
     badge: {

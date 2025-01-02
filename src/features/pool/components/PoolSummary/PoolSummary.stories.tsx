@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { PoolSummary, PoolSummaryProps } from "./PoolSummary";
 
 const meta: Meta<PoolSummaryProps> = {
-  title: "Components/pool/PoolSummary",
+  title: "Features/Pool/PoolSummary",
   component: PoolSummary,
   args: {
     chainId: 1,

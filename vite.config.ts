@@ -45,6 +45,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "~checker": path.resolve(__dirname, "./src/features/checker"),
+      "~pool": path.resolve(__dirname, "./src/features/pool"),
+      "~retrofunding": path.resolve(__dirname, "./src/features/retrofunding"),
     },
   },
   css: {

@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-import { IconLabel, PoolBadge } from "@/components";
+import { IconLabel } from "@/components";
 import { useToast } from "@/hooks";
 import { getChainInfo } from "@/lib";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,8 @@ import { Breadcrumb, Button, Icon, IconType } from "@/primitives";
 import { PoolStatus, PoolType } from "@/types";
 
 import { getManagerUrl, getBuilderUrl, getExplorerUrl } from "~checker/utils";
+
+import { PoolBadge } from "../PoolBadge";
 
 const variants = tv({
   variants: {

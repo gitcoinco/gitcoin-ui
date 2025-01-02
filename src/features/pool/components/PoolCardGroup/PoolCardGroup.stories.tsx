@@ -40,7 +40,7 @@ const pools = [
 ];
 
 const meta = {
-  title: "Components/pool/PoolCardGroup",
+  title: "Features/Pool/PoolCardGroup",
   component: PoolCardGroup,
   args: {
     pools,

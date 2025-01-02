@@ -1,11 +1,10 @@
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
-import { PoolCardProps, PoolCardQueryProps } from "@/components";
 import { createQueryState } from "@/lib";
 import { PoolStatus, PoolType } from "@/types";
 
-import { PoolCard } from "./PoolCard";
+import { PoolCard, PoolCardProps, PoolCardQueryProps } from "./PoolCard";
 
 const onProgramClick = action("Pool Clicked!");
 
@@ -26,7 +25,7 @@ const simpleRound = {
 };
 
 export default {
-  title: "Components/pool/PoolCard",
+  title: "Features/Pool/PoolCard",
   component: PoolCard,
   argTypes: {
     roundName: { control: "text" },

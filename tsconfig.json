@@ -23,7 +23,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "~checker/*": ["./src/features/checker/*"]
+      "~checker/*": ["./src/features/checker/*"],
+      "~pool/*": ["./src/features/pool/*"],
+      "~retrofunding/*": ["./src/features/retrofunding/*"]
     },
     "outDir": "./dist"
   },

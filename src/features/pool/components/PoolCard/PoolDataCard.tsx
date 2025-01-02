@@ -1,7 +1,9 @@
-import { IconLabel, PoolBadge } from "@/components";
+import { IconLabel } from "@/components";
 import { getChainInfo } from "@/lib";
 import { IconType } from "@/primitives";
 import { PoolData } from "@/types";
+
+import { PoolBadge } from "../PoolBadge";
 
 export interface PoolDataCardProps {
   data: PoolData;
