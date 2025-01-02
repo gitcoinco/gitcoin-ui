@@ -24,8 +24,11 @@
     "paths": {
       "@/*": ["./src/*"],
       "~checker/*": ["./src/features/checker/*"],
+      "~retrofunding/*": ["./src/features/retrofunding/*"],
+      "~application/*": ["./src/features/application/*"],
       "~pool/*": ["./src/features/pool/*"],
-      "~retrofunding/*": ["./src/features/retrofunding/*"]
+      "~program/*": ["./src/features/program/*"],
+      "~project/*": ["./src/features/project/*"]
     },
     "outDir": "./dist"
   },

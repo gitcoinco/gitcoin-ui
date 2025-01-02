@@ -3,7 +3,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { ApplicationBadge, ApplicationBadgeStatus } from "./ApplicationBadge";
 
 const meta: Meta<typeof ApplicationBadge> = {
-  title: "Components/ApplicationBadge",
+  title: "Features/Application/ApplicationBadge",
   component: ApplicationBadge,
 };
 

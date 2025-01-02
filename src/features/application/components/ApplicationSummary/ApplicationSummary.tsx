@@ -1,7 +1,11 @@
-import { ApplicationBadge, ApplicationBadgeStatus, IconLabel, ProjectSummary } from "@/components";
-import { PastApplication, ProjectApplication, ProjectMetadata } from "@/features/checker";
+import { IconLabel } from "@/components";
 import { DateFormat, formatDate } from "@/lib/dates/formatDate";
 import { Accordion, IconType, ListGrid, ListGridColumn, Markdown } from "@/primitives";
+
+import { PastApplication, ProjectApplication, ProjectMetadata } from "~checker/services/allo/types";
+import { ProjectSummary } from "~project/components";
+
+import { ApplicationBadge, ApplicationBadgeStatus } from "../ApplicationBadge";
 
 export enum SummaryAccordians {
   project = "project",

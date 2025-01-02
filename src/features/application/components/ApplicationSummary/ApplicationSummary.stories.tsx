@@ -4,7 +4,7 @@ import { ApplicationSummary } from "./ApplicationSummary";
 import { project, application, pastApplications } from "./mocks";
 
 const meta: Meta<typeof ApplicationSummary> = {
-  title: "Components/project/ApplicationSummary",
+  title: "Features/Application/ApplicationSummary",
   component: ApplicationSummary,
   argTypes: {
     project: { control: "object", description: "Metadata about the project." },

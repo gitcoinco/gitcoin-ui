@@ -1,6 +1,5 @@
 import { Hex } from "viem";
 
-import { ProjectBanner } from "@/components";
 import { Button, Icon, IconType } from "@/primitives";
 
 import { EvaluationList } from "~checker/components";
@@ -11,6 +10,7 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 import { PoolSummary } from "~pool/components";
+import { ProjectBanner } from "~project/components";
 
 export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;

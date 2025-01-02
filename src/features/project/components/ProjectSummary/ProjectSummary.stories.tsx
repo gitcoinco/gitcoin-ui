@@ -7,7 +7,7 @@ import { ProjectSummary } from "./ProjectSummary";
 
 const meta = {
   component: ProjectSummary,
-  title: "Components/project/ProjectSummary",
+  title: "Features/Project/ProjectSummary",
 } satisfies Meta;
 
 export default meta;

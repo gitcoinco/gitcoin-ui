@@ -16,7 +16,7 @@ const simpleProject = {
 };
 
 export default {
-  title: "Components/project/ProjectCard",
+  title: "Features/Project/ProjectCard",
   component: ProjectCard,
   argTypes: {
     id: { control: "text" },

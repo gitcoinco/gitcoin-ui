@@ -1,17 +1,14 @@
 import React from "react";
 
-import { ProjectBanner, ProjectSummary } from "@/components";
-import {
-  ApplicationSummary,
-  SummaryAccordians,
-} from "@/components/project/components/ApplicationSummary/ApplicationSummary";
 import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
 import { Badge, Button, Icon, IconType } from "@/primitives";
 
+import { ApplicationSummary, SummaryAccordians } from "~application/components";
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations, useGetPastApplications } from "~checker/hooks";
 import { getExplorerUrl } from "~checker/utils";
+import { ProjectBanner, ProjectSummary } from "~project/components";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;
