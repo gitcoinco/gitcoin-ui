@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, within } from "@storybook/test";
 
-
-
 import { Avatar } from "./Avatar";
 
 const meta: Meta<typeof Avatar> = {
+  title: "Primitives/Avatar",
   component: Avatar,
 };
 
