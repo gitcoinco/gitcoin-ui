@@ -18,14 +18,20 @@ const meta: Meta<typeof Button> = {
         options: [
           "primary",
           "secondary",
+          "grey",
+          "subtle",
           "error",
           "success",
-          "subtle",
           "outlined-error",
           "outlined-success",
           "outlined-primary",
-          "outlined-disabled",
+          "outlined-secondary",
           "disabled",
+          "outlined-disabled",
+          "outlined-error-filled",
+          "outlined-success-filled",
+          "light-purple",
+          "light-green",
         ],
       },
       table: {
@@ -75,12 +81,28 @@ export const Buttons: Story = {
         value: "Secondary",
       },
       {
+        variant: "grey",
+        value: "Grey",
+      },
+      {
+        variant: "subtle",
+        value: "Subtle",
+      },
+      {
         variant: "error",
         value: "Error",
       },
       {
         variant: "success",
         value: "Success",
+      },
+      {
+        variant: "light-purple",
+        value: "Light Purple",
+      },
+      {
+        variant: "light-green",
+        value: "Light Green",
       },
       {
         variant: "disabled",
@@ -93,6 +115,7 @@ export const Buttons: Story = {
       <div className="flex space-x-4">
         {args.map((arg) => (
           <Button
+            key={arg.variant}
             variant={arg.variant as ButtonVariants}
             value={arg.value}
             disabled={arg.disabled}
@@ -133,6 +156,7 @@ export const Outlined: Story = {
       <div className="flex space-x-4">
         {args.map((arg) => (
           <Button
+            key={arg.variant}
             variant={arg.variant as ButtonVariants}
             value={arg.value}
             disabled={arg.disabled}
@@ -154,16 +178,12 @@ export const OutlinedFilled: Story = {
         variant: "outlined-success-filled",
         value: "Outlined Success Filled",
       },
-      {
-        variant: "subtle",
-        value: "Subtle",
-      },
     ];
 
     return (
       <div className="flex space-x-4">
         {args.map((arg) => (
-          <Button variant={arg.variant as ButtonVariants} value={arg.value} />
+          <Button key={arg.variant} variant={arg.variant as ButtonVariants} value={arg.value} />
         ))}
       </div>
     );
@@ -189,6 +209,7 @@ export const WithIcon: Story = {
       <div className="flex space-x-4">
         {args.map((arg) => (
           <Button
+            key={arg.value}
             icon={arg.icon}
             iconPosition={arg.iconPosition as "left" | "right"}
             value={arg.value}

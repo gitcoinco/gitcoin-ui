@@ -10,10 +10,11 @@ import { isPoolStatus, PoolStatus } from "@/types";
 const variants = tv({
   variants: {
     value: {
-      [PoolStatus.PreRound]: "border border-moss-900 bg-white text-moss-900",
-      [PoolStatus.RoundInProgress]: "bg-moss-500 text-black",
+      [PoolStatus.PreRound]: "border border-legacy-green-400 bg-white text-legacy-green-400",
+      [PoolStatus.RoundInProgress]: "bg-legacy-green-200 text-black",
       [PoolStatus.ApplicationsInProgress]: "bg-blue-100",
-      [PoolStatus.FundingPending]: "border border-red-500 bg-white text-red-500",
+      [PoolStatus.FundingPending]:
+        "border border-legacy-orange-400 bg-white text-legacy-orange-400",
     },
   },
 });
