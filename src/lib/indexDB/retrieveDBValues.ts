@@ -1,4 +1,4 @@
-import { setupDB } from "@/lib/form";
+import { setupDB } from "@/lib/indexDB";
 
 /**
  * Retrieve values from IndexedDB

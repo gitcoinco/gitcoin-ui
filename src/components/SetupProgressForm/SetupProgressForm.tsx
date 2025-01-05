@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { CheckIcon } from "@heroicons/react/solid";
 
 import { Form, FormProps } from "@/components/Form";
-import { retrieveDBValuesFromKeys } from "@/lib/form";
+import { retrieveDBValuesFromKeys } from "@/lib/indexDB";
 import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
 

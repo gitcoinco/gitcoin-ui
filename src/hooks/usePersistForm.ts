@@ -5,7 +5,7 @@ import { useInterval } from "react-use";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
 
-import { setupDB } from "@/lib/form";
+import { setupDB } from "@/lib/indexDB";
 
 /**
  * Initialize the form with values from IndexedDB
