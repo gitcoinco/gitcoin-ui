@@ -104,9 +104,15 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.59.15
         version: 5.62.8(react@18.3.1)
+      '@types/papaparse':
+        specifier: ^5.3.15
+        version: 5.3.15
       '@uiw/react-markdown-preview':
         specifier: ^5.1.3
         version: 5.1.3(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@uiw/react-md-editor':
+        specifier: ^4.0.4
+        version: 4.0.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       cmdk:
         specifier: 1.0.0
         version: 1.0.0(@types/react-dom@18.3.5(@types/react@18.3.17))(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -116,15 +122,24 @@ importers:
       graphql-request:
         specifier: ^7.1.0
         version: 7.1.2(graphql@16.10.0)
+      idb:
+        specifier: ^8.0.1
+        version: 8.0.1
       input-otp:
         specifier: ^1.2.4
         version: 1.4.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       moment:
         specifier: ^2.30.1
         version: 2.30.1
+      moment-timezone:
+        specifier: ^0.5.46
+        version: 0.5.46
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      papaparse:
+        specifier: ^5.4.1
+        version: 5.4.1
       react-day-picker:
         specifier: 9.3.2
         version: 9.3.2(react@18.3.1)
@@ -2690,6 +2705,9 @@ packages:
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
+  '@types/papaparse@5.3.15':
+    resolution: {integrity: sha512-JHe6vF6x/8Z85nCX4yFdDslN11d+1pr12E526X8WAfhadOeaOTx5AuIkvDKIBopfvlzpzkdMx4YyvSKCM9oqtw==}
+
   '@types/prismjs@1.26.5':
     resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
 
@@ -2793,6 +2811,12 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
+  '@uiw/react-md-editor@4.0.5':
+    resolution: {integrity: sha512-x+S7ZMz1B+KwVODOZk663H2gdOZhcFsrPUF8V69K4L2BbTZ3A4sBCw/uTrBE9dHH0gajAzRAYbAYCHsUQaTcyA==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+
   '@ungap/structured-clone@1.2.1':
     resolution: {integrity: sha512-fEzPV3hSkSMltkw152tJKNARhOupqbH96MZWyRjNaYZOMIzbrTeQDG+MTc6Mr2pgzFQzFxAfmhGDNP5QK++2ZA==}
 
@@ -2876,6 +2900,9 @@ packages:
 
   '@vue/shared@3.5.13':
     resolution: {integrity: sha512-/hnE/qP5ZoGpol0a5mDi45bOd7t3tjYJBjsgCsivow7D48cJeV5l05RD82lPqi7gRiphZM37rnhW1l6ZoCNNnQ==}
+
+  '@xobotyi/scrollbar-width@1.9.5':
+    resolution: {integrity: sha512-N8tkAACJx2ww8vFMneJmaAgmjAG1tnVBZJRLRcx061tmsLRZHSEZSLuGWnwPtunsSLvSqXQ2wfp7Mgqg1I+2dQ==}
 
   abitype@1.0.7:
     resolution: {integrity: sha512-ZfYYSktDQUwc2eduYu8C4wOs+RDPmnRYMh7zNfzeMtGGgb0U+6tLGjixUic6mXf5xKKCcgT5Qp6cv39tOARVFw==}
@@ -3726,6 +3753,9 @@ packages:
 
   error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
+
+  error-stack-parser@2.1.4:
+    resolution: {integrity: sha512-Sk5V6wVazPhq5MhpO+AUxJn5x7XSXGl1R93Vn7i+zS15KDVxQijejNCrz8340/2bgLBjR9GtEG8ZVKONDjcqGQ==}
 
   es-define-property@1.0.1:
     resolution: {integrity: sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==}
@@ -5172,6 +5202,9 @@ packages:
   mlly@1.7.3:
     resolution: {integrity: sha512-xUsx5n/mN0uQf4V548PKQ+YShA4/IW0KI1dZhrNrPCLG+xizETbHTkOa1f8/xut9JRPp8kQuMnz0oqwkTiLo/A==}
 
+  moment-timezone@0.5.46:
+    resolution: {integrity: sha512-ZXm9b36esbe7OmdABqIWJuBBiLLwAjrN7CE+7sYdCCx82Nabt1wHDj8TVseS59QIlfFPbOoiBPm6ca9BioG4hw==}
+
   moment@2.30.1:
     resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
@@ -5476,6 +5509,9 @@ packages:
 
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
+
+  papaparse@5.4.1:
+    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -9594,6 +9630,10 @@ snapshots:
 
   '@types/normalize-package-data@2.4.4': {}
 
+  '@types/papaparse@5.3.15':
+    dependencies:
+      '@types/node': 22.10.2
+
   '@types/prismjs@1.26.5': {}
 
   '@types/prop-types@15.7.14': {}
@@ -9733,6 +9773,18 @@ snapshots:
       - '@types/react'
       - supports-color
 
+  '@uiw/react-md-editor@4.0.5(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.26.0
+      '@uiw/react-markdown-preview': 5.1.3(@types/react@18.3.17)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      rehype: 13.0.2
+      rehype-prism-plus: 2.0.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
   '@ungap/structured-clone@1.2.1': {}
 
   '@vitejs/plugin-react-swc@3.7.2(vite@6.0.3(@types/node@22.10.2)(jiti@1.21.7)(yaml@2.6.1))':
@@ -9860,6 +9912,8 @@ snapshots:
       typescript: 5.4.2
 
   '@vue/shared@3.5.13': {}
+
+  '@xobotyi/scrollbar-width@1.9.5': {}
 
   abitype@1.0.7(typescript@5.4.2)(zod@3.24.1):
     optionalDependencies:
@@ -10661,6 +10715,10 @@ snapshots:
     dependencies:
       is-arrayish: 0.2.1
 
+  error-stack-parser@2.1.4:
+    dependencies:
+      stackframe: 1.3.4
+
   es-define-property@1.0.1: {}
 
   es-errors@1.3.0: {}
@@ -11254,7 +11312,7 @@ snapshots:
   hast-util-sanitize@5.0.2:
     dependencies:
       '@types/hast': 3.0.4
-      '@ungap/structured-clone': 1.2.0
+      '@ungap/structured-clone': 1.2.1
       unist-util-position: 5.0.0
 
   hast-util-select@6.0.3:
@@ -12665,6 +12723,10 @@ snapshots:
       pkg-types: 1.2.1
       ufo: 1.5.4
 
+  moment-timezone@0.5.46:
+    dependencies:
+      moment: 2.30.1
+
   moment@2.30.1: {}
 
   ms@2.1.3: {}
@@ -12929,6 +12991,8 @@ snapshots:
       release-zalgo: 1.0.0
 
   package-json-from-dist@1.0.1: {}
+
+  papaparse@5.4.1: {}
 
   parent-module@1.0.1:
     dependencies:
