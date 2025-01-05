@@ -4,13 +4,19 @@ import { CloudUpload, Image } from "lucide-react";
 
 import { cn } from "@/lib";
 
-interface FileUploadProps {
+export interface FileUploadProps {
   value?: Blob | null;
   onChange?: (file: File | null) => void;
   className?: string;
+  mimeTypes?: string[];
 }
 
-export const FileUpload: React.FC<FileUploadProps> = ({ value, onChange, className }) => {
+export const FileUpload: React.FC<FileUploadProps> = ({
+  value,
+  onChange,
+  className,
+  mimeTypes = [],
+}) => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const base64 = useMemo(() => (value ? URL.createObjectURL(value) : null), [value]);
@@ -46,6 +52,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ value, onChange, classNa
         className="hidden"
         ref={fileInputRef}
         id="file-upload"
+        accept={mimeTypes.join(",")}
       />
       {preview ? (
         <div className="group relative w-full max-w-[906px] items-center justify-center">
@@ -80,6 +87,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ value, onChange, classNa
               <span>{"or drag and drop"}</span>
             </div>
           </div>
+          {/* TODO different file types message */}
           <div>PNG, JPG (Recommended: 1500x1500px)</div>
         </label>
       )}

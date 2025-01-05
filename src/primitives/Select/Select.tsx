@@ -62,7 +62,7 @@ export const Select = ({
   return (
     <ShadcnSelect defaultValue={defaultValue} onValueChange={onValueChange}>
       <SelectTrigger className={selectStyles({ variant, size, className })}>
-        <SelectValue placeholder={placeholder} />
+        <SelectValue placeholder={defaultValue ?? placeholder} />
       </SelectTrigger>
       <SelectContent>
         {options.map((group, index) => (
