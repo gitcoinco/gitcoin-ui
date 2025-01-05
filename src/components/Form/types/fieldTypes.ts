@@ -1,5 +1,6 @@
 import { FieldArrayProps, MetricsProps } from "@/components/Form";
 import { FileUploadProps } from "@/primitives/FileUpload";
+import { MarkdownEditorProps } from "@/primitives/MarkdownEditor";
 import { SelectProps } from "@/primitives/Select";
 
 export interface BaseValidation {
@@ -62,10 +63,9 @@ export interface TextareaField {
   placeholder?: string;
 }
 
-export interface MarkdownEditorField {
+export interface MarkdownEditorField extends Omit<MarkdownEditorProps, "onChange" | "value"> {
   field: BaseField;
   component: "MarkdownEditor";
-  placeholder?: string;
 }
 
 export interface FileUploadField extends FileUploadProps {

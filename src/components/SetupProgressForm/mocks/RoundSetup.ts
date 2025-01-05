@@ -94,7 +94,7 @@ const roundDescriptionAndRequirementsFields: FormField[] = [
 
 const roundDetailsArgs = {
   fields: roundDetailsFields,
-  persistKey: "storybook-round-form-1",
+  persistKey: "storybook-round-setup-round-details",
   defaultValues: {
     program: program,
   },
@@ -102,7 +102,7 @@ const roundDetailsArgs = {
 
 const roundDescriptionAndRequirementsArgs = {
   fields: roundDescriptionAndRequirementsFields,
-  persistKey: "storybook-round-form-2",
+  persistKey: "storybook-round-setup-round-description-and-requirements",
 };
 const metrics = [
   {
@@ -135,7 +135,7 @@ const metricsFields: FormField[] = [
 
 const metricsArgs = {
   fields: metricsFields,
-  persistKey: "storybook-round-form-3",
+  persistKey: "storybook-round-setup-impact-metrics",
 };
 
 const roundDatesFields: FormField[] = [
@@ -151,7 +151,7 @@ const roundDatesFields: FormField[] = [
 
 const roundDatesArgs = {
   fields: roundDatesFields,
-  persistKey: "storybook-round-form-4",
+  persistKey: "storybook-round-setup-round-dates",
   defaultValues: {
     roundDates: {
       timezone: moment.tz.guess(),
@@ -175,7 +175,7 @@ const applicationQuestionsFields: FormField[] = [
 
 const applicationQuestionsArgs = {
   fields: applicationQuestionsFields,
-  persistKey: "storybook-round-form-5",
+  persistKey: "storybook-round-setup-application-questions",
 };
 
 const voterAllowlistFields: FormField[] = [
@@ -199,12 +199,12 @@ const voterAllowlistFields: FormField[] = [
 
 const voterAllowlistArgs = {
   fields: voterAllowlistFields,
-  persistKey: "storybook-round-form-6",
+  persistKey: "storybook-round-setup-voter-allowlist",
 };
 
 const deployArgs = {
   fields: [],
-  persistKey: "storybook-round-form-3",
+  persistKey: "storybook-round-setup-deploy",
 };
 
 export const roundSetupSteps = [
