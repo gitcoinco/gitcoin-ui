@@ -1,43 +1,68 @@
 // src/components/SetupProgressForm.tsx
-import { useState } from "react";
+import { useRef } from "react";
 
 import { CheckIcon } from "@heroicons/react/solid";
-import { Circle } from "lucide-react";
 
-import { Form, FormProps } from "@/index";
+import { Form, FormProps } from "@/components/Form";
+import { retrieveDBValuesFromKeys } from "@/lib/form";
+import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
 
-interface Step {
+import { useFormProgress } from "./hooks/useFormProgress";
+
+export interface FormStep {
   name: string;
-  props: FormProps;
+  formProps: Omit<FormProps, "dbName" | "storeName">;
+  stepProps: {
+    formTitle: string;
+    formDescription: string;
+  };
 }
 
-interface SetupProgressFormProps {
+export interface SetupProgressFormProps {
   name: string;
-  steps: Step[];
+  steps: FormStep[];
+  onSubmit: (values: any) => Promise<void>;
+  dbName: string;
+  storeName: string;
 }
 
-export const SetupProgressForm = ({ name, steps }: SetupProgressFormProps) => {
-  const [currentStep, setCurrentStep] = useState(0);
+export const SetupProgressForm = ({
+  name,
+  steps,
+  onSubmit,
+  dbName,
+  storeName,
+}: SetupProgressFormProps) => {
+  const { currentStep, updateStep } = useFormProgress(name);
+  const formRef = useRef<{ isFormValid: () => Promise<boolean> }>(null);
 
   const handleNextStep = () => {
     if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
+      updateStep(currentStep + 1);
     }
   };
 
   const handlePreviousStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      updateStep(currentStep - 1);
     }
   };
 
-  const handleSubmit = (values: any) => {
-    // The onSubmit passed from each step will be called by the Form
-    console.log("Submitted values from step:", currentStep, values);
+  const handleSubmit = async () => {
+    const persistKeys = steps.map((step) => step.formProps.persistKey).filter(Boolean) as string[];
+
+    const persistedValues = await retrieveDBValuesFromKeys(persistKeys, dbName, storeName);
+
+    let FinalValues = {};
+    for (const stepValues of persistedValues) {
+      FinalValues = { ...FinalValues, ...stepValues };
+    }
+    // Do something with the values here
+    await onSubmit(FinalValues);
   };
 
-  const currentStepProps = steps[currentStep].props;
+  const currentStepProps = steps[currentStep];
   const progressValue = (currentStep / steps.length) * 100;
 
   return (
@@ -46,26 +71,69 @@ export const SetupProgressForm = ({ name, steps }: SetupProgressFormProps) => {
         <div>{name}</div>
         <ProgressBar value={progressValue} variant="green-md" />
         {steps.map((step, index) => (
-          <div key={index} className="flex items-center justify-start gap-2">
-            {currentStep > index ? (
-              <CheckIcon className="size-5 text-black" />
-            ) : (
-              <Circle className="size-1 rounded-full bg-black text-black" />
-            )}
-            <div className="font-ui-sans text-[16px]/[28px] font-medium text-grey-900">
-              {step.name}
+          <div key={index} className="flex h-6 items-center justify-start gap-2">
+            <div className="flex items-center gap-2">
+              <div className="flex size-5 shrink-0 items-center justify-center">
+                {currentStep > index ? (
+                  <CheckIcon className="size-5 text-moss-700" />
+                ) : (
+                  <span className="inline-flex items-center justify-center text-black">•</span>
+                )}
+              </div>
+              <div className="font-ui-sans text-[16px]/[28px] font-normal text-grey-900">
+                {step.name}
+              </div>
             </div>
           </div>
         ))}
       </div>
       <div className="w-full max-w-[956px]">
-        <Form
-          key={currentStep}
-          {...currentStepProps}
-          onBack={handlePreviousStep}
-          onNext={handleNextStep}
-          onSubmit={handleSubmit}
-        />
+        <div className="flex flex-col gap-6 rounded-2xl bg-grey-50 p-6">
+          <div className="flex flex-col gap-3">
+            {/* Form Title */}
+            <div className="font-ui-sans text-[24px]/[32px] font-medium">
+              {currentStepProps.stepProps.formTitle}
+            </div>
+            {/* Form Description */}
+            <div className="font-ui-sans text-[18px]/[28px] font-normal text-grey-900">
+              {currentStepProps.stepProps.formDescription}
+            </div>
+          </div>
+          <Form
+            ref={formRef}
+            key={currentStep}
+            {...currentStepProps.formProps}
+            dbName={dbName}
+            storeName={storeName}
+          />
+          <div className="flex items-center justify-between">
+            <Button
+              variant="outlined-secondary"
+              onClick={handlePreviousStep}
+              value={"Back"}
+              type="button"
+              className="border-transparent"
+            />
+
+            {steps.length && (
+              <Button
+                variant="primary"
+                onClick={async () => {
+                  if (currentStep === steps.length - 1) {
+                    await handleSubmit();
+                  } else {
+                    const isValid = await formRef.current?.isFormValid();
+                    if (isValid) {
+                      handleNextStep();
+                    }
+                  }
+                }}
+                value={currentStep === steps.length - 1 ? "Publish" : "Next"}
+                type="button"
+              />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -6,9 +6,6 @@ import { roundSetupSteps } from "./mocks/RoundSetup";
 const meta: Meta<typeof SetupProgressForm> = {
   title: "Components/SetupProgressForm",
   component: SetupProgressForm,
-  args: {
-    steps: roundSetupSteps,
-  },
 } satisfies Meta<typeof SetupProgressForm>;
 
 export default meta;
@@ -19,5 +16,10 @@ export const Default: Story = {
   args: {
     name: "Round setup",
     steps: roundSetupSteps,
+    onSubmit: async (values: any) => {
+      console.log("Submitted final values:", values);
+    },
+    dbName: "formDB",
+    storeName: "formDrafts",
   },
 };

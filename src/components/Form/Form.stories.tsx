@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { Form, FormProps } from "./Form";
-import { FormField } from "./types/fieldTypes";
+import { Form, FormProps } from "@/components/Form";
+import { FormField } from "@/components/Form/types/fieldTypes";
 
 const fields: FormField[] = [
   {
@@ -9,7 +9,7 @@ const fields: FormField[] = [
       name: "roundName",
       label: "Round name",
       className: "border-grey-300",
-      validation: { minLength: 7 },
+      validation: { stringValidation: { minLength: 7 } },
     },
     component: "Input",
     placeholder: "your cool round name",
@@ -55,6 +55,7 @@ const fields: FormField[] = [
       validation: { required: true },
     },
     component: "FileUpload",
+    mimeTypes: ["image/png", "image/jpeg", "image/jpg", "image/webp", "image/svg+xml"],
   },
 ];
 
@@ -66,12 +67,8 @@ type Story = StoryObj<FormProps>;
 
 export const Default: Story = {
   args: {
-    formTitle: "Round details",
-    formDescription:
-      "Fill out the details about your round. You can change most of these at any time.",
     fields,
     persistKey: "storybook-form",
-    onSubmit: (values) => alert(JSON.stringify(values, null, 2)),
   },
   render: (args) => {
     return (

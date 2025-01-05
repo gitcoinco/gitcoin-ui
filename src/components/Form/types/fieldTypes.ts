@@ -1,54 +1,111 @@
+import { FieldArrayProps, MetricsProps } from "@/components/Form";
+import { FileUploadProps } from "@/primitives/FileUpload";
 import { SelectProps } from "@/primitives/Select";
 
-interface BaseField {
-  field: {
-    name: string;
-    label: string;
-    validation?: {
-      required?: boolean | string; // if string is provided, it's a custom error message
-      minLength?: number | { value: number; message?: string };
-      maxLength?: number | { value: number; message?: string };
-      pattern?: string | { value: RegExp; message?: string };
-      isFile?: boolean;
-      // Add more validation rules as needed
-    };
-    className?: string;
-  };
+export interface BaseValidation {
+  required?: boolean | string;
+  isObject?: boolean;
+  isRoundDates?: boolean;
+  // ...
 }
 
-// For each component, define a specific field type that includes component-specific props.
-// You can enforce these by intersecting your known prop types from the registry:
+export interface FileValidationConfig {
+  maxSize?: number;
+  maxSizeMessage?: string;
+  allowedTypes?: string[];
+  allowedTypesMessage?: string;
+}
 
-export interface InputField extends BaseField {
+export interface ArrayValidationConfig {
+  itemType?: "string" | "address";
+  minItems?: number;
+  minItemsMessage?: string;
+  maxItems?: number;
+  maxItemsMessage?: string;
+}
+
+export interface StringValidationConfig {
+  minLength?: number;
+  minLengthMessage?: string;
+  maxLength?: number;
+  maxLengthMessage?: string;
+  pattern?: string | RegExp;
+  patternMessage?: string;
+}
+
+export interface ValidationConfig extends BaseValidation {
+  fileValidation?: FileValidationConfig;
+  arrayValidation?: ArrayValidationConfig;
+  stringValidation?: StringValidationConfig;
+  // any other custom validations
+}
+
+export interface BaseField {
+  name: string;
+  label: string;
+  validation?: ValidationConfig;
+  className?: string;
+}
+
+export interface InputField {
+  field: BaseField;
   component: "Input";
-  // You can specify a type here or rely on a union of known props:
   type?: string;
   placeholder?: string;
-  // Any other Input-specific props you want directly in the config
 }
 
-export interface TextareaField extends BaseField {
+export interface TextareaField {
+  field: BaseField;
   component: "Textarea";
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   heading?: string;
   placeholder?: string;
-  // Any other TextArea-specific props you want to allow
 }
 
-export interface MarkdownEditorField extends BaseField {
+export interface MarkdownEditorField {
+  field: BaseField;
   component: "MarkdownEditor";
   placeholder?: string;
-  // Any other MarkdownEditor-specific props you want to allow
 }
 
-export interface FileUploadField extends BaseField {
+export interface FileUploadField extends FileUploadProps {
+  field: BaseField;
   component: "FileUpload";
-  // Any other FileUpload-specific props you want to allow
 }
 
-export interface SelectField extends BaseField, SelectProps {
+export interface SelectField extends SelectProps {
+  field: BaseField;
   component: "Select";
-  // Any other Select-specific props you want to allow
+}
+
+export interface FieldArray extends FieldArrayProps {
+  field: BaseField;
+  component: "FieldArray";
+}
+
+export interface RoundDates {
+  field: BaseField;
+  component: "RoundDates";
+}
+
+export interface Metrics extends MetricsProps {
+  field: BaseField;
+  component: "Metrics";
+}
+
+export interface ApplicationQuestions {
+  field: BaseField;
+  component: "ApplicationQuestions";
+}
+
+export interface Allowlist {
+  field: BaseField;
+  component: "Allowlist";
+}
+
+export interface DisabledProgramInput {
+  field: BaseField;
+  component: "DisabledProgramInput";
 }
 
 export type FormField =
@@ -56,4 +113,10 @@ export type FormField =
   | TextareaField
   | MarkdownEditorField
   | FileUploadField
-  | SelectField;
+  | SelectField
+  | FieldArray
+  | RoundDates
+  | Metrics
+  | ApplicationQuestions
+  | Allowlist
+  | DisabledProgramInput;
