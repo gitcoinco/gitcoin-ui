@@ -5,13 +5,11 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Hex } from "viem";
 
 import { EvaluationForm } from "@/components/EvaluationForm/EvaluationForm";
-import { PoolSummary } from "@/components/pool/components/PoolSummary/PoolSummary";
-import { ApplicationSummary } from "@/components/project/components/ApplicationSummary/ApplicationSummary";
-import { ProjectBanner } from "@/components/project/components/ProjectBanner/ProjectBanner";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 
+import { ApplicationSummary } from "~application/components";
 import {
   useGetPastApplications,
   useInitialize,
@@ -19,6 +17,8 @@ import {
 } from "~checker/hooks";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
 import { EvaluationStatus, EvaluationBody } from "~checker/types";
+import { PoolSummary } from "~pool/components";
+import { ProjectBanner } from "~project/components";
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";

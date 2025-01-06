@@ -6,6 +6,7 @@ import { IconType } from "../Icon";
 import { Accordion } from "./Accordion";
 
 const meta: Meta<typeof Accordion> = {
+  title: "Primitives/Accordion",
   component: Accordion,
   argTypes: {
     variant: {

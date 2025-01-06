@@ -5,7 +5,7 @@ import { Button } from "@/primitives";
 import { MetricCard } from "./MetricCard";
 
 export default {
-  title: "features/retrofunding/components/MetricCard/MetricCard",
+  title: "Features/Retrofunding/Components/MetricCard/MetricCard",
   component: MetricCard,
 } as Meta<typeof MetricCard>;
 
@@ -55,7 +55,13 @@ export const WithCustomButton: Story = {
       variant="addMetric"
       onClick={() => alert("Custom button clicked!")}
       onReadMore={() => alert("Read more clicked!")}
-      customButton={<Button variant="error" value="Custom Button" onClick={() => alert("Custom button variant")} />}
+      customButton={
+        <Button
+          variant="error"
+          value="Custom Button"
+          onClick={() => alert("Custom button variant")}
+        />
+      }
     />
   ),
 };
