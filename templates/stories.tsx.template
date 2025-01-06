@@ -17,3 +17,7 @@ export const Default: Story = {
 export const Secondary: Story = {
   render: () => <{{componentName}} value="Secondary Variant" variant="secondary" />,
 };
+
+export const Loading: Story = {
+  render: () => <{{componentName}} isLoading={true} value="Primary Variant" variant="primary" />,
+};

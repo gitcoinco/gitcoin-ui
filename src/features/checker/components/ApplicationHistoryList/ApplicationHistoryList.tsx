@@ -1,5 +1,7 @@
-import { ApplicationBadge, IconLabel } from "@/components";
+import { IconLabel } from "@/components";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
+
+import { ApplicationBadge } from "~application/components";
 
 import { Application } from "./types";
 
