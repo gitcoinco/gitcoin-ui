@@ -1,6 +1,8 @@
 import * as React from 'react';
+import { Skeleton } from "@/primitives";
 import { tv } from 'tailwind-variants';
 import { cn } from "@/lib/utils";
+import { match } from "ts-pattern";
 
 const {{componentName}}Variants = tv({
   slots: {
@@ -18,18 +20,36 @@ const {{componentName}}Variants = tv({
 export interface {{componentName}}Props {
   value: string;
   variant?: 'primary' | 'secondary';
+  isLoading?: boolean;
   className?: string;
 }
 
-export const {{componentName}}: React.FC<{{componentName}}Props> = ({ value, variant = 'primary', className }) => {
-  // Get the slots and variants from the tv function
+const {{componentName}}Loading: React.FC<Partial<{{componentName}}Props>> = ({ value, variant = 'primary' }) => {
   const { base, content } = {{componentName}}Variants({ variant });
 
   return (
-    <div className={cn(className, base())}>
+    <div className={base()}>
+      <div className={content()}>
+        <Skeleton className="h-4 w-1/6 rounded-md" />
+      </div>
+    </div>
+  );
+};
+
+const {{componentName}}State: React.FC<{{componentName}}Props> = ({ value, variant = 'primary', isLoading, className }) => {
+  const { base, content } = {{componentName}}Variants({ variant });
+
+  return (
+    <div className={cn(base(), className)}>
       <div className={content()}>
         {value}
       </div>
     </div>
   );
+};
+
+export const {{componentName}}: React.FC<{{componentName}}Props> = ({ value, variant = 'primary', isLoading, className }) => {
+  return match({ isLoading })
+    .with({ isLoading: true }, () => <{{componentName}}Loading variant={variant} />)
+    .otherwise(() => <{{componentName}}State value={value} variant={variant} className={className} />);
 };
