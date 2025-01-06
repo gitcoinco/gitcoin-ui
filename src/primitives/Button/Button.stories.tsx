@@ -177,7 +177,7 @@ export const OutlinedFilled: Story = {
       {
         variant: "outlined-success-filled",
         value: "Outlined Success Filled",
-      }
+      },
     ];
 
     return (

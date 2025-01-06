@@ -1,0 +1,59 @@
+:root {
+  --md-editor-background-color: #f0f0f0; /* New global background color */
+  --md-editor-box-shadow-color: #a0a0a0; /* New global box shadow color */
+  --md-editor-border-color: transparent;
+  --md-editor-border: transparent;
+}
+
+.w-md-editor {
+  border-radius: 8px;
+  --md-editor-box-shadow-color: #d0d7de;
+  --md-editor-background-color: white;
+  --md-editor-border: transparent;
+}
+
+.w-md-editor-text-pre > code {
+  -webkit-text-fill-color: transparent;
+}
+
+.w-md-editor-text-input {
+  -webkit-text-fill-color: black;
+}
+
+.w-md-editor-preview {
+  background-color: white;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.w-md-editor-toolbar {
+  background-color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 0;
+}
+
+.w-md-editor-toolbar ul {
+  display: inline-flex;
+  align-items: center;
+  height: 40px;
+}
+
+.w-md-editor-toolbar ul > *:last-child {
+  margin-right: 12px;
+}
+
+.w-md-editor-toolbar li > button {
+  color: black !important;
+}
+
+.w-md-editor-toolbar li > button > span:hover {
+  color: black !important;
+  opacity: 0.5;
+}
+
+/* When in preview mode */
+.w-md-editor-show-preview svg,
+.w-md-editor-toolbar-divider {
+  opacity: 100;
+}
