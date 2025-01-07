@@ -187,7 +187,7 @@
     "react-markdown": "^9.0.1",
     "react-resizable-panels": "^2.1.4",
     "react-use": "^17.6.0",
-    "recharts": "^2.13.0",
+    "recharts": "^2.15.0",
     "rehype-raw": "^7.0.0",
     "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.0",
