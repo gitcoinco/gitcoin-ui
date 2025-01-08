@@ -10,8 +10,8 @@ import {
   goToSubmitApplicationEvaluationAction,
   useCheckerDispatchContext,
 } from "~checker/store";
-import { PoolSummary } from "~pool/components";
-import { ProjectBanner } from "~project/components";
+import { PoolSummary } from "~pool/clientComponents";
+import { ProjectBanner } from "~project";
 
 export interface ApplicationEvaluationOverviewPageProps {
   chainId: number;

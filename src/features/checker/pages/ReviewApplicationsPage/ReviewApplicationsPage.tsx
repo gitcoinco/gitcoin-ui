@@ -14,7 +14,7 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 import { getManagerUrl } from "~checker/utils";
-import { PoolSummary } from "~pool/components";
+import { PoolSummary } from "~pool/clientComponents";
 
 export const ReviewApplicationsPage = () => {
   const { categorizedReviews, statCardsProps, poolData, poolFetchState } =

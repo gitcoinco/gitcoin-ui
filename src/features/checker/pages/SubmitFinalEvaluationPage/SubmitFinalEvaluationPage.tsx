@@ -4,7 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { match } from "ts-pattern";
 
 import { Step } from "@/components/ProgressModal";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
@@ -18,7 +18,7 @@ import {
 } from "~checker/store";
 import { EvaluationAction, ReviewBody } from "~checker/types";
 import { getManagerUrl } from "~checker/utils";
-import { PoolSummary } from "~pool/components";
+import { PoolSummary } from "~pool/clientComponents";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
 

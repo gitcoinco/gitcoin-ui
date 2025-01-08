@@ -6,7 +6,7 @@ import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 import { Markdown } from "@/primitives/Markdown";
 
 import { PastApplication, ProjectApplication, ProjectMetadata } from "~checker/services/allo/types";
-import { ProjectSummary } from "~project/components";
+import { ProjectSummary } from "~project/clientComponents";
 
 import { ApplicationBadge, ApplicationBadgeStatus } from "../ApplicationBadge";
 

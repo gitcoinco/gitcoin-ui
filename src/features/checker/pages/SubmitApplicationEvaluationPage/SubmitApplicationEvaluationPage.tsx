@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 
-import { ApplicationSummary } from "~application/components";
+import { ApplicationSummary } from "~application";
 import {
   useGetPastApplications,
   useInitialize,
@@ -17,8 +17,8 @@ import {
 } from "~checker/hooks";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
 import { EvaluationStatus, EvaluationBody } from "~checker/types";
-import { PoolSummary } from "~pool/components";
-import { ProjectBanner } from "~project/components";
+import { PoolSummary } from "~pool/clientComponents";
+import { ProjectBanner } from "~project";
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";
 import { getAnswerEnum } from "./utils";

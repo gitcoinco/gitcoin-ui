@@ -1,4 +1,4 @@
-import { ApplicationBadgeStatus } from "~application/components";
+import { ApplicationBadgeStatus } from "~application";
 
 export interface Application {
   id: number;
