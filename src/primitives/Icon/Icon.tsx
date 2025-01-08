@@ -1,6 +1,3 @@
-"use server";
-
-// Status Icons
 import {
   customIconComponents,
   heroiconsComponents,

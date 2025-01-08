@@ -1,5 +1,3 @@
-"use server";
-
 import { Progress, ProgressVariants } from "@/ui-shadcn/progress";
 
 export interface ProgressBarProps {

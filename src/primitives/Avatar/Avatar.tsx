@@ -1,5 +1,3 @@
-"use server";
-
 import { useMemo } from "react";
 
 import { tv } from "tailwind-variants";
