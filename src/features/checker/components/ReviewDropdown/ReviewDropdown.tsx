@@ -55,7 +55,7 @@ export const ReviewDropdown: React.FC<ReviewDropdownContentProps> = ({
   return (
     <Accordion
       border="md"
-      padding="lg"
+      paddingX="lg"
       variant={accordionVariant}
       header={<ReviewDropdownHeader evaluation={evaluation} index={index} />}
       content={<ReviewDropdownContent evaluation={evaluation} />}

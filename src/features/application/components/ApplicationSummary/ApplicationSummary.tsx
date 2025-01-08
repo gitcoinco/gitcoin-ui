@@ -81,7 +81,7 @@ export const ApplicationSummary = ({
           content={<ProjectSummary projectMetadata={project} application={application} />}
           variant="default"
           border="none"
-          padding="none"
+          paddingX="sm"
         />
       )}
 
@@ -98,7 +98,7 @@ export const ApplicationSummary = ({
           content={<Markdown>{project.description}</Markdown>}
           variant="default"
           border="none"
-          padding="none"
+          paddingX="sm"
           isOpen={false}
         />
       )}
@@ -134,7 +134,7 @@ export const ApplicationSummary = ({
           }
           variant="default"
           border="none"
-          padding="none"
+          paddingX="sm"
           isOpen={false}
         />
       )}
@@ -164,7 +164,7 @@ export const ApplicationSummary = ({
           }
           variant="default"
           border="none"
-          padding="none"
+          paddingX="sm"
           isOpen={false}
         />
       )}

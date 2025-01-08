@@ -19,7 +19,7 @@ const meta: Meta<typeof Accordion> = {
       control: "select",
       description: "Border style of the accordion",
     },
-    padding: {
+    paddingX: {
       options: ["none", "sm", "md", "lg"],
       control: "select",
       description: "Padding style of the accordion",
@@ -48,7 +48,7 @@ export const Light: Story = {
     content: "Simple Content",
     variant: "light",
     border: "md",
-    padding: "lg",
+    paddingX: "xl",
     isOpen: false,
   },
 };
@@ -59,7 +59,7 @@ export const Blue: Story = {
     content: "Simple Content",
     variant: "blue",
     border: "md",
-    padding: "lg",
+    paddingX: "xl",
     isOpen: true,
   },
 };
@@ -109,7 +109,7 @@ export const coolProject: Story = {
     ),
     variant: "default",
     border: "sm",
-    padding: "none",
+    paddingX: "sm",
     isOpen: false,
   },
 };
