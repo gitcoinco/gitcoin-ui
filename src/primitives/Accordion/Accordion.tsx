@@ -10,7 +10,7 @@ const accordionVariants = tv({
   slots: {
     item: "",
     trigger:
-      "flex flex-1 items-center justify-between rounded-lg py-4 font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+      "flex flex-1 items-center justify-between font-medium transition-all [&[data-state=open]>svg]:rotate-180",
     content:
       "overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
     contentInner: "py-4",
@@ -43,25 +43,55 @@ const accordionVariants = tv({
         content: "border-t-2 border-grey-100",
       },
     },
-    padding: {
-      none: {
+    paddingX: {
+      default: {
         trigger: "px-2",
       },
+      none: {
+        trigger: "px-0",
+      },
       sm: {
-        trigger: "px-4",
+        trigger: "px-2",
       },
       md: {
-        trigger: "px-8",
+        trigger: "px-4",
       },
       lg: {
+        trigger: "px-8",
+      },
+      xl: {
         trigger: "px-12",
+      },
+    },
+    paddingY: {
+      default: {
+        trigger: "py-4",
+      },
+      sm: {
+        trigger: "py-2",
+      },
+    },
+    radius: {
+      none: {
+        trigger: "rounded-none",
+      },
+      sm: {
+        trigger: "rounded-sm",
+      },
+      md: {
+        trigger: "rounded-md",
+      },
+      lg: {
+        trigger: "rounded-lg",
       },
     },
   },
   defaultVariants: {
     variant: "default",
     border: "none",
-    padding: "none",
+    paddingX: "default",
+    paddingY: "default",
+    radius: "lg",
   },
 });
 
@@ -91,8 +121,8 @@ type AccordionTriggerProps = React.ComponentPropsWithoutRef<typeof AccordionPrim
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   AccordionTriggerProps
->(({ className, children, variant, border, padding, ...props }, ref) => {
-  const { trigger } = accordionVariants({ variant, border, padding });
+>(({ className, children, variant, border, paddingX, paddingY, radius, ...props }, ref) => {
+  const { trigger } = accordionVariants({ variant, border, paddingX, paddingY, radius });
   return (
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger ref={ref} className={cn(trigger(), className)} {...props}>
@@ -125,9 +155,11 @@ AccordionContent.displayName = "AccordionContent";
 export interface AccordionProps {
   header: React.ReactNode;
   content: React.ReactNode;
+  radius?: AccordionVariants["radius"];
   variant?: AccordionVariants["variant"];
   border?: AccordionVariants["border"];
-  padding?: AccordionVariants["padding"];
+  paddingX?: AccordionVariants["paddingX"];
+  paddingY?: AccordionVariants["paddingY"];
   isOpen?: boolean;
 }
 
@@ -136,13 +168,21 @@ export const Accordion: React.FC<AccordionProps> = ({
   content,
   variant,
   border,
-  padding,
+  paddingX,
+  paddingY,
   isOpen = true,
+  radius,
 }: AccordionProps) => {
   return (
     <AccordionRoot type="multiple" defaultValue={isOpen ? ["item-1"] : undefined}>
       <AccordionItem variant={variant} border={border} value="item-1" className="flex flex-col">
-        <AccordionTrigger variant={variant} border={border} padding={padding}>
+        <AccordionTrigger
+          variant={variant}
+          border={border}
+          paddingX={paddingX}
+          paddingY={paddingY}
+          radius={radius}
+        >
           {header}
         </AccordionTrigger>
         <AccordionContent variant={variant} border={border}>
