@@ -2,10 +2,10 @@ import { useState, useMemo } from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { AllocationSidebar } from "./AllocationSidebar";
+import { AllocationSidebar, AllocationSidebarProps } from "@/components/AllocationSidebar";
 
 // Wrapper component to handle state
-function AllocationSidebarWrapper(props: React.ComponentProps<typeof AllocationSidebar>) {
+const AllocationSidebarWrapper = (props: AllocationSidebarProps) => {
   const [isAscending, setIsAscending] = useState(false);
 
   // Memoize sorted projects
@@ -24,6 +24,8 @@ function AllocationSidebarWrapper(props: React.ComponentProps<typeof AllocationS
     [sortedProjects],
   );
 
+  const handleToggleOrder = () => setIsAscending((prev) => !prev);
+
   return (
     <AllocationSidebar
       {...props}
@@ -31,11 +33,11 @@ function AllocationSidebarWrapper(props: React.ComponentProps<typeof AllocationS
       chartData={chartData}
       sortConfig={{
         isAscending,
-        onToggleOrder: () => setIsAscending((prev) => !prev),
+        onClick: handleToggleOrder,
       }}
     />
   );
-}
+};
 
 const meta: Meta<typeof AllocationSidebarWrapper> = {
   title: "Components/AllocationSidebar",

@@ -1,13 +1,12 @@
-import { CartesianGrid, Line, YAxis } from "recharts";
-import { LineChart } from "recharts";
+import { CartesianGrid, Line, YAxis, LineChart } from "recharts";
 
-export function AllocationChart({
+export const AllocationChart = ({
   data,
   formatChartTick = (v: number) => String(v),
 }: {
   data: { x: number; y: number }[];
   formatChartTick: (alloc: number) => string;
-}) {
+}) => {
   return (
     <LineChart
       width={265}
@@ -53,4 +52,4 @@ export function AllocationChart({
       />
     </LineChart>
   );
-}
+};

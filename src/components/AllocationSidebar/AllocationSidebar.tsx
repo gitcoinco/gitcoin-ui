@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ScrollArea, ScrollBar } from "@/ui-shadcn/scroll-area";
+import { ScrollArea, ScrollBar } from "@/primitives/ScrollArea";
 
 import {
   AllocationChart,
@@ -9,7 +9,7 @@ import {
 } from "./components";
 import { AllocationSidebarProps } from "./types";
 
-export function AllocationSidebar({
+export const AllocationSidebar = ({
   title,
   description,
   isLoading,
@@ -20,8 +20,8 @@ export function AllocationSidebar({
   formatChartTick = (v: number) => `${(v * 100).toFixed(0)}%`,
   sortConfig,
   onClickProject,
-}: AllocationSidebarProps) {
-  const { isAscending, onToggleOrder } = sortConfig;
+}: AllocationSidebarProps) => {
+  const { isAscending, onClick } = sortConfig;
 
   return (
     <div
@@ -44,7 +44,7 @@ export function AllocationSidebar({
 
           {projects.length > 0 && !isLoading && (
             <div className="flex justify-start gap-1">
-              <AllocationSortButton isAscending={isAscending} onToggleOrder={onToggleOrder} />
+              <AllocationSortButton isAscending={isAscending} onClick={onClick} />
             </div>
           )}
         </div>
@@ -69,4 +69,4 @@ export function AllocationSidebar({
       {footer}
     </div>
   );
-}
+};

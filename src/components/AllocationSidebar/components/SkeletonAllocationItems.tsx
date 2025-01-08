@@ -3,13 +3,13 @@ import { Skeleton } from "@/primitives/Skeleton";
 
 import { AllocationItem } from "./AllocationItem";
 
-export function SkeletonAllocationItems({
+export const SkeletonAllocationItems = ({
   count,
   isLoading,
 }: {
   count: number;
   isLoading?: boolean;
-}) {
+}) => {
   return (
     <div className="h-[372px] pr-4">
       {Array(count)
@@ -25,4 +25,4 @@ export function SkeletonAllocationItems({
         ))}
     </div>
   );
-}
+};
