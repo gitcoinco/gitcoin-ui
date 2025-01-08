@@ -5,7 +5,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Hex } from "viem";
 
 import { EvaluationForm } from "@/components/EvaluationForm/EvaluationForm";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 

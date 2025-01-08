@@ -6,7 +6,7 @@ import * as ToastPrimitives from "@radix-ui/react-toast";
 import { X } from "lucide-react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { ToasterToast } from "@/hooks/use-toast";
+import { ToasterToast } from "@/hooks/useToast";
 import { cn } from "@/lib/utils";
 import { Icon, IconType } from "@/primitives/Icon";
 
