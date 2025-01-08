@@ -1,7 +1,8 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 
-import { Badge, Skeleton } from "@/primitives";
+import { Badge } from "@/primitives/Badge";
+import { Skeleton } from "@/primitives/Skeleton";
 import { PoolData } from "@/types";
 
 import { PoolDataCard } from "./PoolDataCard";

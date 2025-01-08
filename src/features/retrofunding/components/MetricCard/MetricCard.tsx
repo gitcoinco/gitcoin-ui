@@ -4,7 +4,9 @@ import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
 import { cn } from "@/lib";
-import { Button, Icon, IconType, Skeleton } from "@/primitives";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
+import { Skeleton } from "@/primitives/Skeleton";
 
 const metricCardVariants = tv({
   slots: {
@@ -57,15 +59,21 @@ const MetricCardLoading: React.FC<{ hideButton: boolean }> = ({ hideButton }) =>
           <h3 className={headingClass()}>
             <Skeleton className="h-6 w-1/3 rounded-md" />
           </h3>
-          <div className={cn(paragraphClass(), "flex flex-col gap-3 mt-2")}>
+          <div className={cn(paragraphClass(), "mt-2 flex flex-col gap-3")}>
             <Skeleton className="h-4 w-3/4 rounded-md" />
             <Skeleton className="h-4 w-3/4 rounded-md" />
             <Skeleton className="h-4 w-2/3 rounded-md" />
           </div>
         </div>
-        {!hideButton && <div className={cn(buttonContainer(), "w-1/3")}><Skeleton className="h-8 w-2/3 rounded-md" /></div>}
+        {!hideButton && (
+          <div className={cn(buttonContainer(), "w-1/3")}>
+            <Skeleton className="h-8 w-2/3 rounded-md" />
+          </div>
+        )}
       </div>
-      <div className={bottomLeftSection()}><Skeleton className="h-3 w-1/6 rounded-md" /></div>
+      <div className={bottomLeftSection()}>
+        <Skeleton className="h-3 w-1/6 rounded-md" />
+      </div>
     </div>
   );
 };

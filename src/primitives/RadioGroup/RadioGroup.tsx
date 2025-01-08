@@ -1,3 +1,5 @@
+"use server";
+
 import * as React from "react";
 
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
@@ -15,7 +17,7 @@ const radioGroup = tv({
     indicatorWrapperDisabled: "bg-grey-300",
     indicator: "absolute left-1/2 top-1/2 size-2 -translate-x-1/2 -translate-y-1/2 rounded-full",
     text: "font-ui-sans text-[16px] leading-[24px]",
-    circle: "fill-current size-2 text-black",
+    circle: "size-2 fill-current text-black",
     header: "font-ui-sans text-[16px] font-bold leading-[24px]",
   },
   variants: {

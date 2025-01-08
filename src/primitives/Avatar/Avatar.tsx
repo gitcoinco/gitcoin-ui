@@ -1,3 +1,5 @@
+"use server";
+
 import { useMemo } from "react";
 
 import { tv } from "tailwind-variants";
@@ -20,7 +22,7 @@ export interface AvatarProps {
 const avatarVariants = tv({
   variants: {
     variant: {
-      default: "bg-white shadow-md shadow-slate-600",
+      default: "shadow-slate-600 bg-white shadow-md",
       bordered: "border-4 border-white bg-white",
     },
   },

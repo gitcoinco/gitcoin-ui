@@ -1,6 +1,7 @@
 import { Hex } from "viem";
 
-import { Button, Icon, IconType } from "@/primitives";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 
 import { EvaluationList } from "~checker/components";
 import { useApplicationOverviewEvaluations, useInitialize } from "~checker/hooks";

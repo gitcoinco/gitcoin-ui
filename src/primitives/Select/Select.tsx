@@ -1,3 +1,5 @@
+"use server";
+
 import * as React from "react";
 
 import { SelectGroup } from "@radix-ui/react-select";

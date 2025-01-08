@@ -1,4 +1,4 @@
-import { StatCardProps } from "@/primitives";
+import { StatCardProps } from "@/primitives/StatCard";
 
 export const DefaultStatCardsProps = [
   {

@@ -1,3 +1,5 @@
+"use server";
+
 import MarkdownPreview from "@uiw/react-markdown-preview";
 
 export const Markdown = ({ children }: { children: string }) => {

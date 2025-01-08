@@ -1,6 +1,7 @@
 import { IconLabel } from "@/components/IconLabel";
 import { capitalizeWord, getAddressLabel } from "@/lib/utils";
-import { IconType, ListGrid, ListGridColumn } from "@/primitives";
+import { IconType } from "@/primitives/Icon";
+import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
 import { Evaluation } from "~checker/types";
 

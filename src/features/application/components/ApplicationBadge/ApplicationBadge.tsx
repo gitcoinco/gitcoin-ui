@@ -3,7 +3,7 @@ import * as React from "react";
 import { tv } from "tailwind-variants";
 import { match } from "ts-pattern";
 
-import { Badge } from "@/primitives";
+import { Badge } from "@/primitives/Badge";
 
 export enum ApplicationBadgeStatus {
   Pending = "pending",

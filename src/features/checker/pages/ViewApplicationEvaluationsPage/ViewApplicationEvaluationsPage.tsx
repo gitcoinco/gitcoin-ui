@@ -2,7 +2,9 @@ import React from "react";
 
 import { useToast } from "@/hooks/use-toast";
 import { capitalizeWord } from "@/lib/utils";
-import { Badge, Button, Icon, IconType } from "@/primitives";
+import { Badge } from "@/primitives/Badge";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 
 import { ApplicationSummary, SummaryAccordians } from "~application/components";
 import { ReviewDropdownList } from "~checker/components";

@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentProps, forwardRef, Ref, useContext } from "react";
 
 import MDEditor, { commands, EditorContext } from "@uiw/react-md-editor";
