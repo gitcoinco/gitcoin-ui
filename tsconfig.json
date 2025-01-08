@@ -25,9 +25,13 @@
       "@/*": ["./src/*"],
       "~checker/*": ["./src/features/checker/*"],
       "~retrofunding/*": ["./src/features/retrofunding/*"],
+      "~application": ["./src/features/application"],
       "~application/*": ["./src/features/application/*"],
+      "~pool": ["./src/features/pool"],
       "~pool/*": ["./src/features/pool/*"],
+      "~program": ["./src/features/program"],
       "~program/*": ["./src/features/program/*"],
+      "~project": ["./src/features/project"],
       "~project/*": ["./src/features/project/*"]
     },
     "outDir": "./dist"
