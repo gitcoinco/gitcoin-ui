@@ -1,4 +1,4 @@
-import { IconLabel } from "@/components";
+import { IconLabel } from "@/components/IconLabel";
 import { DateFormat, formatDate } from "@/lib/dates/formatDate";
 import { Accordion } from "@/primitives/Accordion";
 import { IconType } from "@/primitives/Icon";

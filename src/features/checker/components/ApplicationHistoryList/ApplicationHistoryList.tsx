@@ -1,4 +1,4 @@
-import { IconLabel } from "@/components";
+import { IconLabel } from "@/components/IconLabel";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 
 import { ApplicationBadge } from "~application/components";

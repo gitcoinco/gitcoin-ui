@@ -1,4 +1,3 @@
-// ProgressModal.tsx
 import { Check, X } from "lucide-react";
 
 import { Modal } from "@/primitives/Modal";

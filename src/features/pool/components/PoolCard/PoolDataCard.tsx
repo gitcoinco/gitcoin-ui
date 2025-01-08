@@ -1,4 +1,4 @@
-import { IconLabel } from "@/components";
+import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";
 import { IconType } from "@/primitives/Icon";
 import { PoolData } from "@/types";

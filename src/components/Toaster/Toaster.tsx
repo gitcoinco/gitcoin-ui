@@ -1,4 +1,5 @@
-// Toast.tsx
+"use client";
+
 import { match } from "ts-pattern";
 
 import { useToast, ToasterToast } from "@/hooks/use-toast";

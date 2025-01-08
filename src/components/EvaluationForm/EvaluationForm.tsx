@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { tv } from "tailwind-variants";
 
-import { RadioGroupList } from "@/components";
+import { RadioGroupList } from "@/components/RadioGroupList";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { TextArea } from "@/primitives/TextArea";

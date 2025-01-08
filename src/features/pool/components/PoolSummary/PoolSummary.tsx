@@ -1,6 +1,6 @@
 import { tv } from "tailwind-variants";
 
-import { IconLabel } from "@/components";
+import { IconLabel } from "@/components/IconLabel";
 import { useToast } from "@/hooks";
 import { getChainInfo } from "@/lib";
 import { cn } from "@/lib/utils";
