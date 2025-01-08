@@ -9,7 +9,7 @@ export interface ProjectAllocation {
 
 export interface SortConfig {
   isAscending: boolean;
-  onToggleOrder: () => void;
+  onClick: () => void;
 }
 
 export interface AllocationSidebarProps {
