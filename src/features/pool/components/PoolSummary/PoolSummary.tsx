@@ -1,3 +1,5 @@
+"use client";
+
 import { tv } from "tailwind-variants";
 
 import { IconLabel } from "@/components/IconLabel";
