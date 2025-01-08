@@ -1,6 +1,9 @@
 import { useMemo } from "react";
 
-import { Button, Icon, IconType, StatCardGroup, StatCardProps } from "@/primitives";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
+import { StatCardProps } from "@/primitives/StatCard";
+import { StatCardGroup } from "@/primitives/StatCardGroup";
 
 import { ApplicationsSection } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
@@ -11,7 +14,7 @@ import {
   useCheckerDispatchContext,
 } from "~checker/store";
 import { getManagerUrl } from "~checker/utils";
-import { PoolSummary } from "~pool/components";
+import { PoolSummary } from "~pool/clientComponents";
 
 export const ReviewApplicationsPage = () => {
   const { categorizedReviews, statCardsProps, poolData, poolFetchState } =

@@ -1,4 +1,3 @@
-// Status Icons
 import {
   customIconComponents,
   heroiconsComponents,

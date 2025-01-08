@@ -8,6 +8,19 @@
   "files": [
     "dist"
   ],
+  "scripts": {
+    "dev": "pnpm storybook",
+    "test": "test-storybook",
+    "build": "tsc && vite build",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write --ignore-unknown .",
+    "preview": "vite",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepare": "husky",
+    "chromatic": "chromatic",
+    "generate-component": "npx tsx generateComponent.ts"
+  },
   "exports": {
     "./styles.css": "./dist/gitcoin-ui.css",
     ".": {
@@ -15,10 +28,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
-    "./checker": {
-      "types": "./dist/checker.d.ts",
-      "import": "./dist/checker.js",
-      "require": "./dist/checker.js"
+    "./client": {
+      "types": "./dist/clientComponents.d.ts",
+      "import": "./dist/clientComponents.js",
+      "require": "./dist/clientComponents.js"
     },
     "./hooks": {
       "types": "./dist/hooks.d.ts",
@@ -44,20 +57,47 @@
       "types": "./dist/types.d.ts",
       "import": "./dist/types.js",
       "require": "./dist/types.js"
+    },
+    "./application": {
+      "types": "./dist/application.d.ts",
+      "import": "./dist/application.js",
+      "require": "./dist/application.js"
+    },
+    "./checker": {
+      "types": "./dist/checker.d.ts",
+      "import": "./dist/checker.js",
+      "require": "./dist/checker.js"
+    },
+    "./pool": {
+      "types": "./dist/pool.d.ts",
+      "import": "./dist/pool.js",
+      "require": "./dist/pool.js"
+    },
+    "./pool/client": {
+      "types": "./dist/poolClientComponents.d.ts",
+      "import": "./dist/poolClientComponents.js",
+      "require": "./dist/poolClientComponents.js"
+    },
+    "./program": {
+      "types": "./dist/program.d.ts",
+      "import": "./dist/program.js",
+      "require": "./dist/program.js"
+    },
+    "./project": {
+      "types": "./dist/project.d.ts",
+      "import": "./dist/project.js",
+      "require": "./dist/project.js"
+    },
+    "./project/client": {
+      "types": "./dist/projectClientComponents.d.ts",
+      "import": "./dist/projectClientComponents.js",
+      "require": "./dist/projectClientComponents.js"
+    },
+    "./retrofunding": {
+      "types": "./dist/retrofunding.d.ts",
+      "import": "./dist/retrofunding.js",
+      "require": "./dist/retrofunding.js"
     }
-  },
-  "scripts": {
-    "dev": "pnpm storybook",
-    "test": "test-storybook",
-    "build": "tsc && vite build",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
-    "format": "prettier --write --ignore-unknown .",
-    "preview": "vite",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "prepare": "husky",
-    "chromatic": "chromatic",
-    "generate-component": "npx tsx generateComponent.ts"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",

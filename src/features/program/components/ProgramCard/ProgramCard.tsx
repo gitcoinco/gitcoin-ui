@@ -3,7 +3,9 @@ import { match, P } from "ts-pattern";
 
 import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";
-import { Badge, IconType, Skeleton } from "@/primitives";
+import { Badge } from "@/primitives/Badge";
+import { IconType } from "@/primitives/Icon";
+import { Skeleton } from "@/primitives/Skeleton";
 import { Card, CardContent } from "@/ui-shadcn/card";
 
 export interface ProgramCardProps {

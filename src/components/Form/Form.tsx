@@ -1,3 +1,5 @@
+"use client";
+
 import { ForwardedRef, forwardRef, useImperativeHandle } from "react";
 import { FormProvider, useFormContext } from "react-hook-form";
 

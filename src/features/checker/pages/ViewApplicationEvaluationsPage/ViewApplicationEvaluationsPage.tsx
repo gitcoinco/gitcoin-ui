@@ -1,14 +1,17 @@
 import React from "react";
 
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 import { capitalizeWord } from "@/lib/utils";
-import { Badge, Button, Icon, IconType } from "@/primitives";
+import { Badge } from "@/primitives/Badge";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 
-import { ApplicationSummary, SummaryAccordians } from "~application/components";
+import { ApplicationSummary, SummaryAccordians } from "~application";
 import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations, useGetPastApplications } from "~checker/hooks";
 import { getExplorerUrl } from "~checker/utils";
-import { ProjectBanner, ProjectSummary } from "~project/components";
+import { ProjectBanner } from "~project";
+import { ProjectSummary } from "~project/clientComponents";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;

@@ -1,4 +1,5 @@
-// src/components/SetupProgressForm.tsx
+"use client";
+
 import { useRef } from "react";
 
 import { CheckIcon } from "@heroicons/react/solid";

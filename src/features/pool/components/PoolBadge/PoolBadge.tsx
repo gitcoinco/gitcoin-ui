@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { match, P } from "ts-pattern";
 
-import { Badge } from "@/primitives";
+import { Badge } from "@/primitives/Badge";
 import { isPoolStatus, isPoolType, PoolStatus, PoolType } from "@/types";
 
 import { PoolStatusBadge } from "../PoolStatusBadge";

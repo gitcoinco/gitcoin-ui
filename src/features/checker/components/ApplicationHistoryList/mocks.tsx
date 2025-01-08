@@ -1,4 +1,4 @@
-import { ApplicationBadgeStatus } from "~application/components";
+import { ApplicationBadgeStatus } from "~application";
 
 import { Application } from "./types";
 

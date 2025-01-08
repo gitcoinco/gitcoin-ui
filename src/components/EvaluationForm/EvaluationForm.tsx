@@ -2,8 +2,10 @@ import * as React from "react";
 
 import { tv } from "tailwind-variants";
 
-import { RadioGroupList } from "@/components";
-import { Button, Icon, IconType, TextArea } from "@/primitives";
+import { RadioGroupList } from "@/components/RadioGroupList";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
+import { TextArea } from "@/primitives/TextArea";
 
 const formVariants = tv({
   base: "flex flex-col gap-6 p-5",

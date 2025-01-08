@@ -1,10 +1,14 @@
+"use client";
+
 import { tv } from "tailwind-variants";
 
-import { IconLabel } from "@/components";
+import { IconLabel } from "@/components/IconLabel";
 import { useToast } from "@/hooks";
 import { getChainInfo } from "@/lib";
 import { cn } from "@/lib/utils";
-import { Breadcrumb, Button, Icon, IconType } from "@/primitives";
+import { Breadcrumb } from "@/primitives/Breadcrumb";
+import { Button } from "@/primitives/Button";
+import { Icon, IconType } from "@/primitives/Icon";
 import { PoolStatus, PoolType } from "@/types";
 
 import { getManagerUrl, getBuilderUrl, getExplorerUrl } from "~checker/utils";

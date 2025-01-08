@@ -4,8 +4,8 @@ import { match } from "ts-pattern";
 
 import { formatDate, DateFormat } from "@/lib/dates/formatDate";
 import { getAddressLabel } from "@/lib/utils";
-import { Skeleton } from "@/primitives";
 import { Icon, IconType } from "@/primitives/Icon";
+import { Skeleton } from "@/primitives/Skeleton";
 
 import { IconLabelContainer } from "./IconLabelContainer";
 import { IconLabelProps } from "./types";

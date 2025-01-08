@@ -1,5 +1,7 @@
 import { StoryObj, Meta } from "@storybook/react";
-import { Button } from "@/primitives";
+
+import { Button } from "@/primitives/Button";
+
 import { MetricCard } from "./MetricCard";
 
 export default {

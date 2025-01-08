@@ -1,7 +1,7 @@
 // Toast.stories.tsx
 import { Meta } from "@storybook/react";
 
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 
 import { Toaster } from "./Toaster";

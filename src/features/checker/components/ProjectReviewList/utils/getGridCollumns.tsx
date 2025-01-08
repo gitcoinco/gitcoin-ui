@@ -5,10 +5,10 @@ import { Address } from "viem";
 
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
-import { Skeleton } from "@/primitives";
 import { Button } from "@/primitives/Button";
 import { CircleStat } from "@/primitives/Indicators";
 import { ListGridColumn } from "@/primitives/ListGrid";
+import { Skeleton } from "@/primitives/Skeleton";
 
 import { ReviewsCounterLabelWithTooltip } from "~checker/components";
 import { ProjectReview } from "~checker/types";

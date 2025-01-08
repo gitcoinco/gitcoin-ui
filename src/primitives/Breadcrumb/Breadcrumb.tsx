@@ -1,4 +1,3 @@
-// src/ui-shadcn/ModularBreadcrumb.tsx
 import * as React from "react";
 
 import {

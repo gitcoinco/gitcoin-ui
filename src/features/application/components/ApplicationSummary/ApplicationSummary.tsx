@@ -1,9 +1,12 @@
-import { IconLabel } from "@/components";
+import { IconLabel } from "@/components/IconLabel";
 import { DateFormat, formatDate } from "@/lib/dates/formatDate";
-import { Accordion, IconType, ListGrid, ListGridColumn, Markdown } from "@/primitives";
+import { Accordion } from "@/primitives/Accordion";
+import { IconType } from "@/primitives/Icon";
+import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
+import { Markdown } from "@/primitives/Markdown";
 
 import { PastApplication, ProjectApplication, ProjectMetadata } from "~checker/services/allo/types";
-import { ProjectSummary } from "~project/components";
+import { ProjectSummary } from "~project/clientComponents";
 
 import { ApplicationBadge, ApplicationBadgeStatus } from "../ApplicationBadge";
 

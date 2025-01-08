@@ -1,7 +1,8 @@
-// Toast.tsx
+"use client";
+
 import { match } from "ts-pattern";
 
-import { useToast, ToasterToast } from "@/hooks/use-toast";
+import { useToast, ToasterToast } from "@/hooks/useToast";
 import { Icon, IconType } from "@/primitives/Icon";
 import {
   Toast,
