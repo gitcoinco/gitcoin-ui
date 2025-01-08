@@ -19,3 +19,4 @@ export * from "./Toast";
 export * from "./FileUpload";
 export * from "./Select";
 export * from "./MarkdownEditor";
+export * from "./ScrollArea";
