@@ -1,8 +1,9 @@
 import { PropsWithChildren } from "react";
 
-import { ProjectAllocation } from "@/components/AllocationSidebar";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "@/primitives/Skeleton";
+
+import { ProjectAllocation } from "../types";
 
 export const AllocationItem = ({
   id,

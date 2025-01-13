@@ -25,6 +25,7 @@ export default tseslint.config(
       "@typescript-eslint/no-non-null-assertion": "warn",
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/consistent-type-definitions": "warn",
+      "tailwindcss/enforces-shorthand": "off",
     },
   },
   eslintConfigPrettier,

@@ -1,4 +1,5 @@
-// Cards.tsx
+"use client";
+
 import { UseQueryResult } from "@tanstack/react-query";
 import { match, P } from "ts-pattern";
 

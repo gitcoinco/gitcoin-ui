@@ -1,3 +1,5 @@
+"use client";
+
 import { SideNav, SideNavItem, sideNavVariants } from "@/components/SideNav";
 import { Accordion, AccordionProps } from "@/primitives/Accordion";
 import { Icon } from "@/primitives/Icon";

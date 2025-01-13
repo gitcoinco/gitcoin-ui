@@ -1,3 +1,5 @@
+"use client";
+
 import { IconLabel } from "@/components/IconLabel";
 import { capitalizeWord, getAddressLabel } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";

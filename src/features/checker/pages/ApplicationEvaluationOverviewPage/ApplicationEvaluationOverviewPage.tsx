@@ -1,3 +1,5 @@
+"use client";
+
 import { Hex } from "viem";
 
 import { Button } from "@/primitives/Button";
@@ -10,7 +12,7 @@ import {
   goToSubmitApplicationEvaluationAction,
   useCheckerDispatchContext,
 } from "~checker/store";
-import { PoolSummary } from "~pool/clientComponents";
+import { PoolSummary } from "~pool";
 import { ProjectBanner } from "~project";
 
 export interface ApplicationEvaluationOverviewPageProps {

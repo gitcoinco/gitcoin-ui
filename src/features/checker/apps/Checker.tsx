@@ -1,3 +1,5 @@
+"use client";
+
 import { Hex } from "viem";
 
 import { Step } from "@/components/ProgressModal";

@@ -1,3 +1,5 @@
+"use client";
+
 import { DefaultLogo } from "@/assets";
 import { IconLabel } from "@/components/IconLabel";
 import { CircleStat } from "@/primitives/Indicators";

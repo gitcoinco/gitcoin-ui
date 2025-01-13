@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useMemo, useEffect } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
@@ -18,7 +20,7 @@ import {
 } from "~checker/store";
 import { EvaluationAction, ReviewBody } from "~checker/types";
 import { getManagerUrl } from "~checker/utils";
-import { PoolSummary } from "~pool/clientComponents";
+import { PoolSummary } from "~pool";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useMemo } from "react";
 
 import { useMutation } from "@tanstack/react-query";
