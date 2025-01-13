@@ -1,3 +1,5 @@
+"use client";
+
 import { Address } from "viem";
 
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";

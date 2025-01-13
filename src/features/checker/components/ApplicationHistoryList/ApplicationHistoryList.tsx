@@ -1,3 +1,5 @@
+"use client";
+
 import { IconLabel } from "@/components/IconLabel";
 import { ListGrid, ListGridColumn } from "@/primitives/ListGrid";
 

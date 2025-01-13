@@ -1,3 +1,5 @@
+"use client";
+
 import { match } from "ts-pattern";
 import { Address } from "viem";
 

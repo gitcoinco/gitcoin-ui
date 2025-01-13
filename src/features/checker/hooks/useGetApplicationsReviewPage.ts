@@ -1,3 +1,5 @@
+"use client";
+
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
 
 import { DefaultStatCardsProps } from "~checker/constants";

@@ -1,3 +1,5 @@
+"use client";
+
 import { IconLabel } from "@/components/IconLabel";
 import { getChainInfo } from "@/lib";
 import { IconType } from "@/primitives/Icon";

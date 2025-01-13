@@ -12,7 +12,6 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve(__dirname, "./src/index.ts"),
-        clientComponents: resolve(__dirname, "./src/clientComponents.ts"),
         hooks: resolve(__dirname, "./src/hooks/index.ts"),
         icons: resolve(__dirname, "./src/assets/icons/index.ts"),
         lib: resolve(__dirname, "./src/lib/index.ts"),
@@ -23,10 +22,8 @@ export default defineConfig({
         application: resolve(__dirname, "./src/features/application/index.ts"),
         checker: resolve(__dirname, "./src/features/checker/index.ts"),
         pool: resolve(__dirname, "./src/features/pool/index.ts"),
-        poolClientComponents: resolve(__dirname, "./src/features/pool/clientComponents.ts"),
         program: resolve(__dirname, "./src/features/program/index.ts"),
         project: resolve(__dirname, "./src/features/project/index.ts"),
-        projectClientComponents: resolve(__dirname, "./src/features/project/clientComponents.ts"),
         retrofunding: resolve(__dirname, "./src/features/retrofunding/index.ts"),
       },
       name: "gitcoin-ui",

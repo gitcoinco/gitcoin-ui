@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { ScrollArea, ScrollBar } from "@/primitives/ScrollArea";
 

@@ -28,11 +28,6 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
-    "./client": {
-      "types": "./dist/clientComponents.d.ts",
-      "import": "./dist/clientComponents.js",
-      "require": "./dist/clientComponents.js"
-    },
     "./hooks": {
       "types": "./dist/hooks.d.ts",
       "import": "./dist/hooks.js",
@@ -73,11 +68,6 @@
       "import": "./dist/pool.js",
       "require": "./dist/pool.js"
     },
-    "./pool/client": {
-      "types": "./dist/poolClientComponents.d.ts",
-      "import": "./dist/poolClientComponents.js",
-      "require": "./dist/poolClientComponents.js"
-    },
     "./program": {
       "types": "./dist/program.d.ts",
       "import": "./dist/program.js",
@@ -87,11 +77,6 @@
       "types": "./dist/project.d.ts",
       "import": "./dist/project.js",
       "require": "./dist/project.js"
-    },
-    "./project/client": {
-      "types": "./dist/projectClientComponents.d.ts",
-      "import": "./dist/projectClientComponents.js",
-      "require": "./dist/projectClientComponents.js"
     },
     "./retrofunding": {
       "types": "./dist/retrofunding.d.ts",

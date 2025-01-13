@@ -1,4 +1,5 @@
-// src/components/SubmitApplicationEvaluation/SubmitApplicationEvaluationPage.tsx
+"use client";
+
 import { useEffect, useState } from "react";
 
 import { useQueryClient } from "@tanstack/react-query";
@@ -17,7 +18,7 @@ import {
 } from "~checker/hooks";
 import { goToApplicationEvaluationOverviewAction, useCheckerDispatchContext } from "~checker/store";
 import { EvaluationStatus, EvaluationBody } from "~checker/types";
-import { PoolSummary } from "~pool/clientComponents";
+import { PoolSummary } from "~pool";
 import { ProjectBanner } from "~project";
 
 import { SubmitApplicationEvaluationModal } from "./SubmitApplicationEvaluationModal";

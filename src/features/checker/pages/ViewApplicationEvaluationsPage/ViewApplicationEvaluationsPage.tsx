@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 import { useToast } from "@/hooks/useToast";
@@ -11,7 +13,7 @@ import { ReviewDropdownList } from "~checker/components";
 import { useApplicationEvaluations, useGetPastApplications } from "~checker/hooks";
 import { getExplorerUrl } from "~checker/utils";
 import { ProjectBanner } from "~project";
-import { ProjectSummary } from "~project/clientComponents";
+import { ProjectSummary } from "~project";
 
 export interface ViewApplicationEvaluationsPageProps {
   chainId: number;
