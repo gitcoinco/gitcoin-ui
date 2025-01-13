@@ -18,6 +18,7 @@ export const useApplicationEvaluations = (
         roundId,
         applicationId,
       );
+      if (!application || !applicationEvaluations) return undefined;
       const data = {
         application,
         applicationEvaluations: applicationEvaluations,

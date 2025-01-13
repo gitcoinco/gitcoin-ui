@@ -34,14 +34,14 @@ export default meta;
 type Story = StoryObj<typeof ViewApplicationEvaluationsPage>;
 
 export const Default: Story = {
-  parameters: {
-    msw: {
-      handlers,
-    },
-  },
+  // parameters: {
+  //   // msw: {
+  //   //   handlers,
+  //   // },
+  // },
   args: {
-    chainId: 42161,
-    poolId: "609",
-    applicationId: "0",
+    chainId: 10,
+    poolId: "6",
+    applicationId: "4",
   },
 };

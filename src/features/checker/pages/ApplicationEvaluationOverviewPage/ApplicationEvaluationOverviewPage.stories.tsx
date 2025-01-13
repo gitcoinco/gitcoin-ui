@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 
-import { handlers } from "@/mocks/handlers";
-
+// import { handlers } from "@/mocks/handlers";
 import { CheckerProvider } from "~checker/store";
 
 import { ApplicationEvaluationOverviewPage } from "./ApplicationEvaluationOverviewPage";
@@ -34,14 +33,15 @@ export default meta;
 type Story = StoryObj<typeof ApplicationEvaluationOverviewPage>;
 
 export const Default: Story = {
-  parameters: {
-    msw: {
-      handlers,
-    },
-  },
+  // parameters: {
+  //   msw: {
+  //     handlers,
+  //   },
+  // },
   args: {
-    chainId: 42161,
-    poolId: "609",
-    applicationId: "17",
+    chainId: 10,
+    poolId: "7",
+    applicationId: "1",
+    address: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
   },
 };

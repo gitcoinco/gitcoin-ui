@@ -10,8 +10,8 @@ const meta = {
   component: Checker,
   args: {
     address: "0x0D1781F0b693b35939A49831A6C799B938Bd2F80",
-    poolId: "597",
-    chainId: 11155111,
+    poolId: "7",
+    chainId: 10,
   },
 } satisfies Meta;
 
@@ -20,6 +20,11 @@ export default meta;
 type Story = StoryObj<typeof Checker>;
 
 export const Default: Story = {
+  args: {
+    poolId: "5",
+    chainId: 10,
+  },
+
   render(args) {
     // New StoryWrapper component
     const StoryWrapper = () => {

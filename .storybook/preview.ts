@@ -20,9 +20,9 @@ const preview: Preview = {
         order: ["Welcome", "Features", "Components", "Primitives", "Shadcn", "Styles", "*"],
       },
     },
-    msw: {
-      handlers,
-    },
+    // msw: {
+    //   handlers,
+    // },
   },
 
   loaders: [mswLoader],
