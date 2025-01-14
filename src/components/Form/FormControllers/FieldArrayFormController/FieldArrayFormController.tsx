@@ -1,4 +1,5 @@
-// src/components/Form/FieldArrayController.tsx
+"use client";
+
 import React from "react";
 import { useFieldArray, useFormContext, Controller } from "react-hook-form";
 

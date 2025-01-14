@@ -1,4 +1,3 @@
-import { HeroiconsType } from "@/assets";
 import { IconType } from "@/primitives/Icon";
 
 interface AIEvaluationProps {

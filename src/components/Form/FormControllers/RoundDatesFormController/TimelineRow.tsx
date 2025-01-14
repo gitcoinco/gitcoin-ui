@@ -1,3 +1,5 @@
+"use client";
+
 import { CheckCircle2Icon } from "lucide-react";
 
 import { Label } from "@/ui-shadcn/label";

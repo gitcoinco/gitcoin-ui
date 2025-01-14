@@ -1,3 +1,5 @@
+"use client";
+
 import { SideNavItem } from "@/components/SideNav";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/primitives/Icon";
