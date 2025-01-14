@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowDownNarrowWide } from "lucide-react";
 import { ArrowUpWideNarrow } from "lucide-react";
 

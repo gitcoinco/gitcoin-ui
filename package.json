@@ -82,6 +82,31 @@
       "types": "./dist/retrofunding.d.ts",
       "import": "./dist/retrofunding.js",
       "require": "./dist/retrofunding.js"
+    },
+    "./form": {
+      "types": "./dist/form.d.ts",
+      "import": "./dist/form.js",
+      "require": "./dist/form.js"
+    },
+    "./setup-progress-form": {
+      "types": "./dist/setupProgressForm.d.ts",
+      "import": "./dist/setupProgressForm.js",
+      "require": "./dist/setupProgressForm.js"
+    },
+    "./accordion": {
+      "types": "./dist/accordion.d.ts",
+      "import": "./dist/accordion.js",
+      "require": "./dist/accordion.js"
+    },
+    "./markdown-editor": {
+      "types": "./dist/markdownEditor.d.ts",
+      "import": "./dist/markdownEditor.js",
+      "require": "./dist/markdownEditor.js"
+    },
+    "./markdown": {
+      "types": "./dist/markdown.d.ts",
+      "import": "./dist/markdown.js",
+      "require": "./dist/markdown.js"
     }
   },
   "devDependencies": {

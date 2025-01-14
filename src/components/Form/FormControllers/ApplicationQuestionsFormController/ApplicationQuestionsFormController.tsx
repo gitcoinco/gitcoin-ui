@@ -1,4 +1,5 @@
-// src/components/Form/ApplicationQuestionsController.tsx
+"use client";
+
 import React from "react";
 import { useEffect } from "react";
 import { useFieldArray, useFormContext, Controller } from "react-hook-form";

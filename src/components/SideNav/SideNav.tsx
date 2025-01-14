@@ -1,3 +1,5 @@
+"use client";
+
 import { tv } from "tailwind-variants";
 
 import { AccordionItem, NavItem, InternalSideNavProps } from "@/components/SideNav";

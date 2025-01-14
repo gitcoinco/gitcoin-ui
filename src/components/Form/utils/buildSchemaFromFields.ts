@@ -1,4 +1,3 @@
-// File: utils/buildSchemaFromFields.ts
 import { z } from "zod";
 
 import { FormField } from "../types/fieldTypes";
