@@ -1,4 +1,5 @@
-// src/components/Form/DisabledInputController.tsx
+"use client";
+
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 

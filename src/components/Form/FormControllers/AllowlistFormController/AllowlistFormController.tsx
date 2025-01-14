@@ -1,4 +1,5 @@
-// src/components/Form/FormAllowlistController.tsx
+"use client";
+
 import React, { useRef } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 

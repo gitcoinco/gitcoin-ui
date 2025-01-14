@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { DefaultLogo } from "@/assets";
 import { CheckerIcon } from "@/assets/icons";
+import { Button } from "@/primitives/Button";
 
-import { Button } from "../Button";
 import { Navbar } from "./Navbar";
 
 // Adjust the path as needed
