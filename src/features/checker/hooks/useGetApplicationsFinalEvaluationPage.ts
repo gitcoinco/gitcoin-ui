@@ -30,6 +30,12 @@ export const useGetApplicationsFinalEvaluationPage = () => {
 
   const { categorizedReviews, statCardsProps } = categorizeProjectReviews(poolData.applications);
 
+  const strategyMapping: Record<PoolType, number> = {
+    [PoolType.QuadraticFunding]: 0,
+    [PoolType.DirectGrants]: 1,
+    [PoolType.Retrofunding]: 2,
+  };
+
   const reviewBody: ReviewBody = {
     roundId: poolId as string,
     strategyAddress: poolData.strategyAddress as Address,
@@ -38,7 +44,7 @@ export const useGetApplicationsFinalEvaluationPage = () => {
       index: Number(app.id),
       status: app.status as ApplicationStatusType,
     })),
-    strategy: poolData.strategyName === PoolType.QuadraticFunding ? 0 : 1,
+    strategy: strategyMapping[poolData.strategyName as PoolType] ?? -1,
   };
 
   return {
