@@ -1,3 +1,5 @@
+"use client";
+
 import "lucide-react";
 
 import { cn } from "@/lib/utils";

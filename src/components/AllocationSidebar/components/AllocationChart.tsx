@@ -1,3 +1,5 @@
+"use client";
+
 import { CartesianGrid, Line, YAxis, LineChart } from "recharts";
 
 export const AllocationChart = ({
