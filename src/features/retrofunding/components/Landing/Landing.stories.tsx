@@ -1,6 +1,8 @@
 import { action } from "@storybook/addon-actions";
 import { Meta, StoryObj } from "@storybook/react";
 
+import { ConnectButton } from "@/components/ConnectButton/ConnectButton";
+
 import { LandingPage } from "./LandingPage";
 
 const meta: Meta<typeof LandingPage> = {
@@ -23,13 +25,13 @@ export const VoteLanding: Story = {
     roundName: "Cool retro round",
     roundDescription:
       "Lorem ipsum dolor sit amet consectetur. Non laoreet nulla blandit at integer. Consectetur adipiscing magna sollicitudin arcu elementum nunc. Elit fermentum.",
-    handleConnect,
+    actionButton: <ConnectButton type="vote" onClick={handleConnect} />,
   },
 };
 
 export const AdminLanding: Story = {
   args: {
     type: "admin",
-    handleConnect,
+    actionButton: <ConnectButton type="admin" onClick={handleConnect} />,
   },
 };
