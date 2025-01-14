@@ -1,4 +1,3 @@
-export * from "./Form";
 export * from "./IconLabel";
 export * from "./ProgressModal";
 export * from "./RadioGroupList";
