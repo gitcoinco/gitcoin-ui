@@ -1,8 +1,10 @@
 import CheckerIcon from "./checker.svg?react";
 import ExplorerIcon from "./explorer.svg?react";
+import RetrofundingIcon from "./retrofunding.svg?react";
 import ShineIcon from "./shine.svg?react";
 import UserIcon from "./user.svg?react";
 import VerifiedBadgeIcon from "./verifiedBadge.svg?react";
+import VoteIcon from "./vote.svg?react";
 
 enum CustomIconType {
   CHECKER = "checker",
@@ -24,5 +26,13 @@ const customIcons = Object.keys(customIconComponents).sort((a, b) =>
   a.localeCompare(b),
 ) as CustomIconType[];
 
-export { CheckerIcon, ExplorerIcon, ShineIcon, UserIcon, VerifiedBadgeIcon };
+export {
+  CheckerIcon,
+  ExplorerIcon,
+  ShineIcon,
+  UserIcon,
+  VerifiedBadgeIcon,
+  RetrofundingIcon,
+  VoteIcon,
+};
 export { CustomIconType, customIconComponents, customIcons };
