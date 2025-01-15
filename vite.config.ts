@@ -5,6 +5,7 @@ import svgr from "vite-plugin-svgr";
 import react from "@vitejs/plugin-react-swc";
 
 import path, { resolve } from "path";
+import preserveDirectives from "rollup-preserve-directives";
 import tailwindcss from "tailwindcss";
 
 export default defineConfig({
@@ -48,6 +49,7 @@ export default defineConfig({
         preserveModules: true,
         preserveModulesRoot: "src",
       },
+      plugins: [preserveDirectives()],
     },
     sourcemap: true,
     emptyOutDir: true,
