@@ -20,7 +20,7 @@ export interface FormStep {
   };
 }
 
-export interface SetupProgressFormProps {
+export interface GenericProgressFormProps {
   name: string;
   steps: FormStep[];
   onSubmit: (values: any) => Promise<void>;
@@ -28,13 +28,13 @@ export interface SetupProgressFormProps {
   storeName: string;
 }
 
-export const SetupProgressForm = ({
+export const GenericProgressForm = ({
   name,
   steps,
   onSubmit,
   dbName,
   storeName,
-}: SetupProgressFormProps) => {
+}: GenericProgressFormProps) => {
   const { currentStep, updateStep } = useFormProgress(name);
   const formRef = useRef<{ isFormValid: () => Promise<boolean> }>(null);
 
