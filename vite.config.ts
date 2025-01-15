@@ -19,13 +19,6 @@ export default defineConfig({
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
         types: resolve(__dirname, "./src/types/index.ts"),
 
-        // client
-        setupProgressForm: resolve(__dirname, "./src/components/SetupProgressForm/index.ts"),
-        form: resolve(__dirname, "./src/components/Form/index.ts"),
-        accordion: resolve(__dirname, "./src/primitives/Accordion/index.ts"),
-        markdownEditor: resolve(__dirname, "./src/primitives/MarkdownEditor/index.ts"),
-        markdown: resolve(__dirname, "./src/primitives/Markdown/index.ts"),
-
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),
         checker: resolve(__dirname, "./src/features/checker/index.ts"),

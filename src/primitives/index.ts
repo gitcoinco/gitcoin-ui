@@ -1,3 +1,4 @@
+export * from "./Accordion";
 export * from "./Avatar";
 export * from "./Badge";
 export * from "./BannerImage";
@@ -7,6 +8,8 @@ export * from "./FileUpload";
 export * from "./Icon";
 export * from "./Indicators";
 export * from "./ListGrid";
+export * from "./Markdown";
+export * from "./MarkdownEditor";
 export * from "./Modal";
 export * from "./Navbar";
 export * from "./ProgressBar";
