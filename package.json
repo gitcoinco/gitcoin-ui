@@ -28,6 +28,21 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js"
     },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js",
+      "require": "./dist/client.js"
+    },
+    "./generic-progress-form": {
+      "types": "./dist/genericProgressForm.d.ts",
+      "import": "./dist/genericProgressForm.js",
+      "require": "./dist/genericProgressForm.js"
+    },
+    "./form": {
+      "types": "./dist/form.d.ts",
+      "import": "./dist/form.js",
+      "require": "./dist/form.js"
+    },
     "./hooks": {
       "types": "./dist/hooks.d.ts",
       "import": "./dist/hooks.js",

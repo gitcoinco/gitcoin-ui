@@ -13,11 +13,15 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve(__dirname, "./src/index.ts"),
+        client: resolve(__dirname, "./src/client.ts"),
         hooks: resolve(__dirname, "./src/hooks/index.ts"),
         icons: resolve(__dirname, "./src/assets/icons/index.ts"),
         lib: resolve(__dirname, "./src/lib/index.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
         types: resolve(__dirname, "./src/types/index.ts"),
+
+        genericProgressForm: resolve(__dirname, "./src/components/GenericProgressForm/index.ts"),
+        form: resolve(__dirname, "./src/components/Form/index.ts"),
 
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),
