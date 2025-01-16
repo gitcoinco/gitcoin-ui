@@ -1,0 +1,156 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Docs/hooks/useIndexedDB" />
+
+# useIndexedDB
+
+A React hook for managing IndexedDB operations with built-in error handling, loading states, and retry mechanisms.
+
+## Features
+
+- 🔒 Client-side only execution (SSR safe)
+- 🔄 Automatic retry with exponential backoff
+- 📦 Complete CRUD operations
+- 🎯 TypeScript support
+- 🔢 Version management
+- ⚠️ Comprehensive error handling
+
+## Basic Usage
+
+```tsx
+import { useIndexedDB } from "@/hooks/useIndexedDB";
+
+function MyComponent() {
+  const { setValue, getValue, error, isLoading, isReady } = useIndexedDB({
+    dbName: "myDatabase",
+    storeName: "myStore",
+  });
+  const handleSave = async () => {
+    await setValue("key", { data: "value" });
+  };
+  const handleLoad = async () => {
+    const data = await getValue("key");
+    console.log(data);
+  };
+  if (!isReady) return <div>Database not ready...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading) return <div>Loading...</div>;
+  return (
+    <div>
+      <button onClick={handleSave}>Save Data</button>
+      <button onClick={handleLoad}>Load Data</button>
+    </div>
+  );
+}
+```
+
+## API Reference
+
+### Hook Parameters
+
+```typescript
+interface UseIndexedDBProps {
+  dbName: string; // Name of the IndexedDB database
+  storeName: string; // Name of the object store
+  version?: number; // Database version (default: 1)
+  retries?: number; // Number of retry attempts (default: 1)
+}
+```
+
+### Return Value
+
+```typescript
+interface UseIndexedDBReturn {
+  // Data Operations
+  getValue: <T = DBValue>(key: string) => Promise<T | undefined>;
+  getValues: <T = DBValue>(keys: string[]) => Promise<(T | undefined)[]>;
+  setValue: (key: string, value: unknown) => Promise<void>;
+  setValues: (entries: { key: string; value: unknown }[]) => Promise<void>;
+  deleteValue: (key: string) => Promise<void>;
+  deleteValues: (keys: string[]) => Promise<void>;
+  getAllKeys: () => Promise<string[]>;
+  getAllValues: <T = DBValue>() => Promise<T[]>;
+  clearStore: () => Promise<void>;
+  // State
+  error: Error | null;
+  isLoading: boolean;
+  isReady: boolean;
+}
+```
+
+## Advanced Features
+
+### Version Management
+
+The hook includes database version management capabilities for schema updates:
+
+```tsx
+const { isReady } = useIndexedDB({
+  dbName: "myDatabase",
+  storeName: "myStore",
+  version: 2, // Increment to trigger database upgrade
+});
+```
+
+### Retry Mechanism
+
+Operations automatically retry with exponential backoff on failure:
+
+```tsx
+const { setValue } = useIndexedDB({
+  dbName: "myDatabase",
+  storeName: "myStore",
+  retries: 3, // Number of retry attempts
+});
+```
+
+### Type Safety
+
+The hook supports TypeScript generics for type-safe operations:
+
+```tsx
+interface User {
+  id: string;
+  name: string;
+}
+
+const { getValue } = useIndexedDB({
+  dbName: "myDatabase",
+  storeName: "users",
+});
+
+const user = await getValue<User>("user-1"); // user is typed as User | undefined
+```
+
+### Error Handling
+
+The hook provides comprehensive error handling:
+
+```tsx
+  const { error, isLoading, isReady } = useIndexedDB({
+    dbName: 'myDatabase',
+    storeName: 'myStore'
+  });
+
+  if (!isReady) {
+    return <div>Database not ready</div>;
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+```
+
+## Browser Support
+
+IndexedDB is supported in all modern browsers. The hook includes SSR safety checks and will gracefully handle environments where IndexedDB is not available.
+
+## Best Practices
+
+1. Always check `isReady` before performing operations
+2. Handle `error` and `isLoading` states appropriately
+3. Use appropriate database versions when updating schema
+4. Implement proper error boundaries in your React components
+5. Consider implementing a fallback mechanism for browsers without IndexedDB support
