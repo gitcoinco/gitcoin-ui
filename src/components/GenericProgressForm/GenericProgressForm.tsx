@@ -70,7 +70,7 @@ export const GenericProgressForm = ({
     <div className="inset-0 flex justify-center gap-24 px-20 pt-16">
       <div className="relative flex flex-col gap-6">
         <div>{name}</div>
-        <ProgressBar value={progressValue} variant="green-md" />
+        <ProgressBar value={progressValue} variant="green-md" withLabel />
         {steps.map((step, index) => (
           <div key={index} className="flex h-6 items-center justify-start gap-2">
             <div className="flex items-center gap-2">
