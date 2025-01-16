@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { CheckIcon } from "@heroicons/react/solid";
 
 import { Form, FormProps } from "@/components/Form";
-import { retrieveDBValuesFromKeys } from "@/lib/indexDB";
+import { useIndexedDB } from "@/hooks";
 import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
 
@@ -36,6 +36,7 @@ export const GenericProgressForm = ({
   storeName,
 }: GenericProgressFormProps) => {
   const { currentStep, updateStep } = useFormProgress(name);
+  const { getValues } = useIndexedDB({ dbName, storeName });
   const formRef = useRef<{ isFormValid: () => Promise<boolean> }>(null);
 
   const handleNextStep = () => {
@@ -53,7 +54,7 @@ export const GenericProgressForm = ({
   const handleSubmit = async () => {
     const persistKeys = steps.map((step) => step.formProps.persistKey).filter(Boolean) as string[];
 
-    const persistedValues = await retrieveDBValuesFromKeys(persistKeys, dbName, storeName);
+    const persistedValues = await getValues<Record<string, unknown>>(persistKeys);
 
     let FinalValues = {};
     for (const stepValues of persistedValues) {

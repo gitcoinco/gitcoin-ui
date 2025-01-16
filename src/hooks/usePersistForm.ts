@@ -1,39 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { useInterval } from "react-use";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
 
-import { setupDB } from "@/lib/indexDB";
-
-/**
- * Initialize the form with values from IndexedDB
- * @param form - The form instance
- * @param persistKey - The key of the value to retrieve
- * @param dbName - The name of the database
- * @param storeName - The name of the store
- */
-const initializeForm = async (
-  form: ReturnType<typeof useForm>,
-  persistKey: string,
-  dbName: string,
-  storeName: string,
-) => {
-  try {
-    const db = await setupDB(dbName, storeName);
-    if (persistKey) {
-      const draft = await db.get(storeName, persistKey);
-      if (draft) {
-        form.reset(draft);
-      }
-    }
-  } catch (error) {
-    console.error("Error initializing form:", error);
-  }
-};
+import { useIndexedDB } from "./useIndexedDB";
 
 /**
  * Use the form with persist
@@ -48,22 +22,40 @@ export const usePersistForm = (
   dbName: string,
   storeName: string,
 ) => {
+  const config = useMemo(() => {
+    return { dbName, storeName };
+  }, [dbName, storeName]);
+
+  const { getValue, setValue, isReady } = useIndexedDB(config);
+
   useEffect(() => {
-    initializeForm(form, persistKey, dbName, storeName);
-  }, [form, persistKey, dbName, storeName]);
+    if (!isReady || !persistKey) return;
+
+    const initializeForm = async () => {
+      try {
+        const draft = await getValue(persistKey);
+        if (draft) {
+          form.reset(draft);
+        }
+      } catch (err) {
+        console.error("Error initializing form:", err);
+      }
+    };
+
+    initializeForm();
+  }, [form, persistKey, getValue, isReady]);
 
   useInterval(() => {
-    if (persistKey) {
-      (async () => {
-        try {
-          const db = await setupDB(dbName, storeName);
-          const values = form.getValues();
-          await db.put(storeName, values, persistKey);
-        } catch (error) {
-          console.error("Error saving to IndexedDB:", error);
-        }
-      })();
-    }
+    if (!isReady || !persistKey) return;
+
+    (async () => {
+      try {
+        const values = form.getValues();
+        await setValue(persistKey, values);
+      } catch (err) {
+        console.error("Error saving to IndexedDB:", err);
+      }
+    })();
   }, 500);
 };
 
