@@ -20,9 +20,6 @@ export default defineConfig({
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
         types: resolve(__dirname, "./src/types/index.ts"),
 
-        genericProgressForm: resolve(__dirname, "./src/components/GenericProgressForm/index.ts"),
-        form: resolve(__dirname, "./src/components/Form/index.ts"),
-
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),
         checker: resolve(__dirname, "./src/features/checker/index.ts"),
