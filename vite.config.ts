@@ -5,6 +5,7 @@ import svgr from "vite-plugin-svgr";
 import react from "@vitejs/plugin-react-swc";
 
 import path, { resolve } from "path";
+import preserveDirectives from "rollup-preserve-directives";
 import tailwindcss from "tailwindcss";
 
 export default defineConfig({
@@ -12,18 +13,12 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve(__dirname, "./src/index.ts"),
+        client: resolve(__dirname, "./src/client.ts"),
         hooks: resolve(__dirname, "./src/hooks/index.ts"),
         icons: resolve(__dirname, "./src/assets/icons/index.ts"),
         lib: resolve(__dirname, "./src/lib/index.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
         types: resolve(__dirname, "./src/types/index.ts"),
-
-        // client
-        setupProgressForm: resolve(__dirname, "./src/components/SetupProgressForm/index.ts"),
-        form: resolve(__dirname, "./src/components/Form/index.ts"),
-        accordion: resolve(__dirname, "./src/primitives/Accordion/index.ts"),
-        markdownEditor: resolve(__dirname, "./src/primitives/MarkdownEditor/index.ts"),
-        markdown: resolve(__dirname, "./src/primitives/Markdown/index.ts"),
 
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),
@@ -48,6 +43,7 @@ export default defineConfig({
         preserveModules: true,
         preserveModulesRoot: "src",
       },
+      plugins: [preserveDirectives()],
     },
     sourcemap: true,
     emptyOutDir: true,

@@ -4,23 +4,15 @@ import { useRef } from "react";
 
 import { CheckIcon } from "@heroicons/react/solid";
 
-import { Form, FormProps } from "@/components/Form";
-import { retrieveDBValuesFromKeys } from "@/lib/indexDB";
+import { Form } from "@/components/Form";
+import { useIndexedDB } from "@/hooks";
 import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
+import { FormStep } from "@/types";
 
 import { useFormProgress } from "./hooks/useFormProgress";
 
-export interface FormStep {
-  name: string;
-  formProps: Omit<FormProps, "dbName" | "storeName">;
-  stepProps: {
-    formTitle: string;
-    formDescription: string;
-  };
-}
-
-export interface SetupProgressFormProps {
+export interface GenericProgressFormProps {
   name: string;
   steps: FormStep[];
   onSubmit: (values: any) => Promise<void>;
@@ -28,14 +20,15 @@ export interface SetupProgressFormProps {
   storeName: string;
 }
 
-export const SetupProgressForm = ({
+export const GenericProgressForm = ({
   name,
   steps,
   onSubmit,
   dbName,
   storeName,
-}: SetupProgressFormProps) => {
+}: GenericProgressFormProps) => {
   const { currentStep, updateStep } = useFormProgress(name);
+  const { getValues } = useIndexedDB({ dbName, storeName });
   const formRef = useRef<{ isFormValid: () => Promise<boolean> }>(null);
 
   const handleNextStep = () => {
@@ -53,7 +46,7 @@ export const SetupProgressForm = ({
   const handleSubmit = async () => {
     const persistKeys = steps.map((step) => step.formProps.persistKey).filter(Boolean) as string[];
 
-    const persistedValues = await retrieveDBValuesFromKeys(persistKeys, dbName, storeName);
+    const persistedValues = await getValues<Record<string, unknown>>(persistKeys);
 
     let FinalValues = {};
     for (const stepValues of persistedValues) {
@@ -70,7 +63,7 @@ export const SetupProgressForm = ({
     <div className="inset-0 flex justify-center gap-24 px-20 pt-16">
       <div className="relative flex flex-col gap-6">
         <div>{name}</div>
-        <ProgressBar value={progressValue} variant="green-md" />
+        <ProgressBar value={progressValue} variant="green-md" withLabel />
         {steps.map((step, index) => (
           <div key={index} className="flex h-6 items-center justify-start gap-2">
             <div className="flex items-center gap-2">

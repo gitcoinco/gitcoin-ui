@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { SetupProgressForm } from "./SetupProgressForm";
+import { GenericProgressForm } from "./GenericProgressForm";
 import { roundSetupSteps } from "./mocks/RoundSetup";
 
-const meta: Meta<typeof SetupProgressForm> = {
-  title: "Components/SetupProgressForm",
-  component: SetupProgressForm,
-} satisfies Meta<typeof SetupProgressForm>;
+const meta: Meta<typeof GenericProgressForm> = {
+  title: "Components/GenericProgressForm",
+  component: GenericProgressForm,
+} satisfies Meta<typeof GenericProgressForm>;
 
 export default meta;
 
-type Story = StoryObj<typeof SetupProgressForm>;
+type Story = StoryObj<typeof GenericProgressForm>;
 
 export const Default: Story = {
   args: {

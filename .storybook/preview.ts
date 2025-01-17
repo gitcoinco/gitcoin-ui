@@ -20,6 +20,7 @@ const preview: Preview = {
         method: "alphabetical",
         order: [
           "Welcome",
+          "Docs",
           "Styles",
           "Features",
           ["Checker", "Retrofunding", "Application", "*"],

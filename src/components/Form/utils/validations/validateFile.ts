@@ -1,7 +1,7 @@
 // File: utils/validations/validateFile.ts
 import { z } from "zod";
 
-import { FileValidationConfig } from "../../types";
+import { FileValidationConfig } from "@/types";
 
 /**
  * Builds a Zod schema for file fields.

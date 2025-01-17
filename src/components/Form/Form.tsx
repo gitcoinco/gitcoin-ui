@@ -4,15 +4,12 @@ import { ForwardedRef, forwardRef, useImperativeHandle } from "react";
 import { FormProvider, useFormContext } from "react-hook-form";
 
 import { useFormWithPersist } from "@/hooks";
+import { FormConfig, FormField } from "@/types";
 
-import { FormField } from "./types/fieldTypes";
 import { buildSchemaFromFields } from "./utils/buildSchemaFromFields";
 import { componentRegistry } from "./utils/componentRegistry";
 
-export interface FormProps {
-  persistKey: string;
-  fields: FormField[];
-  defaultValues?: any;
+export interface FormProps extends FormConfig {
   dbName: string;
   storeName: string;
 }

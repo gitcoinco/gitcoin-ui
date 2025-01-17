@@ -2,7 +2,7 @@
 import { isAddress } from "viem";
 import { z } from "zod";
 
-import { ArrayValidationConfig } from "../../types/fieldTypes";
+import { ArrayValidationConfig } from "@/types";
 
 /**
  * Builds a Zod array schema, optionally:

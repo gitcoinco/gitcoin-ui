@@ -1,8 +1,6 @@
 import moment from "moment";
 
-import { FormField } from "@/components/Form";
-
-import { FormStep } from "../SetupProgressForm";
+import { FormField, FormStep } from "@/types";
 
 const program = {
   chainId: 10,

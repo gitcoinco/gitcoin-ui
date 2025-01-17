@@ -1,7 +1,7 @@
 // File: utils/validations/validateString.ts
 import { z } from "zod";
 
-import { StringValidationConfig } from "../../types";
+import { StringValidationConfig } from "@/types";
 
 /**
  * Builds a Zod string schema.
