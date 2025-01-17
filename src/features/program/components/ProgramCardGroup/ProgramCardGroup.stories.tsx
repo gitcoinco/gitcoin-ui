@@ -12,7 +12,8 @@ const programs = [
     title: "Gitcoin Grants Stack",
     operatorsCount: 2,
     roundsCount: 10,
-    onClick: () => onProgramClick(),
+    createdAtBlock: 1000,
+    onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
   },
   {
     id: "0x3456",
@@ -20,7 +21,8 @@ const programs = [
     title: "Allo Protocol",
     operatorsCount: 4,
     roundsCount: 2,
-    onClick: () => onProgramClick(),
+    createdAtBlock: 1000000,
+    onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
   },
 ];
 
@@ -96,6 +98,7 @@ export const withFourCard: Story = {
         title: "Pump Fun",
         operatorsCount: 4,
         roundsCount: 2,
+        createdAtBlock: 1000000,
         onClick: () => onProgramClick(),
       },
     ],
@@ -112,6 +115,7 @@ export const withFiveCard: Story = {
         title: "Pump Fun",
         operatorsCount: 4,
         roundsCount: 2,
+        createdAtBlock: 1000000,
         onClick: () => onProgramClick(),
       },
       {
@@ -120,6 +124,7 @@ export const withFiveCard: Story = {
         title: "Eigen Protocol",
         operatorsCount: 4,
         roundsCount: 2,
+        createdAtBlock: 1000000,
         onClick: () => onProgramClick(),
       },
     ],

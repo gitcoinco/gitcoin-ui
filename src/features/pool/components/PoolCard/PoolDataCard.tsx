@@ -15,8 +15,13 @@ export function PoolDataCard({ data }: PoolDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
   return (
     <div
-      onClick={data.onClick}
-      className="inline-flex h-60 w-full items-center justify-between rounded-2xl border border-grey-100 p-6"
+      onClick={() =>
+        data.onClick?.({
+          chainId: data.chainId,
+          roundId: data.roundId,
+        })
+      }
+      className="inline-flex h-60 w-full cursor-pointer items-center justify-between rounded-2xl border border-grey-100 p-6"
     >
       <div className="flex items-center justify-start gap-6">
         <img className="relative size-48 rounded-2xl" src={data.logoImg} />

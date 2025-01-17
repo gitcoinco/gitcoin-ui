@@ -39,8 +39,8 @@ const justifyVariants = tv({
 export const PoolCardGroup = ({ pools, justify }: PoolCardGroupProps) => {
   return (
     <div className={justifyVariants({ justify })}>
-      {pools.map((stat, index) => (
-        <PoolCard key={index} {...stat} />
+      {pools.map((pool, index) => (
+        <PoolCard key={index} {...pool} />
       ))}
     </div>
   );
