@@ -13,7 +13,8 @@ const program: ProgramCardProps = {
   title: "Gitcoin Grants Stack",
   operatorsCount: 2,
   roundsCount: 10,
-  onClick: () => onProgramClick(),
+  createdAtBlock: 1000000,
+  onClick: (program?: { chainId: number; programId: string }) => onProgramClick(program),
 };
 
 export default {

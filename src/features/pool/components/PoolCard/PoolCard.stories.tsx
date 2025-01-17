@@ -6,7 +6,7 @@ import { PoolStatus, PoolType } from "@/types";
 
 import { PoolCard, PoolCardProps, PoolCardQueryProps } from "./PoolCard";
 
-const onProgramClick = action("Pool Clicked!");
+const onPoolClick = action("Pool Clicked!");
 
 const simpleRound = {
   roundName: "Grants Round Defi",
@@ -21,7 +21,8 @@ const simpleRound = {
   operatorsCount: 10,
   logoImg:
     "https://cdn.prod.website-files.com/6433c5d029c6bb75f3f00bd5/66f47dd26d8ec8d0e48a22d0_gitcoin-profile.png",
-  onClick: () => onProgramClick,
+  onClick: (pool?: { chainId: number; roundId: string }) => onPoolClick(pool),
+  createdAtBlock: 123456,
 };
 
 export default {
@@ -39,6 +40,8 @@ export default {
     votingEndDate: { control: "date" },
     operatorsCount: { control: "number" },
     queryResult: { table: { disable: true } }, // Hide queryResult from controls
+    createdAtBlock: { control: "number" },
+    onClick: { action: "onClick" },
   },
 } as Meta<typeof PoolCard>;
 

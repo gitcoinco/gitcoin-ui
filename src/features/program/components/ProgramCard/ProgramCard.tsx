@@ -16,7 +16,8 @@ export interface ProgramCardProps {
   title: string;
   operatorsCount: number;
   roundsCount: number;
-  onClick?: () => void;
+  createdAtBlock: number;
+  onClick?: (program?: { chainId: number; programId: string }) => void;
 }
 export interface ProgramCardQueryProps {
   queryResult: UseQueryResult<ProgramCardProps, Error>;
@@ -42,8 +43,8 @@ export function ProgramDataCard({ data }: ProgramDataCardProps) {
   const { name, icon } = getChainInfo(data.chainId);
   return (
     <Card
-      className="block w-[304px] overflow-hidden border-grey-300 bg-grey-50"
-      onClick={data.onClick}
+      className="block w-[304px] cursor-pointer overflow-hidden border-grey-300 bg-grey-50"
+      onClick={() => data.onClick?.({ chainId: data.chainId, programId: data.id })}
     >
       <CardContent className="flex flex-col gap-3 p-6">
         <h2 className="truncate font-ui-sans text-2xl font-bold">{data.title}</h2>
