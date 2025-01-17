@@ -4,21 +4,13 @@ import { useRef } from "react";
 
 import { CheckIcon } from "@heroicons/react/solid";
 
-import { Form, FormProps } from "@/components/Form";
+import { Form } from "@/components/Form";
 import { useIndexedDB } from "@/hooks";
 import { Button } from "@/primitives/Button";
 import { ProgressBar } from "@/primitives/ProgressBar";
+import { FormStep } from "@/types";
 
 import { useFormProgress } from "./hooks/useFormProgress";
-
-export interface FormStep {
-  name: string;
-  formProps: Omit<FormProps, "dbName" | "storeName">;
-  stepProps: {
-    formTitle: string;
-    formDescription: string;
-  };
-}
 
 export interface GenericProgressFormProps {
   name: string;

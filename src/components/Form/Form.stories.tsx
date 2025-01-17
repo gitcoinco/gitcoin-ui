@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 
 import { Form, FormProps } from "@/components/Form";
-import { FormField } from "@/components/Form/types/fieldTypes";
+import { FormField } from "@/types";
 
 const fields: FormField[] = [
   {

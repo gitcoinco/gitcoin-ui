@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-import { FormField } from "../types/fieldTypes";
+import { FormField } from "@/types";
+
 import { buildArraySchema } from "./validations/validateArray";
 import { buildFileSchema } from "./validations/validateFile";
 import { getRoundDatesSchema } from "./validations/validateRoundDates";

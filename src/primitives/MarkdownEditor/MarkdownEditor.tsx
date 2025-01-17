@@ -6,13 +6,13 @@ import MDEditor, { commands, EditorContext } from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
 
 import { cn } from "@/lib";
+import { Markdown } from "@/types";
 
 import "./markdown_editor.css";
 
-export interface MarkdownEditorProps {
-  value?: string;
+export interface MarkdownEditorProps extends Markdown {
   onChange?: (value: string) => void;
-  placeholder?: string;
+  value?: string;
 }
 
 const WriteButton = () => {
