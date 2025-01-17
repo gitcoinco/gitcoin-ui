@@ -6,6 +6,7 @@ import {
   SetInitialStateAction,
   SetPoolDataAction,
   SetPoolFetchStateAction,
+  SetRouteHistoryAction,
 } from "./types";
 
 export const setInitialStateAction = (
@@ -46,5 +47,12 @@ export const setPoolFetchStateAction = (
   payload: SetPoolFetchStateAction["payload"],
 ): SetPoolFetchStateAction => ({
   type: "SET_POOL_DATA_FETCH_STATE",
+  payload,
+});
+
+export const setRouteHistoryAction = (
+  payload: SetRouteHistoryAction["payload"],
+): SetRouteHistoryAction => ({
+  type: "SET_ROUTE_HISTORY",
   payload,
 });
