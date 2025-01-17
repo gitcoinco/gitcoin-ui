@@ -22,3 +22,5 @@ export * from "./StatCardGroup";
 export * from "./TextArea";
 export * from "./Toast";
 export * from "./VerticalTabs";
+export * from "./Checkbox";
+export * from "./Switch";

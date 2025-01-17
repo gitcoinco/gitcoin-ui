@@ -1,0 +1,203 @@
+import { Meta, Story, Controls, Canvas } from "@storybook/blocks";
+
+import * as MultipleSelectStories from "./MultipleSelect.stories";
+
+<Meta
+  of={MultipleSelectStories}
+  parameters={{
+    layout: "centered",
+    docs: {
+      story: {
+        inline: true,
+        iframeHeight: 200,
+      },
+    },
+  }}
+/>
+
+# MultipleSelect
+
+A flexible multi-select component with grouped options, exclusive selections, and collapsible sections.
+
+## Props
+
+### Component Props
+
+- **`options`**: `MultipleSelectGroup[]` - Array of option groups
+- **`defaultValue`**: `Record<string, string[]>` - Initial selections per group
+- **`placeholder`**: `string` - Text shown when nothing selected if defaultValue then placeholder will be ignored
+- **`className`**: `string` - Popover container CSS classes
+- **`variants`**: `object` - Style customizations with the following options:
+  - **`color`**: `"default" | "grey"` - Controls the overall color scheme
+  - **`size`**: `"default" | "sm"` - Controls component sizing
+  - **`rounded`**: `"default"` - Controls border radius styling
+  - **`itemsPosition`**: `"start" | "end" | "center"` - Controls alignment of items in the list
+  - **`headerPosition`**: `"start" | "end" | "center"` - Controls alignment of group headers
+  - **`triggerTextColor`**: `"default" | "red" | "green"` - Controls the trigger text color
+  - **`itemsColor`**: `"default" | "light-grey"` - Controls the color of items and their icons
+- **`onChange`**: `(values: Record<string, string[]>) => void` - Selection change handler
+
+### Group Properties (`MultipleSelectGroup`)
+
+- **`groupLabel?`**: `string` - Group name (omit for ungrouped items)
+- **`multiple?`**: `boolean` - Allow multiple selections (default: true)
+- **`collapsible?`**: `boolean` - Enable group toggle
+- **`items`**: `MultipleSelectItem[]` - Array of options
+
+### Item Properties (`MultipleSelectItem`)
+
+- **`value`**: `string` - Unique identifier
+- **`label`**: `string` - Display text
+- **`exclusive?`**: `boolean` - Clear other selections when chosen
+- **`exclusiveScope?`**: `"group" | "global"` - Clear scope for exclusive items
+- **`iconType?`**: `IconType` - Optional icon identifier check `@/primitives/Icon story`
+- **`icon?`**: `React.ComponentType` - Optional icon component used if no iconType is provided
+- **`itemClassName?`**: `string` - Item-specific CSS classes
+
+---
+
+<Canvas of={MultipleSelectStories.FilterExample}>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem" }}>
+    <Story
+      of={MultipleSelectStories.FilterExample}
+      parameters={{
+        docs: {
+          canvas: { sourceState: "shown" },
+        },
+      }}
+    />
+  </div>
+</Canvas>
+<Controls of={MultipleSelectStories.FilterExample} />
+
+## Stories
+
+Below are several usage examples showcasing common patterns and advanced features.
+
+### 1. Basic
+
+<Canvas of={MultipleSelectStories.Basic}>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem" }}>
+    <Story
+      of={MultipleSelectStories.Basic}
+      parameters={{
+        layout: "centered",
+        docs: {
+          canvas: { sourceState: "shown" },
+        },
+      }}
+    />
+  </div>
+</Canvas>
+
+**Description**  
+A single ungrouped set of items (no group label) with simple placeholder text.
+
+- **Options**: 3 items, no exclusivity.
+- **`onChange`** logs the selection to console.
+
+### 2. OrderByExample
+
+<Canvas of={MultipleSelectStories.OrderByExample}>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem" }}>
+    <Story
+      of={MultipleSelectStories.OrderByExample}
+      parameters={{
+        layout: "centered",
+        docs: {
+          canvas: { sourceState: "shown" },
+        },
+      }}
+    />
+  </div>
+</Canvas>
+
+**Description** Demonstrates **exclusive items** across two single-select groups (“Order by time” and
+“Order by name”). Each item has `exclusive: true, exclusiveScope: 'global'`, ensuring that if you pick
+“Recent,” it clears any “A-Z” or “Z-A” selection.
+
+- **`defaultValue`** sets the initial selection to `["Recent"]` in the “ORDER BY TIME” group.
+- **`variants`** example usage for adjusting text color, alignment, etc.
+
+### 3. FilterExample
+
+<Canvas of={MultipleSelectStories.FilterExample}>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem" }}>
+    <Story
+      of={MultipleSelectStories.FilterExample}
+      parameters={{
+        layout: "centered",
+        docs: {
+          canvas: { sourceState: "shown" },
+        },
+      }}
+    />
+  </div>
+</Canvas>
+
+**Description** A **filter** scenario with an **“All”** exclusive item for resetting.
+
+- “All” is in an **ungrouped** set with `exclusive: true, exclusiveScope: 'global'`.
+- Two collapsible groups, “Network” and “Status,” each with `multiple: true`.
+- **`defaultValue`** starts with “All” selected in the ungrouped items.
+
+### 4. MixedSelectionTypes
+
+<Canvas of={MultipleSelectStories.MixedSelectionTypes}>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem" }}>
+    <Story
+      of={MultipleSelectStories.MixedSelectionTypes}
+      parameters={{
+        layout: "centered",
+        docs: {
+          canvas: { sourceState: "shown" },
+        },
+      }}
+    />
+  </div>
+</Canvas>
+
+**Description** Shows a combination of:
+
+- A group with an **exclusive** item called “Reset All.”
+- Another group that’s **multi-select** with standard options.
+
+This approach is useful when you have a special action (like “Reset” or “Clear All”) plus normal multi-select items.
+
+### 5. WithVariants
+
+<Canvas of={MultipleSelectStories.WithVariants}>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem" }}>
+    <Story
+      of={MultipleSelectStories.WithVariants}
+      parameters={{
+        layout: "centered",
+        docs: {
+          canvas: { sourceState: "shown" },
+        },
+      }}
+    />
+  </div>
+</Canvas>
+
+**Description**  
+Showcases using **all variant props** (`triggerTextColor`, `headerPosition`, `itemsPosition`, etc.) or whatever your **MultipleSelect** has to customize.
+
+- You can set text color, alignment, plus a collapsible group.
+- Useful to see how to pass styling variants from **tailwind-variants** to the component.
+
+---
+
+## Tips & Best Practices
+
+1. **Use `defaultValue`** for initial selections, or manage selections outside if you want it to be “controlled.”
+2. **`exclusive`** items are great for “select all,” “select none,” or “reset.”
+3. **Collapsible groups** let you nest large sets of items without overwhelming the user.
+
+---
+
+## Conclusion
+
+`MultipleSelect` is highly **configurable** for your needs: from a simple single group with no advanced logic, to multi-group filters, collapsible sections, exclusive “all” items, or complex order-by pickers.
+
+Check out the source code & stories for additional usage details.

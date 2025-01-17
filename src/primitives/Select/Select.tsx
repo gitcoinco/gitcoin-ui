@@ -5,6 +5,7 @@ import * as React from "react";
 import { SelectGroup } from "@radix-ui/react-select";
 import { tv } from "tailwind-variants";
 
+import { IconType } from "@/primitives/Icon";
 import {
   Select as ShadcnSelect,
   SelectTrigger,
@@ -21,10 +22,13 @@ export interface SelectProps {
     items: {
       label: string;
       value: string;
+      icon?: React.ReactNode;
+      iconPosition?: "left" | "right";
+      iconType?: IconType;
     }[];
     separator?: boolean;
   }[];
-  placeholder?: string;
+  placeholder?: React.ReactNode;
   onValueChange?: (value: string) => void;
   defaultValue?: string;
   variant?: "default" | "outlined" | "filled";
@@ -75,8 +79,10 @@ export const Select = ({
               </SelectGroup>
             )}
             {group.items.map((item) => (
-              <SelectItem key={item.value} value={item.value}>
+              <SelectItem key={item.value} value={item.value} className="flex items-center gap-2">
+                {item.icon && item.iconPosition === "left" && item.icon}
                 {item.label}
+                {item.icon && item.iconPosition === "right" && item.icon}
               </SelectItem>
             ))}
             {group.separator && <SelectSeparator />}
