@@ -8,11 +8,11 @@ import { PlusIcon } from "@heroicons/react/outline";
 import { X } from "lucide-react";
 
 import { Button } from "@/primitives/Button";
-import { Checkbox } from "@/ui-shadcn/checkbox";
+import { Checkbox } from "@/primitives/Checkbox";
+import { Switch } from "@/primitives/Switch";
 import { Input } from "@/ui-shadcn/input";
 import { Label } from "@/ui-shadcn/label";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/ui-shadcn/select";
-import { Switch } from "@/ui-shadcn/switch";
 
 import { inputTypes } from "./utils";
 
