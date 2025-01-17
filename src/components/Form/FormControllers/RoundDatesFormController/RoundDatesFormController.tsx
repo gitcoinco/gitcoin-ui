@@ -5,7 +5,7 @@ import { useFormContext, Controller } from "react-hook-form";
 
 import moment from "moment-timezone";
 
-import { Checkbox } from "@/ui-shadcn/checkbox";
+import { Checkbox } from "@/primitives/Checkbox";
 import { Label } from "@/ui-shadcn/label";
 import { Select, SelectTrigger, SelectContent, SelectItem } from "@/ui-shadcn/select";
 
