@@ -1,8 +1,8 @@
 "use client";
 
-import { GitcoinLogo } from "@/assets";
+import { GitcoinLogo } from "@/assets/logos/gitcoin";
 
-const defaultLogo = GitcoinLogo;
+const DefaultLogo = GitcoinLogo;
 
 export interface NavbarLogoProps {
   link?: string;
@@ -20,7 +20,7 @@ export const NavbarLogo = ({
   const logoClasses = `${size} text-${color}`;
 
   if (!img) {
-    return <img src={defaultLogo} alt="Default Logo" className={logoClasses} />;
+    return <DefaultLogo className={logoClasses} />;
   }
 
   if (typeof img === "string") {
