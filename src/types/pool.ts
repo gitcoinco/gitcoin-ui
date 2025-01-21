@@ -30,8 +30,9 @@ export interface PoolData {
   votingEndDate: Date;
   poolStatus: PoolStatus;
   operatorsCount: number;
+  createdAtBlock: number;
   logoImg?: string;
-  onClick?: () => void;
+  onClick?: (pool?: { chainId: number; roundId: string }) => void;
 }
 
 // Type guard for PoolData
