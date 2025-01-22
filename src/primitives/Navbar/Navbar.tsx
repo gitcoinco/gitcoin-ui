@@ -20,7 +20,7 @@ export interface NavbarProps {
   primaryLogo?: NavbarLogoProps;
   secondaryLogo?: NavbarLogoProps;
   showDivider?: boolean;
-  text: NavbarTitleProps;
+  text?: NavbarTitleProps;
   children?: React.ReactNode;
 }
 
@@ -41,7 +41,7 @@ export const Navbar = ({
           {showDivider && <div className={divider()} />}
           <div className="flex items-center gap-2">
             {secondaryLogo && <NavbarLogo {...secondaryLogo} />}
-            <NavbarTitle {...text} />
+            {text && <NavbarTitle {...text} />}
           </div>
         </div>
         <div className={rightSection()}>{children}</div>
