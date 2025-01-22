@@ -20,10 +20,12 @@ export * from "./primitives/StatCard";
 export * from "./primitives/StatCardGroup";
 export * from "./primitives/TextArea";
 export * from "./primitives/Toast";
+export * from "./primitives/Typography";
 export * from "./primitives/VerticalTabs";
 export * from "./primitives/Switch";
 export * from "./primitives/Checkbox";
 
+export * from "./components/CreateButton";
 export * from "./components/IconLabel";
 export * from "./components/ProgressModal";
 export * from "./components/RadioGroupList";

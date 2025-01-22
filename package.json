@@ -43,6 +43,11 @@
       "import": "./dist/icons.js",
       "require": "./dist/icons.js"
     },
+    "./logos": {
+      "types": "./dist/logos.d.ts",
+      "import": "./dist/logos.js",
+      "require": "./dist/logos.js"
+    },
     "./lib": {
       "types": "./dist/lib.d.ts",
       "import": "./dist/lib.js",
@@ -57,6 +62,11 @@
       "types": "./dist/types.d.ts",
       "import": "./dist/types.js",
       "require": "./dist/types.js"
+    },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js",
+      "require": "./dist/theme.js"
     },
     "./application": {
       "types": "./dist/application.d.ts",

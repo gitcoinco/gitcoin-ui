@@ -8,18 +8,21 @@ import { cn } from "@/lib/utils";
 
 export enum IconType {
   // Heroicons
+  BRIEFCASE = "briefcase",
   CALENDAR = "calendar",
   CASH = "cash",
   CHECK = "check",
   CHEVRON_LEFT = "chevron-left",
   CLIPBOARD_LIST = "clipboardList",
   CLOCK = "clock",
+  COLLECTION = "collection",
   DOCUMENT_DUPLICATE = "document-duplicate",
   EXCLAMATION_CIRCLE = "exclamation-circle",
+  GLOBE = "globe",
+  HOME = "home",
+  INFORMATION_CIRCLE = "informationCircle",
   LINK = "link",
   PLUS = "plus",
-  GLOBE = "globe",
-  INFORMATION_CIRCLE = "informationCircle",
   PENCIL = "pencil",
   SOLID_CHECK = "solid-check",
   SOLID_QUESTION_MARK_CIRCLE = "questionMarkCircle",

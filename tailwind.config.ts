@@ -2,7 +2,7 @@ import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 
-import { colors } from "./src/tokens/colors";
+import { colors } from "./src/theme/colors";
 
 export default withTV({
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],

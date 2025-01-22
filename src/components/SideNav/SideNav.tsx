@@ -39,12 +39,12 @@ export const SideNav = ({
 
   return (
     <div className={cn("relative flex flex-col gap-4", className)}>
-      {items.map((item, index) => {
+      {items?.map((item, index) => {
         const isActive = item.id === activeId;
 
         return (
           <div key={`sidenav-item-${index}`}>
-            {item.items.length > 0 ? (
+            {item.items && item.items.length > 0 ? (
               <AccordionItem
                 item={item}
                 onClick={onClick}

@@ -4,6 +4,8 @@ import * as React from "react";
 
 import { tv } from "tailwind-variants";
 
+import { cn } from "@/lib";
+
 import { NavbarLogo, NavbarLogoProps, NavbarTitle, NavbarTitleProps } from "./components";
 
 const navbarVariants = tv({
@@ -17,14 +19,16 @@ const navbarVariants = tv({
 });
 
 export interface NavbarProps {
+  className?: string;
   primaryLogo?: NavbarLogoProps;
   secondaryLogo?: NavbarLogoProps;
   showDivider?: boolean;
-  text: NavbarTitleProps;
+  text?: NavbarTitleProps;
   children?: React.ReactNode;
 }
 
 export const Navbar = ({
+  className,
   primaryLogo,
   secondaryLogo,
   showDivider = true,
@@ -34,14 +38,14 @@ export const Navbar = ({
   const { base, container, leftSection, divider, rightSection } = navbarVariants();
 
   return (
-    <nav className={base()}>
+    <nav className={cn(base(), className)}>
       <div className={container()}>
         <div className={leftSection()}>
           <NavbarLogo {...primaryLogo} />
           {showDivider && <div className={divider()} />}
           <div className="flex items-center gap-2">
             {secondaryLogo && <NavbarLogo {...secondaryLogo} />}
-            <NavbarTitle {...text} />
+            {text && <NavbarTitle {...text} />}
           </div>
         </div>
         <div className={rightSection()}>{children}</div>
