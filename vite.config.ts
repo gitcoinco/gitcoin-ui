@@ -20,6 +20,7 @@ export default defineConfig({
         logos: resolve(__dirname, "./src/assets/logos/index.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
         types: resolve(__dirname, "./src/types/index.ts"),
+        theme: resolve(__dirname, "./src/theme/index.ts"),
 
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),

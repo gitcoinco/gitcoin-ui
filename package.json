@@ -63,6 +63,11 @@
       "import": "./dist/types.js",
       "require": "./dist/types.js"
     },
+    "./theme": {
+      "types": "./dist/theme.d.ts",
+      "import": "./dist/theme.js",
+      "require": "./dist/theme.js"
+    },
     "./application": {
       "types": "./dist/application.d.ts",
       "import": "./dist/application.js",
