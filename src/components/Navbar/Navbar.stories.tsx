@@ -9,7 +9,7 @@ import { Navbar } from "./Navbar";
 // Adjust the path as needed
 
 const meta = {
-  title: "Primitives/Navbar",
+  title: "Components/Navbar",
   component: Navbar,
   args: {
     text: {

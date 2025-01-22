@@ -1,0 +1,67 @@
+import { Meta, Story, Canvas, Controls } from "@storybook/blocks";
+
+import * as NavbarGenericStories from "./NavbarGeneric.stories";
+
+<Meta of={NavbarGenericStories} />
+
+# NavbarGeneric
+
+A flexible navbar component that handles layout and positioning of navbar sections.
+
+Key features:
+
+- Section order doesn't matter - they'll always render in Start, Center, End order
+- Sections can be omitted - empty sections will be created automatically
+- Configurable behavior (static, sticky, fixed)
+
+## Usage
+
+```tsx
+import {
+  NavbarGeneric,
+  NavbarStartSection,
+  NavbarCenterSection,
+  NavbarEndSection,
+} from "@/components/Navbar";
+
+export const MyNavbar = () => (
+  <NavbarGeneric>
+    <NavbarStartSection>
+      <Logo />
+    </NavbarStartSection>
+    <NavbarCenterSection>
+      <Navigation />
+    </NavbarCenterSection>
+    <NavbarEndSection>
+      <UserMenu />
+    </NavbarEndSection>
+  </NavbarGeneric>
+);
+```
+
+```tsx
+import {
+  NavbarGeneric,
+  NavbarStartSection,
+  NavbarCenterSection,
+  NavbarEndSection,
+} from "@/components/Navbar";
+
+export const MyNavbar = () => (
+  <NavbarGeneric behavior="sticky">
+    {/* Order doesn't matter */}
+    <NavbarEndSection>End</NavbarEndSection>
+    <NavbarStartSection>Start</NavbarStartSection>
+
+    {/* Center section can be omitted */}
+  </NavbarGeneric>
+);
+```
+
+## Props
+
+<Controls />
+
+### Default
+
+<Canvas of={NavbarGenericStories.Default} />
