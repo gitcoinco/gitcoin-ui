@@ -10,6 +10,9 @@ export default withTV({
   theme: {
     colors,
     extend: {
+      backgroundColor: {
+        navbar: "bg-white/[0.03]",
+      },
       borderWidth: {
         "1.5": "1.5px",
       },
@@ -29,8 +32,12 @@ export default withTV({
         "100": "100",
       },
       boxShadow: {
+        navbar: "0px 4px 24px -8px rgba(0, 0, 0, 0.08)",
         toast:
           "0px 24px 94px 0px rgba(0, 0, 0, 0.17), 0px 7.235px 28.338px 0px rgba(0, 0, 0, 0.11), 0px 3.005px 11.77px 0px rgba(0, 0, 0, 0.09), 0px 1.087px 4.257px 0px rgba(0, 0, 0, 0.06)",
+      },
+      backdropBlur: {
+        navbar: "22px",
       },
       fontFamily: {
         "ui-mono": ["DM Mono", "serif"],
