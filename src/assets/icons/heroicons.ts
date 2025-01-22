@@ -1,6 +1,7 @@
 // Status Icons
 import { InformationCircleIcon } from "@heroicons/react/outline";
 import {
+  BriefcaseIcon,
   CalendarIcon,
   CashIcon,
   CheckCircleIcon as CheckSolidIcon,
@@ -9,9 +10,11 @@ import {
   ChevronRightIcon,
   ClipboardListIcon,
   ClockIcon,
+  CollectionIcon,
   DocumentDuplicateIcon,
   ExclamationCircleIcon,
   GlobeAltIcon as GlobeIcon,
+  HomeIcon,
   LinkIcon,
   PencilIcon,
   QuestionMarkCircleIcon as SolidQuestionMarkCircleIcon,
@@ -25,19 +28,22 @@ import {
 } from "@heroicons/react/solid";
 
 enum HeroiconsType {
+  BRIEFCASE = "briefcase",
   CALENDAR = "calendar",
   CASH = "cash",
   CHECK = "check",
   CHEVRON_LEFT = "chevron-left",
   CLIPBOARD_LIST = "clipboardList",
   CLOCK = "clock",
+  COLLECTION = "collection",
   DOCUMENT_DUPLICATE = "document-duplicate",
-  PENCIL = "pencil",
   EXCLAMATION_CIRCLE = "exclamation-circle",
-  LINK = "link",
-  PLUS = "plus",
   GLOBE = "globe",
+  HOME = "home",
   INFORMATION_CIRCLE = "informationCircle",
+  LINK = "link",
+  PENCIL = "pencil",
+  PLUS = "plus",
   SOLID_CHECK = "solid-check",
   SOLID_QUESTION_MARK_CIRCLE = "questionMarkCircle",
   SOLID_X = "solid-x",
@@ -49,18 +55,21 @@ enum HeroiconsType {
 }
 
 const heroiconsComponents: Record<HeroiconsType, React.FC<React.SVGProps<SVGSVGElement>>> = {
+  briefcase: BriefcaseIcon,
   calendar: CalendarIcon,
   cash: CashIcon,
   check: CheckIcon,
   "chevron-left": ChevronLeftIcon,
   clipboardList: ClipboardListIcon,
   clock: ClockIcon,
+  collection: CollectionIcon,
   "document-duplicate": DocumentDuplicateIcon,
-  pencil: PencilIcon,
   "exclamation-circle": ExclamationCircleIcon,
-  informationCircle: InformationCircleIcon,
   globe: GlobeIcon,
+  informationCircle: InformationCircleIcon,
+  home: HomeIcon,
   link: LinkIcon,
+  pencil: PencilIcon,
   plus: PlusIcon,
   questionMarkCircle: SolidQuestionMarkCircleIcon,
   "solid-check": CheckSolidIcon,
@@ -77,6 +86,7 @@ const heroIcons = Object.keys(heroiconsComponents).sort((a, b) =>
 ) as HeroiconsType[];
 
 export {
+  BriefcaseIcon,
   CalendarIcon,
   CheckSolidIcon,
   CheckIcon,
@@ -84,11 +94,14 @@ export {
   ChevronRightIcon,
   ClipboardListIcon,
   ClockIcon,
+  CollectionIcon,
   DocumentDuplicateIcon,
   ExclamationCircleIcon,
-  InformationCircleIcon,
   GlobeIcon,
+  HomeIcon,
+  InformationCircleIcon,
   LinkIcon,
+  PencilIcon,
   PlusIcon,
   SolidQuestionMarkCircleIcon,
   SparklesIcon,
