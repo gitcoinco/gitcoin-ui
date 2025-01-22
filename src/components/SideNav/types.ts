@@ -9,11 +9,11 @@ export interface SideNavItem {
   iconType?: IconType;
   id?: string;
   isSeparator?: boolean;
-  items: SideNavItem[];
+  items?: SideNavItem[];
 }
 
 export interface InternalSideNavProps {
-  items: SideNavItem[];
+  items?: SideNavItem[];
   onClick: (id: string | undefined) => void;
   activeId?: string;
   className?: string;
