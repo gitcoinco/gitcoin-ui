@@ -32,6 +32,7 @@ const metricCardVariants = tv({
 
 export interface MetricCardProps {
   title: string;
+  identifier: string;
   description: string;
   variant?: "metric" | "ballot";
   isAdded?: boolean;

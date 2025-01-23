@@ -31,35 +31,35 @@ export const MetricsFormController: React.FC<MetricsFormControllerProps> = ({ na
       render={({ field: { value, onChange } }) => {
         const selectedMetrics = value || [];
 
-        const handleToggleMetric = (title: string) => {
-          const newValue = selectedMetrics.includes(title)
-            ? selectedMetrics.filter((t: string) => t !== title)
-            : [...selectedMetrics, title];
+        const handleToggleMetric = (identifier: string) => {
+          const newValue = selectedMetrics.includes(identifier)
+            ? selectedMetrics.filter((t: string) => t !== identifier)
+            : [...selectedMetrics, identifier];
           onChange(newValue);
         };
 
-        const isMetricSelected = (title: string) => selectedMetrics.includes(title);
+        const isMetricSelected = (identifier: string) => selectedMetrics.includes(identifier);
 
         return (
           <div className="space-y-6">
             {metrics.map((metric) => (
               <MetricCard
-                key={metric.title}
+                key={metric.identifier}
                 {...metric}
-                onClick={() => handleToggleMetric(metric.title)}
+                onClick={() => handleToggleMetric(metric.identifier)}
                 className="w-full"
                 customButton={
-                  isMetricSelected(metric.title) ? (
+                  isMetricSelected(metric.identifier) ? (
                     <Button
                       value={"Added to Round"}
-                      onClick={() => handleToggleMetric(metric.title)}
+                      onClick={() => handleToggleMetric(metric.identifier)}
                       className="flex items-center gap-2 rounded bg-moss-100 px-4 py-2 text-sm font-medium text-moss-700 hover:bg-moss-50"
                       icon={<Icon className="size-4" type={IconType.CHECK} />}
                     />
                   ) : (
                     <Button
                       value={"Add to Round"}
-                      onClick={() => handleToggleMetric(metric.title)}
+                      onClick={() => handleToggleMetric(metric.identifier)}
                       variant="light-purple"
                       icon={<Icon className="size-4" type={IconType.CHECK} />}
                     />
