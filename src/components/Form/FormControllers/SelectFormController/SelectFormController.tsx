@@ -12,6 +12,7 @@ export interface SelectFormControllerProps extends SelectProps {
 export const SelectFormController: React.FC<any> = ({
   name,
   options,
+  defaultValue,
   placeholder,
   className,
   size,
@@ -26,7 +27,8 @@ export const SelectFormController: React.FC<any> = ({
       render={({ field }) => (
         <Select
           options={options}
-          defaultValue={field.value}
+          defaultValue={defaultValue}
+          value={field.value}
           onValueChange={field.onChange}
           placeholder={placeholder}
           className={className}

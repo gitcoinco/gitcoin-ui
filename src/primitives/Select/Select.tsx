@@ -5,6 +5,7 @@ import * as React from "react";
 import { SelectGroup } from "@radix-ui/react-select";
 import { tv } from "tailwind-variants";
 
+import { cn } from "@/lib/utils";
 import { IconType } from "@/primitives/Icon";
 import {
   Select as ShadcnSelect,
@@ -13,8 +14,9 @@ import {
   SelectLabel,
   SelectItem,
   SelectSeparator,
-  SelectValue,
 } from "@/ui-shadcn/select";
+
+import { Label } from "./Label";
 
 export interface SelectProps {
   options: {
@@ -30,6 +32,7 @@ export interface SelectProps {
   }[];
   placeholder?: React.ReactNode;
   onValueChange?: (value: string) => void;
+  value?: string;
   defaultValue?: string;
   variant?: "default" | "outlined" | "filled";
   size?: "sm" | "md" | "lg";
@@ -38,16 +41,47 @@ export interface SelectProps {
 
 const selectStyles = tv({
   base: "h-10 rounded-md border text-sm",
+  slots: {
+    trigger: "h-10 rounded-md border text-sm",
+    item: "",
+    label: "",
+  },
   variants: {
     variant: {
-      default: "border-transparent bg-white ",
-      outlined: "border-transparent bg-transparent",
-      filled: "bg-grey-200",
+      default: {
+        trigger: "border-transparent bg-white ",
+        content: "",
+        item: "",
+        label: "",
+      },
+      outlined: {
+        trigger: "border-transparent bg-transparent",
+        item: "",
+        label: "",
+      },
+      filled: {
+        trigger: " bg-grey-200 text-grey-900",
+        content: "",
+        item: "",
+        label: "",
+      },
     },
     size: {
-      sm: "h-8 text-xs",
-      md: "h-10 text-sm",
-      lg: "h-12 text-base",
+      sm: {
+        trigger: "h-8 gap-1 text-xs",
+        item: "h-8 text-xs",
+        label: "text-xs",
+      },
+      md: {
+        trigger: "h-10 px-3 py-2 text-sm",
+        item: "text-sm",
+        label: "text-sm",
+      },
+      lg: {
+        trigger: "h-12 gap-2 text-base",
+        item: "text-base",
+        label: "",
+      },
     },
   },
   defaultVariants: {
@@ -56,33 +90,59 @@ const selectStyles = tv({
   },
 });
 
+export const getSelectedItem = (
+  options: SelectProps["options"],
+  value?: string,
+  defaultValue?: string,
+  onValueChange?: (value: string) => void,
+) => {
+  const itemValue = value || defaultValue;
+  const item = options
+    .find((option) => option.items.find((item) => item.value === itemValue))
+    ?.items.find((item) => item.value === itemValue);
+  if (item) {
+    onValueChange?.(item.value);
+  }
+  return item;
+};
+
 export const Select = ({
   options,
   placeholder = "Select an option",
   onValueChange,
   defaultValue,
+  value,
   variant,
   size,
   className,
 }: SelectProps) => {
+  const item = getSelectedItem(options, value, defaultValue, onValueChange);
+  const { trigger, item: selectItem, label } = selectStyles({ variant, size, className });
   return (
-    <ShadcnSelect defaultValue={defaultValue} onValueChange={onValueChange}>
-      <SelectTrigger className={selectStyles({ variant, size, className })}>
-        <SelectValue placeholder={defaultValue ?? placeholder} />
+    <ShadcnSelect
+      defaultValue={defaultValue}
+      onValueChange={onValueChange}
+      value={value || defaultValue}
+    >
+      <SelectTrigger className={cn(trigger(), className)}>
+        {item ? <Label {...item} /> : placeholder}
       </SelectTrigger>
       <SelectContent>
         {options.map((group, index) => (
           <React.Fragment key={index}>
             {group.groupLabel && (
               <SelectGroup>
-                <SelectLabel>{group.groupLabel}</SelectLabel>
+                <SelectLabel className={label()}>{group.groupLabel}</SelectLabel>
               </SelectGroup>
             )}
             {group.items.map((item) => (
-              <SelectItem key={item.value} value={item.value} className="flex items-center gap-2">
-                {item.icon && item.iconPosition === "left" && item.icon}
-                {item.label}
-                {item.icon && item.iconPosition === "right" && item.icon}
+              <SelectItem key={item.value} value={item.value}>
+                <Label
+                  label={item.label}
+                  icon={item.icon}
+                  iconPosition={item.iconPosition}
+                  className={selectItem()}
+                />
               </SelectItem>
             ))}
             {group.separator && <SelectSeparator />}
