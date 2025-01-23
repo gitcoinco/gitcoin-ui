@@ -27,7 +27,6 @@ export * from "./primitives/Checkbox";
 
 export * from "./components/CreateButton";
 export * from "./components/IconLabel";
-export * from "./components/ProgressModal";
 export * from "./components/RadioGroupList";
 export * from "./components/SideNav";
 export * from "./components/Toaster";

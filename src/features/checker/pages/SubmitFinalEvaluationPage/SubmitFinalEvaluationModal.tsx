@@ -2,9 +2,10 @@
 
 import { Check, X } from "lucide-react";
 
-import { ProgressModal, Step } from "@/components/ProgressModal";
+import { ProgressModal } from "@/components/ProgressModal";
 import { Button } from "@/primitives/Button";
 import { Modal } from "@/primitives/Modal";
+import { Step } from "@/types";
 import { Dialog, DialogHeader, DialogTitle } from "@/ui-shadcn/dialog";
 
 export interface SubmitFinalEvaluationModalProps {

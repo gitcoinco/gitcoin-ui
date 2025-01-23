@@ -2,8 +2,9 @@ import React from "react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
+import { ProgressStatus, Step } from "@/types";
+
 import { ProgressModal } from "./ProgressModal";
-import { ProgressStatus, Step } from "./types";
 
 const meta: Meta<typeof ProgressModal> = {
   title: "Components/ProgressModal",

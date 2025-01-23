@@ -4,7 +4,8 @@ import { useState, useEffect, useMemo } from "react";
 
 import { useMutation } from "@tanstack/react-query";
 
-import { ProgressStatus, getOnchainEvaluationProgressSteps } from "@/components/ProgressModal";
+import { getOnchainEvaluationProgressSteps } from "@/components/ProgressModal";
+import { ProgressStatus } from "@/types";
 
 import { ReviewBody } from "../types";
 
