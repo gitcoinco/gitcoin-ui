@@ -86,11 +86,11 @@ export const validateRoundDates = (data: RoundDatesData, ctx: z.RefinementCtx) =
     });
   }
 
-  // Ensure application dates are within round dates
-  if (roundStart && appStart && appStart < roundStart) {
+  // Ensure application dates are before round dates
+  if (roundStart && appStart && appStart > roundStart) {
     ctx.addIssue({
       code: z.ZodIssueCode.custom,
-      message: "Application start date must not be before the round start date",
+      message: "Application start date must not be after the round start date",
       path: ["applications", "start"],
     });
   }
