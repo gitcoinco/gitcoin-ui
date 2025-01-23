@@ -5,11 +5,11 @@ import { useState, useMemo, useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { match } from "ts-pattern";
 
-import { Step } from "@/components/ProgressModal";
 import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
+import { Step } from "@/types";
 
 import { ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";

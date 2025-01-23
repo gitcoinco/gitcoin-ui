@@ -14,13 +14,19 @@ export default defineConfig({
       entry: {
         index: resolve(__dirname, "./src/index.ts"),
         client: resolve(__dirname, "./src/client.ts"),
-        hooks: resolve(__dirname, "./src/hooks/index.ts"),
         icons: resolve(__dirname, "./src/assets/icons/index.ts"),
         lib: resolve(__dirname, "./src/lib/index.ts"),
         logos: resolve(__dirname, "./src/assets/logos/index.ts"),
         mocks: resolve(__dirname, "./src/mocks/handlers.ts"),
         types: resolve(__dirname, "./src/types/index.ts"),
         theme: resolve(__dirname, "./src/theme/index.ts"),
+        "use-credential-verification": resolve(
+          __dirname,
+          "./src/hooks/useCredentialVerification.ts",
+        ),
+        "use-indexed-db": resolve(__dirname, "./src/hooks/useIndexedDB.ts"),
+        "use-persist-form": resolve(__dirname, "./src/hooks/usePersistForm.ts"),
+        "use-toast": resolve(__dirname, "./src/hooks/useToast.ts"),
 
         // features
         application: resolve(__dirname, "./src/features/application/index.ts"),

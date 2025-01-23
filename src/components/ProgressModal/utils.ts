@@ -1,4 +1,4 @@
-import { Step, ProgressStatus } from "./types";
+import { ProgressStatus, Step } from "@/types";
 
 export const getOnchainEvaluationProgressSteps = ({
   contractUpdatingStatus,

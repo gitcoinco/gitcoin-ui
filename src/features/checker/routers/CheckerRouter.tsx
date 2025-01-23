@@ -5,8 +5,8 @@ import { useEffect } from "react";
 import { match, P } from "ts-pattern";
 import { Hex } from "viem";
 
-import { Step } from "@/components/ProgressModal";
 import { useCheckerContext } from "@/features/checker/store/hooks/useCheckerContext";
+import { Step } from "@/types";
 
 import { useInitialize } from "~checker/hooks";
 import {

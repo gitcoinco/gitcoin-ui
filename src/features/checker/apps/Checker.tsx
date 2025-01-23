@@ -2,7 +2,7 @@
 
 import { Hex } from "viem";
 
-import { Step } from "@/components/ProgressModal";
+import { Step } from "@/types";
 
 import { CheckerRouter } from "~checker/routers";
 import { CheckerProvider } from "~checker/store";

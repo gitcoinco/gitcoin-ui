@@ -2,7 +2,9 @@
 
 import MarkdownPreview from "@uiw/react-markdown-preview";
 
-export const Markdown = ({ children }: { children: string }) => {
+import { withSSR } from "@/lib/withSSR";
+
+const MarkdownComponent = ({ children }: { children: string }) => {
   return (
     <MarkdownPreview
       source={children}
@@ -12,3 +14,5 @@ export const Markdown = ({ children }: { children: string }) => {
     />
   );
 };
+
+export const Markdown = withSSR(MarkdownComponent);

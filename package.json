@@ -33,10 +33,25 @@
       "import": "./dist/client.js",
       "require": "./dist/client.js"
     },
-    "./hooks": {
-      "types": "./dist/hooks.d.ts",
-      "import": "./dist/hooks.js",
-      "require": "./dist/hooks.js"
+    "./hooks/useCredentialVerification": {
+      "types": "./dist/use-credential-verification.d.ts",
+      "import": "./dist/use-credential-verification.js",
+      "require": "./dist/use-credential-verification.js"
+    },
+    "./hooks/useIndexedDB": {
+      "types": "./dist/use-indexed-db.d.ts",
+      "import": "./dist/use-indexed-db.js",
+      "require": "./dist/use-indexed-db.js"
+    },
+    "./hooks/usePersistForm": {
+      "types": "./dist/use-persist-form.d.ts",
+      "import": "./dist/use-persist-form.js",
+      "require": "./dist/use-persist-form.js"
+    },
+    "./hooks/useToast": {
+      "types": "./dist/use-toast.d.ts",
+      "import": "./dist/use-toast.js",
+      "require": "./dist/use-toast.js"
     },
     "./icons": {
       "types": "./dist/icons.d.ts",
