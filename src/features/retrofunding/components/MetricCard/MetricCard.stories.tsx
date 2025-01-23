@@ -15,6 +15,7 @@ export const Default: Story = {
   render: () => (
     <MetricCard
       title="Metric here"
+      identifier="metric-1"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
       variant="metric"
       onClick={() => alert("Button clicked!")}
@@ -48,6 +49,7 @@ export const Variants: Story = {
       {variants.map(({ variant, isAdded }) => (
         <MetricCard
           title={`Variant: '${variant}', isAdded: ${isAdded}`}
+          identifier={`metric-${variant}-${isAdded}`}
           description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
           variant={variant}
           isAdded={isAdded}
@@ -63,6 +65,7 @@ export const HideButton: Story = {
   render: () => (
     <MetricCard
       title="Metric here"
+      identifier="metric-1"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, eos et accusamus et iusto odio praesentium voluptat iusto odio estamos praesentium voluptat iusto odio estamos, praesentium and this should be cut off"
       onClick={() => alert("Button clicked!")}
       onReadMore={() => alert("Read more clicked!")}
@@ -75,6 +78,7 @@ export const WithCustomButton: Story = {
   render: () => (
     <MetricCard
       title="Metric here"
+      identifier="metric-1"
       description="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptat iusto odio estamos, praesentium voluptat iusto odio estamos and this should be cut off"
       variant="metric"
       onClick={() => alert("Custom button clicked!")}
@@ -94,6 +98,7 @@ export const Loading: Story = {
   render: () => (
     <MetricCard
       title=""
+      identifier=""
       description=""
       onClick={() => alert("")}
       onReadMore={() => alert("")}

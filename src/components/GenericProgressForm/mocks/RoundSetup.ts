@@ -1,4 +1,5 @@
 import moment from "moment";
+import { title } from "process";
 
 import { FormField, FormStep } from "@/types";
 
@@ -107,16 +108,19 @@ const metrics = [
   {
     title: "Metric 1",
     description: "Description for Metric 1",
+    identifier: "metric-1",
     onReadMore: () => void 0,
   },
   {
     title: "Metric 2",
     description: "Description for Metric 2",
+    identifier: "metric-2",
     onReadMore: () => void 0,
   },
   {
     title: "Metric 3",
     description: "Description for Metric 3",
+    identifier: "metric-3",
     onReadMore: () => void 0,
   },
 ];
