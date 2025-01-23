@@ -17,14 +17,6 @@ const meta = {
         defaultValue: { summary: "sticky" },
       },
     },
-    variant: {
-      control: "radio",
-      options: ["default"],
-      description: "Visual variant of the navbar",
-      table: {
-        defaultValue: { summary: "default" },
-      },
-    },
   },
 } satisfies Meta<typeof NavbarGeneric>;
 
