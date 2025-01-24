@@ -13,6 +13,8 @@ Key features:
 - Section order doesn't matter - they'll always render in Start, Center, End order
 - Sections can be omitted - empty sections will be created automatically
 - Configurable behavior (static, sticky, fixed)
+- Optional backdrop blur effect
+- Optional shadow effect
 
 ## Usage
 
@@ -40,6 +42,17 @@ export const MyNavbar = () => (
 ```
 
 ```tsx
+// Example with all props
+import { NavbarGeneric } from "@/components/Navbar";
+
+export const MyNavbar = () => (
+  <NavbarGeneric behavior="sticky" blur={true} shadow={false}>
+    {/* Your navbar content */}
+  </NavbarGeneric>
+);
+```
+
+```tsx
 import {
   NavbarGeneric,
   NavbarStartSection,
@@ -59,6 +72,15 @@ export const MyNavbar = () => (
 ```
 
 ## Props
+
+The NavbarGeneric component accepts the following props:
+
+- `behavior` - Controls the positioning behavior of the navbar
+  - `static` - Normal document flow
+  - `sticky` - Sticks to the top when scrolling (default)
+  - `fixed` - Fixed to the viewport
+- `blur` - Enables backdrop blur effect (default: true)
+- `shadow` - Adds a subtle shadow below the navbar (default: true)
 
 <Controls />
 
