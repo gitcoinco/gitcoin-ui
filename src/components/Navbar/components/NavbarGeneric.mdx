@@ -1,0 +1,89 @@
+import { Meta, Story, Canvas, Controls } from "@storybook/blocks";
+
+import * as NavbarGenericStories from "./NavbarGeneric.stories";
+
+<Meta of={NavbarGenericStories} />
+
+# NavbarGeneric
+
+A flexible navbar component that handles layout and positioning of navbar sections.
+
+Key features:
+
+- Section order doesn't matter - they'll always render in Start, Center, End order
+- Sections can be omitted - empty sections will be created automatically
+- Configurable behavior (static, sticky, fixed)
+- Optional backdrop blur effect
+- Optional shadow effect
+
+## Usage
+
+```tsx
+import {
+  NavbarGeneric,
+  NavbarStartSection,
+  NavbarCenterSection,
+  NavbarEndSection,
+} from "@/components/Navbar";
+
+export const MyNavbar = () => (
+  <NavbarGeneric>
+    <NavbarStartSection>
+      <Logo />
+    </NavbarStartSection>
+    <NavbarCenterSection>
+      <Navigation />
+    </NavbarCenterSection>
+    <NavbarEndSection>
+      <UserMenu />
+    </NavbarEndSection>
+  </NavbarGeneric>
+);
+```
+
+```tsx
+// Example with all props
+import { NavbarGeneric } from "@/components/Navbar";
+
+export const MyNavbar = () => (
+  <NavbarGeneric behavior="sticky" blur={true} shadow={false}>
+    {/* Your navbar content */}
+  </NavbarGeneric>
+);
+```
+
+```tsx
+import {
+  NavbarGeneric,
+  NavbarStartSection,
+  NavbarCenterSection,
+  NavbarEndSection,
+} from "@/components/Navbar";
+
+export const MyNavbar = () => (
+  <NavbarGeneric behavior="sticky">
+    {/* Order doesn't matter */}
+    <NavbarEndSection>End</NavbarEndSection>
+    <NavbarStartSection>Start</NavbarStartSection>
+
+    {/* Center section can be omitted */}
+  </NavbarGeneric>
+);
+```
+
+## Props
+
+The NavbarGeneric component accepts the following props:
+
+- `behavior` - Controls the positioning behavior of the navbar
+  - `static` - Normal document flow
+  - `sticky` - Sticks to the top when scrolling (default)
+  - `fixed` - Fixed to the viewport
+- `blur` - Enables backdrop blur effect (default: true)
+- `shadow` - Adds a subtle shadow below the navbar (default: true)
+
+<Controls />
+
+### Default
+
+<Canvas of={NavbarGenericStories.Default} />

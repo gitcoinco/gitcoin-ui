@@ -1,5 +1,3 @@
-"use client";
-
 import { GitcoinLogo } from "@/assets/logos/gitcoin";
 
 const DefaultLogo = GitcoinLogo;

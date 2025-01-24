@@ -10,7 +10,6 @@ export * from "./primitives/Icon";
 export * from "./primitives/Indicators";
 export * from "./primitives/ListGrid";
 export * from "./primitives/Modal";
-export * from "./primitives/Navbar";
 export * from "./primitives/ProgressBar";
 export * from "./primitives/RadioGroup";
 export * from "./primitives/ScrollArea";
@@ -27,6 +26,8 @@ export * from "./primitives/Checkbox";
 
 export * from "./components/CreateButton";
 export * from "./components/IconLabel";
+export * from "./components/Navbar";
+export * from "./components/ProgressModal";
 export * from "./components/RadioGroupList";
 export * from "./components/SideNav";
 export * from "./components/Toaster";

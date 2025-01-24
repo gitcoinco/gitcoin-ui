@@ -12,6 +12,7 @@
     "dev": "pnpm storybook",
     "test": "test-storybook",
     "build": "tsc && vite build",
+    "build:watch": "tsc && vite build --watch",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write --ignore-unknown .",
     "preview": "vite",

@@ -11,7 +11,6 @@ export * from "./ListGrid";
 export * from "./Markdown";
 export * from "./MarkdownEditor";
 export * from "./Modal";
-export * from "./Navbar";
 export * from "./ProgressBar";
 export * from "./RadioGroup";
 export * from "./ScrollArea";
