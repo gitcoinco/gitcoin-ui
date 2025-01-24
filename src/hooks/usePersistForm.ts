@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useInterval } from "react-use";
 
@@ -26,7 +26,11 @@ export const usePersistForm = (
     return { dbName, storeName };
   }, [dbName, storeName]);
 
+  const [initialized, setInitialized] = useState(false);
+
   const { getValue, setValue, isReady } = useIndexedDB(config);
+
+  const [formValues, setFormValues] = useState<any>(null);
 
   useEffect(() => {
     if (!isReady || !persistKey) return;
@@ -37,6 +41,7 @@ export const usePersistForm = (
         if (draft) {
           form.reset(draft);
         }
+        setInitialized(true);
       } catch (err) {
         console.error("Error initializing form:", err);
       }
@@ -51,12 +56,16 @@ export const usePersistForm = (
     (async () => {
       try {
         const values = form.getValues();
-        await setValue(persistKey, values);
+        if (JSON.stringify(values) !== JSON.stringify(formValues)) {
+          await setValue(persistKey, values);
+          setFormValues(values);
+        }
       } catch (err) {
         console.error("Error saving to IndexedDB:", err);
       }
     })();
   }, 500);
+  return initialized;
 };
 
 /**
@@ -83,8 +92,8 @@ export const useFormWithPersist = ({
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues,
-    mode: "onBlur",
+    mode: "onSubmit",
   });
-  usePersistForm(form, persistKey, dbName, storeName);
-  return form;
+  const isReady = usePersistForm(form, persistKey, dbName, storeName);
+  return { ...form, isReady };
 };
