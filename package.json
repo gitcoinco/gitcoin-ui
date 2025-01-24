@@ -242,6 +242,7 @@
     "react-day-picker": "9.3.2",
     "react-hook-form": "^7.53.0",
     "react-markdown": "^9.0.1",
+    "react-number-format": "^5.4.3",
     "react-resizable-panels": "^2.1.4",
     "react-use": "^17.6.0",
     "recharts": "^2.15.0",

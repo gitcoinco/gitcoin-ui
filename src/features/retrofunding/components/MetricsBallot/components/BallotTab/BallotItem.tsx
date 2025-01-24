@@ -101,10 +101,9 @@ export const BallotItem = ({
             allowNegative={false}
             allowLeadingZeros={false}
             decimalScale={0}
-            scroll="true"
             isAllowed={(values) => {
               if (alreadyVoted) return false;
-              const val = values.floatValue ?? 0;
+              const val = values?.floatValue ?? 0;
               const otherTotal = getTotalAllocation(fields) - amount;
               return otherTotal + val <= maxAllocation;
             }}
@@ -126,7 +125,7 @@ export const BallotItem = ({
             )}
             value={amount}
             onValueChange={(values) => {
-              handleSetAmount(realIndex, fields, update, maxAllocation, values.floatValue ?? 0);
+              handleSetAmount(realIndex, fields, update, maxAllocation, values?.floatValue ?? 0);
             }}
           />
           <div
