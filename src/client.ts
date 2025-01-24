@@ -6,3 +6,4 @@ export * from "./components/MultipleSelect";
 export * from "./features/pool/components/PoolList";
 export * from "./features/program/components/ProgramList";
 export * from "./components/ProgressModal";
+export * from "./features/retrofunding/components/MetricsBallot/MetricsBallot";
