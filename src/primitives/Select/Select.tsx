@@ -94,16 +94,11 @@ export const getSelectedItem = (
   options: SelectProps["options"],
   value?: string,
   defaultValue?: string,
-  onValueChange?: (value: string) => void,
 ) => {
   const itemValue = value || defaultValue;
-  const item = options
+  return options
     .find((option) => option.items.find((item) => item.value === itemValue))
     ?.items.find((item) => item.value === itemValue);
-  if (item) {
-    onValueChange?.(item.value);
-  }
-  return item;
 };
 
 export const Select = ({
@@ -116,7 +111,14 @@ export const Select = ({
   size,
   className,
 }: SelectProps) => {
-  const item = getSelectedItem(options, value, defaultValue, onValueChange);
+  const item = getSelectedItem(options, value, defaultValue);
+
+  React.useEffect(() => {
+    if (item && onValueChange) {
+      onValueChange(item.value);
+    }
+  }, [item, onValueChange]);
+
   const { trigger, item: selectItem, label } = selectStyles({ variant, size, className });
   return (
     <ShadcnSelect
