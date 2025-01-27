@@ -21,9 +21,9 @@ interface PeriodProps {
 
 interface RoundPeriodProps {
   type: "roundPeriod";
-  label: string;
   startDate: Date;
   endDate?: Date;
+  label?: string;
   className?: string;
 }
 

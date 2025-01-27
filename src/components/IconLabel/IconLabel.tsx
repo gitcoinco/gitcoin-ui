@@ -74,7 +74,7 @@ export const IconLabel: React.FC<
     ))
     .with(
       { type: "roundPeriod" },
-      ({ startDate, endDate = undefined, className, isLoading, label }) => (
+      ({ startDate, endDate = undefined, className, isLoading, label = "Review Period" }) => (
         <IconLabelContainer
           type="period"
           className={className}

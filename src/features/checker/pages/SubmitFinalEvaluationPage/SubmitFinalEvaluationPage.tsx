@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/useToast";
 import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
-import { Step } from "@/types";
+import { PoolType, Step } from "@/types";
 
 import { ProjectEvaluationList } from "~checker/components";
 import { useGetApplicationsFinalEvaluationPage } from "~checker/hooks";
@@ -19,7 +19,7 @@ import {
   useCheckerContext,
 } from "~checker/store";
 import { EvaluationAction, ReviewBody } from "~checker/types";
-import { getManagerUrl } from "~checker/utils";
+import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 
 import { SubmitFinalEvaluationModal } from "./SubmitFinalEvaluationModal";
@@ -136,7 +136,13 @@ export const SubmitFinalEvaluationPage = ({
             variant="secondry"
             icon={<Icon type={IconType.CHEVRON_LEFT} />}
             onClick={() =>
-              window.open(`${getManagerUrl(chainId as number)}/#/chain/${chainId}/round/${poolId}`)
+              window.open(
+                getRoundLinkOnManager(
+                  chainId as number,
+                  poolId as string,
+                  poolData?.strategyName as PoolType,
+                ),
+              )
             }
             value="back to round manager"
           />

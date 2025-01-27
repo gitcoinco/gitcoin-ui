@@ -6,6 +6,7 @@ import { Button } from "@/primitives/Button";
 import { Icon, IconType } from "@/primitives/Icon";
 import { StatCardProps } from "@/primitives/StatCard";
 import { StatCardGroup } from "@/primitives/StatCardGroup";
+import { PoolType } from "@/types";
 
 import { ApplicationsSection } from "~checker/components";
 import { useGetApplicationsReviewPage } from "~checker/hooks";
@@ -15,7 +16,7 @@ import {
   useCheckerContext,
   useCheckerDispatchContext,
 } from "~checker/store";
-import { getManagerUrl } from "~checker/utils";
+import { getManagerUrl, getRoundLinkOnManager } from "~checker/utils";
 import { PoolSummary } from "~pool";
 
 export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean }) => {
@@ -51,7 +52,10 @@ export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean
   };
 
   const openRoundInManager = () => {
-    window.open(`${getManagerUrl(chainId)}/#/chain/${chainId}/round/${poolId}`, "_blank");
+    window.open(
+      getRoundLinkOnManager(chainId, poolId, poolData?.strategyName as PoolType),
+      "_blank",
+    );
   };
 
   const openCheckerApplicationEvaluations = (projectId: string) => {
