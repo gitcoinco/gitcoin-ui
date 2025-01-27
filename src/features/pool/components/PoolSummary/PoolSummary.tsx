@@ -82,10 +82,10 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
     },
   ];
   return (
-    <div className={cn(variants.variants.default, "grid grid-cols-2")}>
+    <div className={cn(variants.variants.default, "grid grid-cols-2 py-6")}>
       <div className="flex flex-col items-start justify-start gap-4">
         <Breadcrumb items={breadcrumbItems} isLoading={pool?.isLoading} />
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           <div>
             <PoolBadge type="poolType" badge={poolType} isLoading={pool?.isLoading} />
           </div>
@@ -98,12 +98,23 @@ export const PoolSummary = (pool: PoolSummaryProps) => {
             isLoading={pool.isLoading}
             laodingSkeletonClassName="h-10 w-72 rounded-lg"
           />
-          <IconLabel
-            type="roundPeriod"
-            startDate={allocationStartDate}
-            endDate={allocationEndDate}
-            isLoading={pool.isLoading}
-          />
+
+          <div className="flex flex-col gap-2">
+            <IconLabel
+              type="roundPeriod"
+              startDate={registerStartDate}
+              endDate={registerEndDate}
+              isLoading={pool.isLoading}
+              label="Review"
+            />
+            <IconLabel
+              type="roundPeriod"
+              startDate={allocationStartDate}
+              endDate={allocationEndDate}
+              isLoading={pool.isLoading}
+              label="Voting"
+            />
+          </div>
         </div>
       </div>
       <div className="flex flex-col items-end justify-between">
