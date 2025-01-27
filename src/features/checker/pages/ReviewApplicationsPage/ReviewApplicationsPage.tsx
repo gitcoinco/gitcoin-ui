@@ -18,7 +18,7 @@ import {
 import { getManagerUrl } from "~checker/utils";
 import { PoolSummary } from "~pool";
 
-export const ReviewApplicationsPage = () => {
+export const ReviewApplicationsPage = ({ isStandalone }: { isStandalone: boolean }) => {
   const { categorizedReviews, statCardsProps, poolData, poolFetchState } =
     useGetApplicationsReviewPage() || {};
   const { poolId, chainId } = useCheckerContext();
@@ -63,27 +63,31 @@ export const ReviewApplicationsPage = () => {
 
   return (
     <div className="flex flex-col gap-6 ">
-      <PoolSummary
-        isLoading={isLoading}
-        chainId={chainId}
-        poolId={poolId}
-        programId={poolData?.project.id as string}
-        strategyName={poolData?.strategyName}
-        name={poolData?.roundMetadata?.name}
-        applicationsStartTime={poolData?.applicationsStartTime}
-        applicationsEndTime={poolData?.applicationsEndTime}
-        donationsStartTime={poolData?.donationsStartTime}
-        donationsEndTime={poolData?.donationsEndTime}
-      />
+      {isStandalone && (
+        <PoolSummary
+          isLoading={isLoading}
+          chainId={chainId}
+          poolId={poolId}
+          programId={poolData?.project.id as string}
+          strategyName={poolData?.strategyName}
+          name={poolData?.roundMetadata?.name}
+          applicationsStartTime={poolData?.applicationsStartTime}
+          applicationsEndTime={poolData?.applicationsEndTime}
+          donationsStartTime={poolData?.donationsStartTime}
+          donationsEndTime={poolData?.donationsEndTime}
+        />
+      )}
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-20">
-        <div className="flex justify-start">
-          <Button
-            variant="secondry"
-            icon={<Icon type={IconType.CHEVRON_LEFT} />}
-            onClick={openRoundInManager}
-            value="back to round manager"
-          />
-        </div>
+        {isStandalone && (
+          <div className="flex justify-start">
+            <Button
+              variant="secondry"
+              icon={<Icon type={IconType.CHEVRON_LEFT} />}
+              onClick={openRoundInManager}
+              value="back to round manager"
+            />
+          </div>
+        )}
         <StatCardGroup stats={statCardsProps as StatCardProps[]} justify="center" />
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">

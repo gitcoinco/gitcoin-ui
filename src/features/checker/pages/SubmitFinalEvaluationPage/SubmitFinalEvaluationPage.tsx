@@ -28,12 +28,14 @@ export interface SubmitFinalEvaluationPageProps {
   steps: Step[];
   setReviewBody: (reviewBody: ReviewBody | null) => void;
   isReviewing: boolean;
+  isStandalone: boolean;
 }
 
 export const SubmitFinalEvaluationPage = ({
   steps,
   setReviewBody,
   isReviewing,
+  isStandalone,
 }: SubmitFinalEvaluationPageProps) => {
   const { categorizedReviews, statCardsProps, reviewBody, poolData } =
     useGetApplicationsFinalEvaluationPage() || {};
@@ -115,17 +117,19 @@ export const SubmitFinalEvaluationPage = ({
 
   return (
     <div className="flex flex-col gap-6">
-      <PoolSummary
-        chainId={chainId as number}
-        poolId={poolId as string}
-        programId={poolData?.project.id as string}
-        strategyName={poolData?.strategyName}
-        name={poolData?.roundMetadata.name}
-        applicationsStartTime={poolData?.applicationsStartTime}
-        applicationsEndTime={poolData?.applicationsEndTime}
-        donationsStartTime={poolData?.donationsStartTime}
-        donationsEndTime={poolData?.donationsEndTime}
-      />
+      {isStandalone && (
+        <PoolSummary
+          chainId={chainId as number}
+          poolId={poolId as string}
+          programId={poolData?.project.id as string}
+          strategyName={poolData?.strategyName}
+          name={poolData?.roundMetadata.name}
+          applicationsStartTime={poolData?.applicationsStartTime}
+          applicationsEndTime={poolData?.applicationsEndTime}
+          donationsStartTime={poolData?.donationsStartTime}
+          donationsEndTime={poolData?.donationsEndTime}
+        />
+      )}
       <div className="mx-auto flex max-w-[1440px] flex-col  gap-6 px-20">
         <div className="flex justify-start">
           <Button
