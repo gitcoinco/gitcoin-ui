@@ -53,21 +53,23 @@ export enum CheckerRoute {
   ApplicationEvaluation = "application-evaluation",
 }
 
+export type CheckerContextRoute =
+  | { id: CheckerRoute.SubmitFinalEvaluation }
+  | { id: CheckerRoute.ReviewApplications }
+  | {
+      id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.SubmitApplicationEvaluation;
+      projectId: string;
+    }
+  | {
+      id: CheckerRoute.ApplicationEvaluation;
+      projectId: string;
+    };
+
 export interface CheckerContextType {
   poolsData: Record<string, CheckerPoolData>;
   poolsFetchState: Record<string, CheckerPoolFetchState>;
   poolId?: string;
   chainId?: number;
   address?: Hex;
-  route:
-    | { id: CheckerRoute.SubmitFinalEvaluation }
-    | { id: CheckerRoute.ReviewApplications }
-    | {
-        id: CheckerRoute.ApplicationEvaluationOverview | CheckerRoute.SubmitApplicationEvaluation;
-        projectId: string;
-      }
-    | {
-        id: CheckerRoute.ApplicationEvaluation;
-        projectId: string;
-      };
+  route: CheckerContextRoute;
 }

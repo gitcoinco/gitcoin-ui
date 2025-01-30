@@ -1,6 +1,6 @@
 import { Hex } from "viem";
 
-import { CheckerPoolData, CheckerPoolFetchState } from "../types";
+import { CheckerContextRoute, CheckerPoolData, CheckerPoolFetchState, CheckerRoute } from "../types";
 
 export interface SetInitialStateAction {
   type: "SET_INITIAL_STATE";
@@ -43,7 +43,16 @@ export interface SetPoolFetchStateAction {
   payload: CheckerPoolFetchState;
 }
 
+export type SetRouteHistoryAction = {
+  type: "SET_ROUTE_HISTORY";
+  payload: {
+    route: CheckerContextRoute;
+    replace?: boolean;
+  };
+};
+
 export type CheckerAction =
+  | SetRouteHistoryAction
   | SetInitialStateAction
   | SetPoolDataAction
   | GoToReviewApplicationsAction
